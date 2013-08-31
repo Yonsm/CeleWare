@@ -1,0 +1,64 @@
+
+// Target device family (enable only one flag)
+//#define _TARGET_IPHONE
+//#define _TARGET_IPAD
+#define _TARGET_IPHONE_IPAD
+
+//#import "CelePrefix.h"
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+
+#ifdef __cplusplus
+
+// Resource
+#define kResourceBundle @"Images"
+#define kAppStatKey @"5182124956240b2e58017cad"
+
+//#define BaseNavigationController NavigationController
+//#define kNavigationBarTintColor [UIColor colorWithRed:40/255.0 green:49/255.0 blue:54/255.0 alpha:1]
+//#import "NavigationController.h"
+
+// Util
+#import "UniBase.h"
+#import "NSUtil.h"
+#import "UIUtil.h"
+#import "HttpUtil.h"
+#import "UIAddition.h"
+#import "SettingUtil.h"
+//#import "NetworkUtil.h"
+#import "StatCenter.h"
+
+// View
+//#import "PullView.h"
+//#import "TouchView.h"
+//#import "AlertView.h"
+//#import "NRGridView.h"
+//#import "TabStripView.h"
+//#import "CacheImageView.h"
+//#import "KBCustomTextField.h"
+//#import "SegmentLabel.h"
+//#import "PredictScrollView.h"
+
+// Controller
+//#import "MoviePlayer.h"
+//#import "SelectController.h"
+//#import "WebController.h"
+//#import "ShareComposer.h"
+//#import "NRGridViewController.h"
+
+
+// ZipArchive
+//#import "ZipArchive.h"
+
+#endif
+#endif
+
+
+// Localized String
+#undef NSLocalizedString
+#ifdef _DEBUG
+#define NSLocalizedString(key, comment) [[NSBundle mainBundle] localizedStringForKey:(key) value:(comment) table:nil]
+#else
+#define NSLocalizedString(key, comment) [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
+#endif

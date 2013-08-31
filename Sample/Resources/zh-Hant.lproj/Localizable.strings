@@ -1,0 +1,132 @@
+/* ... */
+"..." = "⋯";
+
+/* After Tomorrow  */
+"After Tomorrow " = "後天";
+
+/* applications */
+"applications" = "應用";
+
+/* Back */
+"Back" = "返回";
+
+/* Before Yesterday  */
+"Before Yesterday " = "前天";
+
+/* Cancel */
+"Cancel" = "取消";
+
+/* Cancelled */
+"Cancelled" = "已取消";
+
+/* Could not make call */
+"Could not make call" = "無法撥打電話";
+
+/* Could not open */
+"Could not open" = "無法打開";
+
+/* Could not send SMS on this device. */
+"Could not send SMS on this device." = "在此設備上無法發送短信。";
+
+/* Did Logout */
+"Did Logout" = "已註銷";
+
+/* Dismiss */
+"Dismiss" = "關閉";
+
+/* Done */
+"Done" = "完成";
+
+/* Download */
+"Download" = "下載";
+
+/* Error */
+"Error" = "錯誤";
+
+/* Failed */
+"Failed" = "發送失敗";
+
+/* Failed to send email. */
+"Failed to send email." = "發送郵件失敗。";
+
+/* Failed to send SMS. */
+"Failed to send SMS." = "發送短信失敗。";
+
+/* Failed: %@ */
+"Failed: %@" = "失敗: %@";
+
+/* Loading... */
+"Loading..." = "加載中⋯";
+
+/* Logout */
+"Logout" = "註銷";
+
+/* Next */
+"Next" = "下一項";
+
+/* Open with Safari */
+"Open with Safari" = "在 Safari 中打開";
+
+/* Please setup your email account first. */
+"Please setup your email account first." = "請先設置您的郵件賬戶。";
+
+/* Please Wait… */
+"Please Wait…" = "請稍等…";
+
+/* Please wait... */
+"Please wait..." = "請稍候⋯";
+
+/* Pull down to refresh... */
+"Pull down to refresh..." = "下拉可以更新⋯";
+
+/* Release to refresh... */
+"Release to refresh..." = "鬆開立即更新⋯";
+
+/* Repeated Weibo Text */
+"Repeated Weibo Text" = "重復博文";
+
+/* Select and Copy the PIN */
+"Select and Copy the PIN" = "選擇並拷貝 PIN";
+
+/* Send */
+"Send" = "發送";
+
+/* Send SMS successfully. */
+"Send SMS successfully." = "發送短信成功。";
+
+/* Send via Email */
+"Send via Email" = "發送郵件鏈接";
+
+/* Sending... */
+"Sending..." = "正在發送⋯";
+
+/* Share */
+"Share" = "分享";
+
+/* Share To Facebook */
+"Share To Facebook" = "分享至 Facebook";
+
+/* Share To Sina Weibo */
+"Share To Sina Weibo" = "分享至新浪微博";
+
+/* Share To Twitter */
+"Share To Twitter" = "分享至 Twitter";
+
+/* Sina Account Info */
+"Sina Account Info" = "新浪微博賬戶";
+
+/* Succeed */
+"Succeed" = "發送成功";
+
+/* Today  */
+"Today " = "今天";
+
+/* Tomorrow  */
+"Tomorrow " = "明天";
+
+/* Twitter Account Info */
+"Twitter Account Info" = "Twitter 賬戶信息";
+
+/* Yesterday  */
+"Yesterday " = "昨天";
+
