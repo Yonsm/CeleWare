@@ -1,0 +1,23 @@
+
+#define AppInit lklauq
+
+#ifndef DEBUG
+#define NSUtil uxb
+
+#define _MSHookFunction _mhfs
+#define _MSHookMessageEx _hex8
+#define _SubstrateMemoryCreate _smc
+#define _SubstrateMemoryRelease _smr
+#define HookWritable gsoqwjna
+#endif
+
+#ifdef __OBJC__
+
+#ifdef __cplusplus
+//#define _LOG_TO_FILE
+#import "NSUtil.h"
+#endif
+
+#import <UIKit/UIKit.h>
+
+#endif
