@@ -547,6 +547,21 @@
 	return [self screenshotWithOptimization:NO];
 }
 
+
+//
+- (UIView *)superviewWithClass:(Class)viewClass
+{
+	UIView *view = self;
+	while ((view = view.superview))
+	{
+		if ([view isKindOfClass:viewClass])
+		{
+			return view;
+		}
+	}
+	return nil;
+}
+
 @end
 
 
@@ -608,24 +623,6 @@
 }
 
 //
-#define kTextFieldTag 1923
-- (UITextField *)textField
-{
-	UITextField *textField = (UITextField *)[self viewWithTag:kTextFieldTag];
-	if (textField == nil)
-	{
-		textField = [[[UITextField alloc] initWithFrame:CGRectMake(12, 45, 260, 32)] autorelease];
-		textField.borderStyle = UITextBorderStyleRoundedRect;
-		textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-		textField.tag = kTextFieldTag;
-		
-		[self addSubview:textField];
-		[textField becomeFirstResponder];
-	}
-	return textField;
-}
-
-//
 #define kActivityIndicatorTag 1924
 - (UIActivityIndicatorView *)activityIndicator
 {
@@ -682,19 +679,26 @@
 @implementation UIViewController (ViewControllerEx)
 
 //
-#ifndef BaseNavigationController
-#define BaseNavigationController UINavigationController
+#ifndef _NavigationController
+#define _NavigationController UINavigationController
 #endif
 - (UINavigationController *)presentNavigationController:(UIViewController *)controller animated:(BOOL)animated
 {
-	UINavigationController *navigator = [[[BaseNavigationController alloc] initWithRootViewController:controller] autorelease];
+	UINavigationController *navigator = [[[_NavigationController alloc] initWithRootViewController:controller] autorelease];
 	navigator.modalTransitionStyle = controller.modalTransitionStyle;
 	navigator.modalPresentationStyle = controller.modalPresentationStyle;
 	
-#ifdef kNavigationBarTintColor
-	navigator.toolbar.tintColor = navigator.navigationBar.tintColor = kNavigationBarTintColor;
+#ifdef _NavigationBarTintColor
+	navigator.toolbar.tintColor = navigator.navigationBar.tintColor = _NavigationBarTintColor;
 #endif
-
+	
+	if (animated)
+	{
+		// MAGIC: Fix Alipay Cell's Bug
+		[self performSelector:@selector(presentModalViewController:) withObject:navigator afterDelay:0.01];
+		return navigator;
+	}
+	
 	[self presentModalViewController:navigator animated:animated];
 	return navigator;
 }
@@ -702,16 +706,15 @@
 //
 - (UINavigationController *)presentModalNavigationController:(UIViewController *)controller animated:(BOOL)animated dismissButtonTitle:(NSString *)dismissButtonTitle
 {
-#ifdef _ALIPAY
-	controller.navigationItem.leftBarButtonItem = [ALPBarButtonItem buttonItemWithTitle:dismissButtonTitle
-																				 target:self.navigationController
-																				 action:@selector(dismissModalViewController)];
-#else
-	controller.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:dismissButtonTitle
-																					style:UIBarButtonItemStyleDone
-																				   target:self
-																				   action:@selector(dismissModalViewController)] autorelease];
+#ifndef _BarButtonItem
+#define _BarButtonItem UIBarButtonItem
 #endif
+#ifndef _barButtonItemWithTitle
+#define _barButtonItemWithTitle barButtonItemWithTitle
+#endif
+	controller.navigationItem.leftBarButtonItem = [_BarButtonItem _barButtonItemWithTitle:dismissButtonTitle
+																				   target:self.navigationController
+																				   action:@selector(dismissModalViewController)];
 	return [self presentNavigationController:controller animated:animated];
 }
 
@@ -719,6 +722,12 @@
 - (UINavigationController *)presentModalNavigationController:(UIViewController *)controller animated:(BOOL)animated
 {
 	return [self presentModalNavigationController:controller animated:animated dismissButtonTitle:NSLocalizedString(@"Back", @"返回")];
+}
+
+//
+- (void)presentModalViewController:(UIViewController *)controller
+{
+	[self presentModalViewController:controller animated:YES];
 }
 
 //
@@ -753,10 +762,10 @@
 	UIImage *image = UIUtil::ImageNamed([name stringByAppendingString:@"Button.png"]);
 	UIImage *image_ = UIUtil::ImageNamed([name stringByAppendingString:@"Button_.png"]);
 	UIImage *imaged = UIUtil::ImageNamed([name stringByAppendingString:@"Button-.png"]);
-
+	
 	if (width == 0) width = image.size.width;
 	else if (width < 0) width = [title sizeWithFont:font].width + image.size.width;
-
+	
 	CGRect frame = {0, 0, width, image.size.height};
 	if (width != image.size.width)
 	{
@@ -764,7 +773,7 @@
 		imaged = imaged.stretchableImage;
 		image_ = image_.stretchableImage;
 	}
-
+	
 	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
 	button.titleLabel.font = font;
 	[button setBackgroundImage:image forState:UIControlStateNormal];
@@ -857,6 +866,57 @@
 	return button;
 }
 
+//
++ (id)checkButtonWithTitle:(NSString *)title frame:(CGRect)frame
+{
+	UIFont *font = [UIFont systemFontOfSize:14];
+	
+#ifndef _CheckBoxImage
+#define _CheckBoxImage UIUtil::Image(@"CheckBox")
+#endif
+#ifndef _CheckBoxImage_
+#define _CheckBoxImage_ UIUtil::Image(@"CheckBox_")
+#endif
+	UIImage *image = _CheckBoxImage;
+	UIImage *image_ = _CheckBoxImage_;
+	
+	if (frame.size.width == 0) frame.size.width = image.size.width + 2 + [title sizeWithFont:font].width + 2;
+	if (frame.size.height == 0) frame.size.height = image.size.height;
+	
+	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
+	button.titleLabel.font = font;
+	
+	[button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+	[button setTitleColor:[UIColor colorWithWhite:0.2 alpha:1] forState:UIControlStateHighlighted];
+	[button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+	
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	
+	[button setImage:image forState:UIControlStateNormal];
+	[button setImage:image_ forState:UIControlStateSelected];
+	
+	[button setTitle:title forState:UIControlStateNormal];
+	[button setTitleEdgeInsets:UIEdgeInsetsMake(0, 4, 0, 0)];
+	
+	return button;
+}
+
+//
++ (id)linkButtonWithTitle:(NSString *)title frame:(CGRect)frame
+{
+	UIFont *font = [UIFont systemFontOfSize:14];
+	if (frame.size.width == 0) frame.size.width = [title sizeWithFont:font].width + 2;
+	if (frame.size.height == 0) frame.size.height = [title sizeWithFont:font].height + 2;
+	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
+	[button setTitleColor:UIUtil::Color(0, 136, 221) forState:UIControlStateNormal];
+	[button setTitleColor:UIUtil::Color(20, 166, 241) forState:UIControlStateHighlighted];
+	[button setTitle:title forState:UIControlStateNormal];
+	button.titleLabel.font = font;
+	//button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	return button;
+}
+
 @end
 
 
@@ -882,7 +942,7 @@
 		button.showsTouchWhenHighlighted = YES;
 		[button setImage:image forState:UIControlStateNormal];
 	}
-
+	
 	[button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 	return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 }
@@ -893,6 +953,12 @@
 	return [self barButtonItemWithImage:image title:nil target:target action:action];
 }
 
+//
++ (id)barButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action
+{
+	return [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:target action:action];
+}
+
 @end
 
 #pragma mark UILabel methods
@@ -901,28 +967,28 @@
 
 //
 + (id)labelAtPoint:(CGPoint)point
-		  withText:(NSString *)text
-		 withWidth:(float)width
-		 withColor:(UIColor *)color
-		  withFont:(UIFont*)font
-	 withAlignment:(NSTextAlignment)alignment
+		  forWidth:(float)width
+			  text:(NSString *)text
+			 color:(UIColor *)color
+			  font:(UIFont*)font
+		 alignment:(NSTextAlignment)alignment
 {
 	CGSize size = [text sizeWithFont:font
 				   constrainedToSize:CGSizeMake(width, 1000)];
 	
 	CGRect frame = CGRectMake(point.x, point.y, width, size.height);
 	
-	UILabel *label = [UILabel labelWithFrame:frame withText:text withColor:color withFont:font withAlignment:alignment];
+	UILabel *label = [UILabel labelWithFrame:frame text:text color:color font:font alignment:alignment];
 	label.numberOfLines = 0;
 	return label;
 }
 
 //
 + (id)labelWithFrame:(CGRect)frame
-			withText:(NSString *)text
-		   withColor:(UIColor *)color
-			withFont:(UIFont *)font
-	   withAlignment:(NSTextAlignment)alignment
+				text:(NSString *)text
+			   color:(UIColor *)color
+				font:(UIFont *)font
+		   alignment:(NSTextAlignment)alignment
 {
 	UILabel *label = [[[UILabel alloc] initWithFrame:frame] autorelease];
 	label.textColor = color;
@@ -932,6 +998,38 @@
 	label.textAlignment = alignment;
 	
 	return label;
+}
+
+@end
+
+//
+@implementation TapGestureRecognizer
+
+//
+- (id)initWithTarget:(id)target action:(SEL)action
+{
+	self = [super initWithTarget:target action:action];
+	self.cancelsTouchesInView = NO;
+	self.delegate = self;
+	return self;
+}
+
+//
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+	UIView *view = touch.view;
+	return (view == gestureRecognizer.view) || ![view isKindOfClass:[UIButton class]];
+}
+
+@end
+
+//
+@implementation UIView (TapGestureRecognizer)
+
+//
+- (void)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action
+{
+	[self addGestureRecognizer:[[[TapGestureRecognizer alloc] initWithTarget:target action:action] autorelease]];
 }
 
 @end

@@ -6,7 +6,7 @@
 @implementation SegmentItem
 
 //
-+ (id)segLabelWithSpace:(CGFloat)width
++ (id)segmentItemWithSpace:(CGFloat)width
 {
 	SegmentItem *label = [[[SegmentItem alloc] init] autorelease];
 	label.width = width;
@@ -14,7 +14,7 @@
 }
 
 //
-+ (id)segLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color
++ (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color
 {
 	SegmentItem *label = [[[SegmentItem alloc] init] autorelease];
 	label.text = text;
@@ -24,17 +24,17 @@
 }
 
 //
-+ (id)segLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width
++ (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width
 {
-	SegmentItem *label = [self segLabelWithText:text font:font color:color];
+	SegmentItem *label = [self segmentItemWithText:text font:font color:color];
 	label.width = width;
 	return label;
 }
 
 //
-+ (id)segLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width alignment:(SegmentItemTextAlignment)alignment
++ (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width alignment:(SegmentItemTextAlignment)alignment
 {
-	SegmentItem *label = [self segLabelWithText:text font:font color:color width:width];
+	SegmentItem *label = [self segmentItemWithText:text font:font color:color width:width];
 	label.alignment = alignment;
 	return label;
 }
@@ -69,7 +69,7 @@
 //
 - (void)dealloc
 {
-	[_labels release];
+	[_items release];
 	
 	[super dealloc];
 }
@@ -82,30 +82,30 @@
 }
 
 //
-- (void)setLabels:(NSArray *)labels
+- (void)setItems:(NSArray *)items
 {
-	if (_labels != labels)
+	if (_items != items)
 	{
-		[_labels release];
-		_labels = labels.retain;
+		[_items release];
+		_items = items.retain;
 	}
 	
 	_lineWidth = 0;
 	_lineHeight = 0;
-	for (SegmentItem *label in _labels)
+	for (SegmentItem *item in _items)
 	{
 		CGSize size = {0};
-		if (label.text.length)
+		if (item.text.length)
 		{
-			size = [label.text sizeWithFont:label.font];
+			size = [item.text sizeWithFont:item.font];
 		}
-		_lineWidth += label.width ? label.width : size.width;
+		_lineWidth += item.width ? item.width : size.width;
 		if (_lineHeight < size.height)
 		{
 			_lineHeight = size.height;
 		}
 	}
-
+	
 	[self setNeedsDisplay];
 }
 
@@ -138,7 +138,7 @@ CGContextRef _context = nil;
 #endif
 
 //
-- (CGFloat)drawText:(NSString *)text atPoint:(CGPoint)point withFont:(UIFont *)font right:(CGFloat)right width:(CGFloat)width alignment:(SegmentItemTextAlignment)alignment
+- (CGFloat)drawText:(NSString *)text atPoint:(CGPoint)point font:(UIFont *)font right:(CGFloat)right width:(CGFloat)width alignment:(SegmentItemTextAlignment)alignment
 {
 	CGSize size = [text sizeWithFont:font];
 	if (point.x + size.width <= right)
@@ -149,7 +149,7 @@ CGContextRef _context = nil;
 		CGContextFillRect(_context, CGRectMake(point.x, point.y, width ? width : size.width, _lineHeight));
 		CGContextRestoreGState(_context);
 #endif
-
+		
 		if (width > size.width)
 		{
 			if (alignment == NSTextAlignmentRight)
@@ -220,33 +220,33 @@ CGContextRef _context = nil;
 		}
 		//rect.size = size;
 	}
-
+	
 	//
 	CGPoint point = rect.origin;
 	CGFloat right = rect.origin.x + rect.size.width;
 	CGContextRef context = UIGraphicsGetCurrentContext();
-
+	
 #ifdef SEG_TEST
 	_white = 0;
-	_step = _labels.count ? (1.0 / _labels.count) : 0;
+	_step = _items.count ? (1.0 / _items.count) : 0;
 	_context = context;
 #endif
-
-	for (SegmentItem *label in _labels)
+	
+	for (SegmentItem *label in _items)
 	{
 		if (UIColor *color = (_highlighted && label.highlightedColor) ? label.highlightedColor : label.color)
 		{
 			CGContextSetFillColorWithColor(context, color.CGColor);
 		}
 		CGContextSetShadowWithColor(context, label.shadowOffset, label.shadowBlur, label.shadowColor.CGColor);
-
+		
 		CGFloat width = 0;
 		NSString *text = label.text;
 		if (text.length)
 		{
 			UIFont *font = label.font;
-
-			while (!(width = [self drawText:text atPoint:point withFont:font right:right width:label.width alignment:label.alignment]))
+			
+			while (!(width = [self drawText:text atPoint:point font:font right:right width:label.width alignment:label.alignment]))
 			{
 				NSUInteger i = 1;
 				NSUInteger length = text.length;
@@ -254,7 +254,7 @@ CGContextRef _context = nil;
 				
 				if (i > 1)
 				{
-					[self drawText:[text substringToIndex:i - 1] atPoint:point withFont:font right:right width:0 alignment:label.alignment];
+					[self drawText:[text substringToIndex:i - 1] atPoint:point font:font right:right width:0 alignment:label.alignment];
 				}
 				point.x = rect.origin.x;
 				point.y += _lineHeight;

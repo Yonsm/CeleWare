@@ -1,7 +1,5 @@
 
 
-#import "KBCustomTextField.h"
-
 //
 @interface CurrencyField : DecimalNumberField
 {

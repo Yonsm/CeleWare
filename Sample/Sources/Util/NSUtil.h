@@ -153,7 +153,7 @@ public:
 	
 	//
 	static NSString *CountryAreaCode(NSString *country = (NSString *)[[NSLocale currentLocale] objectForKey:NSLocaleCountryCode]);
-	
+	static NSString *TrimCountryAreaCode(NSString *number);
 	
 #pragma mark Cache methods
 public:
@@ -255,6 +255,9 @@ public:
 	// Convert date to smart string
 	static NSString *SmartDate(NSDate *date, NSDateFormatterStyle dateStyle, NSDateFormatterStyle timeStyle);
 	
+	//
+	static NSString *SmartCurrency(NSString *amount);
+	
 #pragma mark Misc methods
 public:
 	// Check email address
@@ -333,6 +336,29 @@ public:
 			m = n;
 		}
 		return [[[NSString alloc] initWithBytesNoCopy:p length:length encoding:NSUTF8StringEncoding freeWhenDone:YES] autorelease];
+	}
+	
+	//
+	NS_INLINE NSString *MaskString(NSString *str, NSInteger location, NSInteger length = -1)
+	{
+		NSUInteger strLen = str.length;
+		if (location < 0) location = strLen + location - 1;
+		if (length < 0) length = strLen - location + length;
+		if (strLen > location && length > 0)
+		{
+			NSMutableString *secure = [NSMutableString string];
+			if (location) [secure appendString:[str substringToIndex:location]];
+			NSInteger n = str.length - location - 1;
+			if (n > length) n = length;
+			NSInteger m = str.length - location - n;
+			while (n--)
+			{
+				[secure appendString:@"*"];
+			}
+			if (m > 0) [secure appendString:[str substringFromIndex:strLen - m]];
+			return secure;
+		}
+		return str;
 	}
 	
 public:

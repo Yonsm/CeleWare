@@ -16,6 +16,9 @@
 	self = [super initWithFrame:frame];
 	self.pagingEnabled = YES;
 	self.delegate = self;
+	self.scrollsToTop = NO;
+	self.showsHorizontalScrollIndicator = NO;
+
 	//self.backgroundColor = [UIColor blackColor];
 
 	return self;
@@ -197,7 +200,7 @@
 	frame.origin.y = frame.size.height - 10;
 	frame.size.height = 10;
 	_pageCtrl = [[UIPageControl alloc] initWithFrame:frame];
-	_pageCtrl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+	//_pageCtrl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 	_pageCtrl.numberOfPages = 0;
 	_pageCtrl.currentPage = 0;
 	_pageCtrl.hidesForSinglePage = YES;

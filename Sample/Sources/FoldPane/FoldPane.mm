@@ -80,6 +80,10 @@
 	if (_beepSound) AudioServicesDisposeSystemSoundID(_beepSound);
 #endif
 	[self removeFoldView];
+
+	[_touchMask removeFromSuperview];
+	[_touchMask release];
+
 	[_foldIndicator release];
 	[_image release];
 	[_image_ release];

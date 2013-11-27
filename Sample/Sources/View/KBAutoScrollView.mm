@@ -109,10 +109,7 @@
 		
 		offset.y -= rect.size.height;
 		if (offset.y < 0) offset.y = 0;
-		[UIView animateWithDuration:0.3 animations:^()
-		 {
-			 [self setContentOffset:offset animated:YES];
-		 }];
+		 [self setContentOffset:offset animated:YES];
 	}
 }
 

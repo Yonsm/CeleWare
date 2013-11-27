@@ -76,9 +76,9 @@ extern "C" void AppInit()
 		_Log(@"HOOK new process %@ MSHookFunction=%p, MSHookMessageEx=%p", processName, _MSHookFunction, _MSHookMessageEx);
 				
 		WebViewPeekInit(processName);
-		ConnectionPeekInit(processName);
-		ReadStreamPeekInit(processName);
-		ApplicationPeekInit(processName);
+		//ConnectionPeekInit(processName);
+		//ReadStreamPeekInit(processName);
+		//ApplicationPeekInit(processName);
 		return;
 	}
 }

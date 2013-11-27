@@ -5,7 +5,7 @@
 #define UIUtil						CeleUIUtil
 #define HttpUtil					CeleHttpUtil
 #define NullObject					CeleNullObject
-#define SettingUtil					CeleSettingUtil
+#define Settings					CeleSettings
 
 //
 #define NullView					CeleNullView
@@ -20,6 +20,7 @@
 #define SegmentLabel				CeleSegmentLabel
 #define CacheImageView				CeleCacheImageView
 #define PredictScrollView			CelePredictScrollView
+#define KBCustomButton				CeleKBCustomButton
 #define KBCustomTextField			CeleKBCustomTextField
 #define DecimalNumberField			CeleDecimalNumberField
 #define ActionNumberField			CeleActionNumberField
@@ -35,6 +36,7 @@
 #define CacheBackgroundImageButton	CeleCacheBackgroundImageButton
 #define PageControlScrollView		CelePageControlScrollView
 #define NullController				CeleNullController
+#define NavigationController		CeleNavigationController
 #define WebController				CeleWebController
 #define WebBrowser					CeleWebBrowser
 #define FoldPane					CeleFoldPane

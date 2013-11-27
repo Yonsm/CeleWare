@@ -1,11 +1,12 @@
 
 //
-#ifndef BaseViewController
-#define BaseViewController UIViewController
+#ifndef _BaseViewController
+#define _BaseViewController UIViewController
 #endif
-@interface WebController : BaseViewController <UIWebViewDelegate, UIActionSheetDelegate>
+@interface WebController : _BaseViewController <UIWebViewDelegate, UIActionSheetDelegate>
 {
 	NSURL *_URL;
+	UIWebView *_webView;
 	NSUInteger _loading;
 	UIBarButtonItem *_rightButton;
 }
@@ -17,6 +18,7 @@
 
 - (id)initWithURL:(NSURL *)URL;
 - (id)initWithUrl:(NSString *)url;
+- (id)initWithHTML:(NSString *)HTML;
 - (void)loadHTML:(NSString *)HTML baseURL:(NSURL *)baseURL;
 
 @end

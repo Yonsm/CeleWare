@@ -37,6 +37,8 @@
 - (UIImage*)screenshot;
 - (UIImage*)screenshotWithOptimization:(BOOL)optimized;
 
+- (UIView *)superviewWithClass:(Class)viewClass;
+
 @end
 
 
@@ -58,7 +60,6 @@
 + (id)alertWithTask:(id/*<AlertViewExDelegate>*/)delegate title:(NSString *)title;
 
 //
-- (UITextField *)textField;
 - (UIActivityIndicatorView *)activityIndicator;
 - (void)dismissOnMainThread;
 - (void)dismiss;
@@ -81,7 +82,7 @@
 @end
 
 
-// 
+//
 @interface SolidNavigationController: UINavigationController
 {
 }
@@ -105,6 +106,8 @@
 + (id)longMinorButtonWithTitle:(NSString *)title;
 + (id)buttonWithImage:(UIImage *)image;
 + (id)buttonWithImageNamed:(NSString *)imageName;
++ (id)checkButtonWithTitle:(NSString *)title frame:(CGRect)frame;
++ (id)linkButtonWithTitle:(NSString *)title frame:(CGRect)frame;
 @end
 
 
@@ -113,22 +116,31 @@
 @interface UIBarButtonItem (BarButtonItemEx)
 + (id)barButtonItemWithImage:(UIImage *)image title:(NSString *)title target:(id)target action:(SEL)action;
 + (id)barButtonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
++ (id)barButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 @end
 
 @interface UILabel (LabelEx)
 
 //
 + (id)labelAtPoint:(CGPoint)point
-		 withText:(NSString *)text
-		   withWidth:(float)width
-		   withColor:(UIColor *)color
-			withFont:(UIFont*)font
-	   withAlignment:(NSTextAlignment)alignment;
+		  forWidth:(float)width
+			  text:(NSString *)text
+			 color:(UIColor *)color
+			  font:(UIFont*)font
+		 alignment:(NSTextAlignment)alignment;
 //
 + (id)labelWithFrame:(CGRect)frame
-		 withText:(NSString *)text
-		   withColor:(UIColor *)color
-			withFont:(UIFont *)font
-	   withAlignment:(NSTextAlignment)alignment;
+				text:(NSString *)text
+			   color:(UIColor *)color
+				font:(UIFont *)font
+		   alignment:(NSTextAlignment)alignment;
 @end
 
+//
+@interface TapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
+@end
+
+//
+@interface UIView (TapGestureRecognizer)
+- (void)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
+@end

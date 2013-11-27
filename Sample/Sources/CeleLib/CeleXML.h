@@ -783,7 +783,7 @@ public:
 
 	BOOL Parse(PCTSTR ptzPath)
 	{
-		PTSTR ptzNode = UFileToTStr(ptzPath);
+		PTSTR ptzNode = NULL;//UFileToTStr(ptzPath);
 		return ptzNode ? (CeleXmlAutoFreeNode::Parse(ptzNode), TRUE) : FALSE;
 	}
 };

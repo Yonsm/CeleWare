@@ -3,7 +3,7 @@
 #import "KBCustomTextField.h"
 
 
-// KBCustomButton to fix iOS5 crash
+//
 @interface KBCustomButton : UIButton
 {
 }
@@ -119,10 +119,13 @@
 {
 	UIKBKeyView *view = [self findKeyView:name];
 	if (view)
-	{	
-		view.key.representedString = represent;
-		view.key.displayString = display;
-		view.key.interactionType = type;
+	{
+		if ([view.key respondsToSelector:@selector(setRepresentedString:)])
+			view.key.representedString = represent;
+		if ([view.key respondsToSelector:@selector(setDisplayString:)])
+			view.key.displayString = display;
+		if ([view.key respondsToSelector:@selector(setInteractionType:)])
+			view.key.interactionType = type;
 		[view setNeedsDisplay];
 	}
 	return view;

@@ -26,10 +26,10 @@ typedef enum
 	SegmentItemTextAlignment _alignment;
 }
 
-+ (id)segLabelWithSpace:(CGFloat)width;
-+ (id)segLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color;
-+ (id)segLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width;
-+ (id)segLabelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width alignment:(SegmentItemTextAlignment)alignment;
++ (id)segmentItemWithSpace:(CGFloat)width;
++ (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color;
++ (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width;
++ (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color width:(CGFloat)width alignment:(SegmentItemTextAlignment)alignment;
 
 @property(nonatomic,retain) NSString *text;				// Default is nil
 @property(nonatomic,retain) UIFont *font;				// Must not be nil if text is not nil
@@ -56,14 +56,14 @@ typedef enum
 
 @interface SegmentLabel : UIView
 {
-	NSArray *_labels;
+	NSArray *_items;
 	BOOL _highlighted;
 	CGFloat _lineWidth;
 	CGFloat _lineHeight;
 	SegmentLabelBaseAlignment _baseAlignment;
 }
 
-@property(nonatomic,retain) NSArray *labels;
+@property(nonatomic,retain) NSArray *items;
 @property(nonatomic,assign) BOOL highlighted;
 @property(nonatomic,readonly) CGFloat lineWidth;
 @property(nonatomic,readonly) CGFloat lineHeight;

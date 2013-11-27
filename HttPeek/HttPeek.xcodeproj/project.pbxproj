@@ -145,7 +145,7 @@
 		24CADA841510492B00B22162 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 24CADA871510492B00B22162 /* Build configuration list for PBXProject "HttPeek" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -204,6 +204,7 @@
 				INIT_ROUTINE = _lklauq;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACH_O_TYPE = mh_dylib;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = HttPeek;
 				SDKROOT = iphoneos;
 			};

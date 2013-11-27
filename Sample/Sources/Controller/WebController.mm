@@ -10,7 +10,15 @@
 - (id)initWithURL:(NSURL *)URL
 {
 	self = [super init];
-	_URL = [URL retain];
+	self.URL = [URL retain];
+	return self;
+}
+
+//
+- (id)initWithHTML:(NSString *)HTML
+{
+	self = [super init];
+	self.HTML = HTML;
 	return self;
 }
 
@@ -32,7 +40,8 @@
 //
 - (UIWebView *)webView
 {
-	return (UIWebView *)self.view;
+	[self view];
+	return _webView;
 }
 
 //
@@ -82,20 +91,28 @@
 //
 - (void)loadView
 {
-	UIWebView *webView = [[UIWebView alloc] initWithFrame:UIUtil::AppFrame()];
-	//webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight; 
-	webView.scalesPageToFit = YES;
-	webView.delegate = self;
-	self.view = webView;
-	[webView release];
+	[super loadView];
+	
+	_webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
+	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	_webView.scalesPageToFit = YES;
+	_webView.delegate = self;
+	[self.view addSubview:_webView];
 }
 
 // Do additional setup after loading the view.
-- (void)viewDidLoad
-{	
-	[super viewDidLoad];
+//- (void)viewDidLoad
+//{
+//	[super viewDidLoad];
+//
+//	//self.URL = _URL;
+//}
 
-	self.URL = _URL;
+//
+- (void)viewDidUnload
+{
+	[super viewDidUnload];
+	_webView = nil;
 }
 
 // Override to allow rotation.
@@ -199,6 +216,11 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+//	CGRect frame = self.webView.frame;
+//	frame.size.height -= 44;
+//	self.webView.frame = frame;
+//	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
 
 	// Create toolbar
 	const static struct {NSString* title; SEL action;} c_buttons[] =

@@ -86,8 +86,7 @@ NSData *HttpUtil::UploadData(NSString *url, NSData *data, NSString *fileName, NS
 	[formData appendData:data];
 	
 	//
-	formString = [NSString stringWithFormat:@"\r\n--%@--\r\n", boundaryString];
-	[formData appendData:[formString dataUsingEncoding:NSUTF8StringEncoding]];
+	[formData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundaryString] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	//
 	NSString *contentLength = [NSString stringWithFormat:@"%u", formData.length];

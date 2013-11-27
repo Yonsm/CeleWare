@@ -69,7 +69,7 @@ UIImageView *UIUtil::ShowSplashView(UIView *fadeInView, CGFloat duration)
 	//
 	CGRect frame = UIUtil::ScreenBounds();
 	UIImageView *splashView = [[[UIImageView alloc] initWithFrame:frame] autorelease];
-	splashView.image = [UIImage imageWithContentsOfFile:NSUtil::BundlePath(UIUtil::IsPad() ? @"Default@iPad.png" : (UIUtil::IsPhone5() ? @"Default-568h.png" : @"Default.png"))];
+	splashView.image = [UIImage imageNamed:UIUtil::IsPad() ? @"Default@iPad.png" : (UIUtil::IsPhone5() ? @"Default-568h.png" : @"Default.png")];
 	splashView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[UIUtil::KeyWindow() addSubview:splashView];
 

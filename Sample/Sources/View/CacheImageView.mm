@@ -19,7 +19,6 @@
 	}
 	else if ([self respondsToSelector:@selector(setImage:)])
 	{
-		// TODO: Check no display image
 		[self performSelector:@selector(setImage:) withObject:image];
 	}
 }
@@ -40,7 +39,7 @@
 - (void)cacheImageDownloaded:(UIImage *)image
 {
 	[self showActivityIndicator:NO];
-	if (image)
+	//if (image)
 	{
 		if ([self respondsToSelector:@selector(setImage:)])
 		{

@@ -121,7 +121,7 @@
 //
 //- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
 //{
-//	NSLog(@"NAVI%d: %@", navigationType, request.URL.absoluteString);
+//	_Log(@"NAVI%d: %@", navigationType, request.URL.absoluteString);
 //	return YES;
 //}
 

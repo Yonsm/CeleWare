@@ -10,10 +10,10 @@
 
 @protocol UMContactViewControllerDelegate;
 
-#ifndef BaseViewController
-#define BaseViewController UIViewController
+#ifndef _BaseViewController
+#define _BaseViewController UIViewController
 #endif
-@interface UMContactViewController : BaseViewController
+@interface UMContactViewController : _BaseViewController
 
 @property(nonatomic, retain) IBOutlet UITextView *textView;
 @property(nonatomic, assign) id <UMContactViewControllerDelegate> delegate;

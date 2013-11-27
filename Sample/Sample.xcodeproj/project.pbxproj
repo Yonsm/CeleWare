@@ -40,7 +40,6 @@
 		24F3B6A71701754E001DEA15 /* NRGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F3B60E1701754E001DEA15 /* NRGridView.m */; };
 		24F3B6A81701754E001DEA15 /* NRGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F3B6101701754E001DEA15 /* NRGridViewCell.m */; };
 		24F3B6A91701754E001DEA15 /* NRGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F3B6121701754E001DEA15 /* NRGridViewController.m */; };
-		24F3B6B11701754E001DEA15 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F3B6271701754E001DEA15 /* JSONKit.m */; };
 		24F3B6B21701754E001DEA15 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24F3B6281701754E001DEA15 /* Main.mm */; };
 		24F3B6B31701754E001DEA15 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F3B62A1701754E001DEA15 /* libMobClickLibrary.a */; };
 		24F3B6B51701754E001DEA15 /* TabStripButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24F3B6311701754E001DEA15 /* TabStripButton.mm */; };
@@ -74,7 +73,6 @@
 		246B2C5A17324AA3003333DF /* CelePrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CelePrefix.h; sourceTree = "<group>"; };
 		246D4FF016280F700028E899 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		248865A81797F39100F0335D /* CeleCfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeleCfg.h; sourceTree = "<group>"; };
-		248865A91797F39100F0335D /* CeleXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeleXML.h; sourceTree = "<group>"; };
 		248865AA1797F39100F0335D /* UniBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniBase.h; sourceTree = "<group>"; };
 		248865AB1797F3C800F0335D /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		248865AC1797F3C800F0335D /* NavigationController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NavigationController.mm; sourceTree = "<group>"; };
@@ -133,8 +131,6 @@
 		24F3B6121701754E001DEA15 /* NRGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRGridViewController.m; sourceTree = "<group>"; };
 		24F3B6131701754E001DEA15 /* NRGridViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRGridViewDataSource.h; sourceTree = "<group>"; };
 		24F3B6141701754E001DEA15 /* NRGridViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRGridViewDelegate.h; sourceTree = "<group>"; };
-		24F3B6261701754E001DEA15 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		24F3B6271701754E001DEA15 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		24F3B6281701754E001DEA15 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
 		24F3B62A1701754E001DEA15 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		24F3B62B1701754E001DEA15 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
@@ -215,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				248865A81797F39100F0335D /* CeleCfg.h */,
-				248865A91797F39100F0335D /* CeleXML.h */,
 				248865AA1797F39100F0335D /* UniBase.h */,
 			);
 			path = CeleLib;
@@ -329,7 +324,6 @@
 				24F3B5ED1701754E001DEA15 /* Controller */,
 				24F3B5FF1701754E001DEA15 /* FoldPane */,
 				24F3B60B1701754E001DEA15 /* GridView */,
-				24F3B6251701754E001DEA15 /* JSONKit */,
 				24F3B6291701754E001DEA15 /* MobClick */,
 				24F3B62E1701754E001DEA15 /* TabStrip */,
 				24F3B65F1701754E001DEA15 /* ZipArchive */,
@@ -387,15 +381,6 @@
 				24F3B6141701754E001DEA15 /* NRGridViewDelegate.h */,
 			);
 			path = GridView;
-			sourceTree = "<group>";
-		};
-		24F3B6251701754E001DEA15 /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				24F3B6261701754E001DEA15 /* JSONKit.h */,
-				24F3B6271701754E001DEA15 /* JSONKit.m */,
-			);
-			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		24F3B6291701754E001DEA15 /* MobClick */ = {
@@ -510,7 +495,7 @@
 		248B2CB0141CFC8C0026FD73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 248B2CB3141CFC8C0026FD73 /* Build configuration list for PBXProject "Sample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -588,7 +573,6 @@
 				24F3B6A71701754E001DEA15 /* NRGridView.m in Sources */,
 				24F3B6A81701754E001DEA15 /* NRGridViewCell.m in Sources */,
 				24F3B6A91701754E001DEA15 /* NRGridViewController.m in Sources */,
-				24F3B6B11701754E001DEA15 /* JSONKit.m in Sources */,
 				24F3B6B21701754E001DEA15 /* Main.mm in Sources */,
 				24F3B6B51701754E001DEA15 /* TabStripButton.mm in Sources */,
 				24F3B6B91701754E001DEA15 /* TabStripView.mm in Sources */,
@@ -647,7 +631,6 @@
 		248B2CDD141CFC8C0026FD73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -663,6 +646,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Sample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -672,7 +656,6 @@
 		248B2CDE141CFC8C0026FD73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

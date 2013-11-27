@@ -7,18 +7,17 @@
 //
 - (id)initWithFrame:(CGRect)frame
 {
-	UIImage *image = UIUtil::Image(@"InputBox.png");
-	frame.size.height = image.size.height;
 	self = [super initWithFrame:frame];
-	self.background = image.stretchableImage;
 	
-	self.font = [UIFont boldSystemFontOfSize:18];
-	self.textColor = [UIColor darkGrayColor];
+	self.font = [UIFont systemFontOfSize:16];
+	self.textColor = [UIColor colorWithWhite:50/255.0 alpha:1];
 	self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	self.adjustsFontSizeToFitWidth = YES;
-	self.clearButtonMode = UITextFieldViewModeAlways;
+	self.clearButtonMode = UITextFieldViewModeWhileEditing;
 	
+	//[self addTarget:self action:@selector(editingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
 	[self addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
+	//[self addTarget:self action:@selector(editingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
 	
 	return self;
 }
@@ -43,10 +42,10 @@
 		if (symbol.length)
 		{
 			UILabel *label = [UILabel labelWithFrame:CGRectMake(leftGap, 0, width, self.frame.size.height - 2)
-											withText:symbol
-										   withColor:[UIColor lightGrayColor]
-											withFont:self.font
-									   withAlignment:NSTextAlignmentCenter];
+												text:symbol
+											   color:[UIColor lightGrayColor]
+												font:self.font
+										   alignment:NSTextAlignmentCenter];
 			[self.leftView addSubview:label];
 		}
 	}
@@ -86,10 +85,10 @@
 	if (symbol)
 	{
 		_followLabel = [UILabel labelWithFrame:CGRectMake(0, 0, [symbol sizeWithFont:self.font].width + 6, self.frame.size.height - 2)
-										  withText:symbol
-										 withColor:[UIColor lightGrayColor]
-										  withFont:self.font
-									 withAlignment:NSTextAlignmentCenter];
+										  text:symbol
+										 color:[UIColor lightGrayColor]
+										  font:self.font
+									 alignment:NSTextAlignmentCenter];
 		if (self.rightView)
 		{
 			[self insertSubview:_followLabel belowSubview:self.rightView];
@@ -104,6 +103,27 @@
 	{
 		_followLabel = nil;
 	}
+}
+
+//
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[super touchesBegan:touches withEvent:event];
+	if (self.background) self.background = [UIImage bundledImageNamed:UIUtil::IsOS7() ? @"InputBox_Click7" : @"InputBox_Click"].stretchableImage;
+}
+
+//
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[super touchesEnded:touches withEvent:event];
+	if (self.background) self.background = [UIImage bundledImageNamed:UIUtil::IsOS7() ? @"InputBox_Normal7" : @"InputBox_Normal"].stretchableImage;
+}
+
+//
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[super touchesCancelled:touches withEvent:event];
+	if (self.background) self.background = [UIImage bundledImageNamed:UIUtil::IsOS7() ? @"InputBox_Normal7" : @"InputBox_Normal"].stretchableImage;
 }
 
 //

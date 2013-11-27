@@ -12,16 +12,28 @@
 	self = [super initWithRootViewController:rootViewController];
 	
 	self.delegate = self;
-	UIImage *image = UIUtil::Image(@"NaviBar.png");
-#ifdef kNavigationBarTintColor
-	self.toolbar.tintColor = self.navigationBar.tintColor = kNavigationBarTintColor;
+#ifdef _NavigationBarTintColor
+	self.toolbar.tintColor = self.navigationBar.tintColor = _NavigationBarTintColor;
 #endif
-	[self.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+	
+#ifdef _NavigationBarImage
+	[self.navigationBar setBackgroundImage:_NavigationBarImage forBarMetrics:UIBarMetricsDefault];
+#endif
 	
 	return self;
 }
 
 #pragma mark NavagationBar delegate
+
+#ifndef _NaviBackItem
+#define _NaviBackItem(t, o, a) [UIBarButtonItem barButtonItemWithImage:UIUtil::ImageNamed(@"NaviLeft.png") title:t target:o action:a];
+#endif
+#ifndef _NaviLeftItem
+#define _NaviLeftItem(t, o, a) [UIBarButtonItem barButtonItemWithImage:UIUtil::ImageNamed(@"NaviLeft.png") title:t target:o action:a];
+#endif
+#ifndef _NaviRightButton
+#define _NaviRightButton(t, o, a) [UIBarButtonItem barButtonItemWithImage:UIUtil::ImageNamed(@"NaviRight.png") title:t target:o action:a];
+#endif
 
 //
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -29,17 +41,17 @@
 	UIBarButtonItem *leftItem = viewController.navigationItem.leftBarButtonItem;
 	if (leftItem && leftItem.title)
 	{
-		viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImage:UIUtil::ImageNamed(@"NaviLeft.png") title:leftItem.title target:leftItem.target action:leftItem.action];
+		viewController.navigationItem.leftBarButtonItem = _NaviLeftItem(leftItem.title, leftItem.target, leftItem.action);
 	}
-	else if (!leftItem && (navigationController.viewControllers.count > 1))
+	else if (!viewController.navigationItem.hidesBackButton && !leftItem && (navigationController.viewControllers.count > 1))
 	{
-		viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImage:UIUtil::ImageNamed(@"NaviLeft.png") title:@"返回" target:self action:@selector(backButtonClicked:)];
+		viewController.navigationItem.leftBarButtonItem = _NaviBackItem(@"返回", self, @selector(backButtonClicked:));
 	}
 	
 	UIBarButtonItem *rightItem = viewController.navigationItem.rightBarButtonItem;
 	if (rightItem && rightItem.title)
 	{
-		viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithImage:UIUtil::ImageNamed(@"NaviRight.png") title:rightItem.title target:rightItem.target action:rightItem.action];
+		viewController.navigationItem.rightBarButtonItem = _NaviRightButton(rightItem.title, rightItem.target, rightItem.action);
 	}
 }
 

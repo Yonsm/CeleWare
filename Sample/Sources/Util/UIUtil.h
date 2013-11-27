@@ -4,6 +4,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 //
+@interface UIDevice (UDID)
+- (NSString *)uniqueIdentifier;
+@end
+
+
+//
 @class AppDelegate;
 class UIUtil
 {
@@ -22,10 +28,7 @@ public:
 		{
 			return Device().identifierForVendor.UUIDString;
 		}
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-		return Device().uniqueIdentifier;
-#pragma clang diagnostic pop
+		return [Device() uniqueIdentifier];
 	}
 	
 	//
@@ -50,6 +53,12 @@ public:
 	NS_INLINE BOOL IsPhone5()
 	{
 		return ScreenBounds().size.height > 480;
+	}
+	
+	//
+	NS_INLINE BOOL IsOS7()
+	{
+		return SystemVersion() >= 7.0;
 	}
 	
 	//
@@ -239,6 +248,25 @@ public:
 		return [UIColor blackColor];
 	}
 	
+	// UIColor from RGBO
+	NS_INLINE UIColor *Color(NSUInteger rgbt)
+	{
+		NSUInteger transparent = (rgbt & 0xFF000000) >> 24;
+		NSUInteger alpha = 0xFF - transparent;
+		return [UIColor colorWithRed:((rgbt & 0x00FF0000) >> 16) / 255.0
+							   green:((rgbt & 0x0000FF00) >> 8) / 255.0
+								blue:((rgbt & 0x000000FF)) / 255.0
+							   alpha:alpha / 255.0];
+	}
+	
+	// UIColor from RGBA
+	NS_INLINE UIColor *Color(unsigned char r, unsigned char g, unsigned char b, CGFloat a = 1)
+	{
+		return [UIColor colorWithRed:r / 255.0
+							   green:g / 255.0
+								blue:b / 255.0
+							   alpha:a];
+	}
 	
 #pragma mark Debug methods
 public:
