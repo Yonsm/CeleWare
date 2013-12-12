@@ -881,7 +881,7 @@
 	UIImage *image_ = _CheckBoxImage_;
 	
 	if (frame.size.width == 0) frame.size.width = image.size.width + 2 + [title sizeWithFont:font].width + 2;
-	if (frame.size.height == 0) frame.size.height = image.size.height;
+	if (frame.size.height == 0) frame.size.height = MAX(image.size.height, 22);
 	
 	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
 	button.titleLabel.font = font;
@@ -907,7 +907,7 @@
 {
 	UIFont *font = [UIFont systemFontOfSize:14];
 	if (frame.size.width == 0) frame.size.width = [title sizeWithFont:font].width + 2;
-	if (frame.size.height == 0) frame.size.height = [title sizeWithFont:font].height + 2;
+	if (frame.size.height == 0) {frame.size.height = [title sizeWithFont:font].height; if (frame.size.height < 22) frame.size.height = 22;}
 	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
 	[button setTitleColor:UIUtil::Color(0, 136, 221) forState:UIControlStateNormal];
 	[button setTitleColor:UIUtil::Color(20, 166, 241) forState:UIControlStateHighlighted];
