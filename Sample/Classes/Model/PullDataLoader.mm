@@ -28,7 +28,7 @@
 	if (_scrollView != scrollView)
 	{
 		[_scrollView release];
-		_scrollView = scrollView.retain;
+		_scrollView = [scrollView retain];
 		
 		_refreshControl = [[[ODRefreshControl alloc] initInScrollView:scrollView] autorelease];
 		[_refreshControl addTarget:self action:@selector(loadRefresh) forControlEvents:UIControlEventValueChanged];
@@ -111,7 +111,7 @@
 		[_refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.5];
 		if (_authView == nil)
 		{
-			_authView = self.authView.retain;
+			_authView = [self.authView retain];
 			[_scrollView addSubview:_authView];
 			
 			if (_disableShowLoginOnce)
@@ -161,7 +161,7 @@
 	{
 		if (_emptyView == nil)
 		{
-			_emptyView = self.emptyView.retain;
+			_emptyView = [self.emptyView retain];
 			[_scrollView addSubview:_emptyView];
 		}
 	}
@@ -283,7 +283,7 @@
 	
 	[_abortTimer invalidate];
 	[_abortTimer release];
-	_abortTimer = [NSTimer timerWithTimeInterval:60 * 5 target:self selector:@selector(loadAbort) userInfo:nil repeats:NO].retain;
+	_abortTimer = [NSTimer timerWithTimeInterval:60 * 5 target:self selector:@selector(loadAbort) userInfo:nil repeats:NO];
 }
 
 //
@@ -304,7 +304,7 @@
 	{
 		[_autoTimer invalidate];
 		[_autoTimer release];
-		_autoTimer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(loadSlient) userInfo:nil repeats:NO].retain;
+		_autoTimer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(loadSlient) userInfo:nil repeats:NO];
 		//[self performSelector:@selector(loadSlient) withObject:nil afterDelay:60];	// 60 秒钟后，自动重新刷新
 	}
 	

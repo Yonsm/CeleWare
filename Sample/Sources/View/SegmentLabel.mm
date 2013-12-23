@@ -87,7 +87,7 @@
 	if (_items != items)
 	{
 		[_items release];
-		_items = items.retain;
+		_items = [items retain];
 	}
 	
 	_lineWidth = 0;

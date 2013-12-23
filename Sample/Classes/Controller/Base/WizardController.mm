@@ -588,7 +588,7 @@ _EXObject2(SelectBox, WizardCell *, cell);
 - (WizardCell *)pageCellWithName:(NSString *)name detail:(NSString *)detail controller:(const NSString *)controller
 {
 	WizardCell *cell = [self cellWithName:name detail:detail action:@selector(pageCellClicked:)];
-	cell.param2 = (void *)controller;
+	cell.param2 = (__bridge void *)controller;
 	return cell;
 }
 
@@ -620,7 +620,7 @@ _EXObject2(SelectBox, WizardCell *, cell);
 - (WizardCell *)popupButtonCellWithName:(NSString *)name detail:(NSString *)detail title:(NSString *)title controller:(const NSString *)controller
 {
 	WizardCell *cell = (WizardCell *)[[self cellButtonWithName:name detail:detail title:title action:@selector(cellButtonClicked:)] superview];
-	cell.param2 = (void *)controller;
+	cell.param2 = (__bridge void *)controller;
 	return cell;
 }
 

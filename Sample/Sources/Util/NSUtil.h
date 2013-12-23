@@ -489,8 +489,7 @@ public:
 //
 #define _EXObject2(object, type, name)	\
 @interface object##_##name : object	\
-@property(nonatomic,retain) type name;	\
+@property(nonatomic,strong) type name;	\
 @end	\
 @implementation object##_##name	\
-- (void)dealloc {[_##name release]; [super dealloc];}		\
 @end

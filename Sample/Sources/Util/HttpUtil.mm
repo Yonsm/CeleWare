@@ -60,7 +60,7 @@ NSDictionary *HttpUtil::HttpJSON(NSString *url, NSString *post, NSJSONReadingOpt
 		NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:options error:&error];
 		if (dict == nil)
 		{
-			_Log(@"Data: %@\n\n Error: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease], error);
+			_Log(@"Data: %@\n\n Error: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], error);
 		}
 		return dict;
 	}

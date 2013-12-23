@@ -61,7 +61,7 @@
 		{
 			if ((i != _currentPage) && (force || ((i != _currentPage - 1) && (i != _currentPage + 1))))
 			{
-				[(UIView *)_pages[i] removeFromSuperview];
+				[(__bridge UIView *)_pages[i] removeFromSuperview];
 				_pages[i] = nil;
 			}
 		}
@@ -79,9 +79,9 @@
 	frame.origin.x = frame.size.width * index + _gap;
 	frame.size.width -= _gap * 2;
 
-	_pages[index] = [_delegate2 scrollView:self viewForPage:index inFrame:frame];
-	((UIView *)_pages[index]).autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-	[self addSubview:(UIView *)_pages[index]];
+	_pages[index] = (void *)[_delegate2 scrollView:self viewForPage:index inFrame:frame];
+	((__bridge UIView *)_pages[index]).autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+	[self addSubview:(__bridge UIView *)_pages[index]];
 }
 
 //

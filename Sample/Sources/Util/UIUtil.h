@@ -120,7 +120,7 @@ public:
 	}
 	
 	//
-	NS_INLINE UIViewController *CurrentViewController()
+	NS_INLINE UIViewController *VisibleViewController()
 	{
 		UIViewController *controller = FrontViewController();
 		if ([controller isKindOfClass:[UINavigationController class]]) return ((UINavigationController *)controller).visibleViewController;

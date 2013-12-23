@@ -14,7 +14,7 @@
 	self.dataSource = self;
 	self.delegate = self;
 	
-	_items = items.retain;
+	_items = [items retain];
 
 	[self selectRow:0 inComponent:0 animated:NO];
 	

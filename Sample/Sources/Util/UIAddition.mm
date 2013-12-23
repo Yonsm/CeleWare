@@ -438,7 +438,7 @@
 //
 - (void)fadeForAction:(SEL)action target:(id)target duration:(CGFloat)duration delay:(CGFloat)delay
 {
-	[UIView beginAnimations:nil context:[[NSArray alloc] initWithObjects:target, [NSValue valueWithPointer:action], [NSNumber numberWithFloat:duration], [NSNumber numberWithFloat:delay], nil]];
+	[UIView beginAnimations:nil context:(__bridge void *)[[NSArray alloc] initWithObjects:target, [NSValue valueWithPointer:action], [NSNumber numberWithFloat:duration], [NSNumber numberWithFloat:delay], nil]];
 	[UIView setAnimationDuration:duration];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(fadeInForAction: finished: context:)];

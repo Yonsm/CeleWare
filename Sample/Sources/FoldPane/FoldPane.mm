@@ -22,8 +22,8 @@
 	self.clipsToBounds = YES;
 	self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
 	
-	_image = image.retain;
-	_image_ = image_.retain;
+	_image = [image retain];
+	_image_ = [image_ retain];
 	
 	//
 	contentFrame.origin.x = (frame.size.width - contentFrame.size.width) / 2;
@@ -64,7 +64,7 @@
 	if (_foldIndicator != foldIndicator)
 	{
 		[_foldIndicator release];
-		_foldIndicator = foldIndicator.retain;
+		_foldIndicator = [foldIndicator retain];
 		
 		if (foldIndicator && !foldIndicator.superview)
 		{

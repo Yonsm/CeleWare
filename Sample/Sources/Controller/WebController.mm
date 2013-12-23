@@ -225,10 +225,10 @@
 	// Create toolbar
 	const static struct {NSString* title; SEL action;} c_buttons[] =
 	{
-		{(NSString *)UIBarButtonSystemItemRefresh, @selector(reload)},
+		{(__bridge NSString *)(void *)UIBarButtonSystemItemRefresh, @selector(reload)},
 		{@"BackwardIcon.png", @selector(goBack)},
 		{@"ForwardIcon.png", @selector(goForward)},
-		{(NSString *)UIBarButtonSystemItemAction, @selector(actionButtonClicked:)},
+		{(__bridge NSString *)(void *)UIBarButtonSystemItemAction, @selector(actionButtonClicked:)},
 	};
 	
 	NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:3 * sizeof(c_buttons)/sizeof(c_buttons[0])];

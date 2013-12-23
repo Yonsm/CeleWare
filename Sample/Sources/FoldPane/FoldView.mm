@@ -206,21 +206,21 @@
 	if (self.foldDirection==FoldDirectionHorizontal)
 	{
 		CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 0, image.size.width*image.scale/2, image.size.height*image.scale));
-		[self.leftView.layer setContents:(id)imageRef];
+		[self.leftView.layer setContents:(__bridge id)imageRef];
 		CFRelease(imageRef);
 		
 		CGImageRef imageRef2 = CGImageCreateWithImageInRect([image CGImage], CGRectMake(image.size.width*image.scale/2, 0, image.size.width*image.scale/2, image.size.height*image.scale));
-		[self.rightView.layer setContents:(id)imageRef2];
+		[self.rightView.layer setContents:(__bridge id)imageRef2];
 		CFRelease(imageRef2);
 	}
 	else if (self.foldDirection==FoldDirectionVertical)
 	{
 		CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, image.size.height*image.scale/2, image.size.width*image.scale, image.size.height*image.scale/2));
-		[self.bottomView.layer setContents:(id)imageRef];
+		[self.bottomView.layer setContents:(__bridge id)imageRef];
 		CFRelease(imageRef);
 		
 		CGImageRef imageRef2 = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 0, image.size.width*image.scale, image.size.height*image.scale/2));
-		[self.topView.layer setContents:(id)imageRef2];
+		[self.topView.layer setContents:(__bridge id)imageRef2];
 		CFRelease(imageRef2);
 	}
 }

@@ -143,7 +143,7 @@ static NSString *_access_token = nil;
 	UIUtil::ShowNetworkIndicator(YES);
 	if (!_dict)
 	{
-		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : ((UINavigationController *)[UIUtil::Delegate() window].rootViewController).visibleViewController;
+		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
 		[controller.view showLoading];
 		_LineLog();
 	}
@@ -300,7 +300,7 @@ static NSString *_access_token = nil;
 	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:_jsonOptions error:&error];
 	if (dict == nil)
 	{
-		_Log(@"Data: %@\n\n Error: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease], error);
+		_Log(@"Data: %@\n\n Error: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], error);
 	}
 	return dict;
 }
@@ -345,7 +345,7 @@ static NSString *_access_token = nil;
 {
 	UIUtil::ShowNetworkIndicator(NO);
 	{
-		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : ((UINavigationController *)[UIUtil::Delegate() window].rootViewController).visibleViewController;
+		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
 		[controller.view hideLoading];
 		_LineLog();
 	}
@@ -380,9 +380,9 @@ static UIAlertView *_alertView = nil;
 	}
 	else if (_checkError && _alertView == nil)
 	{
-		[self retain];
+		//[self retain];
 
-		//		[_delegate retain];
+		//[_delegate retain];
 		//[UIView showToast:message];
 		_alertView = [UIAlertView alertWithTitle:message
 										 message:nil
@@ -396,8 +396,8 @@ static UIAlertView *_alertView = nil;
 //
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	//	[_delegate autorelease];
-	[self autorelease];
+	//[_delegate autorelease];
+	//[self autorelease];
 	_alertView = nil;
 }
 
