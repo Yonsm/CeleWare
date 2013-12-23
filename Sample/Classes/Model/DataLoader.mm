@@ -53,36 +53,7 @@ static NSString *_access_token = nil;
 //
 + (NSDictionary *)login:(NSString *)username password:(NSString *)password
 {
-		NSString *nonce = NSUtil::UUID();
-		NSString *timestamp = NSUtil::TS();
-		NSString *post = [NSString stringWithFormat:
-						  @"oauth_consumer_key=%@&"
-						  @"oauth_nonce=%@&"
-						  @"oauth_signature_method=%@&"
-						  @"oauth_timestamp=%@&"
-						  @"oauth_version=%@&"
-						  @"x_auth_model=%@&"
-						  @"x_auth_password=%@&"
-						  @"x_auth_username=%@",
-						  
-						  kAuthConsumerKey,
-						  nonce,
-						  @"HMAC-SHA1",
-						  timestamp,
-						  @"1.0",
-						  @"client_auth",
-						  password,
-						  username];
-		
-		// 签名
-		NSString *base = [NSString stringWithFormat:@"POST&%@&%@",
-											 NSUtil::URLEscape(kAuthPostUrl),
-											 NSUtil::URLEscape(post)];
-		NSString *signature = NSUtil::HmacSHA1(base, [kAuthConsumerSecret stringByAppendingString:@"&"]);
-		post = [post stringByAppendingFormat:@"&oauth_signature=%@&source=%@", NSUtil::URLEscape(signature), kAuthConsumerKey];
-		
-		//
-		return HttpUtil::HttpJSON(kServiceUrl(@"/xauth/access_token"), post);
+	return nil;
 }
 
 #pragma mark Generic methods

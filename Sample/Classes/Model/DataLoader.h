@@ -1,24 +1,18 @@
 
 #define TEST
 #ifdef TEST
-#define kServerUrl				@"http://dohko.api.qingchifan.com"
+#define kServerUrl				@"http://api.apple.com"
 #else
-#define kServerUrl				@"http://api.qingchifan.com"
+#define kServerUrl				@"http://test.apple.com"
 #endif
 
-#define kAuthPostUrl			@"http://api.qingchifan.com/xauth/access_token"
 #define kServiceUrl(s)			[kServerUrl stringByAppendingString:s]
 
-#define kAuthConsumerKey		@"028fa5cddf7e5130dfd35344299ffbba"
-#define kAuthConsumerSecret		@"e0822b7d71ba50d4"
+#define kAuthConsumerKey		@"XXX"
+#define kAuthConsumerSecret		@"XXX"
 
 #define kUsername				@"Username"
 #define kPassword				@"Password"
-
-#define _NSDateToEDTime(date)	[NSString stringWithFormat:@"%013.0lf", date.timeIntervalSince1970 * 1000]
-#define _EDTimeToNSDate(time)	[NSDate dateWithTimeIntervalSince1970:[(NSString *)time longLongValue] / 1000]
-#define _EDTimeToNSString(time)	NSUtil::SmartDate(_EDTimeToNSDate(time), NSDateFormatterMediumStyle, NSDateFormatterShortStyle)
-#define _EDTimeToShortString(time)	NSUtil::SmartDate(_EDTimeToNSDate(time), @"MM-dd HH:mm", @"HH:mm")
 
 // Data error
 typedef enum
