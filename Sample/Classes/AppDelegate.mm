@@ -1,7 +1,6 @@
 
 #import "AppDelegate.h"
 #import "RootController.h"
-#import "CeleXML.h"
 
 //
 @implementation AppDelegate

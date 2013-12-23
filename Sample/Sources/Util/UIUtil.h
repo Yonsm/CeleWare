@@ -1,6 +1,4 @@
 
-
-#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 //
@@ -107,6 +105,29 @@ public:
 		return (AppDelegate *)Application().delegate;
 	}
 	
+	//
+	NS_INLINE UIViewController *RootViewController()
+	{
+		return [[Delegate() window] rootViewController];
+	}
+	
+	//
+	NS_INLINE UIViewController *FrontViewController()
+	{
+		UIViewController *controller = RootViewController();
+		UIViewController *presented = controller.presentedViewController;
+		return presented ? presented : controller;
+	}
+	
+	//
+	NS_INLINE UIViewController *CurrentViewController()
+	{
+		UIViewController *controller = FrontViewController();
+		if ([controller isKindOfClass:[UINavigationController class]]) return ((UINavigationController *)controller).visibleViewController;
+		if ([controller isKindOfClass:[UITabBarController class]]) return ((UITabBarController *)controller).selectedViewController;
+		return controller;
+	}
+
 	//
 	NS_INLINE BOOL CanOpenURL(NSString *url)
 	{

@@ -23,7 +23,6 @@
 
 
 @implementation ZipArchive
-@synthesize delegate = _delegate;
 
 -(id) init
 {

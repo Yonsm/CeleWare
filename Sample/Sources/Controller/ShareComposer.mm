@@ -4,7 +4,6 @@
 
 
 @implementation WeiboComposer
-@synthesize body=_body;
 
 //
 + (id)composerWithBody:(NSString *)body pic:(NSString *)pic link:(NSString *)link
@@ -85,8 +84,6 @@
 
 
 @implementation FacebookComposer
-@synthesize link=_link;
-@synthesize body=_body;
 
 //
 + (id)composerWithBody:(NSString *)body link:(NSString *)link

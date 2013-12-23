@@ -1,7 +1,4 @@
 
-#import <UIKit/UIKit.h>
-
-
 //
 @interface UIKBKey : NSObject
 {
@@ -49,45 +46,14 @@
 
 + (UIKBKeyView *)findKeyView:(NSString *)name;
 + (UIKBKeyView *)modifyKeyView:(NSString *)name display:(NSString *)display represent:(NSString *)represent interaction:(NSString *)type;
-+ (UIButton *)addCustomButton:(NSString *)name title:(NSString *)title target:(id)target action:(SEL)action;
 
 @end
-
-
-
-//
-@interface DecimalNumberField: KBCustomTextField <KBCustomTextFieldDelegate>
-{
-}
-@end
-
 
 //
 @interface ActionNumberField: KBCustomTextField <KBCustomTextFieldDelegate>
 {
-	id _target;
-	SEL _action;
-	NSString *_title;
-	UIButton *_customButton;
+	UIButton *_actionButton;
 }
-@property(nonatomic,assign) id target;
-@property(nonatomic,assign) SEL action;
-@property(nonatomic,retain) NSString *title;
-@property(nonatomic,readonly) UIButton *customButton;
-@end
-
-
-//
-@interface DoneNumberField: ActionNumberField
-{
-}
-@end
-
-
-//
-@interface NextNumberField: ActionNumberField
-{
-	UITextField *_nextField;
-}
-@property(nonatomic,assign) UITextField *nextField;
+@property(nonatomic,readonly) UIButton *actionButton;
+- (id)initWithFrame:(CGRect)frame actionButtonTitle:(NSString *)actionButtonTitle;
 @end

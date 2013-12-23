@@ -1,7 +1,4 @@
 
-
-
-#import <UIKit/UIKit.h>
 #import "FacingView.h"
 #import "FoldView.h"
 

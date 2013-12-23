@@ -1,7 +1,4 @@
 
-#import <UIKit/UIKit.h>
-
-
 //
 @class PredictScrollView;
 @protocol PredictScrollViewDelegate <NSObject>
@@ -14,13 +11,7 @@
 //
 @interface PredictScrollView : UIScrollView <UIScrollViewDelegate>
 {
-	CGFloat _gap;
 	BOOL _bIgnore;
-	void **_pages;
-	BOOL _noPredict;
-	NSUInteger _currentPage;
-	NSUInteger _numberOfPages;
-	id<PredictScrollViewDelegate> _delegate2;
 }
 
 - (void)freePages:(BOOL)force;

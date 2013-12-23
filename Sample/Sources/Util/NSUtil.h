@@ -244,10 +244,19 @@ public:
 	static NSDate *FormatDate(NSString *string, NSDateFormatterStyle dateStyle, NSDateFormatterStyle timeStyle = NSDateFormatterNoStyle, NSLocale *locale = nil);
 	
 	// Convert date to readable string. Return nil on fail
-	static NSString *SmartDate(NSDate *date);
+	static NSString *SmartDate(NSDate *date, NSDate *now = NSDate.date);
+	
+	// Convert date to readable string. Return nil on fail
+	static NSString *SmartTime(NSDate *date, NSDate *now = NSDate.date);
 	
 	// Convert date to smart string
 	static NSString *SmartDate(NSDate *date, NSString *format);
+	
+	// Convert date to smart string
+	static NSString *SmartDate(NSDate *date, NSString *format, NSString *timeFormat);
+	
+	// Convert date to smart string
+	static NSString *SmartDate(NSDate *date, NSString *format, NSDateFormatterStyle timeStyle);
 	
 	// Convert date to smart string
 	static NSString *SmartDate(NSDate *date, NSDateFormatterStyle dateStyle);
@@ -422,6 +431,9 @@ public:
 #define _NumOf(a) (sizeof(a) / sizeof(a[0]))
 #endif
 
+//
+#define kAppStoreUrl			[NSString stringWithFormat:@"http://itunes.apple.com/app/id%@", NSUtil::BundleInfo(@"AppStoreID")]
+
 // Log Helper
 #ifdef DEBUG
 #ifdef _LOG_TO_FILE
@@ -465,3 +477,20 @@ public:
 	}
 };
 #endif
+
+//
+#define _EXObject(object, type, name)	\
+@interface object##_##name : object	\
+@property(nonatomic,assign) type name;	\
+@end	\
+@implementation object##_##name	\
+@end
+
+//
+#define _EXObject2(object, type, name)	\
+@interface object##_##name : object	\
+@property(nonatomic,retain) type name;	\
+@end	\
+@implementation object##_##name	\
+- (void)dealloc {[_##name release]; [super dealloc];}		\
+@end

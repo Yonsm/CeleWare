@@ -1,6 +1,5 @@
 
-
-#import <UIKit/UIKit.h>
+// TODO: 改成 ODRefreshControl 的风格
 #import <QuartzCore/QuartzCore.h>
 
 //

@@ -55,9 +55,18 @@ NSDate *NSUtil::FormatDate(NSString *string, NSDateFormatterStyle dateStyle, NSD
 }
 
 // Convert date to readable string. Return nil on fail
-NSString *NSUtil::SmartDate(NSDate *date)
+NSString *NSUtil::SmartTime(NSDate *date, NSDate *now)
 {
-	NSDate *now = [NSDate date];
+	NSTimeInterval t = [now timeIntervalSinceDate:date];
+	if (t < 0) return nil;
+	if (t < 60) return [NSString stringWithFormat:NSLocalizedString(@"%d Seconds Before", @"%d秒前"), (NSUInteger)t];
+	if (t < 60 * 60) return [NSString stringWithFormat:NSLocalizedString(@"%d Minutes Before", @"%d分钟前"), (NSUInteger)(t/60)];
+	return nil;
+}
+
+// Convert date to readable string. Return nil on fail
+NSString *NSUtil::SmartDate(NSDate *date, NSDate *now)
+{
 	NSTimeInterval t1 = [now timeIntervalSinceReferenceDate];
 	NSTimeInterval t2 = [date timeIntervalSinceReferenceDate];
 	NSTimeInterval t = [[NSTimeZone defaultTimeZone] secondsFromGMT];
@@ -66,13 +75,55 @@ NSString *NSUtil::SmartDate(NSDate *date)
 	NSInteger days = d2 - d1;
 	switch (days)
 	{
-		case -2: return NSLocalizedString(@"Before Yesterday ", @"前天");
-		case -1: return NSLocalizedString(@"Yesterday ", @"昨天");
-		case 0: return NSLocalizedString(@"Today ", @"今天");
-		case 1: return NSLocalizedString(@"Tomorrow ", @"明天");
-		case 2: return NSLocalizedString(@"After Tomorrow ", @"后天");
+		case -2: return NSLocalizedString(@"Before Yesterday", @"前天");
+		case -1: return NSLocalizedString(@"Yesterday", @"昨天");
+		case 0: return NSLocalizedString(@"Today", @"今天");
+		case 1: return NSLocalizedString(@"Tomorrow", @"明天");
+		case 2: return NSLocalizedString(@"After Tomorrow", @"后天");
 	}
 	return nil;
+}
+
+// Convert date to smart string
+NSString *NSUtil::SmartDate(NSDate *date, NSString *format)
+{
+	NSString *string = SmartDate(date);
+	return string ? string : FormatDate(date, format);
+}
+
+// Convert date to smart string
+NSString *NSUtil::SmartDate(NSDate *date, NSString *format, NSString *timeFormat)
+{
+	NSDate *now = NSDate.date;
+	NSString *string = SmartTime(date, now);
+	if (string) return string;
+	string = SmartDate(date, now);
+	return string ? [string stringByAppendingFormat:@" %@", FormatDate(date, timeFormat)] : FormatDate(date, format);
+}
+
+// Convert date to smart string
+NSString *NSUtil::SmartDate(NSDate *date, NSString *format, NSDateFormatterStyle timeStyle)
+{
+	NSDate *now = NSDate.date;
+	NSString *string = SmartTime(date, now);
+	if (string) return string;
+	
+	string = SmartDate(date, now);
+	return string ? [string stringByAppendingFormat:@" %@", FormatDate(date, NSDateFormatterNoStyle, timeStyle)] : FormatDate(date, format);
+}
+
+// Convert date to smart string
+NSString *NSUtil::SmartDate(NSDate *date, NSDateFormatterStyle dateStyle)
+{
+	NSString *string = SmartDate(date);
+	return string ? string : FormatDate(date, dateStyle, NSDateFormatterNoStyle);
+}
+
+// Convert date to smart string
+NSString *NSUtil::SmartDate(NSDate *date, NSDateFormatterStyle dateStyle, NSDateFormatterStyle timeStyle)
+{
+	NSString *string = SmartDate(date);
+	return string ? [string stringByAppendingFormat:@" %@", FormatDate(date, NSDateFormatterNoStyle, timeStyle)] : FormatDate(date, dateStyle, timeStyle);
 }
 
 //
@@ -82,12 +133,12 @@ NSString *NSUtil::SmartCurrency(NSString *amount)
 	{
 		return @"未知";
 	}
-
+	
 	if ([amount hasSuffix:@".00"])
 	{
 		amount = [amount substringToIndex:amount.length - 3];
 	}
-
+	
 	NSMutableString *ret = [NSMutableString string];
 	
 	//
@@ -135,27 +186,6 @@ NSString *NSUtil::SmartCurrency(NSString *amount)
 	}
 	
 	return ret;
-}
-
-// Convert date to smart string
-NSString *NSUtil::SmartDate(NSDate *date, NSString *format)
-{
-	NSString *string = SmartDate(date);
-	return string ? string : FormatDate(date, format);
-}
-
-// Convert date to smart string
-NSString *NSUtil::SmartDate(NSDate *date, NSDateFormatterStyle dateStyle)
-{
-	NSString *string = SmartDate(date);
-	return string ? string : FormatDate(date, dateStyle, NSDateFormatterNoStyle);
-}
-
-// Convert date to smart string
-NSString *NSUtil::SmartDate(NSDate *date, NSDateFormatterStyle dateStyle, NSDateFormatterStyle timeStyle)
-{
-	NSString *string = SmartDate(date);
-	return string ? [string stringByAppendingFormat:@" %@", FormatDate(date, NSDateFormatterNoStyle, timeStyle)] : FormatDate(date, dateStyle, timeStyle);
 }
 
 // Check email address
@@ -638,7 +668,7 @@ const static struct {NSString *country; NSString *code;} countryAreaCodes[] =
 	{@"ZA", @"27"},
 	{@"ZM", @"260"},
 	{@"ZW", @"263"},
-
+	
 	{@"US", @"1"},
 };
 

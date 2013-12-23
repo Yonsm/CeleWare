@@ -1,7 +1,7 @@
 
 
 //
-@interface CurrencyField : DecimalNumberField
+@interface CurrencyField : UITextField
 {
 	UILabel *_followLabel;
 }

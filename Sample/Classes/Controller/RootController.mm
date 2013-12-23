@@ -51,12 +51,6 @@
 //	[super viewWillDisappear:animated];
 //}
 
-// Release any cached data, images, etc that aren't in use.
-//- (void)didReceiveMemoryWarning
-//{
-//	[super didReceiveMemoryWarning];
-//}
-
 #pragma Event methods
 
 @end

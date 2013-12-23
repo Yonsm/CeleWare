@@ -1,6 +1,4 @@
 
-#import <UIKit/UIKit.h>
-
 //
 @protocol TouchViewDelegate <NSObject>
 @optional
@@ -15,11 +13,6 @@
 #define _DeclareTouchView(TouchView, ParentView)	\
 	\
 @interface TouchView : ParentView	\
-{	\
-	BOOL _showTouchHighlight;	\
-	BOOL _acceptOutsideTouch;	\
-	id<TouchViewDelegate> _touchDelegate;	\
-}	\
 @property(nonatomic, assign) BOOL showTouchHighlight;	\
 @property(nonatomic, assign) BOOL acceptOutsideTouch;	\
 @property(nonatomic, assign) id<TouchViewDelegate> touchDelegate;	\

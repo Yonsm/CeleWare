@@ -1,6 +1,4 @@
 
-#import <UIKit/UIKit.h>
-
 @class TabStripView;
 
 /*

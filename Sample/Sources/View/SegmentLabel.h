@@ -1,7 +1,4 @@
 
-#import <UIKit/UIKit.h>
-
-
 //
 typedef enum
 {
@@ -12,19 +9,6 @@ typedef enum
 
 //
 @interface SegmentItem : NSObject
-{
-	NSString *_text;
-	UIFont *_font;
-	UIColor *_color;
-	UIColor *_highlightedColor;
-
-	CGFloat _shadowBlur;
-	CGSize _shadowOffset;
-	UIColor *_shadowColor;
-	
-	CGFloat _width;
-	SegmentItemTextAlignment _alignment;
-}
 
 + (id)segmentItemWithSpace:(CGFloat)width;
 + (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color;

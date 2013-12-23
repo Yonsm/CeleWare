@@ -5,7 +5,6 @@
 #endif
 @interface WebController : _BaseViewController <UIWebViewDelegate, UIActionSheetDelegate>
 {
-	NSURL *_URL;
 	UIWebView *_webView;
 	NSUInteger _loading;
 	UIBarButtonItem *_rightButton;

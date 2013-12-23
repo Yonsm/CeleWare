@@ -20,7 +20,7 @@ void UIUtil::PrintController(UIViewController *controller, NSUInteger indent)
 {
 	PrintIndentString(indent, [NSString stringWithFormat:@"<Controller Description=\"%@\">", [controller description]]);
 
-	if (controller.modalViewController)
+	if (controller.presentedViewController)
 	{
 		PrintController(controller, indent + 1);
 	}

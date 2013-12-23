@@ -6,7 +6,6 @@
 @interface WeiboComposer : WebBrowser
 {
 	BOOL _isLast;
-	NSString *_body;
 }
 @property(nonatomic,retain) NSString *body;
 + (id)composerWithBody:(NSString *)body pic:(NSString *)pic link:(NSString *)link;
@@ -17,8 +16,6 @@
 // 
 @interface FacebookComposer : WebController
 {
-	NSString *_link;
-	NSString *_body;
 	NSUInteger _done;
 }
 @property(nonatomic,retain) NSString *link;

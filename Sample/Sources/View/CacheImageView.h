@@ -1,6 +1,4 @@
 
-#import <UIKit/UIKit.h>
-
 //
 @interface UIView (CacheImage)
 - (void)setCacheImageUrl:(NSString *)cacheImageUrl;

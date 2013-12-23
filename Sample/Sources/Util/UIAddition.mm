@@ -10,12 +10,17 @@
 //
 + (UIImage *)imageWithColor:(UIColor *)color
 {
-	CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-	UIGraphicsBeginImageContext(rect.size);
+	return [self imageWithColor:color size:CGSizeMake(1, 1)];
+}
+
+//
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
+{
+	UIGraphicsBeginImageContext(size);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	CGContextSetFillColorWithColor(context, [color CGColor]);
-	CGContextFillRect(context, rect);
+	CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
 	
 	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
@@ -518,7 +523,7 @@
 			else
 			{
 				// if the view is a mapview in iOS5.0 and below, screenshot has to take the screen scale into consideration
-				// else, the screen shot in retina display devices will be of a less detail map (note, it is not the size of the screenshot, but it is the level of detail of the screenshot
+				// else, the screen shot in retina display devices will be of a less text map (note, it is not the size of the screenshot, but it is the level of text of the screenshot
 				UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);
 			}
 		}
@@ -699,7 +704,7 @@
 		return navigator;
 	}
 	
-	[self presentModalViewController:navigator animated:animated];
+	[self presentViewController:navigator animated:animated completion:nil];
 	return navigator;
 }
 
@@ -709,10 +714,10 @@
 #ifndef _BarButtonItem
 #define _BarButtonItem UIBarButtonItem
 #endif
-#ifndef _barButtonItemWithTitle
-#define _barButtonItemWithTitle barButtonItemWithTitle
+#ifndef _buttonItemWithTitle
+#define _buttonItemWithTitle buttonItemWithTitle
 #endif
-	controller.navigationItem.leftBarButtonItem = [_BarButtonItem _barButtonItemWithTitle:dismissButtonTitle
+	controller.navigationItem.leftBarButtonItem = [_BarButtonItem _buttonItemWithTitle:dismissButtonTitle
 																				   target:self.navigationController
 																				   action:@selector(dismissModalViewController)];
 	return [self presentNavigationController:controller animated:animated];
@@ -727,28 +732,15 @@
 //
 - (void)presentModalViewController:(UIViewController *)controller
 {
-	[self presentModalViewController:controller animated:YES];
+	[self presentViewController:controller animated:YES completion:nil];
 }
 
 //
 - (void)dismissModalViewController
 {
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-@end
-
-
-// Solid navigtion controller to avoid set tab bar item's title
-@implementation SolidNavigationController
-- (void)setTitle:(NSString *)title
-{
-	UITabBarItem *barItem = [self.tabBarItem retain];
-	self.tabBarItem = nil;
-	[super setTitle:title];
-	self.tabBarItem = barItem;
-	[barItem release];
-}
 @end
 
 
@@ -899,21 +891,48 @@
 	[button setTitle:title forState:UIControlStateNormal];
 	[button setTitleEdgeInsets:UIEdgeInsetsMake(0, 4, 0, 0)];
 	
+	[button addTarget:button action:@selector(checkBoxClicked:) forControlEvents:UIControlEventTouchUpInside];
+
 	return button;
+}
+
+//
+- (void)checkBoxClicked:(UIButton *)sender
+{
+	sender.selected = !sender.selected;
+	[sender sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+//
++ (id)linkButtonWithTitle:(NSString *)title
+{
+	return [self linkButtonWithTitle:title frame:CGRectZero];
 }
 
 //
 + (id)linkButtonWithTitle:(NSString *)title frame:(CGRect)frame
 {
-	UIFont *font = [UIFont systemFontOfSize:14];
+#ifndef kLinkButtonFont
+#define kLinkButtonFont [UIFont systemFontOfSize:14]
+#endif
+#ifndef kLinkButtonColor
+#define kLinkButtonColor UIUtil::Color(0, 136, 221)
+#endif
+#ifndef kLinkButtonColor_
+#define kLinkButtonColor_ UIUtil::Color(20, 166, 241)
+#endif
+	
+	UIFont *font = kLinkButtonFont;
 	if (frame.size.width == 0) frame.size.width = [title sizeWithFont:font].width + 2;
 	if (frame.size.height == 0) {frame.size.height = [title sizeWithFont:font].height; if (frame.size.height < 22) frame.size.height = 22;}
 	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
-	[button setTitleColor:UIUtil::Color(0, 136, 221) forState:UIControlStateNormal];
-	[button setTitleColor:UIUtil::Color(20, 166, 241) forState:UIControlStateHighlighted];
+	[button setTitleColor:kLinkButtonColor forState:UIControlStateNormal];
+	[button setTitleColor:kLinkButtonColor_ forState:UIControlStateHighlighted];
+	[button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
 	[button setTitle:title forState:UIControlStateNormal];
 	button.titleLabel.font = font;
 	//button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	
 	return button;
 }
 
@@ -925,7 +944,7 @@
 @implementation UIBarButtonItem (BarButtonItemEx)
 
 //
-+ (id)barButtonItemWithImage:(UIImage *)image title:(NSString *)title target:(id)target action:(SEL)action
++ (id)buttonItemWithImage:(UIImage *)image title:(NSString *)title target:(id)target action:(SEL)action
 {
 	UIFont *font = title ? [UIFont boldSystemFontOfSize:13] : nil;
 	CGRect frame = {0, 0, [title sizeWithFont:font].width + image.size.width, image.size.height};
@@ -948,13 +967,13 @@
 }
 
 //
-+ (id)barButtonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action
++ (id)buttonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action
 {
-	return [self barButtonItemWithImage:image title:nil target:target action:action];
+	return [self buttonItemWithImage:image title:nil target:target action:action];
 }
 
 //
-+ (id)barButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action
++ (id)buttonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action
 {
 	return [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:target action:action];
 }
@@ -967,7 +986,7 @@
 
 //
 + (id)labelAtPoint:(CGPoint)point
-		  forWidth:(float)width
+			 width:(float)width
 			  text:(NSString *)text
 			 color:(UIColor *)color
 			  font:(UIFont*)font

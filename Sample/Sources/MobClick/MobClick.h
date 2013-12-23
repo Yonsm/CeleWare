@@ -8,7 +8,6 @@
 //  Version 2.2.0.OpenUDID, updated_at 2013-04-01.
 
 #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
 
 #define UMOnlineConfigDidFinishedNotification @"OnlineConfigDidFinishedNotification"
 #define XcodeAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]

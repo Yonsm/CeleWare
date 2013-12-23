@@ -1,11 +1,8 @@
 
-
-#import <UIKit/UIKit.h>
-
-
 //
 @interface UIImage (ImageEx)
 + (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 - (UIImage *)stretchableImage;
 - (UIImage *)scaleImageToSize:(CGSize)size;
 - (UIImage *)cropImageInRect:(CGRect)rect;
@@ -83,13 +80,6 @@
 
 
 //
-@interface SolidNavigationController: UINavigationController
-{
-}
-@end
-
-
-//
 #define UIButtonTypeNavigationBack		(UIButtonType)100
 #define UIButtonTypeNavigationItem		(UIButtonType)101
 #define UIButtonTypeNavigationDone		(UIButtonType)102
@@ -108,22 +98,23 @@
 + (id)buttonWithImageNamed:(NSString *)imageName;
 + (id)checkButtonWithTitle:(NSString *)title frame:(CGRect)frame;
 + (id)linkButtonWithTitle:(NSString *)title frame:(CGRect)frame;
++ (id)linkButtonWithTitle:(NSString *)title;
 @end
 
 
 
 //
 @interface UIBarButtonItem (BarButtonItemEx)
-+ (id)barButtonItemWithImage:(UIImage *)image title:(NSString *)title target:(id)target action:(SEL)action;
-+ (id)barButtonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
-+ (id)barButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
++ (id)buttonItemWithImage:(UIImage *)image title:(NSString *)title target:(id)target action:(SEL)action;
++ (id)buttonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
++ (id)buttonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 @end
 
 @interface UILabel (LabelEx)
 
 //
 + (id)labelAtPoint:(CGPoint)point
-		  forWidth:(float)width
+			 width:(float)width
 			  text:(NSString *)text
 			 color:(UIColor *)color
 			  font:(UIFont*)font

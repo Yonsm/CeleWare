@@ -6,6 +6,8 @@
 //
 NSData *HttpUtil::DownloadData(NSString *url, NSString *to, DownloadMode mode)
 {
+	if (url == nil) return nil;
+	
 	if ((mode == DownloadFromLocal) || ((mode == DownloadCheckLocal) && NSUtil::IsFileExist(to)))
 	{
 		return [NSData dataWithContentsOfFile:to];
@@ -44,6 +46,25 @@ NSString *HttpUtil::HttpString(NSString *url, NSString *post)
 	NSData *send = post ? [NSData dataWithBytes:[post UTF8String] length:[post length]] : nil;
 	NSData *recv = HttpData(url, send);
 	return recv ? [[[NSString alloc] initWithData:recv encoding:NSUTF8StringEncoding] autorelease] : nil;
+}
+
+//
+NSDictionary *HttpUtil::HttpJSON(NSString *url, NSString *post, NSJSONReadingOptions options)
+{
+	NSError *error = nil;
+	NSURLResponse *response = nil;
+	_Log(@"curl %@ -d \"%@\"", url, post);
+	NSData *data = HttpUtil::HttpData(url, [post dataUsingEncoding:NSUTF8StringEncoding], NSURLRequestReloadIgnoringCacheData, &response, &error);
+	if (data)
+	{
+		NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:options error:&error];
+		if (dict == nil)
+		{
+			_Log(@"Data: %@\n\n Error: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease], error);
+		}
+		return dict;
+	}
+	return nil;
 }
 
 // Request HTTP file

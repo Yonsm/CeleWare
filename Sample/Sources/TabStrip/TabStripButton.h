@@ -1,7 +1,4 @@
 
-#import <UIKit/UIKit.h>
-
-
 @interface TabStripButton : UIControl
 {
 @private

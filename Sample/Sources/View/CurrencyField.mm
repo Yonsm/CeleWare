@@ -9,6 +9,7 @@
 {
 	self = [super initWithFrame:frame];
 	
+	self.keyboardType = UIKeyboardTypeDecimalPad;
 	self.font = [UIFont systemFontOfSize:16];
 	self.textColor = [UIColor colorWithWhite:50/255.0 alpha:1];
 	self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -103,27 +104,6 @@
 	{
 		_followLabel = nil;
 	}
-}
-
-//
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	[super touchesBegan:touches withEvent:event];
-	if (self.background) self.background = [UIImage bundledImageNamed:UIUtil::IsOS7() ? @"InputBox_Click7" : @"InputBox_Click"].stretchableImage;
-}
-
-//
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	[super touchesEnded:touches withEvent:event];
-	if (self.background) self.background = [UIImage bundledImageNamed:UIUtil::IsOS7() ? @"InputBox_Normal7" : @"InputBox_Normal"].stretchableImage;
-}
-
-//
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	[super touchesCancelled:touches withEvent:event];
-	if (self.background) self.background = [UIImage bundledImageNamed:UIUtil::IsOS7() ? @"InputBox_Normal7" : @"InputBox_Normal"].stretchableImage;
 }
 
 //
