@@ -110,7 +110,7 @@ NSData *HttpUtil::UploadData(NSString *url, NSData *data, NSString *fileName, NS
 	[formData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundaryString] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	//
-	NSString *contentLength = [NSString stringWithFormat:@"%u", formData.length];
+	NSString *contentLength = [NSString stringWithFormat:@"%u", (int)formData.length];
 	NSString *contentType = [@"multipart/form-data; boundary=" stringByAppendingString:boundaryString];
 	[request setValue:contentLength forHTTPHeaderField:@"Content-Length"];
 	[request setValue:contentType forHTTPHeaderField:@"Content-Type"];

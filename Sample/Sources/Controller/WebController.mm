@@ -128,7 +128,7 @@
 //
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
 {
-	_Log(@"shouldStartLoadWithRequest %d: <url:%@>", navigationType, request.URL);
+	_Log(@"shouldStartLoadWithRequest %d: <url:%@>", (int)navigationType, request.URL);
 	if ([request.URL.scheme isEqualToString:@"close"])
 	{
 		if (self.navigationController && ([self.navigationController.viewControllers objectAtIndex:0] != self))

@@ -350,7 +350,7 @@
 
 - (void)scrollToBottom {
     if ([self.mTableView numberOfRowsInSection:0] > 1) {
-        int lastRowNumber = [self.mTableView numberOfRowsInSection:0] - 1;
+        NSInteger lastRowNumber = [self.mTableView numberOfRowsInSection:0] - 1;
         NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRowNumber inSection:0];
         [self.mTableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }

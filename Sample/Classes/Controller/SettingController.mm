@@ -110,7 +110,7 @@
 	NSInteger row = [indexPath row];
 	NSInteger section = [indexPath section];
 	
-	NSString *reuse = [NSString stringWithFormat:@"Cell%d.%d", section, row];
+	NSString *reuse = [NSString stringWithFormat:@"Cell%d.%d", (int)section, (int)row];
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
 	if (cell == nil)
 	{

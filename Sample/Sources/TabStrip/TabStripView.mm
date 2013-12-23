@@ -124,7 +124,7 @@
 		return;
 	}
 	
-	int items;
+	NSInteger items;
 	
 	if ((items = [self.delegate numberOfTabsInTabStripView:self]) == 0)
 	{
