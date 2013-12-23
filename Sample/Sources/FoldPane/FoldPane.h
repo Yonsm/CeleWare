@@ -19,20 +19,16 @@
 	FoldViews *_foldView;
 	UIControl *_touchMask;
 	UIView *_contentView;
-	UIButton *_foldButton;
-	UIView *_foldIndicator;
 
-	BOOL _open;
 #ifdef _FoldBeep
 	SystemSoundID _beepSound;
 #endif
-	id<FoldPaneDelegate> _delegate;
 }
 
 @property(nonatomic,readonly) BOOL open;
 @property(nonatomic,readonly) UIButton *foldButton;
-@property(nonatomic,retain) UIView *foldIndicator;
-@property(nonatomic,assign) id<FoldPaneDelegate> delegate;
+@property(nonatomic,strong) UIView *foldIndicator;
+@property(nonatomic,weak) id<FoldPaneDelegate> delegate;
 
 - (id)initWithContentView:(UIView *)contentView buttonImage:(UIImage *)image buttonImage_:(UIImage *)image_;
 

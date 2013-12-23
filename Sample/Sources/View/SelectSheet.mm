@@ -10,7 +10,7 @@
 //
 + (id)sheetWithTitle:(NSString *)title items:(NSArray *)items target:(id)target changed:(SEL)changed
 {
-	return [[[SelectSheet alloc] initWithTitle:title items:items target:target changed:changed] autorelease];
+	return [[SelectSheet alloc] initWithTitle:title items:items target:target changed:changed];
 }
 
 // Constructor
@@ -69,7 +69,7 @@
 	if (buttonIndex < actionSheet.cancelButtonIndex)
 	{
 		_selectedIndex = buttonIndex;
-		[_target performSelector:_changed withObject:self];
+		_SuppressPerformSelectorLeakWarning([_target performSelector:_changed withObject:self]);
 	}
 }
 

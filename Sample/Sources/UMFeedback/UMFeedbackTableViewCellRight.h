@@ -13,6 +13,6 @@
     UIImageView *messageBackgroundView;
 }
 
-@property(nonatomic, retain) UILabel *timestampLabel;
+@property(nonatomic, strong) UILabel *timestampLabel;
 
 @end

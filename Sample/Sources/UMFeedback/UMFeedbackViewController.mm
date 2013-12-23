@@ -43,7 +43,7 @@
 - (void)setupEGORefreshTableHeaderView {
     if (_refreshHeaderView == nil) {
 
-        UMEGORefreshTableHeaderView *view = [[[UMEGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.mTableView.bounds.size.height, self.mTableView.frame.size.width, self.mTableView.bounds.size.height)] autorelease];
+        UMEGORefreshTableHeaderView *view = [[UMEGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.mTableView.bounds.size.height, self.mTableView.frame.size.width, self.mTableView.bounds.size.height)];
         view.delegate = (id <UMEGORefreshTableHeaderDelegate>) self;
         [self.mTableView addSubview:view];
         _refreshHeaderView = view;
@@ -68,7 +68,7 @@
 }
 
 - (void)setupTextField {
-    _mTextField = [[[UITextField alloc] initWithFrame:CGRectMake(6, 7, _mToolBar.frame.size.width - 74.0f, 30.0f)] autorelease];
+    _mTextField = [[UITextField alloc] initWithFrame:CGRectMake(6, 7, _mToolBar.frame.size.width - 74.0f, 30.0f)];
     _mTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _mTextField.backgroundColor = [UIColor whiteColor];
     _mTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -78,7 +78,7 @@
     _mTextField.font = [UIFont systemFontOfSize:14.0f];
 	_mTextField.returnKeyType = UIReturnKeyDone;
 
-    UIView *paddingView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 30)] autorelease];
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 30)];
     _mTextField.leftView = paddingView;
     _mTextField.leftViewMode = UITextFieldViewModeAlways;
     _mTextField.delegate = (id <UITextFieldDelegate>) self;
@@ -88,7 +88,7 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
 
-    UMContactViewController *contactViewController = [[[UMContactViewController alloc] initWithNibName:@"UMContactViewController" bundle:nil] autorelease];
+    UMContactViewController *contactViewController = [[UMContactViewController alloc] initWithNibName:@"UMContactViewController" bundle:nil];
 
     contactViewController.delegate = (id <UMContactViewControllerDelegate>) self;
     [self.navigationController pushViewController:contactViewController animated:YES];
@@ -117,8 +117,8 @@
     [self updateTableView:nil];
     [self handleKeyboard];
 
-    UITapGestureRecognizer *singleFingerTap = [[[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                      action:@selector(handleSingleTap:)] autorelease];
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                      action:@selector(handleSingleTap:)];
     [self.mContactView addGestureRecognizer:singleFingerTap];
 
     _shouldScrollToBottom = YES;
@@ -264,7 +264,7 @@
     if ([[data valueForKey:@"type"] isEqualToString:@"dev_reply"]) {
         UMFeedbackTableViewCellLeft *cell = (UMFeedbackTableViewCellLeft *) [tableView dequeueReusableCellWithIdentifier:L_CellIdentifier];
         if (cell == nil) {
-            cell = [[[UMFeedbackTableViewCellLeft alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:L_CellIdentifier] autorelease];
+            cell = [[UMFeedbackTableViewCellLeft alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:L_CellIdentifier];
         }
 
         cell.textLabel.text = [data valueForKey:@"content"];
@@ -276,7 +276,7 @@
 
         UMFeedbackTableViewCellRight *cell = (UMFeedbackTableViewCellRight *) [tableView dequeueReusableCellWithIdentifier:R_CellIdentifier];
         if (cell == nil) {
-            cell = [[[UMFeedbackTableViewCellRight alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:R_CellIdentifier] autorelease];
+            cell = [[UMFeedbackTableViewCellRight alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:R_CellIdentifier];
         }
 
         cell.textLabel.text = [data valueForKey:@"content"];
@@ -396,8 +396,6 @@
 }
 
 - (void)dealloc {
-	[super dealloc];
-	[_tapRecognizer release];
     feedbackClient.delegate = nil;
 }
 

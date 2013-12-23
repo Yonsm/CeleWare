@@ -25,7 +25,7 @@
         self.textLabel.textAlignment = NSTextAlignmentLeft;
         self.textLabel.textColor = [UIColor blackColor];
 
-        _timestampLabel = [[[UILabel alloc] init] autorelease];
+        _timestampLabel = [[UILabel alloc] init];
         _timestampLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _timestampLabel.textAlignment = NSTextAlignmentCenter;
         _timestampLabel.backgroundColor = [UIColor clearColor];
@@ -35,7 +35,7 @@
 
         [self.contentView addSubview:_timestampLabel];
 
-        messageBackgroundView = [[[UIImageView alloc] initWithFrame:self.textLabel.frame] autorelease];
+        messageBackgroundView = [[UIImageView alloc] initWithFrame:self.textLabel.frame];
         messageBackgroundView.image = [[UIImage imageNamed:@"UMFeedback.bundle/messages_left_bubble.png"] stretchableImageWithLeftCapWidth:20 topCapHeight:16];
         [self.contentView insertSubview:messageBackgroundView belowSubview:self.textLabel];
 

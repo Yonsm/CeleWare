@@ -29,23 +29,21 @@ enum WizardCellAccessoryType
 
 //
 @interface WizardCell : UIView
-{
-}
 
 - (id)initWithFrame:(CGRect)frame;
 - (void)setBorderType:(WizardCellBorderType)borderType;	// 只能调用一次
 
 - (void)setNameAlignTop:(BOOL)top;
 
-@property(nonatomic,assign) id target;
+@property(nonatomic,weak) id target;
 @property(nonatomic,assign) SEL action;
-@property(nonatomic,retain) id param;	// For external use
+@property(nonatomic,strong) id param;	// For external use
 @property(nonatomic,assign) void *param2;	// For external use
-@property(nonatomic,retain) NSString *name;
-@property(nonatomic,retain) NSString *detail;
-@property(nonatomic,readonly) UILabel *nameLabel;
-@property(nonatomic,readonly) UILabel *detailLabel;
-@property(nonatomic,retain) UIView *accessoryView;
+@property(nonatomic,strong) NSString *name;
+@property(nonatomic,strong) NSString *detail;
+@property(weak, nonatomic,readonly) UILabel *nameLabel;
+@property(weak, nonatomic,readonly) UILabel *detailLabel;
+@property(nonatomic,strong) UIView *accessoryView;
 @property(nonatomic,readonly) CGRect maxAccessoryFrame;
 @property(nonatomic,assign) WizardCellAccessoryType accessoryType;
 @end

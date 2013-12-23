@@ -15,20 +15,19 @@ public:
 	//
 	Settings()
 	{
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		@autoreleasepool {
 		//if (_settings == nil)
-		{
-			NSString *path = NSUtil::DocumentPath(kSettingsFile);
-			_settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-			if (_settings == nil) _settings = [[NSMutableDictionary alloc] init];
+			{
+				NSString *path = NSUtil::DocumentPath(kSettingsFile);
+				_settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+				if (_settings == nil) _settings = [[NSMutableDictionary alloc] init];
+			}
 		}
-		[pool release];
 	}
 	
 	//
 	~Settings()
 	{
-		[_settings release];
 		_settings = nil;
 	}
 

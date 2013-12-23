@@ -10,14 +10,13 @@ NSString *NSUtil::FormatNumber(NSNumber *number, NSNumberFormatterStyle style)
 	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 	[formatter setNumberStyle:style];
 	NSString *result = [formatter stringFromNumber:number];
-	[formatter release];
 	return result;
 }
 
 // Convert date to string
 NSString *NSUtil::FormatDate(NSDate *date, NSString *format)
 {
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	formatter.dateFormat = format;
 	return [formatter stringForObjectValue:date];
 }
@@ -25,7 +24,7 @@ NSString *NSUtil::FormatDate(NSDate *date, NSString *format)
 // Convert date to string
 NSString *NSUtil::FormatDate(NSDate *date, NSDateFormatterStyle dateStyle, NSDateFormatterStyle timeStyle)
 {
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle:dateStyle];
 	[formatter setTimeStyle:timeStyle];
 	return [formatter stringForObjectValue:date];
@@ -36,7 +35,7 @@ NSDate *NSUtil::FormatDate(NSString *string, NSString *format, NSLocale *locale)
 {
 	if (string == nil) return nil;
 	
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	formatter.dateFormat = format;
 	if (locale) formatter.locale = locale;
 	return [formatter dateFromString:string];
@@ -47,7 +46,7 @@ NSDate *NSUtil::FormatDate(NSString *string, NSDateFormatterStyle dateStyle, NSD
 {
 	if (string == nil) return nil;
 	
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle:dateStyle];
 	[formatter setTimeStyle:timeStyle];
 	if (locale) formatter.locale = locale;

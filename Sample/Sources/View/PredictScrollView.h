@@ -21,7 +21,7 @@
 @property(nonatomic,assign) BOOL noPredict;
 @property(nonatomic,assign) NSUInteger currentPage;
 @property(nonatomic,assign) NSUInteger numberOfPages;
-@property(nonatomic,assign) id<PredictScrollViewDelegate> delegate2;
+@property(nonatomic,weak) id<PredictScrollViewDelegate> delegate2;
 
 - (void)setCurrentPage:(NSUInteger)currentPage animated:(BOOL)animated;
 

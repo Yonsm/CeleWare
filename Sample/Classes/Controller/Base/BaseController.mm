@@ -80,7 +80,7 @@
 - (UIView *)emptyView
 {
 	UIImage *image = UIUtil::Image(@"EmptyIcon");
-	UIImageView *view = [[[UIImageView alloc] initWithImage:image] autorelease];
+	UIImageView *view = [[UIImageView alloc] initWithImage:image];
 	view.contentMode = UIViewContentModeCenter;
 	CGRect frame = self.view.bounds;
 	frame.size.height -= 50;

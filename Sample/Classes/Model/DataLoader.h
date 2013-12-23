@@ -48,7 +48,7 @@ DataLoaderError;
 @protected
 	NSString *_service;
 	NSDictionary *_params;
-	id<DataLoaderDelegate> _delegate;
+	id<DataLoaderDelegate> __weak _delegate;
 	void (^_completion)(DataLoader *loader);
 	BOOL _completionOnSuccess;
 	
@@ -62,9 +62,9 @@ DataLoaderError;
 	DataLoaderError _error;
 }
 
-@property(nonatomic,retain) NSString *service;
-@property(nonatomic,retain) id params;			/// NSDictionary 或 NSArray
-@property(nonatomic,assign) id<DataLoaderDelegate> delegate;
+@property(nonatomic,strong) NSString *service;
+@property(nonatomic,strong) id params;			/// NSDictionary 或 NSArray
+@property(nonatomic,weak) id<DataLoaderDelegate> delegate;
 @property(nonatomic,copy) void (^completion)(DataLoader *loader);
 @property(nonatomic,assign) BOOL completionOnSuccess;
 
@@ -73,11 +73,11 @@ DataLoaderError;
 @property(nonatomic,assign) NSJSONReadingOptions jsonOptions;	// JSON 解析参数
 
 @property(nonatomic,readonly) BOOL loading;
-@property(nonatomic,retain) NSDate *date;
-@property(nonatomic,readonly) NSString *stamp;
-@property(nonatomic,retain) NSDictionary *dict;
+@property(nonatomic,strong) NSDate *date;
+@property(weak, nonatomic,readonly) NSString *stamp;
+@property(nonatomic,strong) NSDictionary *dict;
 @property(nonatomic,assign) DataLoaderError error;
-@property(nonatomic,readonly) NSString *errorString;
+@property(weak, nonatomic,readonly) NSString *errorString;
 
 //
 + (id)loaderWithService:(NSString *)service params:(NSDictionary *)params success:(void (^)(DataLoader *loader))success;

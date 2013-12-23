@@ -11,13 +11,7 @@
 @interface TabStripView : UIImageView<UIScrollViewDelegate>
 {
 @private
-	UIScrollView *scrollView;
-	UIView *leftCap;
-	UIView *rightCap;
-	id delegate;
-	UIEdgeInsets buttonInsets;
 	UILabel *titleLabel;
-	BOOL momentary;
 }
 
 /*
@@ -38,7 +32,7 @@
 /*
  * @see TabStripViewDelegate protocol
  */
-@property(nonatomic,assign) IBOutlet id<TabStripViewDelegate> delegate;
+@property(nonatomic,weak) IBOutlet id<TabStripViewDelegate> delegate;
 
 /*
  * Currectly selected tab
@@ -65,7 +59,7 @@
 /*
  * Allows you to a title.
  */
-@property(nonatomic,retain) NSString *title;
+@property(nonatomic,strong) NSString *title;
 
 @end
 

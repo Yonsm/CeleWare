@@ -14,23 +14,13 @@
 //}
 
 //
-- (void)dealloc
-{
-	[_scrollView release];
-	[_emptyView release];
-	[_authView release];
-	[super dealloc];
-}
-
-//
 - (void)setScrollView:(UIScrollView *)scrollView
 {
 	if (_scrollView != scrollView)
 	{
-		[_scrollView release];
-		_scrollView = [scrollView retain];
+		_scrollView = scrollView;
 		
-		_refreshControl = [[[ODRefreshControl alloc] initInScrollView:scrollView] autorelease];
+		_refreshControl = [[ODRefreshControl alloc] initInScrollView:scrollView];
 		[_refreshControl addTarget:self action:@selector(loadRefresh) forControlEvents:UIControlEventValueChanged];
 	}
 }
@@ -111,7 +101,7 @@
 		[_refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.5];
 		if (_authView == nil)
 		{
-			_authView = [self.authView retain];
+			_authView = self.authView;
 			[_scrollView addSubview:_authView];
 			
 			if (_disableShowLoginOnce)
@@ -128,7 +118,6 @@
 	else if (_authView)
 	{
 		[_authView removeFromSuperview];
-		[_authView release];
 		_authView = nil;
 	}
 	
@@ -161,14 +150,13 @@
 	{
 		if (_emptyView == nil)
 		{
-			_emptyView = [self.emptyView retain];
+			_emptyView = self.emptyView;
 			[_scrollView addSubview:_emptyView];
 		}
 	}
 	else if (_emptyView)
 	{
 		[_emptyView removeFromSuperview];
-		[_emptyView release];
 		_emptyView = nil;
 	}
 }
@@ -183,7 +171,7 @@
 //
 - (void)registerButtonClicked:(id)sender
 {
-	UIViewController *controller = [[[RegisterController alloc] init] autorelease];
+	UIViewController *controller = [[RegisterController alloc] init];
 	[UIUtil::RootViewController() presentModalNavigationController:controller animated:YES];
 }
 
@@ -191,10 +179,10 @@
 - (UIView *)emptyView
 {
 	CGRect frame = _scrollView.bounds;
-	UIView *view = [[[UIView alloc] initWithFrame:frame] autorelease];
+	UIView *view = [[UIView alloc] initWithFrame:frame];
 	view.backgroundColor = _scrollView.backgroundColor;
 	
-	UIImageView *icon = [[[UIImageView alloc] initWithImage:UIUtil::Image(@"EmptyIcon")] autorelease];
+	UIImageView *icon = [[UIImageView alloc] initWithImage:UIUtil::Image(@"EmptyIcon")];
 	icon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	icon.center = CGPointMake(frame.size.width / 2, frame.size.height / 2 - 30);
 	[view addSubview:icon];
@@ -247,10 +235,7 @@
 - (void)dealloc
 {
 	[_abortTimer invalidate];
-	[_abortTimer release];
 	[_autoTimer invalidate];
-	[_autoTimer release];
-	[super dealloc];
 }
 
 //
@@ -260,10 +245,8 @@
 	
 	// 隐藏就取消自动刷新？
 	[_abortTimer invalidate];
-	[_abortTimer release];
 	_abortTimer = nil;
 	[_autoTimer invalidate];
-	[_autoTimer release];
 	_autoTimer = nil;
 }
 
@@ -282,7 +265,6 @@
 	//[self performSelector:@selector(loadAbort) withObject:nil afterDelay:60 * 5];	// 5 分钟后，取消自动刷新机制
 	
 	[_abortTimer invalidate];
-	[_abortTimer release];
 	_abortTimer = [NSTimer timerWithTimeInterval:60 * 5 target:self selector:@selector(loadAbort) userInfo:nil repeats:NO];
 }
 
@@ -303,7 +285,6 @@
 	if (_autoReload)
 	{
 		[_autoTimer invalidate];
-		[_autoTimer release];
 		_autoTimer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(loadSlient) userInfo:nil repeats:NO];
 		//[self performSelector:@selector(loadSlient) withObject:nil afterDelay:60];	// 60 秒钟后，自动重新刷新
 	}

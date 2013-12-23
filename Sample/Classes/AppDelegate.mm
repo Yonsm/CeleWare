@@ -8,11 +8,6 @@
 #pragma mark Generic methods
 
 // Destructor
-- (void)dealloc
-{
-	[_window release];
-	[super dealloc];
-}
 
 #pragma mark Monitoring Application State Changes
 
@@ -26,8 +21,8 @@
 	
 	// Create controller
 	// TODO: Remove navigation controller
-	UIViewController *controller = [[[RootController alloc] init] autorelease];
-	UINavigationController *navigator = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+	UIViewController *controller = [[RootController alloc] init];
+	UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:controller];
 	//navigator.navigationBarHidden = YES;
 
 	// Show main view

@@ -15,11 +15,6 @@
 }
 
 //
-- (void)dealloc
-{
-	[_textFields release];
-	[super dealloc];
-}
 
 //
 - (void)lookupTextFieldsInView:(UIView *)view
@@ -86,7 +81,6 @@
 - (void)viewDidUnload
 {
 	[super viewDidUnload];
-	[_textFields release];
 	_textFields = nil;
 }
 

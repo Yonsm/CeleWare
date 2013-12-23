@@ -4,9 +4,6 @@
 
 // 
 @interface SMSComposer : MFMessageComposeViewController <MFMessageComposeViewControllerDelegate>
-{
-	BOOL _autoSend;
-}
 @property(nonatomic) BOOL autoSend;
 + (id)composerWithBody:(NSString *)body to:(NSArray *)recipients;
 @end

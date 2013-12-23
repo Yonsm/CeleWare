@@ -7,7 +7,7 @@
 {
 }
 + (NSDictionary *)city;
-@property(nonatomic,retain) NSDictionary *city;
+@property(nonatomic,strong) NSDictionary *city;
 
 - (NSDictionary *)syncUpdateCity;
 

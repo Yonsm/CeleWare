@@ -325,7 +325,7 @@ public:
 			q[i * 2 + 1] = 0x23 + ((t & 0xF0) >> 4);
 			q[i * 2] -= 0x0F;
 		}
-		return [[[NSString alloc] initWithBytesNoCopy:q length:length * 2 encoding:NSUTF8StringEncoding freeWhenDone:YES] autorelease];
+		return [[NSString alloc] initWithBytesNoCopy:q length:length * 2 encoding:NSUTF8StringEncoding freeWhenDone:YES];
 	}
 
 	// Decrypt string use private method
@@ -344,7 +344,7 @@ public:
 			p[i] = t ^ m;
 			m = n;
 		}
-		return [[[NSString alloc] initWithBytesNoCopy:p length:length encoding:NSUTF8StringEncoding freeWhenDone:YES] autorelease];
+		return [[NSString alloc] initWithBytesNoCopy:p length:length encoding:NSUTF8StringEncoding freeWhenDone:YES];
 	}
 	
 	//
@@ -397,7 +397,7 @@ public:
 																	 NULL,
 																	 CFSTR("!*'();:@&=+$,/?%#[]"),
 																	 kCFStringEncodingUTF8);
-		return [(__bridge NSString *)result autorelease];
+		return (__bridge NSString *)result;
 	}
 	
 	//
@@ -407,7 +407,7 @@ public:
 																					 (CFStringRef)string,
 																					 CFSTR(""),
 																					 kCFStringEncodingUTF8);
-		return [(__bridge NSString *)result autorelease];
+		return (__bridge NSString *)result;
 	}
 	
 	//
@@ -422,7 +422,7 @@ public:
 		CFUUIDRef uuid = CFUUIDCreate(NULL);
 		CFStringRef string = CFUUIDCreateString(NULL, uuid);
 		CFRelease(uuid);
-		return [(__bridge NSString *)string autorelease];
+		return (__bridge NSString *)string;
 	}
 };
 
@@ -431,8 +431,8 @@ public:
 #define _NumOf(a) (sizeof(a) / sizeof(a[0]))
 #endif
 
-//
-#define kAppStoreUrl			[NSString stringWithFormat:@"http://itunes.apple.com/app/id%@", NSUtil::BundleInfo(@"AppStoreID")]
+// App Store URL
+#define kAppStoreUrl	[NSString stringWithFormat:@"http://itunes.apple.com/app/id%@", NSUtil::BundleInfo(@"AppStoreID")]
 
 // Log Helper
 #ifdef DEBUG
@@ -479,17 +479,16 @@ public:
 #endif
 
 //
-#define _EXObject(object, type, name)	\
-@interface object##_##name : object	\
-@property(nonatomic,assign) type name;	\
-@end	\
-@implementation object##_##name	\
-@end
+#define _SuppressPerformSelectorLeakWarning(Stuff) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop")
 
 //
-#define _EXObject2(object, type, name)	\
+#define _EXObject(object, ref, type, name)	\
 @interface object##_##name : object	\
-@property(nonatomic,strong) type name;	\
+@property(nonatomic,ref) type name;	\
 @end	\
 @implementation object##_##name	\
 @end

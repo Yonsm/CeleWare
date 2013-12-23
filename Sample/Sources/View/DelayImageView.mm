@@ -15,7 +15,6 @@
 {
 	[_activityView stopAnimating];
 	[_activityView removeFromSuperview];
-	[_activityView release];
 	_activityView = nil;
 }
 
@@ -34,12 +33,12 @@
 //
 - (void)downloading
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
-	NSString *path = NSUtil::CacheUrlPath(_url);
-	NSData *data = HttpUtil::DownloadData(_url, path, _force ? DownloadFromOnline : DownloadCheckLocal /*DownloadCheckOnline*/);
-	[self performSelectorOnMainThread:@selector(downloaded:) withObject:data waitUntilDone:YES];
-	[pool release];
+		NSString *path = NSUtil::CacheUrlPath(_url);
+		NSData *data = HttpUtil::DownloadData(_url, path, _force ? DownloadFromOnline : DownloadCheckLocal /*DownloadCheckOnline*/);
+		[self performSelectorOnMainThread:@selector(downloaded:) withObject:data waitUntilDone:YES];
+	}
 }
 
 //
@@ -82,13 +81,12 @@
 //
 - (void)setUrl:(NSString *)url
 {
-	[_url release];
 	
 	_force = NO;
 	self.image = nil;
 	if (url)
 	{
-		_url = [url retain];
+		_url = url;
 		
 		NSString *path = NSUtil::CacheUrlPath(_url);
 		self.image = [UIImage imageWithContentsOfFile:path];
@@ -136,11 +134,5 @@
 }
 
 //
-- (void)dealloc
-{
-	[_url release];
-	[_def release];
-	[super dealloc];
-}
 
 @end

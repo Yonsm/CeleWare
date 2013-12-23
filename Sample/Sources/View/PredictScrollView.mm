@@ -28,7 +28,6 @@
 - (void)dealloc
 {
 	if (_pages) free(_pages);
-	[super dealloc];
 }
 
 //
@@ -79,7 +78,7 @@
 	frame.origin.x = frame.size.width * index + _gap;
 	frame.size.width -= _gap * 2;
 
-	_pages[index] = (void *)[_delegate2 scrollView:self viewForPage:index inFrame:frame];
+	_pages[index] = (__bridge void *)[_delegate2 scrollView:self viewForPage:index inFrame:frame];
 	((__bridge UIView *)_pages[index]).autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	[self addSubview:(__bridge UIView *)_pages[index]];
 }
@@ -87,18 +86,18 @@
 //
 - (void)loadNearby
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[self loadPage:_currentPage - 1];
-	[self loadPage:_currentPage + 1];
-	[pool release];
+	@autoreleasepool {
+		[self loadPage:_currentPage - 1];
+		[self loadPage:_currentPage + 1];
+	}
 }
 
 //
 - (void)scheduledNearby
 {	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[self performSelectorOnMainThread:@selector(loadNearby) withObject:nil waitUntilDone:YES];
-	[pool release];
+	@autoreleasepool {
+		[self performSelectorOnMainThread:@selector(loadNearby) withObject:nil waitUntilDone:YES];
+	}
 }
 
 //
@@ -210,11 +209,6 @@
 }
 
 //
-- (void)dealloc
-{
-	[_pageCtrl release];
-	[super dealloc];
-}
 
 //
 - (void)willMoveToSuperview:(UIView *)newSuperview

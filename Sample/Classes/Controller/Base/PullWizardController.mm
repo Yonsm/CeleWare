@@ -12,7 +12,7 @@
 	}
 	else if ([param isKindOfClass:NSArray.class] && ([param count] == 2))
 	{
-		[self initWithService:param[0] params:param[1]];
+		if (!(self = [self initWithService:param[0] params:param[1]])) return nil;
 	}
 	return nil;
 }
@@ -36,11 +36,6 @@
 }
 
 //
-- (void)dealloc
-{
-	[_loader release];
-	[super dealloc];
-}
 
 //
 - (void)viewDidLoad

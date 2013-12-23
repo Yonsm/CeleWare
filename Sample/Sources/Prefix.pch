@@ -9,7 +9,6 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 
-
 // Resource
 #define kResourceBundle @"Images"
 #define kAppStatKey @"5182124956240b2e58017cad"

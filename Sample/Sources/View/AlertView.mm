@@ -54,7 +54,7 @@
 		UIFont *font = [UIFont boldSystemFontOfSize:17];
 		CGSize size = [title sizeWithFont:font constrainedToSize:CGSizeMake(image.size.width - (kAlertBoxLeftPad + kAlertBoxRightPad), 1000)];
 		
-		_titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(kAlertBoxLeftPad, frame.size.height, image.size.width - (kAlertBoxLeftPad + kAlertBoxRightPad), size.height)] autorelease];
+		_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kAlertBoxLeftPad, frame.size.height, image.size.width - (kAlertBoxLeftPad + kAlertBoxRightPad), size.height)];
 		_titleLabel.text = title;
 		_titleLabel.backgroundColor = UIColor.clearColor;
 		_titleLabel.textColor = [UIColor colorWithRed:98.0 / 255 green:113.0 / 255 blue:147.0 / 255 alpha:1.0];
@@ -72,7 +72,7 @@
 		UIFont *font = [UIFont systemFontOfSize:16];
 		CGSize size = [message sizeWithFont:font constrainedToSize:CGSizeMake(image.size.width - (kAlertBoxLeftPad + kAlertBoxRightPad), 1000)];
 		
-		_messageLabel = [[[UILabel alloc] initWithFrame:CGRectMake(kAlertBoxLeftPad, frame.size.height, image.size.width - (kAlertBoxLeftPad + kAlertBoxRightPad), size.height)] autorelease];
+		_messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(kAlertBoxLeftPad, frame.size.height, image.size.width - (kAlertBoxLeftPad + kAlertBoxRightPad), size.height)];
 		_messageLabel.text = message;
 		_messageLabel.backgroundColor = UIColor.clearColor;
 		_messageLabel.textColor = [UIColor colorWithRed:98.0 / 255 green:113.0 / 255 blue:147.0 / 255 alpha:1.0];
@@ -222,7 +222,7 @@
 	
 	if (_clickAction && [_delegate respondsToSelector:_clickAction])
 	{
-		[_delegate performSelector:_clickAction withObject:_clickParam];
+		_SuppressPerformSelectorLeakWarning([_delegate performSelector:_clickAction withObject:_clickParam]);
 	}
 	else if ([_delegate respondsToSelector:@selector(alertView: clickedButtonAtIndex:)])
 	{
@@ -273,7 +273,6 @@
 	[super removeFromSuperview];
 	
 	[window resignKeyWindow];
-	[window release];
 }
 
 //
@@ -318,13 +317,13 @@
 //
 + (id)alertWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle accessoryView:(UIView *)accessoryView
 {
-	AlertView *alertView = [[[AlertView alloc] initWithTitle:title
+	AlertView *alertView = [[AlertView alloc] initWithTitle:title
 													 message:message
 													delegate:delegate
 										   cancelButtonTitle:cancelButtonTitle
 											otherButtonTitle:otherButtonTitle
 											   accessoryView:accessoryView
-							 ] autorelease];
+							 ];
 	[alertView show];
 	return alertView;
 }
@@ -389,7 +388,7 @@
 	if (_textField == nil)
 	{
 		CGRect frame = _messageLabel.frame;
-		_textField = [[[UITextField alloc] initWithFrame:CGRectInset(_messageLabel.frame, 0, (frame.size.height - 32) / 2)] autorelease];
+		_textField = [[UITextField alloc] initWithFrame:CGRectInset(_messageLabel.frame, 0, (frame.size.height - 32) / 2)];
 		_textField.borderStyle = UITextBorderStyleRoundedRect;
 		//_textField.background = UIUtil::ImageNamed(@"AlertEdit.png");
 		//_textField.textAlignment = NSTextAlignmentCenter;
@@ -399,7 +398,7 @@
 		//[textField becomeFirstResponder];
 		
 		//
-		UIControl *touch = [[[UIControl alloc] initWithFrame:self.superview.bounds] autorelease];
+		UIControl *touch = [[UIControl alloc] initWithFrame:self.superview.bounds];
 		[touch addTarget:_textField action:@selector(resignFirstResponder) forControlEvents:UIControlEventTouchDown];
 		[self.superview insertSubview:touch belowSubview:self];
 	}
@@ -418,7 +417,6 @@
 		activityIndicator.tag = kActivityIndicatorTag;
 		activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
 		[self addSubview:activityIndicator];
-		[activityIndicator release];
 	}
 	return activityIndicator;
 }

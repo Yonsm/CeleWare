@@ -15,8 +15,8 @@
 #endif
 @interface UMContactViewController : _BaseViewController
 
-@property(nonatomic, retain) IBOutlet UITextView *textView;
-@property(nonatomic, assign) id <UMContactViewControllerDelegate> delegate;
+@property(nonatomic, strong) IBOutlet UITextView *textView;
+@property(nonatomic, weak) id <UMContactViewControllerDelegate> delegate;
 
 @end
 

@@ -19,7 +19,7 @@
 //
 + (id)customButtonWithFrame:(CGRect)frame title:(NSString *)title target:(id)target action:(SEL)action
 {
-	UIButton *button = [[[KBCustomButton alloc] initWithFrame:frame] autorelease];
+	UIButton *button = [[KBCustomButton alloc] initWithFrame:frame];
 	button.titleLabel.font = [UIFont boldSystemFontOfSize:17];
 	[button setTitle:title forState:UIControlStateNormal];
 	[button setTitleColor:UIUtil::IsOS7() ? [UIColor whiteColor] : [UIColor darkGrayColor] forState:UIControlStateNormal];
@@ -38,7 +38,6 @@
 - (void)dealloc
 {
 	[_kbDelegate keyboardHide:self];
-	[super dealloc];
 }
 
 //
@@ -175,20 +174,15 @@
 	{
 		self.kbDelegate = self;
 		
-		_actionButton = [[KBCustomButton customButtonWithFrame:CGRectZero
+		_actionButton = [KBCustomButton customButtonWithFrame:CGRectZero
 														 title:actionButtonTitle
 														target:self
-														action:@selector(actionButtonClicked:)] retain];
+														action:@selector(actionButtonClicked:)];
 	}
 	return self;
 }
 
 //
-- (void)dealloc
-{
-	[_actionButton release];
-	[super dealloc];
-}
 
 // Handle keyboard show
 - (void)keyboardShow:(KBCustomTextField *)sender

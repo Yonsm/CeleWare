@@ -141,11 +141,11 @@ public:
 		BOOL ret = [Application() openURL:[NSURL URLWithString:url]];
 		if (ret == NO)
 		{
-			UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not open", @"无法打开")
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not open", @"无法打开")
 																 message:url
 																delegate:nil
 													   cancelButtonTitle:NSLocalizedString(@"Dismiss", @"关闭")
-													   otherButtonTitles:nil] autorelease];
+													   otherButtonTitles:nil];
 			[alertView show];
 		}
 		return ret;
@@ -160,11 +160,11 @@ public:
 		BOOL ret = [Application() openURL:URL];
 		if (ret == NO)
 		{
-			UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not make call", @"无法拨打电话")
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not make call", @"无法拨打电话")
 																 message:number
 																delegate:nil
 													   cancelButtonTitle:NSLocalizedString(@"Dismiss", @"关闭")
-													   otherButtonTitles:nil] autorelease];
+													   otherButtonTitles:nil];
 			[alertView show];
 		}
 		return ret;

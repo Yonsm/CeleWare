@@ -6,15 +6,10 @@
 //
 + (CLLocation *)location
 {
-	return [[[[NearLocater alloc] init] autorelease] syncUpdateLocation];
+	return [[[NearLocater alloc] init] syncUpdateLocation];
 }
 
 // Destructor
-- (void)dealloc
-{
-	[_location release];
-	[super dealloc];
-}
 
 //
 - (CLLocation *)syncUpdateLocation
@@ -22,7 +17,6 @@
 	_condition = [[NSCondition alloc] init];
 	[self performSelectorOnMainThread:@selector(asyncaUpdateLocation) withObject:nil waitUntilDone:NO];
 	[_condition waitUntilDate:[NSDate dateWithTimeIntervalSinceNow:2 * 60]];
-	[_condition release];
 	_condition = nil;
 	return _location;
 }
@@ -41,7 +35,6 @@
 {
 	self.location = newLocation;
 	[manager stopUpdatingLocation];
-	[manager release];
 	[self located];
 }
 

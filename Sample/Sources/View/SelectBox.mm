@@ -8,7 +8,7 @@
 //
 - (id)initWithFrame:(CGRect)frame
 {
-	return [self initWithFrame:frame picker:[[[UIDatePicker alloc] init] autorelease]];
+	return [self initWithFrame:frame picker:[[UIDatePicker alloc] init]];
 }
 
 //
@@ -23,24 +23,18 @@
 	_picker.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1];
 	[self addSubview:_picker];
 	
-	_toolbar = [[[UIToolbar alloc] init] autorelease];
+	_toolbar = [[UIToolbar alloc] init];
 	_toolbar.barStyle = UIBarStyleBlack;
 	_toolbar.translucent = YES;
 	_toolbar.items = @
 	[
-	 [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease],
-	 [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonClicked:)] autorelease],
+	 [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+	 [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonClicked:)],
 	 ];
 	[self addSubview:_toolbar];
 	
 	return self;
 }
-
-//
-//- (void)dealloc
-//{
-//	[super dealloc];
-//}
 
 //
 - (void)didMoveToSuperview

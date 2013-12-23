@@ -25,12 +25,12 @@
 {
 	[super loadView];
 	
-	_tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:_style] autorelease];
+	_tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
 	_tableView.showsVerticalScrollIndicator = YES;
 	_tableView.delegate = self;
 	_tableView.dataSource = self;
 	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_tableView.tableFooterView = [[[UIView alloc] init] autorelease];
+	_tableView.tableFooterView = [[UIView alloc] init];
 	[self.view addSubview:_tableView];
 
 	_tableView.backgroundView.backgroundColor = UIColor.whiteColor;
@@ -106,7 +106,7 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
 	if (cell == nil)
 	{
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuse];
 		//cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
 		cell.backgroundColor = UIColor.whiteColor;
 	}

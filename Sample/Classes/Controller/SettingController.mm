@@ -47,7 +47,7 @@
 	
 	if (iPhone5) label.numberOfLines = 2;
 	
-	UIView *header = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15 + image.size.height + (iPhone5 ? 60 : 20))] autorelease];
+	UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15 + image.size.height + (iPhone5 ? 60 : 20))];
 	[header addSubview:_logoButton];
 	[header addSubview:label];
 	
@@ -114,7 +114,7 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
 	if (cell == nil)
 	{
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		//		if (section == 0)
 		//		{

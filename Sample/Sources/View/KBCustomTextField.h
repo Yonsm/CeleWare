@@ -39,10 +39,9 @@
 //
 @interface KBCustomTextField: UITextField
 {
-	id _kbDelegate;
 }
 
-@property(nonatomic,assign) IBOutlet id/*<KBCustomTextFieldDelegate>*/ kbDelegate;
+@property(nonatomic,weak) IBOutlet id/*<KBCustomTextFieldDelegate>*/ kbDelegate;
 
 + (UIKBKeyView *)findKeyView:(NSString *)name;
 + (UIKBKeyView *)modifyKeyView:(NSString *)name display:(NSString *)display represent:(NSString *)represent interaction:(NSString *)type;

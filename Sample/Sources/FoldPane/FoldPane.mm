@@ -22,8 +22,8 @@
 	self.clipsToBounds = YES;
 	self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
 	
-	_image = [image retain];
-	_image_ = [image_ retain];
+	_image = image;
+	_image_ = image_;
 	
 	//
 	contentFrame.origin.x = (frame.size.width - contentFrame.size.width) / 2;
@@ -33,13 +33,13 @@
 	_contentView = contentView;
 
 	//
-	_foldButton = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, image.size.height)] autorelease];
+	_foldButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, image.size.height)];
 	[_foldButton setImage:image forState:UIControlStateNormal];
 	[_foldButton addTarget:self action:@selector(togglePane:) forControlEvents:UIControlEventTouchUpInside];
 	[self addSubview:_foldButton];
 	
 	//
-	UIPanGestureRecognizer *gesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panPane:)] autorelease];
+	UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panPane:)];
 	[_foldButton addGestureRecognizer:gesture];
 	
 #ifdef _FoldBeep
@@ -54,7 +54,6 @@
 - (void)removeFoldView
 {
 	[_foldView removeFromSuperview];
-	[_foldView release];
 	_foldView = nil;
 }
 
@@ -63,8 +62,7 @@
 {
 	if (_foldIndicator != foldIndicator)
 	{
-		[_foldIndicator release];
-		_foldIndicator = [foldIndicator retain];
+		_foldIndicator = foldIndicator;
 		
 		if (foldIndicator && !foldIndicator.superview)
 		{
@@ -82,12 +80,7 @@
 	[self removeFoldView];
 
 	[_touchMask removeFromSuperview];
-	[_touchMask release];
 
-	[_foldIndicator release];
-	[_image release];
-	[_image_ release];
-	[super dealloc];
 }
 
 //
@@ -116,7 +109,6 @@
 	{
 		[_delegate foldPaneFoldBegin:self];
 	}
-	[_delegate retain];
 }
 
 //
@@ -136,7 +128,6 @@
 	{
 		[_foldButton setImage:_image forState:UIControlStateNormal];
 		[_touchMask removeFromSuperview];
-		[_touchMask release];
 		_touchMask = nil;
 	}
 
@@ -144,7 +135,6 @@
 	{
 		[_delegate foldPaneFoldEnded:self];
 	}
-	[_delegate release];
 	
 	[_timer invalidate];
 	_timer = nil;

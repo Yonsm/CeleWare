@@ -10,10 +10,10 @@
 	UIBarButtonItem *_rightButton;
 }
 
-@property(nonatomic,retain) NSURL *URL;
-@property(nonatomic,retain) NSString *url;
-@property(nonatomic,assign) NSString *HTML;
-@property(nonatomic,readonly) UIWebView *webView;
+@property(nonatomic,strong) NSURL *URL;
+@property(nonatomic,strong) NSString *url;
+@property(nonatomic,weak) NSString *HTML;
+@property(weak, nonatomic,readonly) UIWebView *webView;
 
 - (id)initWithURL:(NSURL *)URL;
 - (id)initWithUrl:(NSString *)url;

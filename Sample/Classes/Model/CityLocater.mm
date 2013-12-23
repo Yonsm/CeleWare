@@ -6,15 +6,10 @@
 //
 + (NSDictionary *)city
 {
-	return [[[[CityLocater alloc] init] autorelease] syncUpdateCity];
+	return [[[CityLocater alloc] init] syncUpdateCity];
 }
 
 // Destructor
-- (void)dealloc
-{
-	[_city release];
-	[super dealloc];
-}
 
 //
 - (NSDictionary *)syncUpdateCity
@@ -41,7 +36,7 @@
 //
 - (void)located
 {
-	CLGeocoder *geocoder = [[[CLGeocoder alloc] init] autorelease];
+	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 	[geocoder reverseGeocodeLocation:self.location completionHandler:^(NSArray *placemarks, NSError *error)
 	 {
 		 self.city = [CityLocater cityForPlacemarks:placemarks];

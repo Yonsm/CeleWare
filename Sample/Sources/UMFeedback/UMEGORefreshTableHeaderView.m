@@ -55,7 +55,6 @@
         label.textAlignment = NSTextAlignmentCenter;
         [self addSubview:label];
         _lastUpdatedLabel = label;
-        [label release];
 
         label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 40.0f, self.frame.size.width, 16.0f)];
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -67,7 +66,6 @@
         label.textAlignment = NSTextAlignmentCenter;
         [self addSubview:label];
         _statusLabel = label;
-        [label release];
 
         CALayer *layer = [CALayer layer];
         layer.frame = CGRectMake(30.0f, frame.size.height - 45.0f, 30.0f, 40.0f);
@@ -85,7 +83,6 @@
         view.frame = CGRectMake(30.0f, frame.size.height - 30.0f, 16.0f, 16.0f);
         [self addSubview:view];
         _activityView = view;
-        [view release];
 
         [self setState:UMEGOOPullRefreshNormal];
 
@@ -112,7 +109,6 @@
         _lastUpdatedLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last_updated", @"最后更新"),[formatter stringFromDate:date]];
         [[NSUserDefaults standardUserDefaults] setObject:_lastUpdatedLabel.text forKey:@"EGORefreshTableView_LastRefresh"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        [formatter release];
 
     } else {
 
@@ -269,7 +265,6 @@
     _arrowImage = nil;
     _umengLogo = nil;
     _lastUpdatedLabel = nil;
-    [super dealloc];
 }
 
 @end

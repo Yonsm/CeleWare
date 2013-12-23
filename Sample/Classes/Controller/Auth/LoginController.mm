@@ -92,7 +92,7 @@
 {
 	if (sender.tag == 1)
 	{
-		UIViewController *controller = [[[RegisterController alloc] init] autorelease];
+		UIViewController *controller = [[RegisterController alloc] init];
 		[self.navigationController pushViewController:controller animated:YES];
 	}
 	else

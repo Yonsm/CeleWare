@@ -16,7 +16,7 @@
 	}
 	
 	// Display composer
-	SMSComposer *composer = [[[SMSComposer alloc] init] autorelease];
+	SMSComposer *composer = [[SMSComposer alloc] init];
 	composer.messageComposeDelegate = composer;
 	if (body) composer.body = body;
 	if (recipients) composer.recipients = recipients;
@@ -84,7 +84,7 @@
 	}
 
 	// Display composer
-	MailComposer *composer = [[[MailComposer alloc] init] autorelease];
+	MailComposer *composer = [[MailComposer alloc] init];
 	composer.mailComposeDelegate = composer;
 	if (recipients) [composer setToRecipients:recipients];
 	if (subject) [composer setSubject:subject];

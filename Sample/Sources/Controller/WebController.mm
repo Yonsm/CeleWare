@@ -10,7 +10,7 @@
 - (id)initWithURL:(NSURL *)URL
 {
 	self = [super init];
-	self.URL = [URL retain];
+	self.URL = URL;
 	return self;
 }
 
@@ -32,9 +32,6 @@
 - (void)dealloc
 {
 	if (_loading) UIUtil::ShowNetworkIndicator(NO);
-	[_rightButton release];
-	[_URL release];
-	[super dealloc];
 }
 
 //
@@ -61,8 +58,7 @@
 {
 	if (URL != _URL)
 	{
-		[_URL release];
-		_URL = [URL retain];
+		_URL = URL;
 	}
 	if (URL) [self.webView loadRequest:[NSURLRequest requestWithURL:_URL]];
 }
@@ -93,7 +89,7 @@
 {
 	[super loadView];
 	
-	_webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
+	_webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
 	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_webView.scalesPageToFit = YES;
 	_webView.delegate = self;
@@ -150,11 +146,10 @@
 	if (_loading++ == 0) UIUtil::ShowNetworkIndicator(YES);
 	self.title = NSLocalizedString(@"Loading...", @"加载中⋯");
 	
-	[_rightButton release];
-	_rightButton = [self.navigationItem.rightBarButtonItem retain];
+	_rightButton = self.navigationItem.rightBarButtonItem;
 
-	UIActivityIndicatorView* indicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
-	UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithCustomView:indicator] autorelease];
+	UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithCustomView:indicator];
 	[self.navigationItem setRightBarButtonItem:button animated:YES];
 	[indicator startAnimating];
 }
@@ -167,7 +162,6 @@
 	self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 	[self.navigationItem setRightBarButtonItem:_rightButton animated:YES];
 	
-	[_rightButton release];
 	_rightButton = nil;
 }
 
@@ -236,7 +230,6 @@
 	{
 		UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 		[buttons addObject:space];
-		[space release];
 		
 		id target = ((NSUInteger)c_buttons[i].title == UIBarButtonSystemItemAction) ? (id)self : (id)self.webView;
 		UIBarButtonItem *button;
@@ -249,11 +242,9 @@
 			button = [[UIBarButtonItem alloc] initWithImage:UIUtil::ImageNamed(c_buttons[i].title) style:UIBarButtonItemStylePlain target:target action:c_buttons[i].action];
 		}
 		[buttons addObject:button];
-		[button release];
 
 		UIBarButtonItem *space2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 		[buttons addObject:space2];
-		[space2 release];
 	}	
 	
 	self.toolbarItems = buttons;
@@ -283,7 +274,7 @@
 {
 	[super webViewDidStartLoad:webView];
 	
-	UIBarButtonItem *stopButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self.webView action:@selector(stopLoading)] autorelease];
+	UIBarButtonItem *stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self.webView action:@selector(stopLoading)];
 
 	NSMutableArray *buttons = [NSMutableArray arrayWithArray:self.toolbarItems];
 	[buttons replaceObjectAtIndex:(0 * 3 + 1) withObject:stopButton];
@@ -297,7 +288,7 @@
 {
 	[super webViewDidFinishLoad:webView];
 	
-	UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.webView action:@selector(reload)] autorelease];
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.webView action:@selector(reload)];
 	NSMutableArray *buttons = [NSMutableArray arrayWithArray:self.toolbarItems];
 	[buttons replaceObjectAtIndex:(0 * 3 + 1) withObject:refreshButton];
 	((UIBarButtonItem *)[buttons objectAtIndex:1 * 3 + 1]).enabled = self.webView.canGoBack;
@@ -317,7 +308,6 @@
 											   destructiveButtonTitle:nil
 													otherButtonTitles:NSLocalizedString(@"Open with Safari", @"在 Safari 中打开")/*, NSLocalizedString(@"Send via Email", @"发送邮件链接")*/, nil];
 	[actionSheet showFromBarButtonItem:sender animated:YES];
-	[actionSheet release];
 }
 
 

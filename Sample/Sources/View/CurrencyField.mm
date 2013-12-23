@@ -38,7 +38,7 @@
 		CGFloat width = symbol.length ? [symbol sizeWithFont:self.font].width + 6 : 0;
 		
 		self.leftViewMode = UITextFieldViewModeAlways;
-		self.leftView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, leftGap + width, self.frame.size.height)] autorelease];
+		self.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, leftGap + width, self.frame.size.height)];
 		
 		if (symbol.length)
 		{

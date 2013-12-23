@@ -21,7 +21,7 @@
 		UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
 		CFRelease(imageRef);
 
-		FoldView *foldView = [[[FoldView alloc] initWithFrame:frame foldDirection:FoldDirectionVertical] autorelease];
+		FoldView *foldView = [[FoldView alloc] initWithFrame:frame foldDirection:FoldDirectionVertical];
 		foldView.tag = kFoldViewTag + i;
 		foldView.image = croppedImage;
 		//[foldView unfoldWithParentOffset:frame.size.height];

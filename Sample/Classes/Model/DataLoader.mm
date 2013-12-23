@@ -16,7 +16,7 @@
 //
 + (id)loaderWithService:(NSString *)service params:(NSDictionary *)params completion:(void (^)(DataLoader *loader))completion
 {
-	DataLoader *loader = [[[DataLoader alloc] init] autorelease];
+	DataLoader *loader = [[DataLoader alloc] init];
 	loader.service = service;
 	loader.params = params;
 	loader.completion = completion;
@@ -46,7 +46,7 @@ static NSString *_access_token = nil;
 + (void)login
 {
 	[self logout];
-	UIViewController *controller = [[[LoginController alloc] init] autorelease];
+	UIViewController *controller = [[LoginController alloc] init];
 	[UIUtil::RootViewController() presentModalNavigationController:controller animated:YES];
 }
 
@@ -82,15 +82,6 @@ static NSString *_access_token = nil;
 }
 
 // Destructor
-- (void)dealloc
-{
-	[_service release];
-	[_params release];
-	[_date release];
-	[_dict release];
-	[_completion release];
-	[super dealloc];
-}
 
 //
 - (NSString *)stamp
@@ -131,7 +122,6 @@ static NSString *_access_token = nil;
 		
 		//
 		_loading = YES;
-		[_delegate retain];
 		[self loadStart];
 		[self performSelectorInBackground:@selector(loadThread) withObject:nil];
 	}
@@ -200,7 +190,7 @@ static NSString *_access_token = nil;
 				_error = (DataLoaderError)[dict[@"code"] intValue];
 				if (_error == DataLoaderNoError)
 				{
-					_access_token = [dict[@"access_token"] retain];
+					_access_token = dict[@"access_token"];
 					dict = [dict objectForKey:@"user"];
 					if (_service == nil) return dict;
 				}
@@ -331,7 +321,6 @@ static NSString *_access_token = nil;
 	//
 	if ([_delegate respondsToSelector:@selector(loadEnded:)])
 		[_delegate loadEnded:self];
-	[_delegate release];
 	
 	//
 	if (_completion && (!_completionOnSuccess || _error == DataLoaderNoError))

@@ -8,7 +8,7 @@
 //
 - (id)initWithURL:(NSURL *)URL
 {
-	_URL = [URL retain];
+	_URL = URL;
 	return self = [super init];
 }
 
@@ -23,13 +23,10 @@
 		}
 
 		[_player stop];
-		[_player release];
 		_player = nil;
 	}
 	
-	[_URL release];
 
-    [super dealloc];
 }
 
 //

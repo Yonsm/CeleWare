@@ -7,7 +7,7 @@
 {
 	BOOL _isLast;
 }
-@property(nonatomic,retain) NSString *body;
+@property(nonatomic,strong) NSString *body;
 + (id)composerWithBody:(NSString *)body pic:(NSString *)pic link:(NSString *)link;
 + (id)composerWithBody:(NSString *)body;	// Alter mode, use it carefully
 @end
@@ -18,8 +18,8 @@
 {
 	NSUInteger _done;
 }
-@property(nonatomic,retain) NSString *link;
-@property(nonatomic,retain) NSString *body;
+@property(nonatomic,strong) NSString *link;
+@property(nonatomic,strong) NSString *body;
 + (id)composerWithBody:(NSString *)body link:(NSString *)link;
 @end
 

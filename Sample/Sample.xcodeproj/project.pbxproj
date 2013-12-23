@@ -623,6 +623,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "Sample" */;
 			buildPhases = (
+				246A334D18687AD100903EF4 /* Refresh Version Stamp */,
 				246A318C18682C2D00903EF4 /* Sources */,
 				246A318D18682C2D00903EF4 /* Frameworks */,
 				246A318E18682C2D00903EF4 /* Resources */,
@@ -689,6 +690,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		246A334D18687AD100903EF4 /* Refresh Version Stamp */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Refresh Version Stamp";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "V0=`defaults read $PROJECT_DIR/Resources/Info CFBundleVersion`\nV1=`echo $V0 | cut -d . -f1`\nV2=`echo $V0 | cut -d . -f2`\nV3=`echo $V0 | cut -d . -f3`\nV4=`echo $V0 | cut -d . -f4`\nV4=`date +%m%d`\nif [[ $BUILT_PRODUCTS_DIR = */Release* ]]; then\nV3=$(($V3 + 1));\ndefaults write $PROJECT_DIR/Resources/Info CFBundleShortVersionString $V1.$V2.$V3\nfi\ndefaults write $PROJECT_DIR/Resources/Info CFBundleVersion $V1.$V2.$V3.$V4\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		246A318C18682C2D00903EF4 /* Sources */ = {
@@ -796,7 +815,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -805,7 +824,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -836,7 +855,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -845,7 +864,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -871,11 +890,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Volumes/RAM/Sample/Sources/MobClick,
-					/Volumes/RAM/Sample/Sources/UMFeedback,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -889,11 +903,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Volumes/RAM/Sample/Sources/MobClick,
-					/Volumes/RAM/Sample/Sources/UMFeedback,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

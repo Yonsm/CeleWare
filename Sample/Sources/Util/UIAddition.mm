@@ -413,7 +413,7 @@
 	}
 	else if (activityView == nil)
 	{
-		activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+		activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		activityView.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
 		activityView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
 		[self addSubview:activityView];
@@ -456,9 +456,8 @@
 	SEL action = (SEL)value.pointerValue;
 	if (delay == 0)
 	{
-		[target performSelector:action withObject:self];
+		_SuppressPerformSelectorLeakWarning([target performSelector:action withObject:self]);
 	}
-	[context release];
 	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:duration];
@@ -579,7 +578,7 @@
 {
 	va_list arg;
 	va_start(arg, otherButtonTitle);
-	UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:title
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
 														 message:message
 														delegate:delegate
 											   cancelButtonTitle:cancelButtonTitle
@@ -588,7 +587,7 @@
 							   va_arg(arg, NSString *),
 							   va_arg(arg, NSString *),
 							   va_arg(arg, NSString *),
-							   nil] autorelease];
+							   nil];
 	va_end(arg);
 	[alertView show];
 	return alertView;
@@ -639,7 +638,6 @@
 		activityIndicator.tag = kActivityIndicatorTag;
 		activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
 		[self addSubview:activityIndicator];
-		[activityIndicator release];
 	}
 	return activityIndicator;
 }
@@ -689,7 +687,7 @@
 #endif
 - (UINavigationController *)presentNavigationController:(UIViewController *)controller animated:(BOOL)animated
 {
-	UINavigationController *navigator = [[[_NavigationController alloc] initWithRootViewController:controller] autorelease];
+	UINavigationController *navigator = [[_NavigationController alloc] initWithRootViewController:controller];
 	navigator.modalTransitionStyle = controller.modalTransitionStyle;
 	navigator.modalPresentationStyle = controller.modalPresentationStyle;
 	
@@ -766,7 +764,7 @@
 		image_ = image_.stretchableImage;
 	}
 	
-	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
+	UIButton *button = [[UIButton alloc] initWithFrame:frame];
 	button.titleLabel.font = font;
 	[button setBackgroundImage:image forState:UIControlStateNormal];
 	[button setBackgroundImage:imaged forState:UIControlStateDisabled];
@@ -841,7 +839,7 @@
 + (id)buttonWithImage:(UIImage *)image
 {
 	CGRect frame = {0, 0, image.size.width, image.size.height};
-	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
+	UIButton *button = [[UIButton alloc] initWithFrame:frame];
 	[button setImage:image forState:UIControlStateNormal];
 	return button;
 }
@@ -875,7 +873,7 @@
 	if (frame.size.width == 0) frame.size.width = image.size.width + 2 + [title sizeWithFont:font].width + 2;
 	if (frame.size.height == 0) frame.size.height = MAX(image.size.height, 22);
 	
-	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
+	UIButton *button = [[UIButton alloc] initWithFrame:frame];
 	button.titleLabel.font = font;
 	
 	[button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
@@ -925,7 +923,7 @@
 	UIFont *font = kLinkButtonFont;
 	if (frame.size.width == 0) frame.size.width = [title sizeWithFont:font].width + 2;
 	if (frame.size.height == 0) {frame.size.height = [title sizeWithFont:font].height; if (frame.size.height < 22) frame.size.height = 22;}
-	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
+	UIButton *button = [[UIButton alloc] initWithFrame:frame];
 	[button setTitleColor:kLinkButtonColor forState:UIControlStateNormal];
 	[button setTitleColor:kLinkButtonColor_ forState:UIControlStateHighlighted];
 	[button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
@@ -948,7 +946,7 @@
 {
 	UIFont *font = title ? [UIFont boldSystemFontOfSize:13] : nil;
 	CGRect frame = {0, 0, [title sizeWithFont:font].width + image.size.width, image.size.height};
-	UIButton *button = [[[UIButton alloc] initWithFrame:frame] autorelease];
+	UIButton *button = [[UIButton alloc] initWithFrame:frame];
 	
 	if (title)
 	{
@@ -963,7 +961,7 @@
 	}
 	
 	[button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-	return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+	return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 //
@@ -1009,7 +1007,7 @@
 				font:(UIFont *)font
 		   alignment:(NSTextAlignment)alignment
 {
-	UILabel *label = [[[UILabel alloc] initWithFrame:frame] autorelease];
+	UILabel *label = [[UILabel alloc] initWithFrame:frame];
 	label.textColor = color;
 	label.backgroundColor = [UIColor clearColor];
 	label.font = font;
@@ -1048,7 +1046,7 @@
 //
 - (void)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action
 {
-	[self addGestureRecognizer:[[[TapGestureRecognizer alloc] initWithTarget:target action:action] autorelease]];
+	[self addGestureRecognizer:[[TapGestureRecognizer alloc] initWithTarget:target action:action]];
 }
 
 @end

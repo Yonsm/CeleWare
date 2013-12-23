@@ -23,13 +23,13 @@
 	UITapGestureRecognizer *_tapRecognizer;
 }
 
-@property(nonatomic, retain) IBOutlet UITableView *mTableView;
-@property(nonatomic, retain) IBOutlet UIToolbar *mToolBar;
-@property(nonatomic, retain) IBOutlet UIView *mContactView;
+@property(nonatomic, strong) IBOutlet UITableView *mTableView;
+@property(nonatomic, strong) IBOutlet UIToolbar *mToolBar;
+@property(nonatomic, strong) IBOutlet UIView *mContactView;
 
-@property(nonatomic, retain) UITextField *mTextField;
-@property(nonatomic, retain) UIBarButtonItem *mSendItem;
-@property(nonatomic, retain) NSArray *mFeedbackData;
+@property(nonatomic, strong) UITextField *mTextField;
+@property(nonatomic, strong) UIBarButtonItem *mSendItem;
+@property(nonatomic, strong) NSArray *mFeedbackData;
 @property(nonatomic, copy) NSString *appkey;
 
 - (IBAction)sendFeedback:(id)sender;

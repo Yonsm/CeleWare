@@ -14,7 +14,7 @@
 	self.dataSource = self;
 	self.delegate = self;
 	
-	_items = [items retain];
+	_items = items;
 
 	[self selectRow:0 inComponent:0 animated:NO];
 	
@@ -22,11 +22,6 @@
 }
 
 //
-- (void)dealloc
-{
-	[_items release];
-	[super dealloc];
-}
 
 //
 - (NSInteger)selectedIndex
@@ -55,7 +50,7 @@
 //
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-	[_target performSelector:_changed withObject:self];
+	_SuppressPerformSelectorLeakWarning([_target performSelector:_changed withObject:self]);
 }
 
 @end

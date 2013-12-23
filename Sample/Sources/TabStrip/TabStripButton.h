@@ -10,5 +10,5 @@
 - (void)markUnselected;	
 
 @property(nonatomic,copy) NSString* text;
-@property(readonly) UIFont* font;
+@property(weak, readonly) UIFont* font;
 @end

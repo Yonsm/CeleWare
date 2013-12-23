@@ -45,7 +45,7 @@ NSString *HttpUtil::HttpString(NSString *url, NSString *post)
 {
 	NSData *send = post ? [NSData dataWithBytes:[post UTF8String] length:[post length]] : nil;
 	NSData *recv = HttpData(url, send);
-	return recv ? [[[NSString alloc] initWithData:recv encoding:NSUTF8StringEncoding] autorelease] : nil;
+	return recv ? [[NSString alloc] initWithData:recv encoding:NSUTF8StringEncoding] : nil;
 }
 
 //
@@ -78,7 +78,6 @@ NSString *HttpUtil::HttpFile(NSString *url, NSString *path)
 	if (data != nil)
 	{
 		[data writeToFile:path atomically:NO];
-		[data release];
 	}
 	
 	UIUtil::ShowNetworkIndicator(NO);

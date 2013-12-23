@@ -37,7 +37,7 @@ typedef enum {
 
 @interface UMEGORefreshTableHeaderView : UIView {
 
-    id _delegate;
+    id __weak _delegate;
     UMEGOPullRefreshState _state;
 
     UILabel *_lastUpdatedLabel;
@@ -48,7 +48,7 @@ typedef enum {
 
 }
 
-@property(nonatomic, assign) id <UMEGORefreshTableHeaderDelegate> delegate;
+@property(nonatomic, weak) id <UMEGORefreshTableHeaderDelegate> delegate;
 
 - (void)refreshLastUpdatedDate;
 

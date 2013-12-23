@@ -97,11 +97,6 @@
 }
 
 //
-- (void)dealloc
-{
-	[label release];
-	[super dealloc];
-}
 
 
 @end

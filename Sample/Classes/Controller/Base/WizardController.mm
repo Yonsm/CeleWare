@@ -2,7 +2,7 @@
 #import "WizardController.h"
 
 #define kLinkButtonFont [UIFont systemFontOfSize:15]
-_EXObject2(SelectBox, WizardCell *, cell);
+_EXObject(SelectBox, strong, WizardCell *, cell);
 
 @implementation WizardController
 
@@ -16,11 +16,6 @@ _EXObject2(SelectBox, WizardCell *, cell);
 //}
 
 //
-- (void)dealloc
-{
-	[_cells release];
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark View methods
@@ -32,13 +27,13 @@ _EXObject2(SelectBox, WizardCell *, cell);
 	
 	_contentWidth = 320;
 	
-	_scrollView = [[[UIScrollView alloc] initWithFrame:self.view.bounds] autorelease];
+	_scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
 	_scrollView.backgroundColor = UIUtil::Color(239, 239, 244);
 	_scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_scrollView.alwaysBounceVertical = YES;
 	[self.view addSubview:_scrollView];
 	
-	_contentView = [[[UIView alloc] initWithFrame:_scrollView.bounds] autorelease];
+	_contentView = [[UIView alloc] initWithFrame:_scrollView.bounds];
 	[_scrollView addSubview:_contentView];
 }
 
@@ -53,7 +48,6 @@ _EXObject2(SelectBox, WizardCell *, cell);
 - (void)viewDidUnload
 {
 	[super viewDidUnload];
-	[_cells release];
 	_cells = nil;
 	_scrollView = nil;
 }
@@ -155,7 +149,7 @@ _EXObject2(SelectBox, WizardCell *, cell);
 	}
 	
 	CGRect frame = CGRectMake(0, _contentHeight, _contentWidth, height);
-	WizardCell *cell = [[[WizardCell alloc] initWithFrame:frame] autorelease];
+	WizardCell *cell = [[WizardCell alloc] initWithFrame:frame];
 	
 	if (_cells == nil) 	_cells = [[NSMutableArray alloc] init];
 	
@@ -350,7 +344,7 @@ _EXObject2(SelectBox, WizardCell *, cell);
 	WizardCell *cell = [self cellWithName:name];
 	
 	UIFont *font = [UIFont systemFontOfSize:14];
-	UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 30)] autorelease];
+	UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
 	button.titleLabel.font = font;
 	[button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
 	[button setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x007aff)] forState:UIControlStateNormal];
@@ -375,7 +369,7 @@ _EXObject2(SelectBox, WizardCell *, cell);
 {
 	WizardCell *cell = [self cellWithName:name];
 	
-	UITextField *field = [[[UITextField alloc] initWithFrame:cell.maxAccessoryFrame] autorelease];
+	UITextField *field = [[UITextField alloc] initWithFrame:cell.maxAccessoryFrame];
 	field.autocapitalizationType = UITextAutocapitalizationTypeNone;
 	field.textAlignment = NSTextAlignmentLeft;
 	field.font = [UIFont systemFontOfSize:17];
@@ -406,7 +400,7 @@ _EXObject2(SelectBox, WizardCell *, cell);
 	WizardCell *cell = [self cellWithName:name];
 	
 	CGRect frame = cell.maxAccessoryFrame;
-	UIControl *box = [[[UIControl alloc] initWithFrame:frame] autorelease];
+	UIControl *box = [[UIControl alloc] initWithFrame:frame];
 	box.tag = -1;
 	frame.size.width /= items.count ;
 	for (NSUInteger i = 0; i < items.count; i++, frame.origin.x += frame.size.width)
@@ -483,7 +477,7 @@ _EXObject2(SelectBox, WizardCell *, cell);
 //
 - (SelectBox_cell *)selectBoxWithPicker:(UIView *)picker scrollToRect:(CGRect)rect
 {
-	SelectBox_cell *box = [[[SelectBox_cell alloc] initWithFrame:self.navigationController.view.bounds picker:picker] autorelease];
+	SelectBox_cell *box = [[SelectBox_cell alloc] initWithFrame:self.navigationController.view.bounds picker:picker];
 	[box addTarget:self action:@selector(selectBoxDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
 	[self.navigationController.view addSubview:box];
 	
@@ -548,13 +542,13 @@ _EXObject2(SelectBox, WizardCell *, cell);
 	id picker;
 	if ([sender.param isKindOfClass:[NSDate class]])
 	{
-		picker = [[[UIDatePicker alloc] init] autorelease];
+		picker = [[UIDatePicker alloc] init];
 		[picker setDate:sender.param];
 		[picker addTarget:self action:(SEL)sender.param2 forControlEvents:UIControlEventValueChanged];
 	}
 	else
 	{
-		picker = [[[SelectPicker alloc] initWithItems:sender.param] autorelease];
+		picker = [[SelectPicker alloc] initWithItems:sender.param];
 		[picker setTarget:self];
 		[picker setChanged:(SEL)sender.param2];
 	}
@@ -643,8 +637,8 @@ _EXObject2(SelectBox, WizardCell *, cell);
 {
 	UIViewController<WizardControllerDelegate> *controller = [NSClassFromString((NSString *)sender.param2) alloc];
 	
-	if (sender.param) [controller initWithParam:sender.param];
-	else [controller init];
+	if (sender.param) controller = [controller initWithParam:sender.param];
+	else controller = [controller init];
 	
 	controller.title = sender.name;
 	if (sender.accessoryType == WizardCellAccessoryDisclosure)
@@ -656,6 +650,5 @@ _EXObject2(SelectBox, WizardCell *, cell);
 		[self.navigationController presentModalNavigationController:controller animated:YES];
 	}
 	
-	[controller release];
 }
 @end

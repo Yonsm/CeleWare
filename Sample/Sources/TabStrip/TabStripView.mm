@@ -73,7 +73,7 @@
 	
 	if (titleLabel == nil)
 	{
-		titleLabel = [[[UILabel alloc] initWithFrame:titleFrame] autorelease];
+		titleLabel = [[UILabel alloc] initWithFrame:titleFrame];
 		titleLabel.text = title;
 		titleLabel.font = titleFont;
 		titleLabel.textColor = [UIColor blackColor];
@@ -154,7 +154,6 @@
 		
 		[scrollView addSubview:button];
 		
-		[button release];
 	}
 	
 	scrollView.contentSize = CGSizeMake(origin_x, self.frame.size.height);
@@ -283,10 +282,6 @@
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-	[scrollView release];
-	[leftCap release];
-	[rightCap release];
-	[super dealloc];
 }
 
 

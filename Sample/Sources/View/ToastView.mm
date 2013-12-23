@@ -21,7 +21,7 @@
 	CGFloat y = 0;
 	if (loading)
 	{
-		UIActivityIndicatorView *activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+		UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		activityView.center = CGPointMake(frame.size.width / 2, 38);
 		activityView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
 		[self addSubview:activityView];
@@ -77,7 +77,7 @@
 	ToastView *toastView = (ToastView *)[self viewWithTag:kToastViewTag];
 	if (toastView == nil)
 	{
-		toastView = [[[ToastView alloc] initWithTitle:title loading:loading] autorelease];
+		toastView = [[ToastView alloc] initWithTitle:title loading:loading];
 		toastView.autoresizingMask =  UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 		toastView.tag = kToastViewTag;
 		toastView.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 40);

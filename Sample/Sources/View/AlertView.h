@@ -2,27 +2,20 @@
 //
 @interface AlertView : UIImageView
 {
-	id<UIAlertViewDelegate> _delegate;
-	SEL _clickAction;
-	id _clickParam;
-
-	UILabel *_titleLabel;
-	UILabel *_messageLabel;
 	UIButton *_cancelButton;
 	UIButton *_otherButton;
 	
-	BOOL _fitKeyboard;
-	
 	UITextField *_textField;
+	BOOL _fitKeyboard;
 }
 
 @property(nonatomic,readonly) UILabel *titleLabel;
 @property(nonatomic,readonly) UILabel *messageLabel;
 @property(nonatomic,readonly) UIActivityIndicatorView *activityIndicator;
 @property(nonatomic,readonly) UITextField *textField;
-@property(nonatomic,assign) id/*<UIAlertViewDelegate>*/ delegate;
+@property(nonatomic,weak) id/*<UIAlertViewDelegate>*/ delegate;
 @property(nonatomic,assign) SEL clickAction;
-@property(nonatomic,assign) id clickParam;
+@property(nonatomic,weak) id clickParam;
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id/*<UIUIAlertViewDelegate>*/)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle accessoryView:(UIView *)accesoryView;
 - (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id/*<UIUIAlertViewDelegate>*/)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle;

@@ -18,7 +18,6 @@
 	_stampLabel.backgroundColor = [UIColor clearColor];
 	_stampLabel.textAlignment = NSTextAlignmentCenter;
 	[self addSubview:_stampLabel];
-	[_stampLabel release];
 	
 	//
 	_stateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -29,7 +28,6 @@
 	_stateLabel.backgroundColor = [UIColor clearColor];
 	_stateLabel.textAlignment = NSTextAlignmentCenter;
 	[self addSubview:_stateLabel];
-	[_stateLabel release];
 	
 	//
 	_arrowImage = [CALayer layer];
@@ -41,7 +39,6 @@
 	//
 	_activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	[self addSubview:_activityView];
-	[_activityView release];
 	
 	self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
 	self.autoresizingMask = UIViewAutoresizingFlexibleWidth;// | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
@@ -223,7 +220,7 @@
 	PullView *pullView = (PullView *)[self viewWithTag:kPullViewTag];
 	if (pullView == nil)
 	{
-		pullView = [[[PullView alloc] initWithFrame:CGRectMake(0, -self.frame.size.height - self.contentInset.top, self.frame.size.width, self.frame.size.height)] autorelease];
+		pullView = [[PullView alloc] initWithFrame:CGRectMake(0, -self.frame.size.height - self.contentInset.top, self.frame.size.width, self.frame.size.height)];
 		pullView.tag = kPullViewTag;
 		[self addSubview:pullView];
 		

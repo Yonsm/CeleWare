@@ -18,7 +18,7 @@
 					 (pic ? [pic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] : @""),
 					 (uid ? uid : @"")
 					 ];
-	return [[[WebController alloc] initWithUrl:url] autorelease];	// Sure, we fake WebController as WeiboComposer:)
+	return [[WebController alloc] initWithUrl:url];	// Sure, we fake WebController as WeiboComposer:)
 }
 
 //
@@ -26,17 +26,12 @@
 {
 	NSString *uid = NSUtil::BundleInfo(@"WeiboAppUid");
 	NSString *url = [NSString stringWithFormat:@"http://m.weibo.cn/u/%@?", (uid ? uid : @"")];
-	WeiboComposer *composer = [[[WeiboComposer alloc] initWithUrl:url] autorelease];
+	WeiboComposer *composer = [[WeiboComposer alloc] initWithUrl:url];
 	composer.body = body;
 	return composer;
 }
 
 //
-- (void)dealloc
-{
-	[_body release];
-	[super dealloc];
-}
 
 //
 //- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
@@ -88,19 +83,13 @@
 //
 + (id)composerWithBody:(NSString *)body link:(NSString *)link
 {
-	FacebookComposer *composer = [[[FacebookComposer alloc] initWithUrl:@"https://m.facebook.com"] autorelease];
+	FacebookComposer *composer = [[FacebookComposer alloc] initWithUrl:@"https://m.facebook.com"];
 	composer.link = link;
 	composer.body = body;
 	return composer;
 }
 
 //
-- (void)dealloc
-{
-	[_link release];
-	[_body release];
-	[super dealloc];
-}
 
 //
 - (void)loadView

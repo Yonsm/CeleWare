@@ -29,7 +29,7 @@
 @interface ODRefreshControl ()
 
 @property (nonatomic, readwrite) BOOL refreshing;
-@property (nonatomic, assign) UIScrollView *scrollView;
+@property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, assign) UIEdgeInsets originalContentInset;
 
 @end
@@ -429,7 +429,7 @@ static inline CGFloat lerp(CGFloat a, CGFloat b, CGFloat p)
         // halfway through the end animation.
         // This allows for the refresh control to clean up the observer,
         // in the case the scrollView is released while the animation is running
-        __block UIScrollView *blockScrollView = self.scrollView;
+        __weak UIScrollView *blockScrollView = self.scrollView;
         [UIView animateWithDuration:0.4 animations:^{
             _ignoreInset = YES;
             [blockScrollView setContentInset:self.originalContentInset];

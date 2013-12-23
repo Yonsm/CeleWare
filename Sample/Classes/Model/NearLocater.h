@@ -9,7 +9,7 @@
 }
 
 + (CLLocation *)location;
-@property(nonatomic,retain) CLLocation *location;
+@property(nonatomic,strong) CLLocation *location;
 
 - (void)asyncaUpdateLocation;
 - (CLLocation *)syncUpdateLocation;

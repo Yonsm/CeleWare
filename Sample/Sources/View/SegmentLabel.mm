@@ -8,7 +8,7 @@
 //
 + (id)segmentItemWithSpace:(CGFloat)width
 {
-	SegmentItem *label = [[[SegmentItem alloc] init] autorelease];
+	SegmentItem *label = [[SegmentItem alloc] init];
 	label.width = width;
 	return label;
 }
@@ -16,7 +16,7 @@
 //
 + (id)segmentItemWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color
 {
-	SegmentItem *label = [[[SegmentItem alloc] init] autorelease];
+	SegmentItem *label = [[SegmentItem alloc] init];
 	label.text = text;
 	label.font = font;
 	label.color = color;
@@ -40,16 +40,6 @@
 }
 
 //
-- (void)dealloc
-{
-	[_text release];
-	[_font release];
-	[_color release];
-	[_shadowColor release];
-	[_highlightedColor release];
-	
-	[super dealloc];
-}
 
 @end
 
@@ -67,12 +57,6 @@
 }
 
 //
-- (void)dealloc
-{
-	[_items release];
-	
-	[super dealloc];
-}
 
 //
 - (void)setHighlighted:(BOOL)highlighted
@@ -86,8 +70,7 @@
 {
 	if (_items != items)
 	{
-		[_items release];
-		_items = [items retain];
+		_items = items;
 	}
 	
 	_lineWidth = 0;

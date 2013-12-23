@@ -14,16 +14,11 @@
 }
 
 // Destructor
-- (void)dealloc
-{
-	[_param release];
-   [super dealloc];
-}
 
 //
 - (UIView *)lineWithFrame:(CGRect)frame
 {
-	UIView *line = [[[UIView alloc] initWithFrame:frame] autorelease];
+	UIView *line = [[UIView alloc] initWithFrame:frame];
 	line.backgroundColor = UIUtil::Color(0xcccccc);
 	[self addSubview:line];
 	return line;
@@ -130,7 +125,7 @@
 	{
 		[self performSelector:@selector(setBackgroundColor:) withObject:UIUtil::Color(0xffffff) afterDelay:0.15];
 		//self.backgroundColor = UIUtil::Color(0xffffff);
-		[_target performSelector:_action withObject:self];
+		_SuppressPerformSelectorLeakWarning([_target performSelector:_action withObject:self]);
 	}
 	[super touchesEnded:touches withEvent:event];
 }
@@ -181,7 +176,7 @@
 	{
 		if ((_accessoryType == WizardCellAccessoryCheckmark) || (_accessoryType == WizardCellAccessoryNone))
 		{
-			self.accessoryView = [[[UIImageView alloc] initWithImage:UIUtil::Image(@"CellAccessoryDisclosure")] autorelease];
+			self.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"CellAccessoryDisclosure")];
 		}
 		
 		if (accessoryType == WizardCellAccessoryDropup)
@@ -195,7 +190,7 @@
 	}
 	else if (accessoryType == WizardCellAccessoryCheckmark)
 	{
-		self.accessoryView = [[[UIImageView alloc] initWithImage:UIUtil::Image(@"CellAccessoryCheckmark")] autorelease];
+		self.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"CellAccessoryCheckmark")];
 	}
 	else
 	{

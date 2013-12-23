@@ -28,7 +28,6 @@
 		_contentView = [[UIView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
 		[_contentView setBackgroundColor:[UIColor clearColor]];
 		[self addSubview:_contentView];
-		[_contentView release];
 		
 		if (self.foldDirection==FoldDirectionHorizontal)
 		{
@@ -37,7 +36,6 @@
 			[_leftView setBackgroundColor:[UIColor colorWithWhite:0.99 alpha:1]];
 			[_leftView.layer setAnchorPoint:CGPointMake(0.0, 0.5)];
 			[self addSubview:_leftView];
-			[_leftView release];
 			[_leftView.shadowView setColorArrays:[NSArray arrayWithObjects:[UIColor colorWithWhite:0 alpha:0.05],[UIColor colorWithWhite:0 alpha:0.6], nil]];
 			
 			// set anchor point of the rightView to the right edge
@@ -45,7 +43,6 @@
 			[_rightView setBackgroundColor:[UIColor colorWithWhite:0.99 alpha:1]];
 			[_rightView.layer setAnchorPoint:CGPointMake(1.0, 0.5)];
 			[self addSubview:_rightView];
-			[_rightView release];
 			[_rightView.shadowView setColorArrays:[NSArray arrayWithObjects:[UIColor colorWithWhite:0 alpha:0.9],[UIColor colorWithWhite:0 alpha:0.55], nil]];
 			
 			// set perspective of the transformation
@@ -64,7 +61,6 @@
 			//[_bottomView setBackgroundColor:[UIColor colorWithWhite:0.99 alpha:1]];
 			[_bottomView.layer setAnchorPoint:CGPointMake(0.5, 1.0)];
 			[self addSubview:_bottomView];
-			[_bottomView release];
 			[_bottomView.shadowView setColorArrays:[NSArray arrayWithObjects:[UIColor colorWithWhite:0 alpha:0.05],[UIColor colorWithWhite:0 alpha:0.6], nil]];
 			
 			// set anchor point of the rightView to the right edge
@@ -72,7 +68,6 @@
 			//[_topView setBackgroundColor:[UIColor colorWithWhite:0.99 alpha:1]];
 			[_topView.layer setAnchorPoint:CGPointMake(0.5, 0.0)];
 			[self addSubview:_topView];
-			[_topView release];
 			[_topView.shadowView setColorArrays:[NSArray arrayWithObjects:[UIColor colorWithWhite:0 alpha:0.9],[UIColor colorWithWhite:0 alpha:0.55], nil]];
 			
 			// set perspective of the transformation

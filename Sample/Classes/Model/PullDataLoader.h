@@ -13,7 +13,7 @@
 @property(nonatomic,assign) BOOL needAuth;
 @property(nonatomic,readonly) BOOL needLogin;
 //@property(nonatomic,assign) BOOL disableLoadOnResumeOnce;
-@property(nonatomic,retain) UIScrollView *scrollView;
+@property(nonatomic,strong) UIScrollView *scrollView;
 @property(nonatomic,readonly) ODRefreshControl *refreshControl;
 
 // load 表示触发刷新；loadPage 表示刷新完成后装载页面；reload 表示重新装载
