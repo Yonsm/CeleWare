@@ -306,7 +306,7 @@ public:
 	NS_INLINE NSString *BASE64DecodeString(NSString *string)
 	{
 		NSData *data = BASE64Decode(string);
-		return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+		return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	}
 	
 	// Encrypt string use private method
@@ -397,7 +397,7 @@ public:
 																	 NULL,
 																	 CFSTR("!*'();:@&=+$,/?%#[]"),
 																	 kCFStringEncodingUTF8);
-		return [(NSString *)result autorelease];
+		return [(__bridge NSString *)result autorelease];
 	}
 	
 	//
@@ -407,7 +407,7 @@ public:
 																					 (CFStringRef)string,
 																					 CFSTR(""),
 																					 kCFStringEncodingUTF8);
-		return [(NSString *)result autorelease];
+		return [(__bridge NSString *)result autorelease];
 	}
 	
 	//
@@ -422,7 +422,7 @@ public:
 		CFUUIDRef uuid = CFUUIDCreate(NULL);
 		CFStringRef string = CFUUIDCreateString(NULL, uuid);
 		CFRelease(uuid);
-		return [(NSString *)string autorelease];
+		return [(__bridge NSString *)string autorelease];
 	}
 };
 

@@ -96,7 +96,7 @@ public:
 	//
 	NS_INLINE UIApplication *Application()
 	{
-		return [UIApplication sharedApplication];
+		return UIApplication.sharedApplication;
 	}
 	
 	//
@@ -108,7 +108,7 @@ public:
 	//
 	NS_INLINE UIViewController *RootViewController()
 	{
-		return [[Delegate() window] rootViewController];
+		return UIApplication.sharedApplication.delegate.window.rootViewController;
 	}
 	
 	//
