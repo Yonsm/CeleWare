@@ -700,7 +700,7 @@
 	if (animated)
 	{
 		// MAGIC: Fix Alipay Cell's Bug
-		[self performSelector:@selector(presentModalViewController:) withObject:navigator afterDelay:0.01];
+		[self performSelector:@selector(presentViewController:) withObject:navigator afterDelay:0.01];
 		return navigator;
 	}
 	
@@ -730,7 +730,7 @@
 }
 
 //
-- (void)presentModalViewController:(UIViewController *)controller
+- (void)presentViewController:(UIViewController *)controller
 {
 	[self presentViewController:controller animated:YES completion:nil];
 }

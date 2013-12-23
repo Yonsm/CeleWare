@@ -39,7 +39,6 @@
 		246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324A186838ED00903EF4 /* Icon7@2x.png */; };
 		246A3300186838ED00903EF4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324B186838ED00903EF4 /* Icon@2x.png */; };
 		246A3301186838ED00903EF4 /* IconPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324C186838ED00903EF4 /* IconPad.png */; };
-		246A3302186838ED00903EF4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246A324D186838ED00903EF4 /* Info.plist */; };
 		246A3307186838ED00903EF4 /* MessageComposer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3262186838ED00903EF4 /* MessageComposer.mm */; };
 		246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3264186838ED00903EF4 /* MoviePlayer.mm */; };
 		246A3309186838ED00903EF4 /* NullController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3266186838ED00903EF4 /* NullController.mm */; };
@@ -89,7 +88,6 @@
 		246A3338186838ED00903EF4 /* TouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32CD186838ED00903EF4 /* TouchView.mm */; };
 		246A3339186838ED00903EF4 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D0186838ED00903EF4 /* ioapi.c */; };
 		246A333A186838ED00903EF4 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D2186838ED00903EF4 /* unzip.c */; };
-		246A333B186838ED00903EF4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D4186838ED00903EF4 /* zip.c */; };
 		246A333C186838ED00903EF4 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D7186838ED00903EF4 /* ZipArchive.mm */; };
 		246A333F1868394000903EF4 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 246A333E1868394000903EF4 /* Assets */; };
 		246A334318683DA800903EF4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334218683DA800903EF4 /* libz.dylib */; };
@@ -97,6 +95,7 @@
 		246A334718683DBF00903EF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334618683DBF00903EF4 /* SystemConfiguration.framework */; };
 		246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334818683DE000903EF4 /* MessageUI.framework */; };
 		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
+		246A334C1868537C00903EF4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D4186838ED00903EF4 /* zip.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -685,7 +684,6 @@
 				246A32F7186838ED00903EF4 /* Default-568h@2x.png in Resources */,
 				246A32FE186838ED00903EF4 /* Icon.png in Resources */,
 				246A32FC186838ED00903EF4 /* Localizable.strings in Resources */,
-				246A3302186838ED00903EF4 /* Info.plist in Resources */,
 				246A3320186838ED00903EF4 /* UMFeedbackViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +704,7 @@
 				246A32E3186838ED00903EF4 /* RootController.mm in Sources */,
 				246A330E186838ED00903EF4 /* FoldView.mm in Sources */,
 				246A330A186838ED00903EF4 /* ShareComposer.mm in Sources */,
+				246A334C1868537C00903EF4 /* zip.c in Sources */,
 				246A333C186838ED00903EF4 /* ZipArchive.mm in Sources */,
 				246A330F186838ED00903EF4 /* FoldViews.mm in Sources */,
 				246A32DF186838ED00903EF4 /* PullWizardController.mm in Sources */,
@@ -751,7 +750,6 @@
 				246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */,
 				246A3338186838ED00903EF4 /* TouchView.mm in Sources */,
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
-				246A333B186838ED00903EF4 /* zip.c in Sources */,
 				246A331E186838ED00903EF4 /* UMFeedbackTableViewCellRight.m in Sources */,
 				246A3319186838ED00903EF4 /* UMContactViewController.m in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
@@ -920,6 +918,7 @@
 				246A31BE18682C2D00903EF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

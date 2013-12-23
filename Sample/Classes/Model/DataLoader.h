@@ -93,7 +93,6 @@ DataLoaderError;
 - (void)clearData;		// 清除数据
 
 // For subclass only
-- (void)loadBegin;
 - (void)loadStart;
 - (NSDictionary *)loadDoing;
 - (NSData *)loadData;

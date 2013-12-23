@@ -226,7 +226,7 @@
 	
 	CGFloat y = CGRectGetMaxY(label.frame) + 4;
 	UIButton *loginButton = [UIButton linkButtonWithTitle:@"登录" frame:CGRectMake(view.frame.size.width / 2 - 8 - 40, y, 40, 0)];
-	[loginButton addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	[loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
 	loginButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	[view addSubview:loginButton];
 	

@@ -22,12 +22,12 @@
         self.textLabel.font = [UIFont systemFontOfSize:14.0f];
         self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.textLabel.numberOfLines = 0;
-        self.textLabel.textAlignment = UITextAlignmentLeft;
+        self.textLabel.textAlignment = NSTextAlignmentLeft;
         self.textLabel.textColor = [UIColor blackColor];
 
         _timestampLabel = [[[UILabel alloc] init] autorelease];
         _timestampLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        _timestampLabel.textAlignment = UITextAlignmentCenter;
+        _timestampLabel.textAlignment = NSTextAlignmentCenter;
         _timestampLabel.backgroundColor = [UIColor clearColor];
         _timestampLabel.font = [UIFont systemFontOfSize:12.0f];
         _timestampLabel.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1.0];
@@ -54,7 +54,7 @@
 
     CGSize labelSize = [self.textLabel.text sizeWithFont:[UIFont systemFontOfSize:14.0f]
                                        constrainedToSize:CGSizeMake(226.0f, MAXFLOAT)
-                                           lineBreakMode:UILineBreakModeWordWrap];
+                                           lineBreakMode:NSLineBreakByWordWrapping];
 
     textLabelFrame.size.height = labelSize.height;
     textLabelFrame.origin.y = 20.0f + TOP_MARGIN;

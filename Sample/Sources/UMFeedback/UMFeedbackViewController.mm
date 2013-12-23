@@ -218,7 +218,7 @@
 
 - (void)backToPrevious {
 
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)sendFeedback:(id)sender {

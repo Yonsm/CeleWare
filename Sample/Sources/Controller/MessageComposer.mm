@@ -59,7 +59,7 @@
 	}
 	else
 	{
-		[self dismissModalViewControllerAnimated:!_autoSend];
+		[self dismissViewControllerAnimated:!_autoSend completion:nil];
 		
 		if ((result == MessageComposeResultSent) && _autoSend)
 		{
@@ -101,7 +101,7 @@
 	}
 	else
 	{
-		[self dismissModalViewControllerAnimated:YES];
+		[self dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 
@@ -117,7 +117,7 @@
 	if (composer)
 	{
 		composer.autoSend = recipients.count && body.length;
-		[self presentModalViewController:composer animated:!composer.autoSend];
+		[self presentViewController:composer animated:!composer.autoSend completion:nil];
 	}
 	return composer;
 }
@@ -126,7 +126,7 @@
 - (MailComposer *)composeMail:(NSString *)body subject:(NSString *)subject to:(NSArray *)recipients
 {
 	MailComposer *composer = [MailComposer composerWithBody:body subject:subject to:recipients];
-	if (composer) [self presentModalViewController:composer animated:YES];
+	if (composer) [self presentViewController:composer animated:YES completion:nil];
 	return composer;
 }
 
