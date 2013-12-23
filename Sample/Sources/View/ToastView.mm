@@ -11,7 +11,7 @@
 	
 	CGFloat width = [title sizeWithFont:font].width + 20;
 	if (width < 100) width = 100;
-	CGRect frame = {0, 0, width, loading ? 100 : 32};
+	CGRect frame = {0, 0, width, loading ? 100.0f : 32.0f};
 	self = [super initWithFrame:frame];
 	
 	self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];

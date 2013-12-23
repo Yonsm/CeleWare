@@ -25,7 +25,7 @@
 	//imageView.contentMode = UIViewContentModeScaleAspectFit;
 	
 	label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, -1.0f, frame.size.width, frame.size.height)];
-	label.textAlignment = UITextAlignmentCenter;
+	label.textAlignment = NSTextAlignmentCenter;
 	label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	label.backgroundColor = [UIColor clearColor];
 	label.font = [UIFont boldSystemFontOfSize:14.0f];
