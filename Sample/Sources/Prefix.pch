@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 // Resource
-#define kResourceBundle @"Images"
+#define kResourceBundle @"Assets"
 #define kAppStatKey @"5182124956240b2e58017cad"
 
 //#define BaseNavigationController NavigationController
