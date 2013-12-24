@@ -8,7 +8,7 @@
 	BOOL _noAutoHide;
 	BOOL _noAutoNext;
 	BOOL _noAutoScroll;
-
+	
 	BOOL _keyboardShown;
 	NSMutableArray *_textFields;
 }

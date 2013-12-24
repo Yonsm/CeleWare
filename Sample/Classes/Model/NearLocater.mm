@@ -6,28 +6,45 @@
 //
 + (CLLocation *)location
 {
-	return [[[NearLocater alloc] init] syncUpdateLocation];
+	return [[[NearLocater alloc] initWithDesiredAccuracy:kCLLocationAccuracyBest] syncUpdateLocation];
 }
 
-// Destructor
+//
+- (id)initWithDesiredAccuracy:(CLLocationAccuracy)desiredAccuracy
+{
+	self = [super init];
+	[self performSelectorOnMainThread:@selector(initManager) withObject:nil waitUntilDone:YES];
+	_manager.desiredAccuracy = desiredAccuracy;
+	return self;
+}
 
 //
+- (id)init
+{
+	self = [super init];
+	[self performSelectorOnMainThread:@selector(initManager) withObject:nil waitUntilDone:YES];
+	_manager.desiredAccuracy = kCLLocationAccuracyBest;
+	return self;
+}
+
+// CLLocationManager 必须在主线程中调用
+- (void)initManager
+{
+	_manager = [[CLLocationManager alloc] init];
+	_manager.distanceFilter = 100.0f;
+	_manager.delegate = self;
+}
+
+// 暂不支持二次调用
 - (CLLocation *)syncUpdateLocation
 {
 	_condition = [[NSCondition alloc] init];
-	[self performSelectorOnMainThread:@selector(asyncaUpdateLocation) withObject:nil waitUntilDone:NO];
+	[_manager startUpdatingLocation];
+	[_condition lock];
 	[_condition waitUntilDate:[NSDate dateWithTimeIntervalSinceNow:2 * 60]];
+	[_condition unlock];
 	_condition = nil;
 	return _location;
-}
-
-//
-- (void)asyncaUpdateLocation
-{
-	CLLocationManager *manager = [[CLLocationManager alloc] init];
-	manager.delegate = self;
-	[self configManager:manager];
-	[manager startUpdatingLocation];
 }
 
 //
@@ -45,16 +62,11 @@
 }
 
 //
-- (void)configManager:(CLLocationManager *)manager
-{
-	manager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
-	manager.distanceFilter = 1000.0f;
-}
-
-//
 - (void)located
 {
+	[_condition lock];
 	[_condition signal];
+	[_condition unlock];
 }
 
 @end

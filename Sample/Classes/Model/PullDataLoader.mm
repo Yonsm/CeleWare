@@ -228,7 +228,7 @@
 
 @end
 
-
+#ifdef _TODOCheckTimerLeakForARC
 @implementation AutoPullDataLoader
 
 //
@@ -293,3 +293,4 @@
 }
 
 @end
+#endif

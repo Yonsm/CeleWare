@@ -22,12 +22,6 @@
 	return [self initWithService:service params:nil];
 }
 
-// Destructor
-//- (void)dealloc
-//{
-//	[super dealloc];
-//}
-
 #pragma mark View methods
 
 // Creates the view that the controller manages.

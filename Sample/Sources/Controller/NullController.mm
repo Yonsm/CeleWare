@@ -13,12 +13,6 @@
 //	return self;
 //}
 
-// Destructor
-//- (void)dealloc
-//{
-//	[super dealloc];
-//}
-
 #pragma mark View methods
 
 // Creates the view that the controller manages.

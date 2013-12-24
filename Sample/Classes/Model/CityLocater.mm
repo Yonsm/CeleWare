@@ -6,10 +6,8 @@
 //
 + (NSDictionary *)city
 {
-	return [[[CityLocater alloc] init] syncUpdateCity];
+	return [[[CityLocater alloc] initWithDesiredAccuracy:kCLLocationAccuracyThreeKilometers] syncUpdateCity];
 }
-
-// Destructor
 
 //
 - (NSDictionary *)syncUpdateCity
@@ -24,13 +22,6 @@
 		};
 	}
 	return _city;
-}
-
-//
-- (void)configManager:(CLLocationManager *)manager
-{
-	manager.desiredAccuracy = kCLLocationAccuracyBest;
-	manager.distanceFilter = 100.0f;
 }
 
 //

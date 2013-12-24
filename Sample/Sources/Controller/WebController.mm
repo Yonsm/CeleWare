@@ -197,13 +197,6 @@
 
 #pragma mark Generic methods
 
-// Destructor
-//- (void)dealloc
-//{
-//	[super dealloc];
-//}
-
-
 #pragma mark View methods
 
 // Do additional setup after loading the view.

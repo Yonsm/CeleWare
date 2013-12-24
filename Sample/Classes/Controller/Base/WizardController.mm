@@ -1,7 +1,10 @@
 
 #import "WizardController.h"
 
+#ifndef kLinkButtonFont
 #define kLinkButtonFont [UIFont systemFontOfSize:15]
+#endif
+
 _EXObject(SelectBox, strong, WizardCell *, cell);
 
 @implementation WizardController
@@ -194,7 +197,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	_contentHeight += height - frame2.size.height;
 	frame2.size.height = height;
 	cell.frame = frame2;
-
+	
 	return cell;
 }
 

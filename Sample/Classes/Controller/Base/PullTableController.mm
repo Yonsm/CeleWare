@@ -76,7 +76,7 @@
 	if (sender.error == DataLoaderNoError)
 	{
 		[self reloadPage];
-
+		
 		// TODO: 没有数据的情况和界面整理，提到更上的层级？
 		// TODO: 只有成功时才有这个界面吗？
 		_loader.empty = self.isEmpty;
@@ -95,7 +95,7 @@
 }
 
 //
- - (void)reloadPage
+- (void)reloadPage
 {
 	[self loadPage];
 	[self.tableView reloadData];

@@ -81,7 +81,6 @@ static NSString *_access_token = nil;
 	//self.error = DataLoaderNoData;
 }
 
-// Destructor
 
 //
 - (NSString *)stamp
@@ -251,7 +250,7 @@ static NSString *_access_token = nil;
 	
 	if ([_params isKindOfClass:[NSDictionary class]])
 	{
-		for (NSString *key in _params.allKeys)
+		for (NSString *key in [_params allKeys])
 		{
 			id value = _params[key];
 			[post appendFormat:@"&%@=%@", key, [value isKindOfClass:[NSString class]] ? NSUtil::URLEscape(value) : value];

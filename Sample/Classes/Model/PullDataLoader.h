@@ -28,7 +28,7 @@
 
 @end
 
-
+#ifdef _TODOCheckTimerLeakForARC
 @interface AutoPullDataLoader: PullDataLoader
 {
 	BOOL _autoReload;
@@ -39,3 +39,4 @@
 - (void)loadAuto;	// 自动刷新到成功或超时
 //- (void)loadAbort;	// 取消自动刷新
 @end
+#endif

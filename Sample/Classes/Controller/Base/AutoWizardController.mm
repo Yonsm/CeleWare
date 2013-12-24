@@ -229,7 +229,7 @@
 - (void)reloadPage
 {
 	[super reloadPage];
-
+	
 	if (!_noAutoNext || !_noAutoScroll)
 	{
 		[self lookupTextFieldsInView:_contentView];

@@ -6,7 +6,7 @@
 
 #pragma mark Generic methods
 
-// Destructor
+//
 - (id)initWithRootViewController:(UIViewController *)rootViewController
 {
 	self = [super initWithRootViewController:rootViewController];

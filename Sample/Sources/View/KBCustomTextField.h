@@ -38,8 +38,7 @@
 
 //
 @interface KBCustomTextField: UITextField
-{
-}
+
 
 @property(nonatomic,weak) IBOutlet id/*<KBCustomTextFieldDelegate>*/ kbDelegate;
 
@@ -51,7 +50,6 @@
 //
 @interface ActionNumberField: KBCustomTextField <KBCustomTextFieldDelegate>
 {
-	UIButton *_actionButton;
 }
 @property(nonatomic,readonly) UIButton *actionButton;
 - (id)initWithFrame:(CGRect)frame actionButtonTitle:(NSString *)actionButtonTitle;

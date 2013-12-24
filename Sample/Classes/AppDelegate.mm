@@ -7,8 +7,6 @@
 
 #pragma mark Generic methods
 
-// Destructor
-
 #pragma mark Monitoring Application State Changes
 
 // The application has launched and may have additional launch options to handle.

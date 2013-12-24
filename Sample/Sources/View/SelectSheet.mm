@@ -34,12 +34,6 @@
 	return self;
 }
 
-// Destructor
-//- (void)dealloc
-//{
-//   [super dealloc];
-//}
-
 #pragma mark View methods
 
 // Draws the image within the passed-in rectangle.

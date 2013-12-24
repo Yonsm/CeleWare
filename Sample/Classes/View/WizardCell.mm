@@ -13,8 +13,6 @@
 	return self;
 }
 
-// Destructor
-
 //
 - (UIView *)lineWithFrame:(CGRect)frame
 {

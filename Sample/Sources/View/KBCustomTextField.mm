@@ -175,14 +175,12 @@
 		self.kbDelegate = self;
 		
 		_actionButton = [KBCustomButton customButtonWithFrame:CGRectZero
-														 title:actionButtonTitle
-														target:self
-														action:@selector(actionButtonClicked:)];
+														title:actionButtonTitle
+													   target:self
+													   action:@selector(actionButtonClicked:)];
 	}
 	return self;
 }
-
-//
 
 // Handle keyboard show
 - (void)keyboardShow:(KBCustomTextField *)sender

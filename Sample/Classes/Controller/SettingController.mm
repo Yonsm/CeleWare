@@ -13,12 +13,6 @@
 	return self;
 }
 
-// Destructor
-//- (void)dealloc
-//{
-//	[super dealloc];
-//}
-
 #pragma mark View methods
 
 // Creates the view that the controller manages.
@@ -40,7 +34,7 @@
 	_logoButton.center = CGPointMake(160, (iPhone5 ? 20 : 6) + image.size.height / 2);
 	
 	UILabel *label = [UILabel labelWithFrame:CGRectMake(10, CGRectGetMaxY(_logoButton.frame) + 4, 300, iPhone5 ? 40 : 20)
-										text:[NSString stringWithFormat:@"版本 %@ %@© Gozap", NSUtil::BundleVersion(), (iPhone5 ? @"\n" : @" ")]
+										text:[NSString stringWithFormat:@"版本 %@ %@© CeleWare", NSUtil::BundleVersion(), (iPhone5 ? @"\n" : @" ")]
 									   color:[UIColor darkGrayColor]
 										font:[UIFont systemFontOfSize:15]
 								   alignment:NSTextAlignmentCenter];
@@ -156,12 +150,12 @@
 				}
 				case 3:
 				{
-					cell.textLabel.text = NSLocalizedString(@"Rated QingChiFan", @"给个好评");
+					cell.textLabel.text = NSLocalizedString(@"Rated XXX", @"给个好评");
 					break;
 				}
 				case 4:
 				{
-					cell.textLabel.text = NSLocalizedString(@"About QingChiFan", @"关于请吃饭");
+					cell.textLabel.text = NSLocalizedString(@"About XXX", @"关于XXX");
 					break;
 				}
 			}

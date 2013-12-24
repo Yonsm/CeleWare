@@ -44,23 +44,6 @@ DataLoaderError;
 
 // Data loader
 @interface DataLoader : NSObject
-{
-@protected
-	NSString *_service;
-	NSDictionary *_params;
-	id<DataLoaderDelegate> __weak _delegate;
-	void (^_completion)(DataLoader *loader);
-	BOOL _completionOnSuccess;
-	
-	BOOL _checkChange;
-	BOOL _checkError;
-	NSJSONReadingOptions _jsonOptions;
-	
-	BOOL _loading;
-	NSDate *_date;
-	NSDictionary *_dict;
-	DataLoaderError _error;
-}
 
 @property(nonatomic,strong) NSString *service;
 @property(nonatomic,strong) id params;			/// NSDictionary 或 NSArray

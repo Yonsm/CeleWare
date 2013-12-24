@@ -27,6 +27,7 @@
 // Destructor
 - (void)dealloc
 {
+	// TODO: Refine
 	if (_pages) free(_pages);
 }
 

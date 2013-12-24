@@ -32,9 +32,9 @@
 	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_tableView.tableFooterView = [[UIView alloc] init];
 	[self.view addSubview:_tableView];
-
+	
 	_tableView.backgroundView.backgroundColor = UIColor.whiteColor;
-
+	
 	if (_style == UITableViewStylePlain)
 	{
 		_tableView.contentInset = UIEdgeInsetsMake(0, 0, kScrollViewBottomPad, 0);
@@ -80,7 +80,7 @@
 												font:font
 										   alignment:NSTextAlignmentLeft];
 			[view addSubview:label];
-
+			
 			UIView *line = [[[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 0.5)] autorelease];
 			line.backgroundColor = UIUtil::Color(0xcccccc);
 			[view addSubview:line];

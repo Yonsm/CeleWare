@@ -41,8 +41,8 @@ enum WizardCellAccessoryType
 @property(nonatomic,assign) void *param2;	// For external use
 @property(nonatomic,strong) NSString *name;
 @property(nonatomic,strong) NSString *detail;
-@property(weak, nonatomic,readonly) UILabel *nameLabel;
-@property(weak, nonatomic,readonly) UILabel *detailLabel;
+@property(nonatomic,readonly) UILabel *nameLabel;
+@property(nonatomic,readonly) UILabel *detailLabel;
 @property(nonatomic,strong) UIView *accessoryView;
 @property(nonatomic,readonly) CGRect maxAccessoryFrame;
 @property(nonatomic,assign) WizardCellAccessoryType accessoryType;

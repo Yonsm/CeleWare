@@ -29,10 +29,9 @@
 	unzFile		_unzFile;
 	
 	NSString*   _password;
-	id			_delegate;
 }
 
-@property (nonatomic, strong) id<ZipArchiveDelegate> delegate;
+@property (nonatomic, weak) id<ZipArchiveDelegate> delegate;
 
 -(BOOL) CreateZipFile2:(NSString*) zipFile;
 -(BOOL) CreateZipFile2:(NSString*) zipFile Password:(NSString*) password;
