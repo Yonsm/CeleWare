@@ -78,13 +78,6 @@
 }
 
 //
-- (void)viewDidUnload
-{
-	[super viewDidUnload];
-	_textFields = nil;
-}
-
-//
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];

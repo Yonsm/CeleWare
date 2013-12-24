@@ -41,13 +41,6 @@
 	}
 }
 
-//
-- (void)viewDidUnload
-{
-	[super viewDidUnload];
-	_tableView = nil;
-}
-
 #pragma mark -
 #pragma mark Table view methods
 

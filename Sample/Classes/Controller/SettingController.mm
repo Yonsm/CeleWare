@@ -49,12 +49,6 @@
 	
 }
 
-// Called after the view controller's view is released and set to nil.
-- (void)viewDidUnload
-{
-	[super viewDidUnload];
-	_logoButton = nil;
-}
 
 // Called when the view is about to made visible.
 //- (void)viewWillAppear:(BOOL)animated

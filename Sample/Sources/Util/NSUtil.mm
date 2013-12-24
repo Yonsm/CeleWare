@@ -368,7 +368,7 @@ NSData *NSUtil::BASE64Decode(NSString *string)
 		unsigned long ixtext = 0;
 		unsigned long lentext = 0;
 		unsigned char ch = 0;
-		unsigned char inbuf[4], outbuf[4];
+		unsigned char inbuf[4] = {0}, outbuf[4] = {0};
 		short i = 0, ixinbuf = 0;
 		BOOL flignore = NO;
 		BOOL flendtext = NO;

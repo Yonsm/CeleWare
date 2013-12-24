@@ -104,13 +104,6 @@
 //	//self.URL = _URL;
 //}
 
-//
-- (void)viewDidUnload
-{
-	[super viewDidUnload];
-	_webView = nil;
-}
-
 // Override to allow rotation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

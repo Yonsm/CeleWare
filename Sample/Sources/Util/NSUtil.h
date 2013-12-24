@@ -392,22 +392,20 @@ public:
 	//
 	NS_INLINE NSString *URLEscape(NSString *string)
 	{
-		CFStringRef result = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-																	 (CFStringRef)string,
-																	 NULL,
-																	 CFSTR("!*'();:@&=+$,/?%#[]"),
-																	 kCFStringEncodingUTF8);
-		return (__bridge NSString *)result;
+		return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+																					 (CFStringRef)string,
+																					 NULL,
+																					 CFSTR("!*'();:@&=+$,/?%#[]"),
+																					 kCFStringEncodingUTF8);
 	}
 	
 	//
 	NS_INLINE NSString *URLUnEscape(NSString *string)
 	{
-		CFStringRef result = CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
-																					 (CFStringRef)string,
-																					 CFSTR(""),
-																					 kCFStringEncodingUTF8);
-		return (__bridge NSString *)result;
+		return (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+																									 (CFStringRef)string,
+																									 CFSTR(""),
+																									 kCFStringEncodingUTF8);
 	}
 	
 	//
@@ -420,9 +418,9 @@ public:
 	NS_INLINE NSString *UUID()
 	{
 		CFUUIDRef uuid = CFUUIDCreate(NULL);
-		CFStringRef string = CFUUIDCreateString(NULL, uuid);
+		NSString *string = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
 		CFRelease(uuid);
-		return (__bridge NSString *)string;
+		return string;
 	}
 };
 

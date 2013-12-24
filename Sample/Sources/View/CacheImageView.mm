@@ -47,6 +47,7 @@
 			
 			//CGFloat alpha = self.alpha;
 			//self.alpha = 0;
+#ifdef _CacheImageShowingWithAnimation
 			CGRect frame = self.frame;
 			self.frame = CGRectMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2, 0, 0);
 			[UIView animateWithDuration:0.5 animations:^()
@@ -54,6 +55,7 @@
 				 //self.alpha = alpha;
 				 self.frame = frame;
 			 }];
+#endif
 		}
 	}
 }

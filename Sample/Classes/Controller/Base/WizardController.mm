@@ -47,14 +47,6 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	[self loadData];
 }
 
-//
-- (void)viewDidUnload
-{
-	[super viewDidUnload];
-	_cells = nil;
-	_scrollView = nil;
-}
-
 #pragma mark -
 #pragma mark Event methods
 
@@ -539,7 +531,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 {
 	[UIView animateWithDuration:0.4 animations:^()
 	 {
-		 sender.accessoryType = WizardCellAccessoryDropup;
+		 sender.accessoryType = WizardCellAccessoryPopup;
 	 }];
 	
 	id picker;
@@ -601,7 +593,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 - (WizardCell *)popupCellWithName:(NSString *)name detail:(NSString *)detail controller:(const NSString *)controller
 {
 	WizardCell *cell = [self pageCellWithName:name detail:detail controller:controller];
-	//cell.accessoryType = WizardCellAccessoryDropup;
+	cell.accessoryType = WizardCellAccessoryPopup;	// TODO:
 	return cell;
 }
 
@@ -644,7 +636,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	else controller = [controller init];
 	
 	controller.title = sender.name;
-	if (sender.accessoryType == WizardCellAccessoryDisclosure)
+	if (sender.accessoryType == WizardCellAccessoryDisclosure)	// TODO:
 	{
 		[self.navigationController pushViewController:controller animated:YES];
 	}

@@ -170,14 +170,14 @@
 //
 - (void)setAccessoryType:(WizardCellAccessoryType)accessoryType
 {
-	if ((accessoryType == WizardCellAccessoryDropup) || (accessoryType == WizardCellAccessoryDropdown) || (accessoryType == WizardCellAccessoryDisclosure))
+	if ((accessoryType == WizardCellAccessoryPopup) || (accessoryType == WizardCellAccessoryDropdown) || (accessoryType == WizardCellAccessoryDisclosure))
 	{
 		if ((_accessoryType == WizardCellAccessoryCheckmark) || (_accessoryType == WizardCellAccessoryNone))
 		{
 			self.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"CellAccessoryDisclosure")];
 		}
 		
-		if (accessoryType == WizardCellAccessoryDropup)
+		if (accessoryType == WizardCellAccessoryPopup)
 		{
 			self.accessoryView.transform = CGAffineTransformMakeRotation((M_PI / 180.0) * -90);
 		}

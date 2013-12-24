@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4071869582200F86E14 /* AutoPullDataLoader.mm */; };
+		2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4091869582200F86E14 /* CacheDataLoader.mm */; };
 		246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319318682C2D00903EF4 /* Foundation.framework */; };
 		246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319518682C2D00903EF4 /* CoreGraphics.framework */; };
 		246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319718682C2D00903EF4 /* UIKit.framework */; };
@@ -99,6 +101,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2430D4061869582200F86E14 /* AutoPullDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoPullDataLoader.h; sourceTree = "<group>"; };
+		2430D4071869582200F86E14 /* AutoPullDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AutoPullDataLoader.mm; sourceTree = "<group>"; };
+		2430D4081869582200F86E14 /* CacheDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheDataLoader.h; sourceTree = "<group>"; };
+		2430D4091869582200F86E14 /* CacheDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CacheDataLoader.mm; sourceTree = "<group>"; };
 		246A319018682C2D00903EF4 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -398,6 +404,10 @@
 				246A322A186838ED00903EF4 /* NearLocater.mm */,
 				246A322B186838ED00903EF4 /* PullDataLoader.h */,
 				246A322C186838ED00903EF4 /* PullDataLoader.mm */,
+				2430D4061869582200F86E14 /* AutoPullDataLoader.h */,
+				2430D4071869582200F86E14 /* AutoPullDataLoader.mm */,
+				2430D4081869582200F86E14 /* CacheDataLoader.h */,
+				2430D4091869582200F86E14 /* CacheDataLoader.mm */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -733,6 +743,7 @@
 				246A32E5186838ED00903EF4 /* CityLocater.mm in Sources */,
 				246A32DD186838ED00903EF4 /* PagingTableController.mm in Sources */,
 				246A3328186838ED00903EF4 /* UIUtil.mm in Sources */,
+				2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */,
 				246A3329186838ED00903EF4 /* AlertView.mm in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
 				246A3309186838ED00903EF4 /* NullController.mm in Sources */,
@@ -770,6 +781,7 @@
 				246A3338186838ED00903EF4 /* TouchView.mm in Sources */,
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
 				246A331E186838ED00903EF4 /* UMFeedbackTableViewCellRight.m in Sources */,
+				2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */,
 				246A3319186838ED00903EF4 /* UMContactViewController.m in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
 				246A3337186838ED00903EF4 /* ToastView.mm in Sources */,

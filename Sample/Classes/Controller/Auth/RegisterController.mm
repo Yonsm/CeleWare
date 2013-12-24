@@ -32,12 +32,6 @@
 //	[super viewDidLoad];
 //}
 
-// Called after the view controller's view is released and set to nil.
-//- (void)viewDidUnload
-//{
-//	[super viewDidUnload];
-//}
-
 // Called when the view is about to made visible.
 //- (void)viewWillAppear:(BOOL)animated
 //{
