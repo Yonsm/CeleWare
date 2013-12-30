@@ -81,6 +81,8 @@
 		if (item.text.length)
 		{
 			size = [item.text sizeWithFont:item.font];
+			//size.width = ceil(size.width);
+			//size.height = ceil(size.height);
 		}
 		_lineWidth += item.width ? item.width : size.width;
 		if (_lineHeight < size.height)

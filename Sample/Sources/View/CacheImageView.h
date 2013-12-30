@@ -1,4 +1,8 @@
 
+@protocol CacheImageProtocol
+- (void)setImage:(UIImage *)image;
+@end
+
 //
 @interface UIView (CacheImage)
 - (void)setCacheImageUrl:(NSString *)cacheImageUrl;
@@ -6,12 +10,10 @@
 
 
 //
-@interface CacheImageButton : UIButton
-- (void)setImage:(UIImage *)image;
+@interface CacheImageButton : UIButton <CacheImageProtocol>
 @end
 
 
 //
-@interface CacheBackgroundImageButton : UIButton
-- (void)setImage:(UIImage *)image;
+@interface CacheBackgroundImageButton : UIButton <CacheImageProtocol>
 @end

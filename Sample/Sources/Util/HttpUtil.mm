@@ -3,6 +3,15 @@
 #import "UIUtil.h"
 #import "HttpUtil.h"
 
+#ifdef TEST
+@implementation NSURLRequest (IgnoreSSL)
++ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host
+{
+	return YES;
+}
+@end
+#endif
+
 //
 NSData *HttpUtil::DownloadData(NSString *url, NSString *to, DownloadMode mode)
 {
@@ -12,7 +21,7 @@ NSData *HttpUtil::DownloadData(NSString *url, NSString *to, DownloadMode mode)
 	{
 		return [NSData dataWithContentsOfFile:to];
 	}
-
+	
 	//UIUtil::ShowNetworkIndicator(YES);
 	NSError *error = nil;
 	NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] options:((mode == DownloadCheckOnline) ? 0 : NSUncachedRead) error:&error];
@@ -21,23 +30,51 @@ NSData *HttpUtil::DownloadData(NSString *url, NSString *to, DownloadMode mode)
 	return data;
 }
 
-
 // Request HTTP data
-NSData *HttpUtil::HttpData(NSString *url, NSData *post, NSURLRequestCachePolicy cachePolicy, NSURLResponse **response, NSError **error)
+NSData *HttpUtil::HttpData(NSString *url, NSData *post, NSURLRequestCachePolicy cachePolicy, NSURLResponse **response, NSError **error, NSString *contentType)
 {
 	//UIUtil::ShowNetworkIndicator(YES);
 	
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]cachePolicy:cachePolicy timeoutInterval:30];
 	if (post)
 	{
-		[request setHTTPMethod:@"POST"];
-		[request setHTTPBody:post];
+		request.HTTPMethod =@"POST";
+		request.HTTPBody = post;
+		if (contentType) [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
 	}
 	
 	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:response error:error];
 	
 	//UIUtil::ShowNetworkIndicator(NO);
 	return data;
+}
+
+//
+NSData *HttpUtil::HttpUpload(NSString *url, NSArray *multipart, NSURLRequestCachePolicy cachePolicy, NSURLResponse **response, NSError **error)
+{
+	NSMutableData *post = [NSMutableData data];
+	NSString *boundary = @"---FORM-BOUNDARY---";
+	for (NSDictionary *part in multipart)
+	{
+		if (part[@"data"])
+		{
+			NSMutableString *header = [NSMutableString stringWithFormat:@"--%@\r\n", boundary];
+			[header appendString:@"Content-Disposition: form-data"];
+			if (part[@"name"]) [header appendFormat:@"; name=\"%@\"", part[@"name"]];
+			if (part[@"file"]) [header appendFormat:@"; filename=\"%@\"", part[@"file"]];
+			[header appendString:@"\r\n"];
+			if (part[@"mine"]) [header appendFormat:@"Content-Type: %@\r\n", part[@"mine"]];
+			[header appendString:@"\r\n"];
+
+			[post appendData:[header dataUsingEncoding:NSUTF8StringEncoding]];
+			[post appendData:part[@"data"]];
+			[post appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+		}
+	}
+	NSString *footer = [NSString stringWithFormat:@"--%@--\r\n", boundary];
+	[post appendData:[footer dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	return HttpData(url, post, cachePolicy, response, error, [@"multipart/form-data; boundary=" stringByAppendingString:boundary]);
 }
 
 // Request HTTP string
@@ -83,39 +120,4 @@ NSString *HttpUtil::HttpFile(NSString *url, NSString *path)
 	UIUtil::ShowNetworkIndicator(NO);
 	
 	return data ? nil : error.localizedDescription;
-}
-
-//
-NSData *HttpUtil::UploadData(NSString *url, NSData *data, NSString *fileName, NSString *mimeType, NSHTTPURLResponse **response)
-{
-	NSURL *URL = [NSURL URLWithString:url];
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-	request.timeoutInterval = 60;
-	
-	// Just some random text that will never occur in the body
-	NSString *boundaryString = @"----HttpUploadDataBoundary";
-	NSMutableData *formData = [NSMutableData data];
-	
-	//
-	NSMutableString *formString = [NSMutableString string];
-	[formString appendFormat:@"--%@\r\n", boundaryString];
-	[formString appendFormat:@"Content-Disposition: form-data; name=\"upload\"; filename=\"%@\"\r\n", fileName];
-	[formString appendFormat:@"Content-Type: %@\r\n\r\n", mimeType];
-	
-	[formData appendData:[formString dataUsingEncoding:NSUTF8StringEncoding]];
-	[formData appendData:data];
-	
-	//
-	[formData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundaryString] dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	//
-	NSString *contentLength = [NSString stringWithFormat:@"%u", (int)formData.length];
-	NSString *contentType = [@"multipart/form-data; boundary=" stringByAppendingString:boundaryString];
-	[request setValue:contentLength forHTTPHeaderField:@"Content-Length"];
-	[request setValue:contentType forHTTPHeaderField:@"Content-Type"];
-	request.HTTPMethod = @"POST";
-	request.HTTPBody = formData;
-	
-	//
-	return [NSURLConnection sendSynchronousRequest:request returningResponse:response error:nil];
 }

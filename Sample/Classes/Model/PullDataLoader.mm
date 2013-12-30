@@ -175,7 +175,7 @@
 	[UIUtil::RootViewController() presentModalNavigationController:controller animated:YES];
 }
 
-// TODO: 优化重构
+// NEXT: 优化重构
 - (UIView *)emptyView
 {
 	CGRect frame = _scrollView.bounds;

@@ -17,6 +17,8 @@
 //#define kNavigationBarTintColor [UIColor colorWithRed:40/255.0 green:49/255.0 blue:54/255.0 alpha:1]
 //#import "NavigationController.h"
 
+#import "DataLoader.h"
+
 // Util
 #ifdef __cplusplus
 #import "NSUtil.h"
@@ -48,7 +50,7 @@
 // Controller
 //#import "MoviePlayer.h"
 //#import "SelectController.h"
-//#import "WebController.h"
+#import "WebController.h"
 //#import "ShareComposer.h"
 //#import "NRGridViewController.h"
 

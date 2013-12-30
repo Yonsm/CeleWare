@@ -12,17 +12,17 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface ODRefreshControl : UIControl {
-    CAShapeLayer *_shapeLayer;
-    CAShapeLayer *_arrowLayer;
-    CAShapeLayer *_highlightLayer;
-    UIView *_activity;
-    BOOL _refreshing;
-    BOOL _canRefresh;
-    BOOL _ignoreInset;
-    BOOL _ignoreOffset;
-    BOOL _didSetInset;
-    BOOL _hasSectionHeaders;
-    CGFloat _lastOffset;
+	CAShapeLayer *_shapeLayer;
+	CAShapeLayer *_arrowLayer;
+	CAShapeLayer *_highlightLayer;
+	UIView *_activity;
+	BOOL _refreshing;
+	BOOL _canRefresh;
+	BOOL _ignoreInset;
+	BOOL _ignoreOffset;
+	BOOL _didSetInset;
+	BOOL _hasSectionHeaders;
+	CGFloat _lastOffset;
 }
 
 @property (nonatomic, readonly, getter=isRefreshing) BOOL refreshing;

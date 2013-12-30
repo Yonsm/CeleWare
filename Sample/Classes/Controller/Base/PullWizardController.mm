@@ -69,9 +69,9 @@
 #pragma mark Data loader methods
 
 //
-- (void)loadEnded:(DataLoader *)sender
+- (void)loadEnded:(DataLoader *)loader
 {
-	if (sender.error == DataLoaderNoError)
+	if (loader.error == DataLoaderNoError)
 	{
 		[self reloadPage];
 	}

@@ -30,7 +30,7 @@
 	_target = target;
 	_changed = changed;
 
-	[self showInView:UIUtil::RootViewController().view];
+	[self showInView:UIUtil::FrontViewController().view];
 	return self;
 }
 

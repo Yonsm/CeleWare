@@ -34,12 +34,14 @@
 	[super viewWillAppear:animated];
 	StatPageBegin(NSStringFromClass([self class]));
 	
-	//if (!UIUtil::IsOS7())
+	if (self.navigationItem.leftBarButtonItem == nil/*!UIUtil::IsOS7()*/)
 	{
-//		if (!self.navigationItem.hidesBackButton && !self.navigationItem.leftBarButtonItem && (self.navigationController.viewControllers.count > 1))
-//		{
-//			self.navigationItem.leftBarButtonItem = [UIBarButtonItem _backItemWithTitle:@"返回" target:self action:@selector(backButtonClicked:)];
-//		}
+		if (!self.navigationItem.hidesBackButton && !self.navigationItem.leftBarButtonItem && (self.navigationController.viewControllers.count > 1))
+		{
+			[self.view addGestureRecognizer:[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonClicked:)]];
+
+			//self.navigationItem.leftBarButtonItem = [UIBarButtonItem customBackItemWithTitle:@"返回" target:self action:@selector(backButtonClicked:)];
+		}
 	}
 }
 
@@ -93,7 +95,7 @@
 #pragma mark Event methods
 
 //
-- (void)backButtonClicked:(UIButton *)sender
+- (void)backButtonClicked:(id)sender
 {
 	NSArray *controller = self.navigationController.viewControllers;
 	if (self.navigationController && (controller[0] != self))

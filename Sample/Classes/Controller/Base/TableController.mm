@@ -16,7 +16,7 @@
 - (id)init
 {
 	self = [super init];
-	_style = UIUtil::IsOS7() ? UITableViewStyleGrouped : UITableViewStylePlain/*TODO:iOS6 Plain Default UI*/;
+	_style = UIUtil::IsOS7() ? UITableViewStyleGrouped : UITableViewStylePlain;
 	return self;
 }
 
@@ -33,7 +33,7 @@
 	_tableView.tableFooterView = [[UIView alloc] init];
 	[self.view addSubview:_tableView];
 	
-	_tableView.backgroundView.backgroundColor = UIColor.whiteColor;
+	_tableView.backgroundColor = UIColor.whiteColor;
 	
 	if (_style == UITableViewStylePlain)
 	{
@@ -45,7 +45,8 @@
 #pragma mark Table view methods
 
 //
-#if 0 //TODO:再检查
+#if 0 
+// NEXT: iOS 6 Plain Style 的标题做成 iOS7 Group 风格？分割线就算了吧
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 	return ((_style == UITableViewStylePlain) && [self tableView:tableView titleForHeaderInSection:section]) ? 44 : 0;

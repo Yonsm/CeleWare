@@ -11,4 +11,6 @@
 
 - (NSDictionary *)syncUpdateCity;
 
++ (NSDictionary *)cityForCode:(NSString *)code;
+
 @end

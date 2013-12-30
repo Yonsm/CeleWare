@@ -3,6 +3,7 @@
 #import "BaseController.h"
 #import "WizardCell.h"
 
+#define kMaxCellsPerPage		50
 #define kDefaultHeaderHeight	20	// 默认单元头高度（仅指空标题的头，不包括标题文本）
 #define kZeroHeaderHeight		-0.5	// 置顶单元头高度
 
@@ -11,9 +12,11 @@
 {
 	CGFloat _contentWidth;
 	CGFloat _contentHeight;
-	NSMutableArray *_cells;
 	UIView *_contentView;
 	UIScrollView *_scrollView;
+
+	unsigned int _cellCount;
+	__weak WizardCell *_cells[kMaxCellsPerPage];
 }
 
 - (void)updateDoneButton;
@@ -40,6 +43,7 @@
 - (void)spaceWithHeight:(CGFloat)height;
 - (UILabel *)headerWithTitle:(NSString *)title;
 - (UILabel *)labelWithTitle:(NSString *)title;
+- (UILabel *)tipsWithTitle:(NSString *)title;
 
 - (UIButton *)checkWithTitle:(NSString *)title;
 - (UIButton *)checkWithTitle:(NSString *)title changed:(SEL)changed;
@@ -64,5 +68,9 @@
 - (WizardCell *)popupCellWithName:(NSString *)name detail:(NSString *)detail controller:(const NSString *)controller param:(id)param;	// 带参数的 Controller，必须符合 WizardControllerDelegate
 - (WizardCell *)popupButtonCellWithName:(NSString *)name detail:(NSString *)detail title:(NSString *)title controller:(const NSString *)controller;
 - (WizardCell *)popupButtonCellWithName:(NSString *)name detail:(NSString *)detail title:(NSString *)title controller:(const NSString *)controller param:(id)param;
+
+// 用 SelectBox 包装弹出 Picker，For subclass only
+- (SelectBox *)selectBoxWithPicker:(UIView *)picker scrollToCell:(WizardCell *)cell;
+- (void)selectBoxDone:(SelectBox *)sender;
 
 @end

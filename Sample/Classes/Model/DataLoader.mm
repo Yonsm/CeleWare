@@ -3,24 +3,99 @@
 #import "DataLoader.h"
 #import "LoginController.h"
 
-@implementation DataLoader
+//
+@interface ErrorAlertView : UIAlertView
+@property(nonatomic,strong) DataLoader *loader;
+@property(nonatomic,strong) id<DataLoaderDelegate> loader_delegate;
++ (id)alertWithError:(NSString *)error loader:(DataLoader *)loader;
+@end
+
+@implementation ErrorAlertView
 
 //
-+ (id)loaderWithService:(NSString *)service params:(NSDictionary *)params success:(void (^)(DataLoader *loader))success
+static ErrorAlertView *_alertView = nil;
++ (id)alertWithError:(NSString *)error loader:(DataLoader *)loader
 {
-	DataLoader *loader = [DataLoader loaderWithService:service params:params completion:success];
-	loader.completionOnSuccess = YES;
-	return loader;
+	if (_alertView == nil)
+	{
+		_alertView = [[ErrorAlertView alloc] init];
+		_alertView.title = error;
+		_alertView.delegate = _alertView;
+		if (loader.error == DataLoaderNoData || loader.error == DataLoaderNetworkError)
+		{
+			[_alertView addButtonWithTitle:@"取消"];
+			[_alertView addButtonWithTitle:@"重试"];
+		}
+		else
+		{
+			[_alertView addButtonWithTitle:@"确定"];
+		}
+		_alertView.loader = loader;
+		_alertView.loader_delegate = loader.delegate;
+		//[_alertView show];
+	}
+	return _alertView;
 }
 
 //
-+ (id)loaderWithService:(NSString *)service params:(NSDictionary *)params completion:(void (^)(DataLoader *loader))completion
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 1)
+	{
+		[_loader loadBegin];
+		_loader_delegate = nil;
+		_loader = nil;
+	}
+//	else if (_loader.error == DataLoaderProfileIncomplete)
+//	{
+//		UIViewController *controller = [[BasicProfileController alloc] init];
+//		[UIUtil::RootViewController() presentNavigationController:controller animated:YES];
+//	}
+	_alertView = nil;
+}
+@end
+
+
+@implementation DataLoader
+
+//
++ (void)loadWithService:(NSString *)service params:(id)params success:(void (^)(DataLoader *loader))success failure:(void (^)(DataLoader *loader, NSString *error))failure
+{
+	DataLoader *loader = [DataLoader loaderWithService:service params:params completion:success];
+	loader.completionOnSuccess = YES;
+	loader.failure = failure;
+	[loader loadBegin];
+}
+
+//
++ (void)loadWithService:(NSString *)service params:(id)params success:(void (^)(DataLoader *loader))success
+{
+	DataLoader *loader = [DataLoader loaderWithService:service params:params completion:success];
+	loader.completionOnSuccess = YES;
+	[loader loadBegin];
+}
+
+//
++ (void)loadWithService:(NSString *)service params:(id)params delegate:(id<DataLoaderDelegate>)delegate completion:(void (^)(DataLoader *loader))completion
+{
+	DataLoader *loader = [DataLoader loaderWithService:service params:params completion:completion];
+	loader.delegate = delegate;
+	[loader loadBegin];
+}
+
+//
++ (void)loadWithService:(NSString *)service params:(id)params completion:(void (^)(DataLoader *loader))completion
+{
+	[[DataLoader loaderWithService:service params:params completion:completion] loadBegin];
+}
+
+//
++ (id)loaderWithService:(NSString *)service params:(id)params completion:(void (^)(DataLoader *loader))completion
 {
 	DataLoader *loader = [[DataLoader alloc] init];
 	loader.service = service;
 	loader.params = params;
 	loader.completion = completion;
-	[loader loadBegin];
 	return loader;
 }
 
@@ -81,7 +156,6 @@ static NSString *_access_token = nil;
 	//self.error = DataLoaderNoData;
 }
 
-
 //
 - (NSString *)stamp
 {
@@ -111,9 +185,9 @@ static NSString *_access_token = nil;
 {
 	if (_loading == NO)
 	{
-		if ([_delegate respondsToSelector:@selector(loadBegin:)])
+		if ([_delegate respondsToSelector:@selector(loadBegan:)])
 		{
-			if (![_delegate loadBegin:self])
+			if (![_delegate loadBegan:self])
 			{
 				return;
 			}
@@ -121,6 +195,7 @@ static NSString *_access_token = nil;
 		
 		//
 		_loading = YES;
+		_retained_delegate = _delegate;
 		[self loadStart];
 		[self performSelectorInBackground:@selector(loadThread) withObject:nil];
 	}
@@ -133,7 +208,7 @@ static NSString *_access_token = nil;
 	if (!_dict)
 	{
 		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
-		[controller.view showLoading];
+		[controller.view toastWithLoading];
 		_LineLog();
 	}
 }
@@ -210,7 +285,7 @@ static NSString *_access_token = nil;
 			return nil;
 		}
 	}
-
+	
 	// 装载数据并解析
 	NSDictionary *dict = nil;
 	NSData *data = [self loadData];
@@ -238,7 +313,7 @@ static NSString *_access_token = nil;
 	{
 		_error = DataLoaderNetworkError;
 	}
-
+	
 	return dict;
 }
 
@@ -246,34 +321,25 @@ static NSString *_access_token = nil;
 - (NSData *)loadData
 {
 	//
-	NSMutableString *post = [NSMutableString stringWithFormat:@"access_token=%@", _access_token ? [kAuthConsumerKey stringByAppendingString:_access_token] : kAuthConsumerKey];
-	
-	if ([_params isKindOfClass:[NSDictionary class]])
-	{
-		for (NSString *key in [_params allKeys])
-		{
-			id value = _params[key];
-			[post appendFormat:@"&%@=%@", key, [value isKindOfClass:[NSString class]] ? NSUtil::URLEscape(value) : value];
-		}
-	}
-	else if ([_params isKindOfClass:[NSArray class]])
-	{
-		for (NSArray *param in _params)
-		{
-			if (param.count >= 2)
-			{
-				id value = param[1];
-				[post appendFormat:@"&%@=%@", param[0], [value isKindOfClass:[NSString class]] ? NSUtil::URLEscape(value) : value];
-			}
-		}
-	}
-	
-	//
 	NSError *error = nil;
 	NSURLResponse *response = nil;
-	NSString *url = kServiceUrl(_service);
-	_Log(@"%@?%@", url, post);
-	NSData *data = HttpUtil::HttpData(url, [post dataUsingEncoding:NSUTF8StringEncoding], NSURLRequestReloadIgnoringCacheData, &response, &error);
+	NSString *access_token = _access_token ? [kAuthConsumerKey stringByAppendingString:_access_token] : kAuthConsumerKey;
+	NSString *url = [NSString stringWithFormat:@"%@?access_token=%@", kServiceUrl(_service), access_token];
+	
+	NSData *data;
+	if ([_delegate respondsToSelector:@selector(dataLoading: url:)])
+	{
+		data = [_delegate dataLoading:self url:url];
+	}
+	else
+	{
+		id params = [_params isKindOfClass:[NSDictionary class]] ? NSUtil::URLQuery((NSDictionary *)_params) : _params;
+		_Log(@"%@%@", url, params ? [@"&" stringByAppendingString:params] : @"");
+		NSData *post = [params dataUsingEncoding:NSUTF8StringEncoding];
+		data = HttpUtil::HttpData(url, post, NSURLRequestReloadIgnoringCacheData, &response, &error);
+	}
+
+	//
 	if (data == nil)
 	{
 		_Log(@"Response: %@\n\nError: %@\n\n", response, error);
@@ -302,7 +368,7 @@ static NSString *_access_token = nil;
 	{
 		self.dict = dict;
 	}
-	else if (_error == DataLoaderNotLogin)
+	else if (_error == DataLoaderNotLogin/*NEXT:后置判断往前移动，弹出登录回来后继续Loading，同时增加needAuth前置处理*/)
 	{
 		[DataLoader login];
 	}
@@ -326,6 +392,8 @@ static NSString *_access_token = nil;
 	{
 		_completion(self);
 	}
+	
+	_retained_delegate = nil;
 }
 
 //
@@ -334,7 +402,7 @@ static NSString *_access_token = nil;
 	UIUtil::ShowNetworkIndicator(NO);
 	{
 		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
-		[controller.view hideLoading];
+		[controller.view dismissToast];
 		_LineLog();
 	}
 	
@@ -346,48 +414,32 @@ static NSString *_access_token = nil;
 	else
 	{
 		// 处理错误
-		//StatEvent(@"error", (NSString *)[NSString stringWithFormat:@"%d", _error]);
+		StatEvent(@"error", (NSString *)[NSString stringWithFormat:@"%d", _error]);
 		
-		NSString *message = [dict objectForKey:@"info"];
-		if (message.length == 0) message = self.errorString;
+		NSString *error = [dict objectForKey:@"info"];
+		if (error.length == 0) error = self.errorString;
 		
-		// 延迟是为了解决网络没连接时，下拉松开后，快速返回错误后弹框，点击后导致不能下拉
-		// 同时也是为了解决要求登录时弹出 Toast 被遮住的问题
-		[self performSelector:@selector(loadError:) withObject:message afterDelay:0.2];
-		//[self loadError:message];
+		[self loadError:error];
 	}
 }
 
 //
-static UIAlertView *_alertView = nil;
-- (void)loadError:(NSString *)message
+- (void)loadError:(NSString *)error
 {
+	if (_failure)
+	{
+		_failure(self, error);
+	}
 	if (_error == DataLoaderNotLogin)
 	{
-		[UIView showToast:message];
+		[ToastView toastWithError:error];
 	}
-	else if (_checkError && _alertView == nil)
+	else if (_checkError)
 	{
-		//[self retain];
-
-		//[_delegate retain];
-		//[UIView showToast:message];
-		_alertView = [UIAlertView alertWithTitle:message
-										 message:nil
-										delegate:self
-							   cancelButtonTitle:@"确定"
-								otherButtonTitle:nil
-					  ];
+		// 延迟是为了解决网络没连接时，下拉松开后，快速返回错误后弹框，点击后导致不能下拉
+		// 同时也是为了解决要求登录时弹出 Toast 被遮住的问题
+		[[ErrorAlertView alertWithError:error loader:self] performSelector:@selector(show) withObject:nil afterDelay:0.2];
 	}
 }
-
-//
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-	//[_delegate autorelease];
-	//[self autorelease];
-	_alertView = nil;
-}
-
 
 @end

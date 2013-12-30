@@ -78,15 +78,17 @@
 - (void)setDetail:(NSString *)detail
 {
 	UIFont *font = [UIFont systemFontOfSize:16];
-	CGFloat width = [detail sizeWithFont:font].width;
-	CGRect frame = {(_accessoryView ? _accessoryView.frame.origin.x : self.frame.size.width) - kRightGap - width, 3, width, self.frame.size.height - 4};
+	CGFloat x = CGRectGetMaxX(_nameLabel.frame) + 10;
+	CGFloat right = (_accessoryView ? _accessoryView.frame.origin.x : self.frame.size.width) - kRightGap;
+	CGRect frame = {x, 2, right - x, self.frame.size.height - 4};
 	if (_detailLabel == nil)
 	{
 		_detailLabel = [UILabel labelWithFrame:frame
 										  text:detail
-										 color:UIUtil::Color(142, 142, 147)
+										 color:UIUtil::Color(90, 90, 90)
 										  font:font
-									 alignment:NSTextAlignmentLeft];
+									 alignment:NSTextAlignmentRight];
+		_detailLabel.adjustsFontSizeToFitWidth = YES;
 		[self addSubview:_detailLabel];
 	}
 	else
@@ -161,7 +163,7 @@
 		
 		if (accessoryView)
 		{
-			accessoryView.center = CGPointMake(self.frame.size.width - kRightGap - accessoryView.frame.size.width / 2, self.frame.size.height / 2/* + 1*/);
+			accessoryView.center = CGPointMake(self.frame.size.width - kRightGap - accessoryView.frame.size.width / 2, self.frame.size.height / 2 + 0.5);
 			[self addSubview:accessoryView];
 		}
 	}
@@ -172,7 +174,7 @@
 {
 	if ((accessoryType == WizardCellAccessoryPopup) || (accessoryType == WizardCellAccessoryDropdown) || (accessoryType == WizardCellAccessoryDisclosure))
 	{
-		if ((_accessoryType == WizardCellAccessoryCheckmark) || (_accessoryType == WizardCellAccessoryNone))
+		if ((_accessoryType != WizardCellAccessoryPopup) && (_accessoryType != WizardCellAccessoryDropdown) && (_accessoryType != WizardCellAccessoryDisclosure))
 		{
 			self.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"CellAccessoryDisclosure")];
 		}
@@ -185,6 +187,10 @@
 		{
 			self.accessoryView.transform = CGAffineTransformMakeRotation((M_PI / 180.0) * 90);
 		}
+	}
+	else if (accessoryType == WizardCellAccessoryEnter)
+	{
+		self.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"CellAccessoryEnter")];
 	}
 	else if (accessoryType == WizardCellAccessoryCheckmark)
 	{

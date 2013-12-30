@@ -1,6 +1,5 @@
 
 #import "LoginController.h"
-//#import "ForgotController.h"
 #import "RegisterController.h"
 
 @implementation LoginController
@@ -50,27 +49,25 @@
 //
 - (void)loadPage
 {
-	{
-		[[self cellNumberWithName:@"手机号"
-							 text:nil
-					  placeholder:@"请输入11位手机号码"
-						  changed:@selector(updateDoneButton)]
-		 becomeFirstResponder];
-		
-		[self cellTextWithName:@"密　码"
-						  text:nil
-				   placeholder:@"请输入密码"
-					   changed:@selector(updateDoneButton)]
-		.secureTextEntry = YES;
-	}
+	_usernameField = [self cellNumberWithName:@"手机号"
+										 text:Settings::Get(kUsername)
+								  placeholder:@"请输入11位手机号码"
+									  changed:@selector(updateDoneButton)];
+	[_usernameField becomeFirstResponder];
 	
-	{
-		[super buttonsWithTitles:@[@"忘记密码", @"注册帐号"] action:@selector(buttonClicked:)];
-		
+	_passwordField = [self cellTextWithName:@"密　码"
+									   text:nil
+								placeholder:@"请输入密码"
+									changed:@selector(updateDoneButton)];
+	_passwordField.secureTextEntry = YES;
+	
+	//DataLoaderPasswordError
+	
+	[super buttonsWithTitles:@[@"忘记密码", @"注册帐号"] action:@selector(buttonClicked:)];
+	
 #ifdef TEST
-		[self buttonWithTitle:@"测试帐号" action:@selector(testButtonClicked:)];
+	[super buttonsWithTitles:@[@"好男人", @"masterB"] action:@selector(testButtonClicked:)];
 #endif
-	}
 }
 
 #pragma mark Event methods
@@ -78,24 +75,17 @@
 //
 - (void)buttonClicked:(UIButton *)sender
 {
-	if (sender.tag == 1)
-	{
-		UIViewController *controller = [[RegisterController alloc] init];
-		[self.navigationController pushViewController:controller animated:YES];
-	}
-	else
-	{
-	}
+	RegisterController *controller = [[RegisterController alloc] init];
+	controller.forgot = !sender.tag;
+	[self.navigationController pushViewController:controller animated:YES];
 }
 
 //
 #ifdef TEST
-- (void)testButtonClicked:(id)sender
+- (void)testButtonClicked:(UIButton *)sender
 {
-	UITextField *usernameField = (UITextField *)[_cells[0] accessoryView];
-	UITextField *passwordField = (UITextField *)[_cells[1] accessoryView];
-	usernameField.text = @"18901398225";
-	passwordField.text = @"123456";
+	_usernameField.text = sender.tag ? @"18610103505" : @"18901398225";
+	_passwordField.text = sender.tag ? @"justdoit" : @"123456";
 	[self updateDoneButton];
 }
 #endif
@@ -103,25 +93,33 @@
 //
 - (void)updateDoneButton
 {
-	UITextField *usernameField = (UITextField *)[_cells[0] accessoryView];
-	UITextField *passwordField = (UITextField *)[_cells[1] accessoryView];
-	self.navigationItem.rightBarButtonItem.enabled = (usernameField.text.length == 11) && (passwordField.text.length != 0);
+	self.navigationItem.rightBarButtonItem.enabled = (_usernameField.text.length == 11) && (_passwordField.text.length != 0);
 }
 
 //
 - (void)doneAction
 {
-//	UITextField *usernameField = (UITextField *)[_cells[0] accessoryView];
-//	UITextField *passwordField = (UITextField *)[_cells[1] accessoryView];
+	Settings::Set(kUsername, _usernameField.text);
+	Settings::EncryptSet(kPassword, _passwordField.text);
 	
-//	Settings::Set(kUsername, usernameField.text);
-//	Settings::EncryptSet(kPassword, passwordField.text);
-//	
-//	[DataLoader loaderWithService:nil params:nil success:^(DataLoader *loader)
-//	 {
-//		 Settings::Save();
-//		 [self.navigationController dismissModalViewController];
-//	 }];
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+	[DataLoader loadWithService:nil params:nil completion:^(DataLoader *loader)
+	 {
+		 if (loader.error != DataLoaderNoError)
+		 {
+			 Settings::Save(kPassword);
+			 if (loader.error == DataLoaderPasswordError)
+			 {
+				 _passwordField.text = nil;
+				 [self updateDoneButton];
+				 [_passwordField becomeFirstResponder];
+			 }
+			 self.navigationItem.rightBarButtonItem.enabled = YES;
+			 return;
+		 }
+		 Settings::Save();
+		 [self.navigationController dismissModalViewController];
+	 }];
 }
 
 @end

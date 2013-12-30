@@ -231,7 +231,9 @@ public:
 	NS_INLINE UIImage *Image(NSString *file)
 	{
 #ifdef _UncacheImage
-		return [UIImage imageWithContentsOfFile:NSUtil::ResourcePath(file)];
+		// 支持无 @1x 时使用
+		if (![file hasPrefix:@".png"]) file = [file stringByAppendingString:@"@2x.png"];
+		return [UIImage imageWithContentsOfFile:NSUtil::AssetPath(file)];
 #else
 		return ImageNamed(file);
 #endif

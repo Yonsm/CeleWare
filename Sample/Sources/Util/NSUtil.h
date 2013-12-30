@@ -49,7 +49,7 @@ public:
 	}
 	
 	//
-	NS_INLINE NSString *ResourcePath()
+	NS_INLINE NSString *AssetPath()
 	{
 #ifdef kResourceBundle
 		return [BundlePath() stringByAppendingPathComponent:kResourceBundle];
@@ -59,9 +59,9 @@ public:
 	}
 	
 	//
-	NS_INLINE NSString *ResourcePath(NSString *file)
+	NS_INLINE NSString *AssetPath(NSString *file)
 	{
-		return [ResourcePath() stringByAppendingPathComponent:file];
+		return [AssetPath() stringByAppendingPathComponent:file];
 	}
 	
 #pragma mark File manager methods
@@ -161,11 +161,11 @@ public:
 	NS_INLINE NSString *CachePath()
 	{
 		//return DocumentPath(@"Cache");
-		return UserDirectoryPath(NSCachesDirectory);
+		return [UserDirectoryPath(NSCachesDirectory) stringByAppendingPathComponent:@"Cache"];
 	}
 	
 	//
-	NS_INLINE void RemoveCache()
+	NS_INLINE void ClearCache()
 	{
 		[FileManager() removeItemAtPath:CachePath() error:nil];
 	}
@@ -372,7 +372,7 @@ public:
 	
 public:
 	//
-	NSDictionary *URLQuery(NSString *query)
+	NS_INLINE NSDictionary *URLQuery(NSString *query)
 	{
 		NSArray *params = [query componentsSeparatedByString:@"&"];
 		NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:params.count];
@@ -383,10 +383,45 @@ public:
 			{
 				NSString *key = [param substringToIndex:range.location];
 				NSString *value = [param substringFromIndex:range.location + 1];
-				[dict setObject:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:[key stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+				[dict setObject:URLUnEscape(value) forKey:key];
 			}
 		}
 		return dict;
+	}
+
+	//
+	NS_INLINE NSString *URLQuery(NSDictionary *params)
+	{
+		NSMutableString *query = [NSMutableString string];
+		NSArray *keys = params.allKeys;
+		NSInteger count = keys.count;
+		for (NSInteger i = 0; i < count; i++)
+		{
+			NSString *key = keys[i];
+			id value = params[key];
+			if (i) [query appendString:@"&"];
+			[query appendFormat:@"%@=%@", key, [value isKindOfClass:[NSString class]] ? URLEscape(value) : value];
+		}
+		return query;
+	}
+	
+	//
+	NS_INLINE NSString *URLQuery(NSArray *params)
+	{
+		NSMutableString *query = [NSMutableString string];
+		NSInteger count = params.count;
+		for (NSInteger i = 0; i < count; i++)
+		{
+			NSArray *param = params[i];
+			//if (param.count >= 2)
+			{
+				NSString *key = param[i];
+				id value = param[2];
+				if (i) [query appendString:@"&"];
+				[query appendFormat:@"%@=%@", key, [value isKindOfClass:[NSString class]] ? URLEscape(value) : value];
+			}
+		}
+		return query;
 	}
 
 	//

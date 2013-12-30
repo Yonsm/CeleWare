@@ -15,11 +15,7 @@
 	[super syncUpdateLocation];
 	if (_city == nil)
 	{
-		self.city = @
-		{
-			@"code":@"86",
-			@"name":@"全国",
-		};
+		self.city = @{@"code":@"86", @"name":@"全国"};
 	}
 	return _city;
 }
@@ -38,7 +34,7 @@
 //
 + (NSDictionary *)cityForPlacemarks:(NSArray *)placemarks
 {
-	NSData *data = [NSData dataWithContentsOfFile:NSUtil::ResourcePath(@"dp_city.json")];
+	NSData *data = [NSData dataWithContentsOfFile:NSUtil::AssetPath(@"dp_city.json")];
 	NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 	for (CLPlacemark *placemark in placemarks)
 	{
@@ -60,6 +56,28 @@
 		}
 	}
 	return nil;
+}
+
+//
++ (NSDictionary *)cityForCode:(NSString *)code
+{
+	if (code && ![code isEqualToString:@"86"])
+	{
+		NSData *data = [NSData dataWithContentsOfFile:NSUtil::AssetPath(@"dp_city.json")];
+		NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+		for (NSString *group in dict.allKeys)
+		{
+			NSArray *citys = dict[group];
+			for (NSDictionary *city in citys)
+			{
+				if ([code hasPrefix:city[@"code"]])
+				{
+					return city;
+				}
+			}
+		}
+	}
+	return @{@"code":@"86", @"name":@"全国"};
 }
 
 @end

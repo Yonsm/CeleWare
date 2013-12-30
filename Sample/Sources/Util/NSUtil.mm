@@ -414,7 +414,6 @@ NSData *NSUtil::BASE64Decode(NSString *string)
 				
 				inbuf[ixinbuf++] = ch;
 				
-				// Please ignore any warning here
 				if (ixinbuf == 4)
 				{
 					outbuf[0] = (inbuf[0] << 2) | ((inbuf[1] & 0x30) >> 4);

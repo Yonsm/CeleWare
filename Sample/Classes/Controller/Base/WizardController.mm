@@ -5,8 +5,6 @@
 #define kLinkButtonFont [UIFont systemFontOfSize:15]
 #endif
 
-_EXObject(SelectBox, strong, WizardCell *, cell);
-
 @implementation WizardController
 
 #pragma mark Generic methods
@@ -31,6 +29,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	_contentWidth = 320;
 	
 	_scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+	_scrollView.delaysContentTouches = NO;
 	_scrollView.backgroundColor = UIUtil::Color(239, 239, 244);
 	_scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_scrollView.alwaysBounceVertical = YES;
@@ -92,6 +91,8 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 //
 - (void)reloadPage
 {
+	_cellCount = 0;
+	memset(_cells, 0, sizeof(_cells));
 	_contentHeight = 0;
 	[_contentView removeSubviews];
 	
@@ -131,7 +132,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 - (void)addView:(UIView *)view
 {
 	[_contentView addSubview:view];
-	_contentHeight += view.frame.size.height;
+	_contentHeight = CGRectGetMaxY(view.frame);
 }
 
 //
@@ -145,10 +146,8 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	
 	CGRect frame = CGRectMake(0, _contentHeight, _contentWidth, height);
 	WizardCell *cell = [[WizardCell alloc] initWithFrame:frame];
-	
-	if (_cells == nil) 	_cells = [[NSMutableArray alloc] init];
-	
-	[_cells addObject:cell];
+
+	_cells[_cellCount++] = cell;
 	[_contentView addSubview:cell];
 	_contentHeight += height;
 	return cell;
@@ -168,8 +167,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	return [self cellWithName:name height:kDefaultCellHeight];
 }
 
-
-//
+// NEXT: 移动到 WizardCell
 - (WizardCell *)subtitleCellWithName:(NSString *)name detail:(NSString *)detail
 {
 	WizardCell *cell = [self cellWithName:name detail:detail];
@@ -179,7 +177,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	cell.detailLabel.textAlignment = NSTextAlignmentLeft;
 	
 	CGRect frame = {kLeftGap, CGRectGetMaxY(cell.nameLabel.frame) + 4, _contentWidth - kLeftGap - kRightGap, 1000};
-	frame.size.height = [cell.detail sizeWithFont:cell.detailLabel.font constrainedToSize:frame.size].height;
+	frame.size.height = ceil([cell.detail sizeWithFont:cell.detailLabel.font constrainedToSize:frame.size].height);
 	//if (frame.size.height < 20) frame.size.height = 20;
 	cell.detailLabel.frame = frame;
 	cell.detailLabel.numberOfLines = 0;
@@ -264,6 +262,17 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	[_contentView addSubview:label];
 	_contentHeight += label.frame.size.height + 10;
 	return label;
+}
+
+//
+- (UILabel *)tipsWithTitle:(NSString *)title
+{
+	UILabel *tips = [self labelWithTitle:title];
+	tips.font = [UIFont systemFontOfSize:13];
+	tips.textColor = [UIColor colorWithWhite:0xb4/255.0 alpha:1];
+	tips.shadowColor = [UIColor colorWithWhite:1 alpha:1];
+	tips.shadowOffset = CGSizeMake(1, 1);
+	return tips;
 }
 
 //
@@ -367,11 +376,12 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	UITextField *field = [[UITextField alloc] initWithFrame:cell.maxAccessoryFrame];
 	field.autocapitalizationType = UITextAutocapitalizationTypeNone;
 	field.textAlignment = NSTextAlignmentLeft;
-	field.font = [UIFont systemFontOfSize:17];
+	field.font = [UIFont systemFontOfSize:16];
 	field.clearButtonMode = UITextFieldViewModeWhileEditing;
 	field.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	field.placeholder = placeholder;
 	field.text = text;
+	field.textColor = UIColor.darkGrayColor;
 	cell.accessoryView = field;
 	
 	[field addTarget:self action:changed forControlEvents:UIControlEventEditingChanged];
@@ -470,23 +480,26 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 #pragma mark Select box
 
 //
-- (SelectBox_cell *)selectBoxWithPicker:(UIView *)picker scrollToRect:(CGRect)rect
+- (SelectBox *)selectBoxWithPicker:(UIView *)picker scrollToCell:(WizardCell *)cell
 {
-	SelectBox_cell *box = [[SelectBox_cell alloc] initWithFrame:self.navigationController.view.bounds picker:picker];
+	SelectBox *box = [[SelectBox alloc] initWithFrame:self.navigationController.view.bounds picker:picker];
 	[box addTarget:self action:@selector(selectBoxDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
 	[self.navigationController.view addSubview:box];
 	
 	//
+	CGRect rect = cell.frame;
 	CGFloat y = _scrollView.frame.size.height - picker.frame.size.height - 44 - rect.size.height - 2;
 	rect.origin.y -= y;
 	if (rect.origin.y < 0) rect.origin.y = 0;
 	[_scrollView setContentOffset:rect.origin animated:YES];
 	
+	box.param = cell;
+
 	return box;
 }
 
 //
-- (void)selectBoxDone:(SelectBox_cell *)sender
+- (void)selectBoxDone:(SelectBox *)sender
 {
 	CGFloat y = _scrollView.contentSize.height - _scrollView.frame.size.height;
 	if (_scrollView.contentOffset.y > y)
@@ -498,7 +511,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	//if (sender.cell)
 	[UIView animateWithDuration:0.4 animations:^()
 	 {
-		 sender.cell.accessoryType = WizardCellAccessoryDropdown;
+		 ((WizardCell *)sender.param).accessoryType = WizardCellAccessoryDropdown;
 	 }];
 }
 
@@ -539,6 +552,15 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	{
 		picker = [[UIDatePicker alloc] init];
 		[picker setDate:sender.param];
+		NSString *changed = NSStringFromSelector((SEL)sender.param2);
+		if ([changed rangeOfString:@"Date"].location != NSNotFound)
+		{
+			[picker setDatePickerMode:UIDatePickerModeDate];
+		}
+		else if ([changed rangeOfString:@"DateAndTime"].location != NSNotFound)
+		{
+			[picker setDatePickerMode:UIDatePickerModeDateAndTime];
+		}
 		[picker addTarget:self action:(SEL)sender.param2 forControlEvents:UIControlEventValueChanged];
 	}
 	else
@@ -549,7 +571,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	}
 	
 	[picker setTag:sender.tag];	// tag 传递
-	[self selectBoxWithPicker:picker scrollToRect:sender.frame].cell = sender;
+	[self selectBoxWithPicker:picker scrollToCell:sender];
 }
 
 //
@@ -593,7 +615,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 - (WizardCell *)popupCellWithName:(NSString *)name detail:(NSString *)detail controller:(const NSString *)controller
 {
 	WizardCell *cell = [self pageCellWithName:name detail:detail controller:controller];
-	cell.accessoryType = WizardCellAccessoryPopup;	// TODO:
+	cell.accessoryType = WizardCellAccessoryPopup;	// NEXT:
 	return cell;
 }
 
@@ -636,7 +658,7 @@ _EXObject(SelectBox, strong, WizardCell *, cell);
 	else controller = [controller init];
 	
 	controller.title = sender.name;
-	if (sender.accessoryType == WizardCellAccessoryDisclosure)	// TODO:
+	if (sender.accessoryType == WizardCellAccessoryDisclosure)	// NEXT:
 	{
 		[self.navigationController pushViewController:controller animated:YES];
 	}

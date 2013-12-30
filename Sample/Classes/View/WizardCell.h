@@ -21,6 +21,7 @@ enum WizardCellBorderType
 enum WizardCellAccessoryType
 {
 	WizardCellAccessoryNone,
+	WizardCellAccessoryEnter,
 	WizardCellAccessoryPopup,
 	WizardCellAccessoryDropdown,
 	WizardCellAccessoryCheckmark,

@@ -10,6 +10,6 @@
 }
 - (id)initWithService:(NSString *)service params:(NSDictionary *)params;
 - (id)initWithService:(NSString *)service;
-- (void)loadEnded:(DataLoader *)sender;
+- (void)loadEnded:(DataLoader *)loader;
 - (void)reloadForce;
 @end

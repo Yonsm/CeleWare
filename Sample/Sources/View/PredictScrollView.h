@@ -17,7 +17,7 @@
 - (void)freePages:(BOOL)force;
 
 @property(nonatomic,assign) CGFloat gap;
-@property(nonatomic,readonly) void **pages;
+@property(nonatomic,readonly) __weak UIView **pages;
 @property(nonatomic,assign) BOOL noPredict;
 @property(nonatomic,assign) NSUInteger currentPage;
 @property(nonatomic,assign) NSUInteger numberOfPages;

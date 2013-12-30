@@ -33,23 +33,27 @@ DataLoaderError;
 @class DataLoader;
 @protocol DataLoaderDelegate <NSObject>
 @optional
-- (BOOL)loadBegin:(DataLoader *)sender;				// Before loading on main thread
-- (void)loadEnded:(DataLoader *)sender;				// After loading on main thread
+- (BOOL)loadBegan:(DataLoader *)loader;	// Before loading on main thread
+- (void)loadEnded:(DataLoader *)loader;	// After loading on main thread
 
-- (DataLoaderError)beforeLoading:(DataLoader *)sender;		// Before loading on loading thread
-- (NSDictionary *)doLoading:(DataLoader *)sender;			// Do custom loading on loading thread, should set sender.error on failure
-- (DataLoaderError)afterLoading:(DataLoader *)sender withDict:(NSDictionary *)dict;				// Before loading on loading thread
+- (DataLoaderError)beforeLoading:(DataLoader *)loader;	// Before loading on loading thread
+- (id)doLoading:(DataLoader *)loader;	// Do custom loading on loading thread, should set sender.error on failure
+- (NSData *)dataLoading:(DataLoader *)loader url:(NSString *)url;	// Do custom data loading on loading thread, should set sender.error on failure
+- (DataLoaderError)afterLoading:(DataLoader *)loader withDict:(id)dict;	// Before loading on loading thread
 @end
 
 
 // Data loader
 @interface DataLoader : NSObject
-
+{
+	id<DataLoaderDelegate> _retained_delegate;
+}
 @property(nonatomic,strong) NSString *service;
-@property(nonatomic,strong) id params;			/// NSDictionary 或 NSArray
+@property(nonatomic,strong) id/*NSDictionary or NSArray*/ params;	/// NSDictionary 或 NSArray
 @property(nonatomic,weak) id<DataLoaderDelegate> delegate;
 @property(nonatomic,copy) void (^completion)(DataLoader *loader);
-@property(nonatomic,assign) BOOL completionOnSuccess;
+@property(nonatomic,copy) void (^failure)(DataLoader *loader, NSString *error);
+@property(nonatomic,assign) BOOL completionOnSuccess;	// 仅成功时调用
 
 @property(nonatomic,assign) BOOL checkChange;	// 比较是否相同
 @property(nonatomic,assign) BOOL checkError;	// 提示错误消息，默认为 YES
@@ -58,13 +62,16 @@ DataLoaderError;
 @property(nonatomic,readonly) BOOL loading;
 @property(nonatomic,strong) NSDate *date;
 @property(weak, nonatomic,readonly) NSString *stamp;
-@property(nonatomic,strong) NSDictionary *dict;
+@property(nonatomic,strong) id/*NSDictionary or NSArray*/ dict;
 @property(nonatomic,assign) DataLoaderError error;
 @property(weak, nonatomic,readonly) NSString *errorString;
 
 //
-+ (id)loaderWithService:(NSString *)service params:(NSDictionary *)params success:(void (^)(DataLoader *loader))success;
-+ (id)loaderWithService:(NSString *)service params:(NSDictionary *)params completion:(void (^)(DataLoader *loader))completion;
++ (void)loadWithService:(NSString *)service params:(id)params success:(void (^)(DataLoader *loader))success failure:(void (^)(DataLoader *loader, NSString *error))failure;
++ (void)loadWithService:(NSString *)service params:(id)params success:(void (^)(DataLoader *loader))success;
++ (void)loadWithService:(NSString *)service params:(id)params completion:(void (^)(DataLoader *loader))completion;
++ (void)loadWithService:(NSString *)service params:(id)params delegate:(id<DataLoaderDelegate>)delegate completion:(void (^)(DataLoader *loader))completion;
+//暂无需求：+ (id)loaderWithService:(NSString *)service params:(id)params completion:(void (^)(DataLoader *loader))completion;	// 注意：需要手动调用 loadBegin，可以自己配置 DataLoader
 
 //
 + (void)login;		// 注销并显示登录界面

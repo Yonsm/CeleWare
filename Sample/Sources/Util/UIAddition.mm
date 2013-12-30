@@ -993,7 +993,7 @@
 	CGSize size = [text sizeWithFont:font
 				   constrainedToSize:CGSizeMake(width, 1000)];
 	
-	CGRect frame = CGRectMake(point.x, point.y, width, size.height);
+	CGRect frame = CGRectMake(point.x, point.y, width, ceil(size.height));
 	
 	UILabel *label = [UILabel labelWithFrame:frame text:text color:color font:font alignment:alignment];
 	label.numberOfLines = 0;
@@ -1041,12 +1041,22 @@
 @end
 
 //
-@implementation UIView (TapGestureRecognizer)
+@implementation UIView (GestureRecognizer)
 
 //
-- (void)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action
+- (TapGestureRecognizer *)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action
 {
-	[self addGestureRecognizer:[[TapGestureRecognizer alloc] initWithTarget:target action:action]];
+	TapGestureRecognizer *gesture = [[TapGestureRecognizer alloc] initWithTarget:target action:action];
+	[self addGestureRecognizer:gesture];
+	return gesture;
+}
+
+//
+- (UILongPressGestureRecognizer *)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action
+{
+	UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:target action:action];
+	[self addGestureRecognizer:gesture];
+	return gesture;
 }
 
 @end

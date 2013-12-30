@@ -132,6 +132,7 @@
 @end
 
 //
-@interface UIView (TapGestureRecognizer)
-- (void)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
+@interface UIView (GestureRecognizer)
+- (TapGestureRecognizer *)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
+- (UILongPressGestureRecognizer *)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action;
 @end

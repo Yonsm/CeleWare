@@ -12,7 +12,7 @@
 	}
 	else if ([param isKindOfClass:NSArray.class] && ([param count] == 2))
 	{
-		if (!(self = [self initWithService:param[0] params:param[1]])) return nil;
+		return [self initWithService:param[0] params:param[1]];
 	}
 	return nil;
 }
@@ -71,14 +71,14 @@
 #pragma mark Data loader methods
 
 //
-- (void)loadEnded:(DataLoader *)sender
+- (void)loadEnded:(DataLoader *)loader
 {
-	if (sender.error == DataLoaderNoError)
+	if (loader.error == DataLoaderNoError)
 	{
 		[self reloadPage];
 		
-		// TODO: 没有数据的情况和界面整理，提到更上的层级？
-		// TODO: 只有成功时才有这个界面吗？
+		// NEXT: 没有数据的情况和界面整理，提到更上的层级？
+		// NEXT: 只有成功时才有这个界面吗？
 		_loader.empty = self.isEmpty;
 	}
 }

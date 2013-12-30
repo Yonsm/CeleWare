@@ -28,7 +28,7 @@
 	
 	//
 	BOOL iPhone5 = YES;//UIUtil::IsPhone5();
-	UIImage *image = /*UIUtil::Image(@"guanyu");*/[UIImage imageNamed:@"Icon"];
+	UIImage *image = UIUtil::Image(@"Icon");
 	_logoButton = [UIButton buttonWithImage:image];
 	[_logoButton addTarget:self action:@selector(logoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 	_logoButton.center = CGPointMake(160, (iPhone5 ? 20 : 6) + image.size.height / 2);
