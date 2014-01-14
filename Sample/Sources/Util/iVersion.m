@@ -217,9 +217,9 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
     
     if (!self.appStoreID)
     {
-        _Log(@"Error: No App Store ID was found for this application. If the application is not intended for App Store release then you must specify a custom updateURL.");
+        //_Log(@"Error %@: No App Store ID was found for this application. If the application is not intended for App Store release then you must specify a custom updateURL.", self);
     }
-    
+
 #if TARGET_OS_IPHONE
     
     return [NSURL URLWithString:[NSString stringWithFormat:iVersioniOSAppStoreURLFormat,  @(self.appStoreID)]];

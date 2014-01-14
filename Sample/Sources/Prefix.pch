@@ -4,20 +4,20 @@
 //#define _TARGET_IPAD
 #define _TARGET_IPHONE_IPAD
 
-//#import "CelePrefix.h"
-
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-
 // Resource
-#define kResourceBundle @"Assets"
-#define kAppStatKey @"5182124956240b2e58017cad"
+#define kResourceBundle	@"Assets"
+#define kAppStatKey		@"5182124956240b2e58017cad"
 
 //#define BaseNavigationController NavigationController
 //#define kNavigationBarTintColor [UIColor colorWithRed:40/255.0 green:49/255.0 blue:54/255.0 alpha:1]
 //#import "NavigationController.h"
 
-#import "DataLoader.h"
+//
+//#import "CelePrefix.h"
+#import "CeleUtil.h"
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
 
 // Util
 #ifdef __cplusplus
@@ -54,12 +54,10 @@
 //#import "ShareComposer.h"
 //#import "NRGridViewController.h"
 
-
 // ZipArchive
 //#import "ZipArchive.h"
 
 #endif
-
 
 // Localized String
 #undef NSLocalizedString

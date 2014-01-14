@@ -1,6 +1,8 @@
 
 #define kScrollViewBottomPad 30
 
+#import "DataLoader.h"
+
 //
 @protocol WizardControllerDelegate
 - (id)init;

@@ -1,7 +1,0 @@
-
-//
-@interface BitLive : NSObject
-{	
-}
-@end
-

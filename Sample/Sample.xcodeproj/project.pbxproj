@@ -16,7 +16,7 @@
 		24208EAD1885143D0058AD7E /* MWTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EA01885143D0058AD7E /* MWTapDetectingView.m */; };
 		24208EAE1885143D0058AD7E /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EA21885143D0058AD7E /* MWZoomingScrollView.m */; };
 		24208EAF1885143D0058AD7E /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EA41885143D0058AD7E /* SDWebImageDecoder.m */; };
-		24208EB418851A980058AD7E /* iVersion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24208EB318851A980058AD7E /* iVersion.mm */; };
+		24208EB418851A980058AD7E /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EB318851A980058AD7E /* iVersion.m */; };
 		2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4071869582200F86E14 /* AutoPullDataLoader.mm */; };
 		2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4091869582200F86E14 /* CacheDataLoader.mm */; };
 		246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319318682C2D00903EF4 /* Foundation.framework */; };
@@ -74,7 +74,6 @@
 		246A331E186838ED00903EF4 /* UMFeedbackTableViewCellRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A3297186838ED00903EF4 /* UMFeedbackTableViewCellRight.m */; };
 		246A331F186838ED00903EF4 /* UMFeedbackViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3299186838ED00903EF4 /* UMFeedbackViewController.mm */; };
 		246A3320186838ED00903EF4 /* UMFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 246A329A186838ED00903EF4 /* UMFeedbackViewController.xib */; };
-		246A3321186838ED00903EF4 /* BitLive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A329D186838ED00903EF4 /* BitLive.mm */; };
 		246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A329F186838ED00903EF4 /* HttpUtil.mm */; };
 		246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A1186838ED00903EF4 /* NetworkUtil.mm */; };
 		246A3324186838ED00903EF4 /* NSUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A3186838ED00903EF4 /* NSUtil.mm */; };
@@ -131,7 +130,8 @@
 		24208EA31885143D0058AD7E /* SDWebImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDecoder.h; sourceTree = "<group>"; };
 		24208EA41885143D0058AD7E /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
 		24208EB218851A980058AD7E /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
-		24208EB318851A980058AD7E /* iVersion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iVersion.mm; sourceTree = "<group>"; };
+		24208EB318851A980058AD7E /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
+		24208EBC18852E0E0058AD7E /* CeleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeleUtil.h; sourceTree = "<group>"; };
 		2430D4061869582200F86E14 /* AutoPullDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoPullDataLoader.h; sourceTree = "<group>"; };
 		2430D4071869582200F86E14 /* AutoPullDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AutoPullDataLoader.mm; sourceTree = "<group>"; };
 		2430D4081869582200F86E14 /* CacheDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheDataLoader.h; sourceTree = "<group>"; };
@@ -241,8 +241,6 @@
 		246A3298186838ED00903EF4 /* UMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackViewController.h; sourceTree = "<group>"; };
 		246A3299186838ED00903EF4 /* UMFeedbackViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UMFeedbackViewController.mm; sourceTree = "<group>"; };
 		246A329A186838ED00903EF4 /* UMFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMFeedbackViewController.xib; sourceTree = "<group>"; };
-		246A329C186838ED00903EF4 /* BitLive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitLive.h; sourceTree = "<group>"; };
-		246A329D186838ED00903EF4 /* BitLive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BitLive.mm; sourceTree = "<group>"; };
 		246A329E186838ED00903EF4 /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
 		246A329F186838ED00903EF4 /* HttpUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HttpUtil.mm; sourceTree = "<group>"; };
 		246A32A0186838ED00903EF4 /* NetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtil.h; sourceTree = "<group>"; };
@@ -510,6 +508,7 @@
 			children = (
 				246A3280186838ED00903EF4 /* Main.mm */,
 				246A3285186838ED00903EF4 /* Prefix.pch */,
+				24208EBC18852E0E0058AD7E /* CeleUtil.h */,
 				246A325F186838ED00903EF4 /* CelePrefix.h */,
 				246A325B186838ED00903EF4 /* CeleLib */,
 				246A329B186838ED00903EF4 /* Util */,
@@ -616,8 +615,6 @@
 		246A329B186838ED00903EF4 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				246A329C186838ED00903EF4 /* BitLive.h */,
-				246A329D186838ED00903EF4 /* BitLive.mm */,
 				246A329E186838ED00903EF4 /* HttpUtil.h */,
 				246A329F186838ED00903EF4 /* HttpUtil.mm */,
 				246A32A0186838ED00903EF4 /* NetworkUtil.h */,
@@ -634,7 +631,7 @@
 				246A32AB186838ED00903EF4 /* UIUtil.h */,
 				246A32AC186838ED00903EF4 /* UIUtil.mm */,
 				24208EB218851A980058AD7E /* iVersion.h */,
-				24208EB318851A980058AD7E /* iVersion.mm */,
+				24208EB318851A980058AD7E /* iVersion.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -795,7 +792,6 @@
 				246A332F186838ED00903EF4 /* NullView.mm in Sources */,
 				246A332D186838ED00903EF4 /* KBAutoScrollView.mm in Sources */,
 				246A3334186838ED00903EF4 /* SelectBox.mm in Sources */,
-				246A3321186838ED00903EF4 /* BitLive.mm in Sources */,
 				246A3336186838ED00903EF4 /* SelectSheet.mm in Sources */,
 				246A32DE186838ED00903EF4 /* PullTableController.mm in Sources */,
 				246A32E3186838ED00903EF4 /* RootController.mm in Sources */,
@@ -814,7 +810,7 @@
 				246A32DD186838ED00903EF4 /* PagingTableController.mm in Sources */,
 				246A3328186838ED00903EF4 /* UIUtil.mm in Sources */,
 				2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */,
-				24208EB418851A980058AD7E /* iVersion.mm in Sources */,
+				24208EB418851A980058AD7E /* iVersion.m in Sources */,
 				24208EA61885143D0058AD7E /* HPTextViewInternal.m in Sources */,
 				246A3329186838ED00903EF4 /* AlertView.mm in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
