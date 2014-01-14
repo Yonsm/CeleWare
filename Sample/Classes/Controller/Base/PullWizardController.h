@@ -8,6 +8,8 @@
 {
 	PullDataLoader *_loader;
 }
+@property(nonatomic,readonly) PullDataLoader *loader;
+
 - (id)initWithService:(NSString *)service params:(NSDictionary *)params;
 - (id)initWithService:(NSString *)service;
 - (void)loadEnded:(DataLoader *)loader;

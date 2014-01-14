@@ -1,9 +1,10 @@
 
-#import "TableController.h"
+#import "WizardController.h"
 
 //
-@interface SettingController : TableController
+@interface SettingController : WizardController
 {
+	WizardCell *_cacheCell;
 	UIButton *_logoButton;
 }
 

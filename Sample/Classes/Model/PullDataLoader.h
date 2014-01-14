@@ -12,7 +12,9 @@
 
 @property(nonatomic,assign) BOOL needAuth;
 @property(nonatomic,readonly) BOOL needLogin;
-//@property(nonatomic,assign) BOOL disableLoadOnResumeOnce;
+@property(nonatomic,assign) BOOL checkExpire;
+@property(nonatomic,assign) BOOL disableLoadOnResumeOnce;
+@property(nonatomic,readonly) BOOL refreshing;
 @property(nonatomic,strong) UIScrollView *scrollView;
 @property(nonatomic,readonly) ODRefreshControl *refreshControl;
 
@@ -26,4 +28,8 @@
 - (void)setEmpty:(BOOL)empty;
 - (void)setRefreshEnabled:(BOOL)enabled;
 
+@end
+
+@protocol PullControllerProtocol <NSObject>
+@property(nonatomic,readonly) PullDataLoader *loader;
 @end

@@ -113,15 +113,19 @@
 }
 
 //
-- (DataLoaderError)afterLoading:(DataLoader *)loader withDict:(NSMutableDictionary *)dict
+- (id)loadDoing:(DataLoader *)loader
 {
-	if ([_loader.params[@"start"] intValue] && [_loader.dict[@"results"] count])
+	NSMutableDictionary *dict = [loader loadDoing];
+	if (loader.error == DataLoaderNoError)
 	{
-		NSMutableArray *results = [NSMutableArray arrayWithArray:_loader.dict[@"results"]];
-		if ([dict[@"results"] count]) [results addObjectsFromArray:dict[@"results"]];
-		dict[@"results"] = results;
+		if ([_loader.params[@"start"] intValue] && [_loader.dict[@"results"] count])
+		{
+			NSMutableArray *results = [NSMutableArray arrayWithArray:_loader.dict[@"results"]];
+			if ([dict[@"results"] count]) [results addObjectsFromArray:dict[@"results"]];
+			dict[@"results"] = results;
+		}
 	}
-	return DataLoaderNoError;
+	return dict;
 }
 
 //

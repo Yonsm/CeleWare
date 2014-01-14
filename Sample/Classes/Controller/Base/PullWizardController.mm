@@ -36,12 +36,17 @@
 }
 
 //
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:kLogoutNotification object:nil];
+}
 
 //
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	_loader.scrollView = _scrollView;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearPage) name:kLogoutNotification object:nil];
 }
 
 //
@@ -81,6 +86,13 @@
 #pragma mark Content methods
 
 //
+- (void)clearPage
+{
+	[_loader clearData];
+	[self reloadPage];
+}
+
+//
 - (void)loadData
 {
 	//[_loader loadFirst];
@@ -105,6 +117,7 @@
 	{
 		_contentHeight = 0;
 		[_contentView removeSubviews];
+		_scrollView.contentSize = CGSizeZero;
 	}
 }
 

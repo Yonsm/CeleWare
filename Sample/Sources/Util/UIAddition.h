@@ -99,6 +99,9 @@
 + (id)checkButtonWithTitle:(NSString *)title frame:(CGRect)frame;
 + (id)linkButtonWithTitle:(NSString *)title frame:(CGRect)frame;
 + (id)linkButtonWithTitle:(NSString *)title;
++ (id)colorButtonWithTitle:(NSString *)title width:(CGFloat)width;
++ (id)colorButtonWithTitle:(NSString *)title;
++ (id)roundButtonWithTitle:(NSString *)title color:(UIColor *)color color_:(UIColor *)color_ frame:(CGRect)frame;
 @end
 
 

@@ -53,6 +53,20 @@ NSDate *NSUtil::FormatDate(NSString *string, NSDateFormatterStyle dateStyle, NSD
 	return [formatter dateFromString:string];
 }
 
+// Convert date to relative string.
+NSString *NSUtil::RelativeTime(NSDate *date, NSDate *now)
+{
+	NSTimeInterval t = [now timeIntervalSinceDate:date];
+	if (t < 0) return nil;
+	if (t < 60) return [NSString stringWithFormat:NSLocalizedString(@"%d Seconds Before", @"%d秒前"), (NSUInteger)t];
+	if (t < 60 * 60) return [NSString stringWithFormat:NSLocalizedString(@"%d Minutes Before", @"%d分钟前"), (NSUInteger)(t/60)];
+	if (t < 60 * 60 * 24) return [NSString stringWithFormat:NSLocalizedString(@"%d Hours Before", @"%d小时前"), (NSUInteger)(t/(60 * 60))];
+	if (t < 60 * 60 * 24 * 31) return [NSString stringWithFormat:NSLocalizedString(@"%d Days Before", @"%d天前"), (NSUInteger)(t/(60 * 60 * 24))];
+	if (t < 60 * 60 * 24 * 365) return [NSString stringWithFormat:NSLocalizedString(@"%d Months Before", @"%d个月前"), (NSUInteger)(t/(60 * 60 * 24 * 30))];
+	/*if (t < 60 * 60 * 24 * 365) */return [NSString stringWithFormat:NSLocalizedString(@"%d Years Before", @"%d年前"), (NSUInteger)(t/(60 * 60 * 24 * 365))];
+	return NSLocalizedString(@"Long Long Before", @"好久好久以前");
+}
+
 // Convert date to readable string. Return nil on fail
 NSString *NSUtil::SmartTime(NSDate *date, NSDate *now)
 {

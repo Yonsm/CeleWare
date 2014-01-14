@@ -17,7 +17,7 @@
 - (UIView *)lineWithFrame:(CGRect)frame
 {
 	UIView *line = [[UIView alloc] initWithFrame:frame];
-	line.backgroundColor = UIUtil::Color(0xcccccc);
+	line.backgroundColor = UIUtil::Color(0xdfdbdc);
 	[self addSubview:line];
 	return line;
 }

@@ -12,6 +12,7 @@
 //
 - (NSDictionary *)syncUpdateCity
 {
+	_city = nil;
 	[super syncUpdateLocation];
 	if (_city == nil)
 	{
@@ -21,13 +22,19 @@
 }
 
 //
-- (void)located
+- (void)locationEnded
 {
+	if (self.location == nil)
+	{
+		[super locationEnded];
+		return;
+	}
+
 	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 	[geocoder reverseGeocodeLocation:self.location completionHandler:^(NSArray *placemarks, NSError *error)
 	 {
 		 self.city = [CityLocater cityForPlacemarks:placemarks];
-		 [super located];
+		 [super locationEnded];
 	 }];
 }
 

@@ -9,9 +9,8 @@
 // Constructor
 - (id)init
 {
-	self = [super initWithAutoHide:YES autoNext:NO autoScroll:NO];
+	self = [super init];
 	self.forgot = NO;
-	self.navigationItem.rightBarButtonItem.enabled = NO;
 	return self;
 }
 
@@ -20,7 +19,6 @@
 {
 	_forgot = forgot;
 	self.title = forgot? @"重置密码" : @"注册帐号";
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem buttonItemWithTitle:forgot ? @"保存" : @"注册" target:self action:@selector(doneButtonClicked:)];
 }
 
 #pragma mark View methods
@@ -37,11 +35,12 @@
 //	[super viewDidLoad];
 //}
 
-// Called when the view is about to made visible.
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//	[super viewWillAppear:animated];
-//}
+// 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	[_usernameField becomeFirstResponder];
+}
 
 // Called after the view was dismissed, covered or otherwise hidden.
 //- (void)viewWillDisappear:(BOOL)animated
@@ -56,10 +55,9 @@
 {
 	_usernameField = [self cellNumberWithName:@"手机号"
 										 text:nil
-								  placeholder:@"请输入11位手机号码"
+								  placeholder:@"请输入手机号码"
 									  changed:@selector(phoneFieldChanged:)];
 	
-	[_usernameField becomeFirstResponder];
 	{
 		_usernameField.adjustsFontSizeToFitWidth = YES;
 		CGRect frame  = _usernameField.frame;
@@ -93,15 +91,19 @@
 	
 	if (!_forgot)
 	{
-		UILabel *tips = [self tipsWithTitle:@"点击 注册 表示同意"];
+		[self spaceWithHeight:10];
+		UILabel *tips = [self tipsWithTitle:@"点击 注册 即表示同意"];
 		CGRect frame = tips.frame;
-		frame.origin.x = 128;
+		frame.origin.x += [tips.text sizeWithFont:tips.font].width;
 		frame.size.width = 80;
 		UIButton *button = [UIButton linkButtonWithTitle:@"《用户协议》" frame:frame];
 		button.titleLabel.font = tips.font;
 		[button addTarget:self action:@selector(agreementButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[_contentView addSubview:button];
+		[self spaceWithHeight:-10];
 	}
+	
+	[self majorButtonWithTitle:_forgot ? @"重置" : @"注册" action:@selector(doneButtonClicked:)].enabled = NO;
 }
 
 #pragma mark Event methods
@@ -169,10 +171,10 @@
 //
 - (void)updateDoneButton
 {
-	self.navigationItem.rightBarButtonItem.enabled =
+	_lastButton.enabled =
 	(_usernameField.text.length == 11) &&
 	(_authCodeField.text.length == 6) &&
-	(_passwordField.text.length != 0);
+	(_passwordField.text.length >= 6);
 }
 
 //

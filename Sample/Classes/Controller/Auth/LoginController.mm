@@ -10,10 +10,7 @@
 - (id)init
 {
 	self = [super initWithAutoHide:YES autoNext:NO autoScroll:NO];
-	//self.title = @"登录";
-	
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem buttonItemWithTitle:@"登录" target:self action:@selector(doneButtonClicked:)];
-	self.navigationItem.rightBarButtonItem.enabled = NO;
+	self.title = @"我的账户";
 	
 	return self;
 }
@@ -33,10 +30,11 @@
 //}
 
 // Called when the view is about to made visible.
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//	[super viewWillAppear:animated];
-//}
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[_usernameField.text.length ? _passwordField : _usernameField becomeFirstResponder];
+}
 
 // Called after the view was dismissed, covered or otherwise hidden.
 //- (void)viewWillDisappear:(BOOL)animated
@@ -49,11 +47,11 @@
 //
 - (void)loadPage
 {
+	NSString *username = Settings::Get(kUsername);
 	_usernameField = [self cellNumberWithName:@"手机号"
-										 text:Settings::Get(kUsername)
+										 text:username
 								  placeholder:@"请输入11位手机号码"
 									  changed:@selector(updateDoneButton)];
-	[_usernameField becomeFirstResponder];
 	
 	_passwordField = [self cellTextWithName:@"密　码"
 									   text:nil
@@ -63,11 +61,17 @@
 	
 	//DataLoaderPasswordError
 	
-	[super buttonsWithTitles:@[@"忘记密码", @"注册帐号"] action:@selector(buttonClicked:)];
+	[super buttonsWithTitles:@[@"注册", @"登录"] action:@selector(buttonClicked:)];
+	_lastButton.enabled = NO;
 	
-#ifdef TEST
-	[super buttonsWithTitles:@[@"好男人", @"masterB"] action:@selector(testButtonClicked:)];
-#endif
+	//
+	_contentHeight += 12;
+	CGRect frame = {kLeftGap, _contentHeight, 0, 0};
+	UIButton *forgotButton = [UIButton linkButtonWithTitle:@"忘记密码？" frame:frame];
+	forgotButton.tag = 2;
+	[forgotButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	[_contentView addSubview:forgotButton];
+	_contentHeight += frame.size.height;
 }
 
 #pragma mark Event methods
@@ -75,25 +79,21 @@
 //
 - (void)buttonClicked:(UIButton *)sender
 {
+	if (sender.tag == 1)
+	{
+		[self doneButtonClicked:sender];
+		return;
+	}
+	
 	RegisterController *controller = [[RegisterController alloc] init];
-	controller.forgot = !sender.tag;
+	controller.forgot = (sender.tag == 2);
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
 //
-#ifdef TEST
-- (void)testButtonClicked:(UIButton *)sender
-{
-	_usernameField.text = sender.tag ? @"18610103505" : @"18901398225";
-	_passwordField.text = sender.tag ? @"justdoit" : @"123456";
-	[self updateDoneButton];
-}
-#endif
-
-//
 - (void)updateDoneButton
 {
-	self.navigationItem.rightBarButtonItem.enabled = (_usernameField.text.length == 11) && (_passwordField.text.length != 0);
+	_lastButton.enabled = (_usernameField.text.length == 11) && (_passwordField.text.length >= 6);
 }
 
 //
@@ -102,7 +102,7 @@
 	Settings::Set(kUsername, _usernameField.text);
 	Settings::EncryptSet(kPassword, _passwordField.text);
 	
-	self.navigationItem.rightBarButtonItem.enabled = NO;
+	_lastButton.enabled = NO;
 	[DataLoader loadWithService:nil params:nil completion:^(DataLoader *loader)
 	 {
 		 if (loader.error != DataLoaderNoError)
@@ -114,9 +114,13 @@
 				 [self updateDoneButton];
 				 [_passwordField becomeFirstResponder];
 			 }
-			 self.navigationItem.rightBarButtonItem.enabled = YES;
+			 else
+			 {
+				 _lastButton.enabled = YES;
+			 }
 			 return;
 		 }
+		 
 		 Settings::Save();
 		 [self.navigationController dismissModalViewController];
 	 }];

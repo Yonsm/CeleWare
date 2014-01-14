@@ -7,11 +7,12 @@
 #pragma mark Generic methods
 
 //
-//- (id)init
-//{
-//	self = [super init];
-//	return self;
-//}
+- (id)init
+{
+	self = [super init];
+	_checkExpire = YES;
+	return self;
+}
 
 //
 - (void)setScrollView:(UIScrollView *)scrollView
@@ -44,20 +45,26 @@
 - (void)loadRefresh
 {
 	self.checkError = YES;
-	if (![self loadExpire])
+	//[self loadExpire];
+	[self loadBegin];
+	if (!self.loading)
 	{
 		[_refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.5];
+	}
+	else
+	{
+		_refreshing = YES;
 	}
 }
 
 //
 - (void)loadResume
 {
-	//	if (_disableLoadOnResumeOnce)
-	//	{
-	//		_disableLoadOnResumeOnce = NO;
-	//		return;
-	//	}
+	if (_disableLoadOnResumeOnce)
+	{
+		_disableLoadOnResumeOnce = NO;
+		return;
+	}
 	
 	if (self.needLogin)
 	{
@@ -78,23 +85,25 @@
 //
 - (BOOL)loadExpire
 {
-	if ((self.error == DataLoaderNoError || self.error == DataLoaderNoChange))
+	if (_checkExpire)
 	{
-		NSTimeInterval interval = [[NSDate date] timeIntervalSinceReferenceDate] - self.date.timeIntervalSinceReferenceDate;
-		if (interval < 60)
+		if ((self.error == DataLoaderNoError || self.error == DataLoaderNoChange))
 		{
-			return NO;
+			NSTimeInterval interval = [[NSDate date] timeIntervalSinceReferenceDate] - self.date.timeIntervalSinceReferenceDate;
+			if (interval < 600)
+			{
+				return NO;
+			}
 		}
 	}
-	[self loadBegin];
-	return YES;
+	return [self loadBegin];
 }
 
 #pragma mark -
 #pragma mark Data loader methods
 
 //
-- (void)loadBegin
+- (BOOL)loadBegin
 {
 	if (self.needLogin)
 	{
@@ -113,7 +122,7 @@
 				[DataLoader login];
 			}
 		}
-		return;
+		return NO;
 	}
 	else if (_authView)
 	{
@@ -121,8 +130,8 @@
 		_authView = nil;
 	}
 	
-	[super loadBegin];
 	//[_refreshControl beginRefreshing];
+	return [super loadBegin];
 }
 
 //
@@ -141,6 +150,14 @@
 	}
 	
 	[super loadStop:dict];
+}
+
+//
+- (void)loadEnded:(NSDictionary *)dict
+{
+	[super loadEnded:dict];
+
+	_refreshing = NO;
 }
 
 //
@@ -178,20 +195,27 @@
 // NEXT: 优化重构
 - (UIView *)emptyView
 {
-	CGRect frame = _scrollView.bounds;
+	CGRect frame = _scrollView.frame;
+	frame.origin.x = frame.origin.y = 0;
+	if ([_scrollView isKindOfClass:UITableView.class])
+	{
+		frame.origin.y = ((UITableView *)_scrollView).tableHeaderView.frame.size.height;
+		frame.size.height -= frame.origin.y;
+	}
 	UIView *view = [[UIView alloc] initWithFrame:frame];
 	view.backgroundColor = _scrollView.backgroundColor;
+	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	
 	UIImageView *icon = [[UIImageView alloc] initWithImage:UIUtil::Image(@"EmptyIcon")];
 	icon.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	icon.center = CGPointMake(frame.size.width / 2, frame.size.height / 2 - 30);
 	[view addSubview:icon];
 	
-	frame.origin.y = CGRectGetMaxY(icon.frame) + 2;
-	frame.size.height = 30;
+	frame.origin.y = CGRectGetMaxY(icon.frame) + 12;
+	frame.size.height = 16;
 	UILabel *label = [UILabel labelWithFrame:frame
-										text:@"暂时是空的"
-									   color:[UIColor darkGrayColor]
+										text:@"木有粗面，木有鱼丸，啥都木有~"
+									   color:UIUtil::Color(0x807e7a)
 										font:[UIFont systemFontOfSize:14]
 								   alignment:NSTextAlignmentCenter];
 	label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;

@@ -34,15 +34,15 @@
 	[super viewWillAppear:animated];
 	StatPageBegin(NSStringFromClass([self class]));
 	
-	if (self.navigationItem.leftBarButtonItem == nil/*!UIUtil::IsOS7()*/)
-	{
-		if (!self.navigationItem.hidesBackButton && !self.navigationItem.leftBarButtonItem && (self.navigationController.viewControllers.count > 1))
-		{
-			[self.view addGestureRecognizer:[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonClicked:)]];
-
-			//self.navigationItem.leftBarButtonItem = [UIBarButtonItem customBackItemWithTitle:@"返回" target:self action:@selector(backButtonClicked:)];
-		}
-	}
+//	if (self.navigationItem.leftBarButtonItem == nil/*!UIUtil::IsOS7()*/)
+//	{
+//		if (!self.navigationItem.hidesBackButton && !self.navigationItem.leftBarButtonItem && (self.navigationController.viewControllers.count > 1))
+//		{
+//			[self.view addGestureRecognizer:[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonClicked:)]];
+//
+//			self.navigationItem.leftBarButtonItem = [UIBarButtonItem buttonItemWithTitle:@"返回" target:self action:@selector(backButtonClicked:)];
+//		}
+//	}
 }
 
 // Called after the view was dismissed, covered or otherwise hidden.
@@ -63,34 +63,6 @@
 //{
 //	[super didReceiveMemoryWarning];
 //}
-
-#pragma Data methods
-
-//
-- (UIView *)emptyView
-{
-	UIImage *image = UIUtil::Image(@"EmptyIcon");
-	UIImageView *view = [[UIImageView alloc] initWithImage:image];
-	view.contentMode = UIViewContentModeCenter;
-	CGRect frame = self.view.bounds;
-	frame.size.height -= 50;
-	view.frame = frame;
-	frame.origin.y = (frame.size.height + image.size.height) / 2;
-	frame.size.height = 30;
-	UILabel *label = [UILabel labelWithFrame:frame
-										text:self.emptyTips
-									   color:[UIColor darkGrayColor]
-										font:[UIFont systemFontOfSize:14]
-								   alignment:NSTextAlignmentCenter];
-	[view addSubview:label];
-	return view;
-}
-
-//
-- (NSString *)emptyTips
-{
-	return @"暂时是空的";
-}
 
 #pragma mark Event methods
 

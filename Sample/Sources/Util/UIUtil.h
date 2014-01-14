@@ -123,9 +123,21 @@ public:
 	NS_INLINE UIViewController *VisibleViewController()
 	{
 		UIViewController *controller = FrontViewController();
-		if ([controller isKindOfClass:[UINavigationController class]]) return ((UINavigationController *)controller).visibleViewController;
-		if ([controller isKindOfClass:[UITabBarController class]]) return ((UITabBarController *)controller).selectedViewController;
-		return controller;
+		while (YES)
+		{
+			if ([controller isKindOfClass:[UINavigationController class]])
+			{
+				controller = ((UINavigationController *)controller).visibleViewController;
+			}
+			else if ([controller isKindOfClass:[UITabBarController class]])
+			{
+				controller = ((UITabBarController *)controller).selectedViewController;
+			}
+			else
+			{
+				return controller;
+			}
+		}
 	}
 
 	//

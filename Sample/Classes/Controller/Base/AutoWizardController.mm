@@ -178,10 +178,14 @@
 		else
 		{
 			_keyboardShown = YES;
-			[UIView animateWithDuration:0.3 animations:^()
-			 {
-				 _scrollView.frame = frame;
-			 }];
+
+			[UIView beginAnimations:nil context:NULL];
+			[UIView setAnimationBeginsFromCurrentState:YES];
+			[UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+			[UIView setAnimationCurve:(UIViewAnimationCurve)[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
+			_scrollView.frame = frame;
+			[UIView commitAnimations];
+			
 			[self centerView:view];
 		}
 	}
@@ -209,10 +213,13 @@
 		
 		offset.y -= rect.size.height;
 		if (offset.y < 0) offset.y = 0;
-		[UIView animateWithDuration:0.3 animations:^()
-		 {
-			 [_scrollView setContentOffset:offset animated:YES];
-		 }];
+		
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+		[UIView setAnimationCurve:(UIViewAnimationCurve)[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
+		[_scrollView setContentOffset:offset animated:YES];
+		[UIView commitAnimations];
 	}
 }
 

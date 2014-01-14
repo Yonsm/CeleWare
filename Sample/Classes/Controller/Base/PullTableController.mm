@@ -36,6 +36,10 @@
 }
 
 //
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:kLogoutNotification object:nil];
+}
 
 //
 - (void)viewDidLoad
@@ -44,6 +48,8 @@
 	
 	_loader.scrollView = self.tableView;
 	//[_loader loadFirst];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearPage) name:kLogoutNotification object:nil];
 }
 
 //
@@ -76,15 +82,18 @@
 	if (loader.error == DataLoaderNoError)
 	{
 		[self reloadPage];
-		
-		// NEXT: 没有数据的情况和界面整理，提到更上的层级？
-		// NEXT: 只有成功时才有这个界面吗？
-		_loader.empty = self.isEmpty;
 	}
 }
 
 #pragma mark -
 #pragma mark Content methods
+
+//
+- (void)clearPage
+{
+	[_loader clearData];
+	[self reloadPage];
+}
 
 //
 - (void)reloadForce
@@ -99,6 +108,7 @@
 {
 	[self loadPage];
 	[self.tableView reloadData];
+	_loader.empty = self.isEmpty;
 }
 
 //

@@ -255,7 +255,7 @@
 	UILabel *label = [UILabel labelAtPoint:CGPointMake(kLeftGap, _contentHeight + 5)
 									 width:_contentWidth - 30
 									  text:title
-									 color:UIUtil::Color(0x4d4d4d)
+									 color:UIUtil::Color(0x4d4b47)
 									  font:font
 								 alignment:NSTextAlignmentLeft];
 	
@@ -310,35 +310,74 @@
 }
 
 //
-- (UIButton *)buttonWithTitle:(NSString *)title action:(SEL)action
+- (UIButton *)buttonWithTitle:(NSString *)title action:(SEL)action color:(UIColor *)color color_:(UIColor *)color_ frame:(CGRect)frame
 {
-	CGFloat width = 18 + [title sizeWithFont:kLinkButtonFont].width;
-	UIButton *button = [UIButton linkButtonWithTitle:title frame:CGRectMake((_contentWidth - width) / 2, _contentHeight + 5, width, 0)];
-	//button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+	UIButton *button = [UIButton roundButtonWithTitle:title color:color color_:color_ frame:frame];
 	[button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
 	[_contentView addSubview:button];
-	_contentHeight += button.frame.size.height + 10;
+	_lastButton = button;
+	return button;
+}
+
+//
+- (UIButton *)buttonWithTitle:(NSString *)title action:(SEL)action color:(UIColor *)color color_:(UIColor *)color_
+{
+	_contentHeight += 15;
+	UIButton *button = [self buttonWithTitle:title action:action color:color color_:color_ frame:CGRectMake(10, _contentHeight, 300, 40)];
+	_contentHeight += 40;
+	return button;
+}
+
+//
+#define kMajorButtonColor UIUtil::Color(0xff9900)
+#define kMajorButtonColor_ UIUtil::Color(0xff7700)
+#define kMajorButtonTextColor UIColor.whiteColor
+- (UIButton *)majorButtonWithTitle:(NSString *)title action:(SEL)action
+{
+	UIButton *button = [self buttonWithTitle:title action:action color:kMajorButtonColor color_:kMajorButtonColor_];
+	[button setTitleColor:kMajorButtonTextColor forState:UIControlStateNormal];
+	return button;
+}
+
+//
+#define kMinorButtonColor UIUtil::Color(211,254,189)
+#define kMinorButtonColor_ UIUtil::Color(0xc5eeaf)
+#define kMinorButtonTextColor UIColor.blackColor
+- (UIButton *)minorButtonWithTitle:(NSString *)title action:(SEL)action
+{
+	UIButton *button = [self buttonWithTitle:title action:action color:kMinorButtonColor color_:kMinorButtonColor_];
+	[button setTitleColor:kMinorButtonTextColor forState:UIControlStateNormal];
 	return button;
 }
 
 //
 - (NSArray *)buttonsWithTitles:(NSArray *)titles action:(SEL)action
 {
-	CGRect frame = {0/*kLeftGap*/, _contentHeight + 5, (_contentWidth/* - kLeftGap - kRightGap*/) / titles.count, 36};
+	_contentHeight += 15;
+	CGRect frame = {kLeftGap, _contentHeight + 5, (_contentWidth - kLeftGap * (titles.count + 1)) / titles.count, 40};
 	NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:titles.count];
-	for (NSUInteger i = 0; i < titles.count; i++, frame.origin.x += frame.size.width)
+	for (NSUInteger i = 0; i < titles.count; i++, frame.origin.x += frame.size.width + kLeftGap)
 	{
-		UIButton *button = [UIButton linkButtonWithTitle:titles[i] frame:frame];
-		button.titleLabel.font = [UIFont systemFontOfSize:17];
-		//button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-		
+		UIColor *color, *color_, *textColor;
+		if (i == titles.count - 1)
+		{
+			color = kMajorButtonColor;
+			color_ = kMajorButtonColor_;
+			textColor = kMajorButtonTextColor;
+		}
+		else
+		{
+			color = UIUtil::Color(187,187,187);
+			color_ = UIUtil::Color(157,157,157);
+			textColor = kMajorButtonTextColor;
+		}
+		UIButton *button = [self buttonWithTitle:titles[i] action:action color:color color_:color_ frame:frame];
+		[button setTitleColor:textColor forState:UIControlStateNormal];
+		button.frame = frame;
 		button.tag = i;
-		[button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-		
-		[_contentView addSubview:button];
 		[buttons addObject:button];
 	}
-	_contentHeight += frame.size.height + 10;
+	_contentHeight += frame.size.height;
 	return buttons;
 }
 
@@ -346,17 +385,9 @@
 - (UIButton *)cellButtonWithName:(NSString *)name detail:(NSString *)detail title:(NSString *)title action:(SEL)action width:(CGFloat)width
 {
 	WizardCell *cell = [self cellWithName:name];
-	
-	UIFont *font = [UIFont systemFontOfSize:14];
-	UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
-	button.titleLabel.font = font;
-	[button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-	[button setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x007aff)] forState:UIControlStateNormal];
-	[button setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x209aff)] forState:UIControlStateHighlighted];
-	[button setTitle:title forState:UIControlStateNormal];
-	cell.accessoryView = button;
-	
+	UIButton *button = [UIButton colorButtonWithTitle:title width:width];
 	[button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+	cell.accessoryView = button;
 	if (detail) cell.detail = detail;
 	return button;
 }
@@ -364,8 +395,7 @@
 //
 - (UIButton *)cellButtonWithName:(NSString *)name detail:(NSString *)detail title:(NSString *)title action:(SEL)action
 {
-	CGFloat width = [title sizeWithFont:[UIFont systemFontOfSize:14]].width + 18;
-	return [self cellButtonWithName:name detail:detail title:title action:action width:width];
+	return [self cellButtonWithName:name detail:detail title:title action:action width:0];
 }
 
 //
@@ -456,8 +486,8 @@
 - (void)selectButton:(UIButton *)button
 {
 	button.selected = YES;
-	UIImage *image = UIUtil::ImageNamed(@"xuanze");
-	UIImage *image_ = UIUtil::ImageNamed(@"xuanze_");
+	UIImage *image = UIUtil::ImageNamed(@"RadioCheck");
+	UIImage *image_ = UIUtil::ImageNamed(@"RadioCheck_");
 	[button setImage:image forState:(UIControlStateNormal)];
 	[button setImage:image_ forState:(UIControlStateHighlighted)];
 	

@@ -3,6 +3,11 @@
 #import <CoreLocation/CoreLocation.h>
 
 //
+@interface CLLocation (Distance)
+- (NSString *)distanceFromLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
+@end
+
+//
 @interface NearLocater : NSObject <CLLocationManagerDelegate>
 {
 	NSCondition *_condition;
@@ -18,6 +23,6 @@
 - (CLLocation *)syncUpdateLocation;
 
 // For subclass only
-- (void)located;
+- (void)locationEnded;
 
 @end

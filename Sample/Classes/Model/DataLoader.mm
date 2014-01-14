@@ -59,7 +59,7 @@ static ErrorAlertView *_alertView = nil;
 @implementation DataLoader
 
 //
-+ (void)loadWithService:(NSString *)service params:(id)params success:(void (^)(DataLoader *loader))success failure:(void (^)(DataLoader *loader, NSString *error))failure
++ (void)loadWithService:(NSString *)service params:(id)params success:(void (^)(DataLoader *loader))success failure:(BOOL (^)(DataLoader *loader, NSString *error))failure
 {
 	DataLoader *loader = [DataLoader loaderWithService:service params:params completion:success];
 	loader.completionOnSuccess = YES;
@@ -84,6 +84,15 @@ static ErrorAlertView *_alertView = nil;
 }
 
 //
++ (void)loadWithService:(NSString *)service params:(id)params showLoading:(BOOL)showLoading checkError:(BOOL)checkError completion:(void (^)(DataLoader *loader))completion
+{
+	DataLoader *loader = [DataLoader loaderWithService:service params:params completion:completion];
+	loader.checkError = checkError;
+	loader.showLoading = showLoading;
+	[loader loadBegin];
+}
+
+//
 + (void)loadWithService:(NSString *)service params:(id)params completion:(void (^)(DataLoader *loader))completion
 {
 	[[DataLoader loaderWithService:service params:params completion:completion] loadBegin];
@@ -101,8 +110,19 @@ static ErrorAlertView *_alertView = nil;
 
 #pragma mark Auth methods
 
-
+static int _self_id = nil;
 static NSString *_access_token = nil;
+//
++ (int)self_id
+{
+	return _self_id;
+}
+
+//
++ (NSString *)access_token
+{
+	return _access_token;
+}
 
 //
 + (BOOL)isLogon
@@ -113,8 +133,10 @@ static NSString *_access_token = nil;
 //
 + (void)logout
 {
+	_self_id = nil;
 	_access_token = nil;
 	Settings::Save(kPassword);
+	[[NSNotificationCenter defaultCenter] postNotificationName:kLogoutNotification object:nil];
 }
 
 //
@@ -138,9 +160,7 @@ static NSString *_access_token = nil;
 {
 	self = [super init];
 	_checkError = YES;
-#ifdef DEBUG
-	_jsonOptions = NSJSONReadingMutableContainers;
-#endif
+	_showLoading = YES;
 	return self;
 }
 
@@ -181,31 +201,31 @@ static NSString *_access_token = nil;
 #pragma mark Data loading methods
 
 //
-- (void)loadBegin
+- (BOOL)loadBegin
 {
-	if (_loading == NO)
+	if (_loading) return NO;
+
+	if ([_delegate respondsToSelector:@selector(loadBegan:)])
 	{
-		if ([_delegate respondsToSelector:@selector(loadBegan:)])
+		if (![_delegate loadBegan:self])
 		{
-			if (![_delegate loadBegan:self])
-			{
-				return;
-			}
+			return NO;
 		}
-		
-		//
-		_loading = YES;
-		_retained_delegate = _delegate;
-		[self loadStart];
-		[self performSelectorInBackground:@selector(loadThread) withObject:nil];
 	}
+	
+	//
+	_loading = YES;
+	_retained_delegate = _delegate;
+	[self loadStart];
+	[self performSelectorInBackground:@selector(loadThread) withObject:nil];
+	return YES;
 }
 
 //
 - (void)loadStart
 {
 	UIUtil::ShowNetworkIndicator(YES);
-	if (!_dict)
+	if (!_dict && _showLoading)
 	{
 		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
 		[controller.view toastWithLoading];
@@ -220,36 +240,13 @@ static NSString *_access_token = nil;
 	{
 		//[NSThread sleepForTimeInterval:5];
 		
-		//
-		if ([_delegate respondsToSelector:@selector(beforeLoading:)])
-		{
-			_error = [_delegate beforeLoading:self];
-		}
-		else
-		{
-			_error = DataLoaderNoError;
-		}
-		
-		NSDictionary *dict = nil;
-		if (_error == DataLoaderNoError)
-		{
-			dict = [_delegate respondsToSelector:@selector(doLoading:)] ? [_delegate doLoading:self] : [self loadDoing];
-		}
-		
-		if ([_delegate respondsToSelector:@selector(afterLoading: withDict:)])
-		{
-			if (_error == DataLoaderNoError)
-			{
-				_error = [_delegate afterLoading:self withDict:dict];
-			}
-		}
-		
+		id dict =[_delegate respondsToSelector:@selector(loadDoing:)] ? [_delegate loadDoing:self] : [self loadDoing];
 		[self performSelectorOnMainThread:@selector(loadEnded:) withObject:dict waitUntilDone:YES];
 	}
 }
 
 //
-- (NSDictionary *)loadDoing
+- (id)loadDoing
 {
 	// 登录
 	if (_access_token == nil || _service == nil)
@@ -264,6 +261,7 @@ static NSString *_access_token = nil;
 				_error = (DataLoaderError)[dict[@"code"] intValue];
 				if (_error == DataLoaderNoError)
 				{
+					_self_id = [dict[@"user"][@"userId"] intValue];
 					_access_token = dict[@"access_token"];
 					dict = [dict objectForKey:@"user"];
 					if (_service == nil) return dict;
@@ -320,31 +318,24 @@ static NSString *_access_token = nil;
 //
 - (NSData *)loadData
 {
-	//
-	NSError *error = nil;
-	NSURLResponse *response = nil;
 	NSString *access_token = _access_token ? [kAuthConsumerKey stringByAppendingString:_access_token] : kAuthConsumerKey;
 	NSString *url = [NSString stringWithFormat:@"%@?access_token=%@", kServiceUrl(_service), access_token];
-	
-	NSData *data;
-	if ([_delegate respondsToSelector:@selector(dataLoading: url:)])
-	{
-		data = [_delegate dataLoading:self url:url];
-	}
-	else
-	{
-		id params = [_params isKindOfClass:[NSDictionary class]] ? NSUtil::URLQuery((NSDictionary *)_params) : _params;
-		_Log(@"%@%@", url, params ? [@"&" stringByAppendingString:params] : @"");
-		NSData *post = [params dataUsingEncoding:NSUTF8StringEncoding];
-		data = HttpUtil::HttpData(url, post, NSURLRequestReloadIgnoringCacheData, &response, &error);
-	}
+	return [_delegate respondsToSelector:@selector(loadData: url:)] ? [_delegate loadData:self url:url] : [self loadData:url];
+}
 
-	//
+//
+- (NSData *)loadData:(NSString *)url
+{
+	NSError *error = nil;
+	NSURLResponse *response = nil;
+	id params = [_params isKindOfClass:[NSDictionary class]] ? NSUtil::URLQuery((NSDictionary *)_params) : _params;
+	_Log(@"%@%@", url, params ? [@"&" stringByAppendingString:params] : @"");
+	NSData *post = [params dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = HttpUtil::HttpData(url, post, NSURLRequestReloadIgnoringCacheData, &response, &error);
 	if (data == nil)
 	{
 		_Log(@"Response: %@\n\nError: %@\n\n", response, error);
 	}
-	
 	return data;
 }
 
@@ -400,6 +391,7 @@ static NSString *_access_token = nil;
 - (void)loadStop:(NSDictionary *)dict
 {
 	UIUtil::ShowNetworkIndicator(NO);
+	if (_showLoading)
 	{
 		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
 		[controller.view dismissToast];
@@ -428,7 +420,10 @@ static NSString *_access_token = nil;
 {
 	if (_failure)
 	{
-		_failure(self, error);
+		if (!_failure(self, error))
+		{
+			return;
+		}
 	}
 	if (_error == DataLoaderNotLogin)
 	{

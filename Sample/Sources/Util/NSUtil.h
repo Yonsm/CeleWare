@@ -243,11 +243,14 @@ public:
 	// Convert string to date
 	static NSDate *FormatDate(NSString *string, NSDateFormatterStyle dateStyle, NSDateFormatterStyle timeStyle = NSDateFormatterNoStyle, NSLocale *locale = nil);
 	
-	// Convert date to readable string. Return nil on fail
-	static NSString *SmartDate(NSDate *date, NSDate *now = NSDate.date);
+	// Convert date to relative string.
+	static NSString *RelativeTime(NSDate *date, NSDate *now = NSDate.date);
 	
 	// Convert date to readable string. Return nil on fail
 	static NSString *SmartTime(NSDate *date, NSDate *now = NSDate.date);
+
+	// Convert date to readable string. Return nil on fail
+	static NSString *SmartDate(NSDate *date, NSDate *now = NSDate.date);
 	
 	// Convert date to smart string
 	static NSString *SmartDate(NSDate *date, NSString *format);

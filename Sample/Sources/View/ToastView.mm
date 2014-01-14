@@ -58,9 +58,12 @@
 }
 
 //
+#ifndef _ToastLoadingTitle
+#define _ToastLoadingTitle @"正在加载"
+#endif
 - (ToastView *)toastWithLoading
 {
-	return [self toastWithLoading:@"正在加载"];
+	return [self toastWithLoading:_ToastLoadingTitle];
 }
 
 //

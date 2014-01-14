@@ -15,6 +15,7 @@
 	UIView *_contentView;
 	UIScrollView *_scrollView;
 
+	UIButton *_lastButton;
 	unsigned int _cellCount;
 	__weak WizardCell *_cells[kMaxCellsPerPage];
 }
@@ -49,7 +50,10 @@
 - (UIButton *)checkWithTitle:(NSString *)title changed:(SEL)changed;
 - (UIButton *)checkWithTitle:(NSString *)title changed:(SEL)changed alignment:(UIControlContentHorizontalAlignment)alignment;
 
-- (UIButton *)buttonWithTitle:(NSString *)title action:(SEL)action;
+- (UIButton *)buttonWithTitle:(NSString *)title action:(SEL)action color:(UIColor *)color color_:(UIColor *)color_;
+- (UIButton *)majorButtonWithTitle:(NSString *)title action:(SEL)action;
+- (UIButton *)minorButtonWithTitle:(NSString *)title action:(SEL)action;
+
 - (NSArray *)buttonsWithTitles:(NSArray *)titles action:(SEL)action;
 
 - (UIButton *)cellButtonWithName:(NSString *)name detail:(NSString *)detail title:(NSString *)title action:(SEL)action width:(CGFloat)width;

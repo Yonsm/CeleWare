@@ -934,6 +934,39 @@
 	return button;
 }
 
+//
++ (id)colorButtonWithTitle:(NSString *)title width:(CGFloat)width
+{
+	UIFont *font = [UIFont systemFontOfSize:14];
+	if (width == 0) width =[title sizeWithFont:font].width + 18;
+	UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
+	[button setTitle:title forState:UIControlStateNormal];
+	[button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+	[button setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x00aeef)] forState:UIControlStateNormal];
+	[button setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x0092e9)] forState:UIControlStateHighlighted];
+	button.titleLabel.font = font;
+	return button;
+}
+
+//
++ (id)colorButtonWithTitle:(NSString *)title
+{
+	return [self colorButtonWithTitle:title width:0];
+}
+
+//
++ (id)roundButtonWithTitle:(NSString *)title color:(UIColor *)color color_:(UIColor *)color_ frame:(CGRect)frame
+{
+	UIButton *button = [[UIButton alloc] initWithFrame:frame];
+	[button setTitle:title forState:UIControlStateNormal];
+	[button setBackgroundImage:[UIImage imageWithColor:color] forState:UIControlStateNormal];
+	[button setBackgroundImage:[UIImage imageWithColor:color_] forState:UIControlStateHighlighted];
+	button.titleLabel.font = [UIFont systemFontOfSize:17];
+	button.layer.cornerRadius = 4;
+	button.clipsToBounds = YES;
+	return button;
+}
+
 @end
 
 
