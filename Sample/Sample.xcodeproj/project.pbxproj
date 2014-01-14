@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24208EA51885143D0058AD7E /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208E8E1885143D0058AD7E /* HPGrowingTextView.m */; };
+		24208EA61885143D0058AD7E /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208E901885143D0058AD7E /* HPTextViewInternal.m */; };
+		24208EA91885143D0058AD7E /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208E971885143D0058AD7E /* MWCaptionView.m */; };
+		24208EAA1885143D0058AD7E /* MWPhoto.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24208E991885143D0058AD7E /* MWPhoto.mm */; };
+		24208EAB1885143D0058AD7E /* MWPhotoBrowser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24208E9B1885143D0058AD7E /* MWPhotoBrowser.mm */; };
+		24208EAC1885143D0058AD7E /* MWTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208E9E1885143D0058AD7E /* MWTapDetectingImageView.m */; };
+		24208EAD1885143D0058AD7E /* MWTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EA01885143D0058AD7E /* MWTapDetectingView.m */; };
+		24208EAE1885143D0058AD7E /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EA21885143D0058AD7E /* MWZoomingScrollView.m */; };
+		24208EAF1885143D0058AD7E /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EA41885143D0058AD7E /* SDWebImageDecoder.m */; };
+		24208EB418851A980058AD7E /* iVersion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24208EB318851A980058AD7E /* iVersion.mm */; };
 		2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4071869582200F86E14 /* AutoPullDataLoader.mm */; };
 		2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4091869582200F86E14 /* CacheDataLoader.mm */; };
 		246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319318682C2D00903EF4 /* Foundation.framework */; };
@@ -101,6 +111,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24208E8D1885143D0058AD7E /* HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
+		24208E8E1885143D0058AD7E /* HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
+		24208E8F1885143D0058AD7E /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
+		24208E901885143D0058AD7E /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
+		24208E961885143D0058AD7E /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
+		24208E971885143D0058AD7E /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
+		24208E981885143D0058AD7E /* MWPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPhoto.h; sourceTree = "<group>"; };
+		24208E991885143D0058AD7E /* MWPhoto.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MWPhoto.mm; sourceTree = "<group>"; };
+		24208E9A1885143D0058AD7E /* MWPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPhotoBrowser.h; sourceTree = "<group>"; };
+		24208E9B1885143D0058AD7E /* MWPhotoBrowser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MWPhotoBrowser.mm; sourceTree = "<group>"; };
+		24208E9C1885143D0058AD7E /* MWPhotoProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPhotoProtocol.h; sourceTree = "<group>"; };
+		24208E9D1885143D0058AD7E /* MWTapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWTapDetectingImageView.h; sourceTree = "<group>"; };
+		24208E9E1885143D0058AD7E /* MWTapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTapDetectingImageView.m; sourceTree = "<group>"; };
+		24208E9F1885143D0058AD7E /* MWTapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWTapDetectingView.h; sourceTree = "<group>"; };
+		24208EA01885143D0058AD7E /* MWTapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTapDetectingView.m; sourceTree = "<group>"; };
+		24208EA11885143D0058AD7E /* MWZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWZoomingScrollView.h; sourceTree = "<group>"; };
+		24208EA21885143D0058AD7E /* MWZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWZoomingScrollView.m; sourceTree = "<group>"; };
+		24208EA31885143D0058AD7E /* SDWebImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDecoder.h; sourceTree = "<group>"; };
+		24208EA41885143D0058AD7E /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
+		24208EB218851A980058AD7E /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
+		24208EB318851A980058AD7E /* iVersion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iVersion.mm; sourceTree = "<group>"; };
 		2430D4061869582200F86E14 /* AutoPullDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoPullDataLoader.h; sourceTree = "<group>"; };
 		2430D4071869582200F86E14 /* AutoPullDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AutoPullDataLoader.mm; sourceTree = "<group>"; };
 		2430D4081869582200F86E14 /* CacheDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheDataLoader.h; sourceTree = "<group>"; };
@@ -298,6 +329,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24208E8C1885143D0058AD7E /* HPGrowingTextView */ = {
+			isa = PBXGroup;
+			children = (
+				24208E8D1885143D0058AD7E /* HPGrowingTextView.h */,
+				24208E8E1885143D0058AD7E /* HPGrowingTextView.m */,
+				24208E8F1885143D0058AD7E /* HPTextViewInternal.h */,
+				24208E901885143D0058AD7E /* HPTextViewInternal.m */,
+			);
+			path = HPGrowingTextView;
+			sourceTree = "<group>";
+		};
+		24208E951885143D0058AD7E /* MWPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				24208E961885143D0058AD7E /* MWCaptionView.h */,
+				24208E971885143D0058AD7E /* MWCaptionView.m */,
+				24208E981885143D0058AD7E /* MWPhoto.h */,
+				24208E991885143D0058AD7E /* MWPhoto.mm */,
+				24208E9A1885143D0058AD7E /* MWPhotoBrowser.h */,
+				24208E9B1885143D0058AD7E /* MWPhotoBrowser.mm */,
+				24208E9C1885143D0058AD7E /* MWPhotoProtocol.h */,
+				24208E9D1885143D0058AD7E /* MWTapDetectingImageView.h */,
+				24208E9E1885143D0058AD7E /* MWTapDetectingImageView.m */,
+				24208E9F1885143D0058AD7E /* MWTapDetectingView.h */,
+				24208EA01885143D0058AD7E /* MWTapDetectingView.m */,
+				24208EA11885143D0058AD7E /* MWZoomingScrollView.h */,
+				24208EA21885143D0058AD7E /* MWZoomingScrollView.m */,
+				24208EA31885143D0058AD7E /* SDWebImageDecoder.h */,
+				24208EA41885143D0058AD7E /* SDWebImageDecoder.m */,
+			);
+			path = MWPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		246A318718682C2D00903EF4 = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +520,8 @@
 				246A3281186838ED00903EF4 /* MobClick */,
 				246A32CE186838ED00903EF4 /* ZipArchive */,
 				246A328B186838ED00903EF4 /* UMFeedback */,
+				24208E951885143D0058AD7E /* MWPhotoBrowser */,
+				24208E8C1885143D0058AD7E /* HPGrowingTextView */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -567,6 +633,8 @@
 				246A32AA186838ED00903EF4 /* UIAddition.mm */,
 				246A32AB186838ED00903EF4 /* UIUtil.h */,
 				246A32AC186838ED00903EF4 /* UIUtil.mm */,
+				24208EB218851A980058AD7E /* iVersion.h */,
+				24208EB318851A980058AD7E /* iVersion.mm */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -732,8 +800,10 @@
 				246A32DE186838ED00903EF4 /* PullTableController.mm in Sources */,
 				246A32E3186838ED00903EF4 /* RootController.mm in Sources */,
 				246A330E186838ED00903EF4 /* FoldView.mm in Sources */,
+				24208EA91885143D0058AD7E /* MWCaptionView.m in Sources */,
 				246A330A186838ED00903EF4 /* ShareComposer.mm in Sources */,
 				246A334C1868537C00903EF4 /* zip.c in Sources */,
+				24208EAF1885143D0058AD7E /* SDWebImageDecoder.m in Sources */,
 				246A333C186838ED00903EF4 /* ZipArchive.mm in Sources */,
 				246A330F186838ED00903EF4 /* FoldViews.mm in Sources */,
 				246A32DF186838ED00903EF4 /* PullWizardController.mm in Sources */,
@@ -744,18 +814,25 @@
 				246A32DD186838ED00903EF4 /* PagingTableController.mm in Sources */,
 				246A3328186838ED00903EF4 /* UIUtil.mm in Sources */,
 				2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */,
+				24208EB418851A980058AD7E /* iVersion.mm in Sources */,
+				24208EA61885143D0058AD7E /* HPTextViewInternal.m in Sources */,
 				246A3329186838ED00903EF4 /* AlertView.mm in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
 				246A3309186838ED00903EF4 /* NullController.mm in Sources */,
 				246A332C186838ED00903EF4 /* DelayImageView.mm in Sources */,
 				246A32DC186838ED00903EF4 /* BaseController.mm in Sources */,
+				24208EAC1885143D0058AD7E /* MWTapDetectingImageView.m in Sources */,
 				246A3332186838ED00903EF4 /* PullView.mm in Sources */,
 				246A32E7186838ED00903EF4 /* NearLocater.mm in Sources */,
+				24208EA51885143D0058AD7E /* HPGrowingTextView.m in Sources */,
 				246A332B186838ED00903EF4 /* CurrencyField.mm in Sources */,
 				246A32E1186838ED00903EF4 /* WizardController.mm in Sources */,
 				246A330D186838ED00903EF4 /* FoldPane.mm in Sources */,
 				246A332A186838ED00903EF4 /* CacheImageView.mm in Sources */,
+				24208EAD1885143D0058AD7E /* MWTapDetectingView.m in Sources */,
+				24208EAB1885143D0058AD7E /* MWPhotoBrowser.mm in Sources */,
 				246A3339186838ED00903EF4 /* ioapi.c in Sources */,
+				24208EAA1885143D0058AD7E /* MWPhoto.mm in Sources */,
 				246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */,
 				246A3333186838ED00903EF4 /* SegmentLabel.mm in Sources */,
 				246A3307186838ED00903EF4 /* MessageComposer.mm in Sources */,
@@ -764,6 +841,7 @@
 				246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */,
 				246A330B186838ED00903EF4 /* WebController.mm in Sources */,
 				246A3314186838ED00903EF4 /* Main.mm in Sources */,
+				24208EAE1885143D0058AD7E /* MWZoomingScrollView.m in Sources */,
 				246A32E9186838ED00903EF4 /* WizardCell.mm in Sources */,
 				246A3335186838ED00903EF4 /* SelectPicker.mm in Sources */,
 				246A3310186838ED00903EF4 /* ShadowView.mm in Sources */,

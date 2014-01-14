@@ -1,23 +1,44 @@
-/* ... */
-"..." = "⋯";
+/* %d Days Before */
+"%d Days Before" = "%d天前";
 
-/* After Tomorrow  */
-"After Tomorrow " = "後天";
+/* %d Hours Before */
+"%d Hours Before" = "%d小時前";
 
-/* applications */
-"applications" = "應用";
+/* %d Minutes Before */
+"%d Minutes Before" = "%d分鐘前";
+
+/* %d Months Before */
+"%d Months Before" = "%d個月前";
+
+/* %d Seconds Before */
+"%d Seconds Before" = "%d秒前";
+
+/* %d Years Before */
+"%d Years Before" = "%d年前";
+
+/* After Tomorrow */
+"After Tomorrow" = "後天";
+
+/* a_m */
+"a_m" = "上午";
 
 /* Back */
 "Back" = "返回";
 
-/* Before Yesterday  */
-"Before Yesterday " = "前天";
+/* Before Yesterday */
+"Before Yesterday" = "前天";
 
 /* Cancel */
 "Cancel" = "取消";
 
-/* Cancelled */
-"Cancelled" = "已取消";
+/* Copied */
+"Copied" = "已拷貝";
+
+/* Copy */
+"Copy" = "拷貝";
+
+/* Copying */
+"Copying" = "正在拷貝";
 
 /* Could not make call */
 "Could not make call" = "無法撥打電話";
@@ -28,14 +49,8 @@
 /* Could not send SMS on this device. */
 "Could not send SMS on this device." = "在此設備上無法發送短信。";
 
-/* Did Logout */
-"Did Logout" = "已註銷";
-
 /* Dismiss */
 "Dismiss" = "關閉";
-
-/* Done */
-"Done" = "完成";
 
 /* Download */
 "Download" = "下載";
@@ -44,7 +59,7 @@
 "Error" = "錯誤";
 
 /* Failed */
-"Failed" = "發送失敗";
+"Failed" = "失敗";
 
 /* Failed to send email. */
 "Failed to send email." = "發送郵件失敗。";
@@ -52,17 +67,44 @@
 /* Failed to send SMS. */
 "Failed to send SMS." = "發送短信失敗。";
 
-/* Failed: %@ */
-"Failed: %@" = "失敗: %@";
+/* Feedback */
+"Feedback" = "用戶反饋";
+
+/* Fill in the Contact1 */
+"Fill in the Contact1" = "填寫聯系信息";
+
+/* Fill in the Contact2 */
+"Fill in the Contact2" = "請留下您的QQ，郵箱，電話等聯系方式";
+
+/* Ignore */
+"Ignore" = "忽略";
+
+/* Last Updated: %@ */
+"Last Updated: %@" = "最近更新：%@";
+
+/* Last_updated */
+"Last_updated" = "最後更新";
+
+/* Loading */
+"Loading" = "刷新中...";
 
 /* Loading... */
 "Loading..." = "加載中⋯";
 
-/* Logout */
-"Logout" = "註銷";
+/* Long Long Before */
+"Long Long Before" = "好久好久以前";
 
-/* Next */
-"Next" = "下一項";
+/* Never */
+"Never" = "從未";
+
+/* New in this version */
+"New in this version" = "更新說明";
+
+/* New version available */
+"New version available" = "有新的版本";
+
+/* OK */
+"OK" = "好的";
 
 /* Open with Safari */
 "Open with Safari" = "在 Safari 中打開";
@@ -70,23 +112,32 @@
 /* Please setup your email account first. */
 "Please setup your email account first." = "請先設置您的郵件賬戶。";
 
-/* Please Wait… */
-"Please Wait…" = "請稍等…";
-
-/* Please wait... */
-"Please wait..." = "請稍候⋯";
+/* Pull down to refresh */
+"Pull down to refresh" = "下拉可以刷新...";
 
 /* Pull down to refresh... */
 "Pull down to refresh..." = "下拉可以更新⋯";
 
+/* p_m */
+"p_m" = "下午";
+
 /* Release to refresh... */
 "Release to refresh..." = "鬆開立即更新⋯";
 
-/* Repeated Weibo Text */
-"Repeated Weibo Text" = "重復博文";
+/* Release_to_refresh */
+"Release_to_refresh" = "鬆開即可刷新...";
 
-/* Select and Copy the PIN */
-"Select and Copy the PIN" = "選擇並拷貝 PIN";
+/* Remind Me Later */
+"Remind Me Later" = "回頭再說";
+
+/* Save */
+"Save" = "保存";
+
+/* Saved */
+"Saved" = "已保存到相冊";
+
+/* Saving */
+"Saving" = "正在保存";
 
 /* Send */
 "Send" = "發送";
@@ -97,36 +148,24 @@
 /* Send via Email */
 "Send via Email" = "發送郵件鏈接";
 
-/* Sending... */
-"Sending..." = "正在發送⋯";
+/* Settings */
+"Settings" = "設置";
 
 /* Share */
 "Share" = "分享";
 
-/* Share To Facebook */
-"Share To Facebook" = "分享至 Facebook";
+/* Today */
+"Today" = "今天";
 
-/* Share To Sina Weibo */
-"Share To Sina Weibo" = "分享至新浪微博";
+/* Tomorrow */
+"Tomorrow" = "明天";
 
-/* Share To Twitter */
-"Share To Twitter" = "分享至 Twitter";
+/* Version %@ */
+"Version %@" = "版本 %@";
 
-/* Sina Account Info */
-"Sina Account Info" = "新浪微博賬戶";
+/* Yesterday */
+"Yesterday" = "昨天";
 
-/* Succeed */
-"Succeed" = "發送成功";
-
-/* Today  */
-"Today " = "今天";
-
-/* Tomorrow  */
-"Tomorrow " = "明天";
-
-/* Twitter Account Info */
-"Twitter Account Info" = "Twitter 賬戶信息";
-
-/* Yesterday  */
-"Yesterday " = "昨天";
+/* Your contact information */
+"Your contact information" = "您的聯系方式";
 

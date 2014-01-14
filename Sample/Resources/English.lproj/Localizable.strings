@@ -1,23 +1,44 @@
-/* ... */
-"..." = "...";
+/* %d Days Before */
+"%d Days Before" = "%d Days Before";
 
-/* After Tomorrow  */
-"After Tomorrow " = "After Tomorrow ";
+/* %d Hours Before */
+"%d Hours Before" = "%d Hours Before";
 
-/* applications */
-"applications" = "applications";
+/* %d Minutes Before */
+"%d Minutes Before" = "%d Minutes Before";
+
+/* %d Months Before */
+"%d Months Before" = "%d Months Before";
+
+/* %d Seconds Before */
+"%d Seconds Before" = "%d Seconds Before";
+
+/* %d Years Before */
+"%d Years Before" = "%d Years Before";
+
+/* After Tomorrow */
+"After Tomorrow" = "After Tomorrow";
+
+/* a_m */
+"a_m" = "a_m";
 
 /* Back */
 "Back" = "Back";
 
-/* Before Yesterday  */
-"Before Yesterday " = "Before Yesterday ";
+/* Before Yesterday */
+"Before Yesterday" = "Before Yesterday";
 
 /* Cancel */
 "Cancel" = "Cancel";
 
-/* Cancelled */
-"Cancelled" = "Cancelled";
+/* Copied */
+"Copied" = "Copied";
+
+/* Copy */
+"Copy" = "Copy";
+
+/* Copying */
+"Copying" = "Copying";
 
 /* Could not make call */
 "Could not make call" = "Could not make call";
@@ -28,14 +49,8 @@
 /* Could not send SMS on this device. */
 "Could not send SMS on this device." = "Could not send SMS on this device.";
 
-/* Did Logout */
-"Did Logout" = "Did Logout";
-
 /* Dismiss */
 "Dismiss" = "Dismiss";
-
-/* Done */
-"Done" = "Done";
 
 /* Download */
 "Download" = "Download";
@@ -52,17 +67,44 @@
 /* Failed to send SMS. */
 "Failed to send SMS." = "Failed to send SMS.";
 
-/* Failed: %@ */
-"Failed: %@" = "Failed: %@";
+/* Feedback */
+"Feedback" = "Feedback";
+
+/* Fill in the Contact1 */
+"Fill in the Contact1" = "Fill in the Contact1";
+
+/* Fill in the Contact2 */
+"Fill in the Contact2" = "Fill in the Contact2";
+
+/* Ignore */
+"Ignore" = "Ignore";
+
+/* Last Updated: %@ */
+"Last Updated: %@" = "Last Updated: %@";
+
+/* Last_updated */
+"Last_updated" = "Last_updated";
+
+/* Loading */
+"Loading" = "Loading";
 
 /* Loading... */
 "Loading..." = "Loading...";
 
-/* Logout */
-"Logout" = "Logout";
+/* Long Long Before */
+"Long Long Before" = "Long Long Before";
 
-/* Next */
-"Next" = "Next";
+/* Never */
+"Never" = "Never";
+
+/* New in this version */
+"New in this version" = "New in this version";
+
+/* New version available */
+"New version available" = "New version available";
+
+/* OK */
+"OK" = "OK";
 
 /* Open with Safari */
 "Open with Safari" = "Open with Safari";
@@ -70,23 +112,32 @@
 /* Please setup your email account first. */
 "Please setup your email account first." = "Please setup your email account first.";
 
-/* Please Wait… */
-"Please Wait…" = "Please Wait…";
-
-/* Please wait... */
-"Please wait..." = "Please wait...";
+/* Pull down to refresh */
+"Pull down to refresh" = "Pull down to refresh";
 
 /* Pull down to refresh... */
 "Pull down to refresh..." = "Pull down to refresh...";
 
+/* p_m */
+"p_m" = "p_m";
+
 /* Release to refresh... */
 "Release to refresh..." = "Release to refresh...";
 
-/* Repeated Weibo Text */
-"Repeated Weibo Text" = "Repeated Weibo Text";
+/* Release_to_refresh */
+"Release_to_refresh" = "Release_to_refresh";
 
-/* Select and Copy the PIN */
-"Select and Copy the PIN" = "Select and Copy the PIN";
+/* Remind Me Later */
+"Remind Me Later" = "Remind Me Later";
+
+/* Save */
+"Save" = "Save";
+
+/* Saved */
+"Saved" = "Saved";
+
+/* Saving */
+"Saving" = "Saving";
 
 /* Send */
 "Send" = "Send";
@@ -97,36 +148,24 @@
 /* Send via Email */
 "Send via Email" = "Send via Email";
 
-/* Sending... */
-"Sending..." = "Sending...";
+/* Settings */
+"Settings" = "Settings";
 
 /* Share */
 "Share" = "Share";
 
-/* Share To Facebook */
-"Share To Facebook" = "Share To Facebook";
+/* Today */
+"Today" = "Today";
 
-/* Share To Sina Weibo */
-"Share To Sina Weibo" = "Share To Sina Weibo";
+/* Tomorrow */
+"Tomorrow" = "Tomorrow";
 
-/* Share To Twitter */
-"Share To Twitter" = "Share To Twitter";
+/* Version %@ */
+"Version %@" = "Version %@";
 
-/* Sina Account Info */
-"Sina Account Info" = "Sina Account Info";
+/* Yesterday */
+"Yesterday" = "Yesterday";
 
-/* Succeed */
-"Succeed" = "Succeed";
-
-/* Today  */
-"Today " = "Today ";
-
-/* Tomorrow  */
-"Tomorrow " = "Tomorrow ";
-
-/* Twitter Account Info */
-"Twitter Account Info" = "Twitter Account Info";
-
-/* Yesterday  */
-"Yesterday " = "Yesterday ";
+/* Your contact information */
+"Your contact information" = "Your contact information";
 
