@@ -5,7 +5,7 @@
 #define _TARGET_IPHONE_IPAD
 
 // Resource
-#define kResourceBundle	@"Assets"
+#define kAssetBundle	@"Assets"
 #define kAppStatKey		@"5182124956240b2e58017cad"
 
 //#define BaseNavigationController NavigationController

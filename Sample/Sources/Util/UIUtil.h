@@ -254,8 +254,8 @@ public:
 	//
 	NS_INLINE UIImage *ImageNamed(NSString *name)
 	{
-#ifdef kResourceBundle
-		name = [kResourceBundle stringByAppendingPathComponent:name];
+#ifdef kAssetBundle
+		name = [kAssetBundle stringByAppendingPathComponent:name];
 #endif
 		return [UIImage imageNamed:name];
 	}

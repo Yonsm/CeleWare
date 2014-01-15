@@ -51,8 +51,8 @@ public:
 	//
 	NS_INLINE NSString *AssetPath()
 	{
-#ifdef kResourceBundle
-		return [BundlePath() stringByAppendingPathComponent:kResourceBundle];
+#ifdef kAssetBundle
+		return [BundlePath() stringByAppendingPathComponent:kAssetBundle];
 #else
 		return BundlePath();
 #endif
@@ -374,6 +374,7 @@ public:
 	}
 	
 public:
+#if __has_feature(objc_arc)
 	//
 	NS_INLINE NSDictionary *URLQuery(NSString *query)
 	{
@@ -447,17 +448,18 @@ public:
 	}
 	
 	//
-	NS_INLINE NSString *TS()
-	{
-		return [NSString stringWithFormat:@"%ld", time(NULL)];
-	}
-	
-	//
 	NS_INLINE NSString *UUID()
 	{
 		CFUUIDRef uuid = CFUUIDCreate(NULL);
 		NSString *string = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
 		CFRelease(uuid);
 		return string;
+	}
+#endif
+	
+	//
+	NS_INLINE NSString *TS()
+	{
+		return [NSString stringWithFormat:@"%ld", time(NULL)];
 	}
 };
