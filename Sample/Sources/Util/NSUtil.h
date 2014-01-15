@@ -15,7 +15,7 @@ public:
 	//
 	NS_INLINE id BundleInfo(NSString *key)
 	{
-		return [[NSBundle mainBundle] objectForInfoDictionaryKey:key];
+		return [Bundle() objectForInfoDictionaryKey:key];
 	}
 	
 	//

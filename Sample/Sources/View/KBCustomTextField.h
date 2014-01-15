@@ -54,3 +54,15 @@
 @property(nonatomic,readonly) UIButton *actionButton;
 - (id)initWithFrame:(CGRect)frame actionButtonTitle:(NSString *)actionButtonTitle;
 @end
+
+//
+@interface DoneNumberField: ActionNumberField
+{
+}
+@end
+
+
+//
+@interface NextNumberField: ActionNumberField
+@property(nonatomic,weak) UITextField *nextField;
+@end

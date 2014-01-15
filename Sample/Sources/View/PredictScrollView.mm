@@ -144,7 +144,6 @@
 	if (_numberOfPages) [self removeSubviews];
 	_numberOfPages = numberOfPages;
 	
-	if (_pages) free(_pages);
 	NSUInteger size = numberOfPages * sizeof(UIView *);
 	_pages = (__weak UIView **)realloc(_pages, size);
 	memset(_pages, 0, size);

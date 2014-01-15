@@ -205,3 +205,36 @@
 }
 
 @end
+
+//
+@implementation DoneNumberField
+
+//
+- (id)initWithFrame:(CGRect)frame
+{
+	self = [super initWithFrame:frame actionButtonTitle:NSLocalizedString(@"Done", @"完成")];
+	[self.actionButton addTarget:self action:@selector(resignFirstResponder) forControlEvents:UIControlEventTouchUpInside];
+	return self;
+}
+
+@end
+
+
+//
+@implementation NextNumberField
+
+//
+- (id)initWithFrame:(CGRect)frame
+{
+	self = [super initWithFrame:frame actionButtonTitle:NSLocalizedString(@"Next", @"下一项")];
+	[self.actionButton addTarget:self action:@selector(gotoNextField) forControlEvents:UIControlEventTouchUpInside];
+	return self;
+}
+
+//
+- (void)gotoNextField
+{
+	[_nextField becomeFirstResponder];
+}
+
+@end

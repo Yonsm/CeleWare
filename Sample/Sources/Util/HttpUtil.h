@@ -29,7 +29,7 @@ public:
 	static NSString *HttpString(NSString *url, NSString *post = nil);
 	
 	// Request HTTP JSON
-	static NSDictionary *HttpJSON(NSString *url, NSString *post = nil, NSJSONReadingOptions options = 0);
+	static id HttpJSON(NSString *url, NSString *post = nil, NSJSONReadingOptions options = 0);
 	
 	// Request HTTP file
 	// Return error string, or nil on success

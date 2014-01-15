@@ -139,3 +139,5 @@
 - (TapGestureRecognizer *)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
 - (UILongPressGestureRecognizer *)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action;
 @end
+
+#define UITableViewCellAccessoryButton (UIUtil::IsOS7() ? UITableViewCellAccessoryDetailButton : UITableViewCellAccessoryDetailDisclosureButton)
