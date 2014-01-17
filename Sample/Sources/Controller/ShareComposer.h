@@ -5,7 +5,7 @@
 // 
 @interface WeiboComposer : WebBrowser
 {
-	BOOL _isLast;
+	int _tryTimes;
 }
 @property(nonatomic,strong) NSString *body;
 + (id)composerWithBody:(NSString *)body pic:(NSString *)pic link:(NSString *)link;

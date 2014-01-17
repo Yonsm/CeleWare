@@ -34,44 +34,38 @@
 //
 
 //
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+{
+	_Log(@"NAVI%d: %@", (int)navigationType, request.URL.absoluteString);
+	if (_body && [request.URL.absoluteString hasSuffix:@"#publisher"])
+	{
+		_tryTimes = 0;
+		[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(showComposer:) userInfo:nil repeats:YES];
+	}
+	return YES;
+}
+
+//
+//- (void)webViewDidFinishLoad:(UIWebView *)webView
 //{
-//	_Log(@"NAVI%d: %@", navigationType, request.URL.absoluteString);
-//	return YES;
+//	[super webViewDidFinishLoad:webView];
 //}
 
 //
-- (void)webViewDidStartLoad:(UIWebView *)webView
+- (void)showComposer:(NSTimer *)timer
 {
-	_isLast = NO;
-	[super webViewDidStartLoad:webView];
-}
-
-//
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-	[super webViewDidFinishLoad:webView];
-	
-	// TODO: review compose
-	if (_body)
+	NSString *className = [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName(\"content\")[0].className"];
+	_ObjLog(className);
+	if ([className isEqualToString:@"J-textarea txt-publisher"])
 	{
-		NSString *className = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName(\"content\")[0].className"];
-		if ([className isEqualToString:@"newarea"])
-		{
-			_isLast = YES;
-			[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(showComposer) userInfo:nil repeats:NO];
-		}
-	}
-}
-
-//
-- (void)showComposer
-{
-	if (_isLast && _body)
-	{
-		NSString *js = [NSString stringWithFormat:@"recommend(); document.getElementsByName(\"content\")[0].value = \"%@\";", _body];
+		NSString *js = [NSString stringWithFormat:@"document.getElementsByName(\"content\")[0].value = \"%@\";", _body];
 		[self.webView stringByEvaluatingJavaScriptFromString:js];
 		self.body = nil;
+		[timer invalidate];
+	}
+	else if (_tryTimes++ > 10)
+	{
+		[timer invalidate];
 	}
 }
 
@@ -141,7 +135,7 @@
 			NSString *name = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName(\"message\")[0].name"];
 			if ([name isEqualToString:@"message"])
 			{
-				// TODO: Fuck Facebook's developer param t is not responed, AND this code is not working also!
+				// Fuck Facebook's developer param t is not responed, AND this code is not working also!
 				NSString *js = [NSString stringWithFormat:@"document.getElementsByName(\"message\")[0].value = \"%@\"", _body];
 				[webView stringByEvaluatingJavaScriptFromString:js];
 				_done = 2;

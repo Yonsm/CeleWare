@@ -83,25 +83,27 @@ typedef BOOL						*PBOOL;
 typedef float						FLOAT, *PFLOAT;
 typedef double						DOUBLE, *PDOUBLE;
 
-typedef int							INT, *PINT;
+typedef signed int					INT, *PINT;		// 32
 typedef signed char					INT8, *PINT8;
 typedef signed short				INT16, *PINT16;
 typedef signed int					INT32, *PINT32;
 typedef signed long long			INT64, *PINT64;
+typedef signed long					LONG, *PLONG;	// 32|64
 
-typedef unsigned int				UINT, *PUINT;
+typedef unsigned int				UINT, *PUINT;	// 32
 typedef unsigned char				UINT8, *PUINT8;
 typedef unsigned short				UINT16, *PUINT16;
 typedef unsigned int				UINT32, *PUINT32;
 typedef unsigned long long			UINT64, *PUINT64;
-
+typedef unsigned long				ULONG, *PULONG;	// 32|64
 
 typedef unsigned char				BYTE, *PBYTE;
 typedef unsigned short				WORD, *PWORD;
-typedef unsigned long				DWORD, *PDWORD;
+typedef unsigned int				DWORD, *PDWORD;
 typedef unsigned long long			QWORD, *PQWORD;
 
-#if defined(_MAC64)
+
+#if defined(_MAC64) || defined(__LP64__)
 typedef long long					INT_PTR, *PINT_PTR;
 typedef unsigned long long			UINT_PTR, *PUINT_PTR;
 #else
@@ -233,12 +235,12 @@ RECT, *PRECT;
 
 /**********************************************************************************************************************/
 /* Memory */
-UAPI(PVOID) UMemAlloc(UINT nSize)
+UAPI(PVOID) UMemAlloc(ULONG nSize)
 {
 	return malloc(nSize);
 }
 
-UAPI(PVOID) UMemRealloc(PVOID pvMem, UINT nSize)
+UAPI(PVOID) UMemRealloc(PVOID pvMem, ULONG nSize)
 {
 	return realloc(pvMem, nSize);
 }
@@ -248,7 +250,7 @@ UAPI(VOID) UMemFree(PVOID pvMem)
 	free(pvMem);
 }
 
-UAPI(PVOID) UMemAlignAlloc(UINT nSize, UINT16 uAlign UDEF(16))
+UAPI(PVOID) UMemAlignAlloc(ULONG nSize, UINT16 uAlign UDEF(16))
 {
 	PVOID pvAlloc = UMemAlloc(nSize + sizeof(UINT16) + uAlign);
 	if (pvAlloc)
@@ -1422,30 +1424,30 @@ UAPI(BOOL) UFileClose(UFILE uFile)
 	return fclose(uFile);
 }
 
-UAPI(UINT) UFileRead(UFILE uFile, PVOID pvData, UINT nSize)
+UAPI(ULONG) UFileRead(UFILE uFile, PVOID pvData, ULONG nSize)
 {
 	return fread(pvData, 1, nSize, uFile);
 }
 
-UAPI(UINT) UFileWrite(UFILE uFile, PCVOID pvData, UINT nSize)
+UAPI(ULONG) UFileWrite(UFILE uFile, PCVOID pvData, ULONG nSize)
 {
 	return fwrite(pvData, 1, nSize, uFile);
 }
 
-UAPI(UINT) UFileSeek(UFILE uFile, INT iOffset, DWORD dwOrigin UDEF(UFILE_BEGIN))
+UAPI(ULONG) UFileSeek(UFILE uFile, INT iOffset, INT32 nOrigin UDEF(UFILE_BEGIN))
 {
-	return fseek(uFile, iOffset, dwOrigin);
+	return fseek(uFile, iOffset, nOrigin);
 }
 
-UAPI(UINT) UFileTell(UFILE uFile)
+UAPI(ULONG) UFileTell(UFILE uFile)
 {
 	return UFileSeek(uFile, 0, UFILE_CURRENT);
 }
 
-UAPI(UINT) UFileGetSize(UFILE uFile)
+UAPI(ULONG) UFileGetSize(UFILE uFile)
 {
-	UINT cur = fseek(uFile, 0, SEEK_END);
-	UINT size = ftell(uFile);
+	ULONG cur = fseek(uFile, 0, SEEK_END);
+	ULONG size = ftell(uFile);
 	fseek(uFile, cur, SEEK_SET);
 	return size;
 }
@@ -1542,9 +1544,9 @@ UAPI(PTSTR) UFileToTStr(PCTSTR ptzPath, PUINT puSize UDEF(NULL))
 }
 #endif
 
-UAPI(PVOID) UFileLoad(PCTSTR ptzPath, PUINT puSize UDEF(NULL), PVOID pvData UDEF(NULL))
+UAPI(PVOID) UFileLoad(PCTSTR ptzPath, PULONG puSize UDEF(NULL), PVOID pvData UDEF(NULL))
 {
-	UINT nSize;
+	ULONG nSize;
 	UFILE uFile = UFileOpen(ptzPath, UFILE_READ);
 	if (uFile == NULL)
 	{
@@ -1577,9 +1579,9 @@ UAPI(PVOID) UFileLoad(PCTSTR ptzPath, PUINT puSize UDEF(NULL), PVOID pvData UDEF
 	return pvData;
 }
 
-UAPI(UINT) UFileSave(PCTSTR ptzPath, PCVOID pvData, UINT nSize, BOOL bAppend UDEF(FALSE))
+UAPI(ULONG) UFileSave(PCTSTR ptzPath, PCVOID pvData, UINT nSize, BOOL bAppend UDEF(FALSE))
 {
-	UINT nWrite;
+	ULONG nWrite;
 	UFILE uFile = UFileOpen(ptzPath, bAppend ? UFILE_READWRITE : UFILE_WRITE);
 	if (uFile == NULL)
 	{
@@ -1770,7 +1772,7 @@ UAPI(UINT) UFileGetTemp(PTSTR ptzPath)
 /* Misc */
 UAPI(UINT) UGetRandom()
 {
-	srand(mach_absolute_time());
+	srand((UINT32)mach_absolute_time());
 	return rand();
 }
 
@@ -1810,7 +1812,7 @@ UAPI(VOID) UTrace(PCTSTR ptzFormat, ...)
 #endif
 }
 
-UAPI(VOID) UAssert(PCTSTR ptzExp, PCTSTR ptzFile, UINT uLine)
+UAPI(VOID) UAssert(PCTSTR ptzExp, PCTSTR ptzFile, INT32 uLine)
 {
 	printf(TEXT("Assertion failed!\n\n")
 		   TEXT("File: %s\n")

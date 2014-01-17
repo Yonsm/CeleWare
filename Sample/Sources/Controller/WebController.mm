@@ -203,12 +203,12 @@
 //	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
 
 	// Create toolbar
-	const static struct {NSString* title; SEL action;} c_buttons[] =
+	const static struct {void* title; SEL action;} c_buttons[] =
 	{
-		{(__bridge NSString *)(void *)UIBarButtonSystemItemRefresh, @selector(reload)},
-		{@"BackwardIcon.png", @selector(goBack)},
-		{@"ForwardIcon.png", @selector(goForward)},
-		{(__bridge NSString *)(void *)UIBarButtonSystemItemAction, @selector(actionButtonClicked:)},
+		{(void *)UIBarButtonSystemItemRefresh, @selector(reload)},
+		{(void *)@"BackwardIcon.png", @selector(goBack)},
+		{(void *)@"ForwardIcon.png", @selector(goForward)},
+		{(void *)UIBarButtonSystemItemAction, @selector(actionButtonClicked:)},
 	};
 	
 	NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:3 * sizeof(c_buttons)/sizeof(c_buttons[0])];
@@ -225,7 +225,7 @@
 		}
 		else
 		{
-			button = [[UIBarButtonItem alloc] initWithImage:UIUtil::ImageNamed(c_buttons[i].title) style:UIBarButtonItemStylePlain target:target action:c_buttons[i].action];
+			button = [[UIBarButtonItem alloc] initWithImage:UIUtil::ImageNamed((__bridge NSString *)c_buttons[i].title) style:UIBarButtonItemStylePlain target:target action:c_buttons[i].action];
 		}
 		[buttons addObject:button];
 
@@ -302,19 +302,10 @@
 // Called when a button is clicked. The view will be automatically dismissed after this call returns
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	switch (buttonIndex)
+	if (buttonIndex == 0)
 	{
-		case 0:
-		{
-			NSString *URL = [((UIWebView *)self.view) stringByEvaluatingJavaScriptFromString:@"window.location.href"];
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL]];
-			break;
-		}
-			
-		case 1:
-		{
-			
-		}
+		NSString *URL = [self.webView stringByEvaluatingJavaScriptFromString:@"window.location.href"];
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL]];
 	}
 }
 

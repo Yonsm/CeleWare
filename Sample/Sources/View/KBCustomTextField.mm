@@ -234,7 +234,8 @@
 //
 - (void)gotoNextField
 {
-	[_nextField becomeFirstResponder];
+	if (_nextField) [_nextField becomeFirstResponder];
+	else [self sendActionsForControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
 @end
