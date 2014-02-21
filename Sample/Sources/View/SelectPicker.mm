@@ -8,6 +8,12 @@
 //
 - (id)initWithItems:(NSArray *)items
 {
+	return [self initWithItems:items selectedIndex:0];
+}
+
+//
+- (id)initWithItems:(NSArray *)items selectedIndex:(NSUInteger)selectedIndex
+{
 	self = [super init];
 	self.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1];
 	self.showsSelectionIndicator = YES;
@@ -16,7 +22,7 @@
 	
 	_items = items;
 
-	[self selectRow:0 inComponent:0 animated:NO];
+	[self selectRow:selectedIndex inComponent:0 animated:NO];
 	
 	return self;
 }

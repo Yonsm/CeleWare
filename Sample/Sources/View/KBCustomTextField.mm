@@ -129,6 +129,7 @@
 }
 
 //
+#ifdef _ModifyKeyView
 + (UIKBKeyView *)modifyKeyView:(NSString *)name display:(NSString *)display represent:(NSString *)represent interaction:(NSString *)type
 {
 	UIKBKeyView *view = [self findKeyView:name];
@@ -144,6 +145,7 @@
 	}
 	return view;
 }
+#endif
 
 //
 + (UIButton *)addCustomButton:(NSString *)name title:(NSString *)title target:(id)target action:(SEL)action

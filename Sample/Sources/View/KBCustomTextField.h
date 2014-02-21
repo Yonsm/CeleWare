@@ -26,7 +26,6 @@
 @property(readonly, assign, nonatomic) UIKBKey* key;
 @end
 
-
 //
 @class KBCustomTextField;
 @protocol KBCustomTextFieldDelegate
@@ -43,8 +42,9 @@
 @property(nonatomic,weak) IBOutlet id/*<KBCustomTextFieldDelegate>*/ kbDelegate;
 
 + (UIKBKeyView *)findKeyView:(NSString *)name;
+#ifdef _ModifyKeyView
 + (UIKBKeyView *)modifyKeyView:(NSString *)name display:(NSString *)display represent:(NSString *)represent interaction:(NSString *)type;
-
+#endif
 @end
 
 //

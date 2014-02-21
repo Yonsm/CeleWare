@@ -3,7 +3,7 @@
 // App Store URL
 #define kStoreUrl(x)	[NSString stringWithFormat:@"http://itunes.apple.com/app/id%@", x]
 #define kAppStoreID		[NSBundle.mainBundle objectForInfoDictionaryKey:@"AppStoreID"]
-#define kAppStoreUrl(x)	kStoreUrl(kAppStoreID)
+#define kAppStoreUrl	kStoreUrl(kAppStoreID)
 
 // Array count
 #ifndef _NumOf

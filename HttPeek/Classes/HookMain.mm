@@ -38,7 +38,7 @@ void LogRequest(NSURLRequest *request, void *returnAddress)
 			Dl_info info = {0};
 			dladdr(returnAddress, &info);
 			
-			NSString *str = [NSString stringWithFormat:@"FROM %s(%p)-%s(%p=>%#08x)\n<%@>\n%@: %@\n%@\n\n", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (int)info.dli_saddr-(int)info.dli_fbase-0x1000, [NSThread callStackSymbols], request.HTTPMethod, request.URL.absoluteString, request.allHTTPHeaderFields ? request.allHTTPHeaderFields : @""];
+			NSString *str = [NSString stringWithFormat:@"FROM %s(%p)-%s(%p=>%#08lx)\n<%@>\n%@: %@\n%@\n\n", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (long)info.dli_saddr-(long)info.dli_fbase-0x1000, [NSThread callStackSymbols], request.HTTPMethod, request.URL.absoluteString, request.allHTTPHeaderFields ? request.allHTTPHeaderFields : @""];
 			NSLog(@"LOG REQUEST: %@", str);
 			
 			NSString *file = [NSString stringWithFormat:@"%@/%d=%@.txt", _logDir, s_index++, NSUtil::UrlPath([request.URL.host stringByAppendingString:request.URL.path])];
@@ -76,9 +76,9 @@ extern "C" void AppInit()
 		_Log(@"HOOK new process %@ MSHookFunction=%p, MSHookMessageEx=%p", processName, _MSHookFunction, _MSHookMessageEx);
 				
 		WebViewPeekInit(processName);
-		//ConnectionPeekInit(processName);
-		//ReadStreamPeekInit(processName);
-		//ApplicationPeekInit(processName);
+		ConnectionPeekInit(processName);
+		ReadStreamPeekInit(processName);
+		ApplicationPeekInit(processName);
 		return;
 	}
 }

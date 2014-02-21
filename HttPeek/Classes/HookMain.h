@@ -67,7 +67,7 @@ struct HookWritable
 			return nil;
 		}
 		
-		if (((unsigned int)base & 0x0FF0) != (offset & 0x0FF0))
+		if (((unsigned long)base & 0x0FF0) != (offset & 0x0FF0))
 		{
 			_Log(@"HOOK Base symbol miss match: %p !=! %08X", base, offset);
 			return nil;
