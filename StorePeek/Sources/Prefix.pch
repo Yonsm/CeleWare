@@ -2,12 +2,6 @@
 #define AppInit lklauq
 
 #define TEST
-#ifndef DEBUG
-#define NSUtil uxb
-
-#define _MSHookFunction _mhfs
-#define _MSHookMessageEx _hex8
-#endif
 
 #ifdef __OBJC__
 

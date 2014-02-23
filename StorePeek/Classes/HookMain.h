@@ -29,9 +29,3 @@
 
 extern FUNPTR(void, MSHookFunction, void *symbol, void *replace, void **result);
 extern FUNPTR(void, MSHookMessageEx, Class _class, SEL sel, IMP imp, IMP *result);
-extern FUNPTR(void *, SubstrateMemoryCreate, void *allocator, void *process, void *data, size_t size);
-extern FUNPTR(void, SubstrateMemoryRelease, void * memory);
-
-//
-void LogRequest(NSURLRequest *request, void *returnAddress);
-#define _LogRequest(request) LogRequest(request, __builtin_return_address(0))
