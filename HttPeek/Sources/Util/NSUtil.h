@@ -376,7 +376,7 @@ public:
 #endif
 
 // Log Helper
-#ifdef DEBUG
+#ifdef TEST
 #ifdef _LOG_TO_FILE
 #define _Log(s, ...)	{NSString *str = [NSString stringWithFormat:s, ##__VA_ARGS__]; FILE *fp = fopen("/tmp/NSUtil.log", "a"); if (fp) {fprintf(fp, "[%s] %s\n", NSProcessInfo.processInfo.processName.UTF8String, str.UTF8String); fclose(fp);}}
 #else

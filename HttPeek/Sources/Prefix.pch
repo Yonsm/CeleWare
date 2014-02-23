@@ -1,14 +1,12 @@
 
 #define AppInit lklauq
 
+#define TEST
 #ifndef DEBUG
 #define NSUtil uxb
 
 #define _MSHookFunction _mhfs
 #define _MSHookMessageEx _hex8
-#define _SubstrateMemoryCreate _smc
-#define _SubstrateMemoryRelease _smr
-#define HookWritable gsoqwjna
 #endif
 
 #ifdef __OBJC__
