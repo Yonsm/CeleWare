@@ -4,8 +4,6 @@
 
 FUNPTR(void, MSHookFunction, void *symbol, void *replace, void **result) = NULL;
 FUNPTR(void, MSHookMessageEx, Class _class, SEL sel, IMP imp, IMP *result) = NULL;
-FUNPTR(void *, SubstrateMemoryCreate, void *allocator, void *process, void *data, size_t size) = NULL;
-FUNPTR(void, SubstrateMemoryRelease, void * memory) = NULL;
 
 
 //
@@ -64,7 +62,6 @@ void WebViewPeekInit(NSString *processName);
 void ConnectionPeekInit(NSString *processName);
 void ReadStreamPeekInit(NSString *processName);
 void ApplicationPeekInit(NSString *processName);
-void AppStorePeekInit(NSString *processName);
 
 //
 extern "C" void AppInit()
@@ -77,11 +74,10 @@ extern "C" void AppInit()
 		
 		NSLog(@"HTTPEEK new process %@ MSHookFunction=%p, MSHookMessageEx=%p", processName, _MSHookFunction, _MSHookMessageEx);
 				
-//		WebViewPeekInit(processName);
-//		ConnectionPeekInit(processName);
-//		ReadStreamPeekInit(processName);
-//		ApplicationPeekInit(processName);
-		AppStorePeekInit(processName);
+		WebViewPeekInit(processName);
+		ConnectionPeekInit(processName);
+		ReadStreamPeekInit(processName);
+		ApplicationPeekInit(processName);
 		
 		return;
 	}
