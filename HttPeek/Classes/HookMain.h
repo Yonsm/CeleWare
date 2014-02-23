@@ -33,53 +33,5 @@ extern FUNPTR(void *, SubstrateMemoryCreate, void *allocator, void *process, voi
 extern FUNPTR(void, SubstrateMemoryRelease, void * memory);
 
 //
-struct HookWritable
-{
-	void *handle;
-	
-	inline HookWritable(void *data, size_t size = 4)
-	{
-		if (_SubstrateMemoryCreate == NULL) Init();
-		_Log(@"HOOK Writable: %p", data);
-		handle = _SubstrateMemoryCreate ? _SubstrateMemoryCreate(NULL, NULL, data, size) : NULL;
-	}
-	
-	inline ~HookWritable()
-	{
-		if (handle) _SubstrateMemoryRelease(handle);
-	}
-	
-	NS_INLINE void Init()
-	{
-		if (unsigned char *base = Base(@"/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate", @"MSHookFunction", 0x242C))
-		{
-			PTRSET(SubstrateMemoryCreate, base + 0x29BC);
-			PTRSET(SubstrateMemoryRelease, base + 0x293C);
-		}
-	}
-	
-	NS_INLINE unsigned char *Base(NSString *path, NSString *func, unsigned int offset = 0x1000)
-	{
-		unsigned char *base = (unsigned char *)dlsym(dlopen(path.UTF8String, RTLD_LAZY), func.UTF8String);
-		if (base == nil)
-		{
-			_Log(@"HOOK Base symbol not found");
-			return nil;
-		}
-		
-		if (((unsigned long)base & 0x0FF0) != (offset & 0x0FF0))
-		{
-			_Log(@"HOOK Base symbol miss match: %p !=! %08X", base, offset);
-			return nil;
-		}
-		
-		base -= offset;
-		_Log(@"HOOK Base: %@ at %p", path, base);
-		return base;
-	}
-};
-#define _HookWritable(...) HookWritable _writable##__LINE__(__VA_ARGS__); if (_writable##__LINE__.handle)
-
-//
 void LogRequest(NSURLRequest *request, void *returnAddress);
 #define _LogRequest(request) LogRequest(request, __builtin_return_address(0))

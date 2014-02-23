@@ -39,7 +39,7 @@ void LogRequest(NSURLRequest *request, void *returnAddress)
 			dladdr(returnAddress, &info);
 			
 			NSString *str = [NSString stringWithFormat:@"FROM %s(%p)-%s(%p=>%#08lx)\n<%@>\n%@: %@\n%@\n\n", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (long)info.dli_saddr-(long)info.dli_fbase-0x1000, [NSThread callStackSymbols], request.HTTPMethod, request.URL.absoluteString, request.allHTTPHeaderFields ? request.allHTTPHeaderFields : @""];
-			NSLog(@"LOG REQUEST: %@", str);
+			NSLog(@"HTTPEEK REQUEST: %@", str);
 			
 			NSString *file = [NSString stringWithFormat:@"%@/%d=%@.txt", _logDir, s_index++, NSUtil::UrlPath([request.URL.host stringByAppendingString:request.URL.path])];
 			if (request.HTTPBody.length && request.HTTPBody.length < 10240)
@@ -64,6 +64,7 @@ void WebViewPeekInit(NSString *processName);
 void ConnectionPeekInit(NSString *processName);
 void ReadStreamPeekInit(NSString *processName);
 void ApplicationPeekInit(NSString *processName);
+void AppStorePeekInit(NSString *processName);
 
 //
 extern "C" void AppInit()
@@ -73,12 +74,15 @@ extern "C" void AppInit()
 		NSString *processName = NSProcessInfo.processInfo.processName;
 		_PTRFUN(/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate, MSHookFunction);
 		_PTRFUN(/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate, MSHookMessageEx);
-		_Log(@"HOOK new process %@ MSHookFunction=%p, MSHookMessageEx=%p", processName, _MSHookFunction, _MSHookMessageEx);
+		
+		NSLog(@"HTTPEEK new process %@ MSHookFunction=%p, MSHookMessageEx=%p", processName, _MSHookFunction, _MSHookMessageEx);
 				
-		WebViewPeekInit(processName);
-		ConnectionPeekInit(processName);
-		ReadStreamPeekInit(processName);
-		ApplicationPeekInit(processName);
+//		WebViewPeekInit(processName);
+//		ConnectionPeekInit(processName);
+//		ReadStreamPeekInit(processName);
+//		ApplicationPeekInit(processName);
+		AppStorePeekInit(processName);
+		
 		return;
 	}
 }
