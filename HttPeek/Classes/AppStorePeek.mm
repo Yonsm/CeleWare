@@ -1,6 +1,7 @@
 
 
 #import "HookMain.h"
+#define DEBUG
 
 #if 0
 //
@@ -101,6 +102,32 @@ MSGHOOK(id, SUAccountViewController_initWithExternalAccountURL, id a3)
 	return _SUAccountViewController_initWithExternalAccountURL(self, sel, a3);
 } ENDHOOK
 
+@interface FakeUnderlyingURL : NSObject
+@end
+@implementation FakeUnderlyingURL
+- (NSURL *)underlyingURL
+{
+	return [NSURL URLWithString:@"https://?url=itms-appss://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/com.apple.jingle.app.finance.DirectAction/convertWizard%3Frmp%3D0%26workflowID%3D4846%26why%3DsignIn%26guid%3D37c3b16de9df1b2bc059919370f41a3f75b97fd4%26createSession%3Dtrue%26attempt%3D0&action=account"];
+}
+@end
+
+//
+@protocol ASAppDelegate <NSObject>
+- (void)_showAccountViewControllerWithURL:(FakeUnderlyingURL *)URL;
+@end
+
+@interface AppStoreFaker : NSObject
+@end
+
+@implementation AppStoreFaker
+- (void)peek
+{
+	_LineLog();
+	FakeUnderlyingURL *URL = [[FakeUnderlyingURL alloc] init];
+	id<ASAppDelegate> delegate = (id<ASAppDelegate>)[[UIApplication sharedApplication] delegate];
+	[delegate _showAccountViewControllerWithURL:URL];
+}
+@end
 
 //
 void AppStorePeekInit(NSString *processName)
@@ -110,6 +137,9 @@ void AppStorePeekInit(NSString *processName)
 	_HOOKMSG(SUAccountViewController_init, SUAccountViewController, init);
 	_HOOKMSG(SUAccountViewController_initWithExternalAccountURL, SUAccountViewController, initWithExternalAccountURL:);
 	_HOOKMSG(SUAccountViewController__mescalDidOpenWithSession_error, SUAccountViewController, _mescalDidOpenWithSession:error:);
+	
+	AppStoreFaker *peeker = [[AppStoreFaker alloc] init];
+	[NSTimer scheduledTimerWithTimeInterval:5 target:peeker selector:@selector(peek) userInfo:nil repeats:NO];
 	
 #if 0
 	_HOOKMSG(SUScriptInterface_gotoStoreURL_ofType_withAuthentication_forceAuthentication, SUScriptInterface, gotoStoreURL:ofType:withAuthentication:forceAuthentication:);
