@@ -141,13 +141,13 @@ public:
 	}
 
 	//
-	NS_INLINE BOOL CanOpenURL(NSString *url)
+	NS_INLINE BOOL CanOpenUrl(NSString *url)
 	{
 		return [Application() canOpenURL:[NSURL URLWithString:url]];
 	}
 	
 	//
-	NS_INLINE BOOL OpenURL(NSString *url)
+	NS_INLINE BOOL OpenUrl(NSString *url)
 	{
 		url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		BOOL ret = [Application() openURL:[NSURL URLWithString:url]];

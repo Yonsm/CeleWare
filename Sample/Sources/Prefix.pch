@@ -60,11 +60,3 @@
 //#import "ZipArchive.h"
 
 #endif
-
-// Localized String
-#undef NSLocalizedString
-#ifdef DEBUG
-#define NSLocalizedString(key, comment) [[NSBundle mainBundle] localizedStringForKey:(key) value:(comment) table:nil]
-#else
-#define NSLocalizedString(key, comment) [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
-#endif
