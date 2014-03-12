@@ -1,4 +1,8 @@
 
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#endif
+
 // Target device family (enable only one flag)
 //#define _TARGET_IPHONE
 //#define _TARGET_IPAD
@@ -16,11 +20,11 @@
 //#import "UniBase.h"
 //#import "CelePrefix.h"
 #import "CeleUtil.h"
+//#undef NSLocalizedString
+//#define NSLocalizedString(key, comment) comment
 
 #ifdef __OBJC__
-#import <UIKit/UIKit.h>
 
-// Util
 #ifdef __cplusplus
 #import "NSUtil.h"
 #import "UIUtil.h"

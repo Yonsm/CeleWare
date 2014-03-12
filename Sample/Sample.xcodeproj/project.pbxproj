@@ -84,7 +84,6 @@
 		246A3329186838ED00903EF4 /* AlertView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32AF186838ED00903EF4 /* AlertView.mm */; };
 		246A332A186838ED00903EF4 /* CacheImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B1186838ED00903EF4 /* CacheImageView.mm */; };
 		246A332B186838ED00903EF4 /* CurrencyField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B3186838ED00903EF4 /* CurrencyField.mm */; };
-		246A332C186838ED00903EF4 /* DelayImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B5186838ED00903EF4 /* DelayImageView.mm */; };
 		246A332D186838ED00903EF4 /* KBAutoScrollView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B7186838ED00903EF4 /* KBAutoScrollView.mm */; };
 		246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B9186838ED00903EF4 /* KBCustomTextField.mm */; };
 		246A332F186838ED00903EF4 /* NullView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32BB186838ED00903EF4 /* NullView.mm */; };
@@ -262,8 +261,6 @@
 		246A32B1186838ED00903EF4 /* CacheImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CacheImageView.mm; sourceTree = "<group>"; };
 		246A32B2186838ED00903EF4 /* CurrencyField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyField.h; sourceTree = "<group>"; };
 		246A32B3186838ED00903EF4 /* CurrencyField.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CurrencyField.mm; sourceTree = "<group>"; };
-		246A32B4186838ED00903EF4 /* DelayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayImageView.h; sourceTree = "<group>"; };
-		246A32B5186838ED00903EF4 /* DelayImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DelayImageView.mm; sourceTree = "<group>"; };
 		246A32B6186838ED00903EF4 /* KBAutoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBAutoScrollView.h; sourceTree = "<group>"; };
 		246A32B7186838ED00903EF4 /* KBAutoScrollView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KBAutoScrollView.mm; sourceTree = "<group>"; };
 		246A32B8186838ED00903EF4 /* KBCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBCustomTextField.h; sourceTree = "<group>"; };
@@ -645,8 +642,6 @@
 				246A32B1186838ED00903EF4 /* CacheImageView.mm */,
 				246A32B2186838ED00903EF4 /* CurrencyField.h */,
 				246A32B3186838ED00903EF4 /* CurrencyField.mm */,
-				246A32B4186838ED00903EF4 /* DelayImageView.h */,
-				246A32B5186838ED00903EF4 /* DelayImageView.mm */,
 				246A32B6186838ED00903EF4 /* KBAutoScrollView.h */,
 				246A32B7186838ED00903EF4 /* KBAutoScrollView.mm */,
 				246A32B8186838ED00903EF4 /* KBCustomTextField.h */,
@@ -815,7 +810,6 @@
 				246A3329186838ED00903EF4 /* AlertView.mm in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
 				246A3309186838ED00903EF4 /* NullController.mm in Sources */,
-				246A332C186838ED00903EF4 /* DelayImageView.mm in Sources */,
 				246A32DC186838ED00903EF4 /* BaseController.mm in Sources */,
 				24208EAC1885143D0058AD7E /* MWTapDetectingImageView.m in Sources */,
 				246A3332186838ED00903EF4 /* PullView.mm in Sources */,

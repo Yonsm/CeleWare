@@ -102,7 +102,7 @@
 //
 - (void)starButtonClicked:(WizardCell *)sender
 {
-	UIUtil::OpenURL(kAppStoreUrl);
+	UIUtil::OpenUrl(kAppStoreUrl);
 }
 
 //

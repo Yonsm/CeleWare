@@ -1,6 +1,9 @@
 
 @protocol CacheImageProtocol
 - (void)setImage:(UIImage *)image;
+@optional
+- (void)setCacheImageUrl2:(NSString *)cacheImageUrl2;
+- (void)cacheImageDownloaded2:(NSArray *)params;
 @end
 
 //
@@ -16,4 +19,9 @@
 
 //
 @interface CacheBackgroundImageButton : UIButton <CacheImageProtocol>
+@end
+
+//
+@interface CacheImageView : UIImageView
+@property(nonatomic,strong) NSString *cacheImageUrl2;
 @end

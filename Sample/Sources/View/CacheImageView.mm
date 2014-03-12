@@ -26,6 +26,10 @@
 #ifdef _CacheDefaultImage
 		[(id<CacheImageProtocol>)self setImage:_CacheDefaultImage];
 #endif
+		if ([self respondsToSelector:@selector(setCacheImageUrl2:)])
+		{
+			[(id<CacheImageProtocol>)self setCacheImageUrl2:cacheImageUrl];
+		}
 		[self performSelectorInBackground:@selector(cacheImageDownloading:) withObject:cacheImageUrl];
 	}
 }
@@ -38,8 +42,17 @@
 		_Log(@"cacheImageDownloading %@", cacheImageUrl);
 		NSString *path = NSUtil::CacheUrlPath(cacheImageUrl);
 		NSData *data = HttpUtil::DownloadData(cacheImageUrl, path, DownloadFromOnline);
-		UIImage *image = [UIImage imageWithData:data];
-		[self performSelectorOnMainThread:@selector(cacheImageDownloaded:) withObject:image waitUntilDone:YES];
+		UIImage *image = data ? [UIImage imageWithData:data] : nil;
+		
+		if ([self respondsToSelector:@selector(cacheImageDownloaded2:)])
+		{
+			NSArray *params = [NSArray arrayWithObjects:cacheImageUrl, image, nil];
+			[self performSelectorOnMainThread:@selector(cacheImageDownloaded2:) withObject:params waitUntilDone:YES];
+		}
+		else
+		{
+			[self performSelectorOnMainThread:@selector(cacheImageDownloaded:) withObject:image waitUntilDone:YES];
+		}
 	}
 }
 
@@ -87,3 +100,16 @@
 }
 @end
 
+
+//
+@implementation CacheImageView
+- (void)cacheImageDownloaded2:(NSArray *)params
+{
+	NSString *cacheImageUrl2 = params[0];
+	if (cacheImageUrl2 == _cacheImageUrl2)
+	{
+		UIImage *image = (params.count > 1) ? params[1] : nil;
+		[self cacheImageDownloaded:image];
+	}
+}
+@end

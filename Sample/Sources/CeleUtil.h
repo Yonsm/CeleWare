@@ -31,6 +31,9 @@
 #define _ObjLog(o)		((void) 0)
 #endif
 
+#import <dlfcn.h>
+#define _StackLog()		{Dl_info info = {0}; dladdr(__builtin_return_address(0), &info); _Log(@"Stack Log: fname=%s, fbase=%p, sname=%s, saddr=%p, offset=%#08lx, stack=>\n%@", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (long)info.dli_saddr-(long)info.dli_fbase-0x1000, [NSThread callStackSymbols]);}
+
 // Auto Log
 #ifdef __cplusplus
 #import <Foundation/Foundation.h>
