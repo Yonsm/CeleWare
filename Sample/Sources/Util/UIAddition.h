@@ -1,5 +1,6 @@
 
 //
+#ifdef _ImageEx
 @interface UIImage (ImageEx)
 + (UIImage *)imageWithColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
@@ -12,9 +13,10 @@
 - (UIImage *)straightenAndScaleImage:(NSUInteger)maxDimension;
 
 @end
-
+#endif
 
 //
+#ifdef _ViewEx
 @interface UIView (ViewEx)
 - (void)removeSubviews;
 
@@ -37,7 +39,7 @@
 - (UIView *)superviewWithClass:(Class)viewClass;
 
 @end
-
+#endif
 
 //
 @protocol AlertViewExDelegate
@@ -46,6 +48,7 @@
 @end
 
 //
+#ifdef _AlertViewEx
 @interface UIAlertView (AlertViewEx)
 
 //
@@ -62,24 +65,28 @@
 - (void)dismiss;
 
 @end
-
+#endif
 
 //
+#ifdef _TabBarControllerEx
 @interface UITabBarController (TabBarControllerEx)
 - (UIViewController *)currentViewController;
 @end
+#endif
 
 
 //
+#ifdef _ViewControllerEx
 @interface UIViewController (ViewControllerEx)
 - (void)dismissModalViewController;
 - (UINavigationController *)presentNavigationController:(UIViewController *)controller animated:(BOOL)animated;
 - (UINavigationController *)presentModalNavigationController:(UIViewController *)controller animated:(BOOL)animated;
 - (UINavigationController *)presentModalNavigationController:(UIViewController *)controller animated:(BOOL)animated dismissButtonTitle:(NSString *)dismissButtonTitle;
 @end
-
+#endif
 
 //
+#ifdef _ButtonEx
 #define UIButtonTypeNavigationBack		(UIButtonType)100
 #define UIButtonTypeNavigationItem		(UIButtonType)101
 #define UIButtonTypeNavigationDone		(UIButtonType)102
@@ -103,16 +110,19 @@
 + (id)colorButtonWithTitle:(NSString *)title;
 + (id)roundButtonWithTitle:(NSString *)title color:(UIColor *)color color_:(UIColor *)color_ frame:(CGRect)frame;
 @end
-
+#endif
 
 
 //
+#ifdef _BarButtonItemEx
 @interface UIBarButtonItem (BarButtonItemEx)
 + (id)buttonItemWithImage:(UIImage *)image title:(NSString *)title target:(id)target action:(SEL)action;
 + (id)buttonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
 + (id)buttonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 @end
+#endif
 
+#ifdef _LabelEx
 @interface UILabel (LabelEx)
 
 //
@@ -129,8 +139,10 @@
 				font:(UIFont *)font
 		   alignment:(NSTextAlignment)alignment;
 @end
+#endif
 
 //
+#ifdef _TapGestureRecognizer
 @interface TapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
 @end
 
@@ -141,3 +153,4 @@
 @end
 
 #define UITableViewCellAccessoryButton (UIUtil::IsOS7() ? UITableViewCellAccessoryDetailButton : UITableViewCellAccessoryDetailDisclosureButton)
+#endif

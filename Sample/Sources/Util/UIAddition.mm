@@ -4,7 +4,7 @@
 
 
 #pragma mark UIImage methods
-
+#ifdef _ImageEx
 @implementation UIImage (ImageEx)
 
 //
@@ -338,10 +338,10 @@
 	return newImage;
 }
 @end
-
+#endif
 
 #pragma mark UIView methods
-
+#ifdef _ViewEx
 @implementation UIView (ViewEx)
 
 //
@@ -567,10 +567,10 @@
 }
 
 @end
-
+#endif
 
 #pragma mark UIAlertView methods
-
+#ifdef _AlertViewEx
 @implementation UIAlertView (AlertViewEx)
 
 //
@@ -655,10 +655,10 @@
 }
 
 @end
-
+#endif
 
 #pragma mark UITabBarController methods
-
+#ifdef _TabBarControllerEx
 @implementation UITabBarController (TabBarControllerEx)
 
 //
@@ -675,10 +675,10 @@
 }
 
 @end
-
+#endif
 
 #pragma mark UIViewController methods
-
+#ifdef _ViewControllerEx
 @implementation UIViewController (ViewControllerEx)
 
 //
@@ -740,10 +740,10 @@
 }
 
 @end
-
+#endif
 
 #pragma mark Button methods
-
+#ifdef _ButtonEx
 @implementation UIButton (ButtonEx)
 
 //
@@ -968,10 +968,10 @@
 }
 
 @end
-
+#endif
 
 #pragma mark Bar button item methods
-
+#ifdef _BarButtonItemEx
 @implementation UIBarButtonItem (BarButtonItemEx)
 
 //
@@ -1010,9 +1010,10 @@
 }
 
 @end
+#endif
 
 #pragma mark UILabel methods
-
+#ifdef _LabelEx
 @implementation UILabel (LabelEx)
 
 //
@@ -1051,8 +1052,10 @@
 }
 
 @end
+#endif
 
 //
+#ifdef _TapGestureRecognizer
 @implementation TapGestureRecognizer
 
 //
@@ -1093,3 +1096,4 @@
 }
 
 @end
+#endif

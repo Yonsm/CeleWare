@@ -305,18 +305,33 @@ public:
 	
 #pragma mark Debug methods
 public:
-	// Print log with indent
-	static void PrintIndentString(NSUInteger indent, NSString *str);
+#if defined(DEBUG) || defined(TEST)
+	// Log log with indent
+	static void LogIndentString(NSUInteger indent, NSString *str);
 	
-	// Print controller and sub-controllers
-	static void PrintController(UIViewController *controller, NSUInteger indent = 0);
+	// Log controller and sub-controllers
+	static void LogController(UIViewController *controller, NSUInteger indent = 0);
 	
-	// Print view and subviews
-	static void PrintView(UIView *view, NSUInteger indent = 0);
+	// Log view and subviews
+	static void LogView(UIView *view, NSUInteger indent = 0);
+	
+	// Log layout constraints
+	static void LogConstraints(UIView *view);
 	
 	// Nomalize png file
 	static BOOL NormalizePngFile(NSString *dst, NSString *src);
 	
 	// Nomalize png folder
 	static void NormalizePngFolder(NSString *dst, NSString *src);
+#endif
 };
+
+#if defined(DEBUG) || defined(TEST)
+#define _ViewLog(v)			UIUtil::LogConstraints(v)
+#define _ConstraintsLog(v)	UIUtil::LogView(v)
+#define _ControllerLog(c)	UIUtil::LogController(c)
+#else
+#define _ViewLog(v)			((void) 0)
+#define _ConstraintsLog(v)	((void) 0)
+#define _ControllerLog(c)	((void) 0)
+#endif

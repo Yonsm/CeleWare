@@ -11,7 +11,7 @@
 #endif
 
 // Log Helper
-#ifdef DEBUG
+#if defined(DEBUG) || defined(TEST)
 #ifdef _LOG_TO_FILE
 #define _Log(s, ...)	{NSString *str = [NSString stringWithFormat:s, ##__VA_ARGS__]; FILE *fp = fopen("/tmp/NSUtil.log", "a"); if (fp) {fprintf(fp, "[%s] %s\n", NSProcessInfo.processInfo.processName.UTF8String, str.UTF8String); fclose(fp);}}
 #else
@@ -24,15 +24,15 @@
 #else
 #define _AutoLog()		_LineLog()
 #endif
+#import <dlfcn.h>
+#define _StackLog()		{Dl_info info = {0}; dladdr(__builtin_return_address(0), &info); _Log(@"Stack Log: fname=%s, fbase=%p, sname=%s, saddr=%p, offset=%#08lx, stack=>\n%@", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (long)info.dli_saddr-(long)info.dli_fbase-0x1000, [NSThread callStackSymbols]);}
 #else
 #define _Log(s, ...)	((void) 0)
 #define _LineLog()		((void) 0)
 #define _AutoLog()		((void) 0)
 #define _ObjLog(o)		((void) 0)
+#define _StackLog()		((void) 0)
 #endif
-
-#import <dlfcn.h>
-#define _StackLog()		{Dl_info info = {0}; dladdr(__builtin_return_address(0), &info); _Log(@"Stack Log: fname=%s, fbase=%p, sname=%s, saddr=%p, offset=%#08lx, stack=>\n%@", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (long)info.dli_saddr-(long)info.dli_fbase-0x1000, [NSThread callStackSymbols]);}
 
 // Auto Log
 #ifdef __cplusplus
