@@ -37,7 +37,7 @@
 	if (_autoSend)
 	{
 		_autoSend = NO;
-		UIView *entryView = [UIUtil::KeyWindow() findSubview:@"CKMessageEntryView"];
+		UIView *entryView = UIUtil::FindSubview(UIUtil::KeyWindow(), @"CKMessageEntryView");
 		for (UIView *child in entryView.subviews)
 		{
 			if ([child isKindOfClass:[UIButton class]] && (child.frame.size.width > child.frame.size.height))

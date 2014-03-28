@@ -88,7 +88,7 @@
 {
 	CGRect frame = _contentView.frame;
 	_contentView.hidden = NO;
-	_foldView = [[FoldViews alloc] initWithFrame:frame andImage:_contentView.screenshot withNumberOfFolds:3];
+	_foldView = [[FoldViews alloc] initWithFrame:frame andImage:UIUtil::Snapshot(_contentView) withNumberOfFolds:3];
 	_contentView.hidden = YES;
 	_foldView.clipsToBounds = YES;
 	_foldView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

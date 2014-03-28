@@ -57,7 +57,7 @@
 //
 - (void)doneButtonClicked:(id)sender
 {
-	UIView *focusView = self.view.findFirstResponder;
+	UIView *focusView = UIUtil::FindFirstResponder(self.view);
 	if (focusView)
 	{
 		[focusView resignFirstResponder];
@@ -94,7 +94,7 @@
 	_cellCount = 0;
 	memset(_cells, 0, sizeof(_cells));
 	_contentHeight = 0;
-	[_contentView removeSubviews];
+	UIUtil::RemoveSubviews(_contentView);
 	
 	//[self spaceWithHeight:kDefaultHeaderHeight];
 	

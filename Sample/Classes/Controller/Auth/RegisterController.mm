@@ -111,7 +111,7 @@
 //
 - (void)agreementButtonClicked:(id)sender
 {
-	[_contentView.findFirstResponder resignFirstResponder];
+	UIUtil::HideKeyboard(_contentView);
 
 	UIViewController *controller = [[WebController alloc] initWithURL:[NSURL fileURLWithPath:NSUtil::AssetPath(@"user_agreement.txt")]];
 	controller.modalTransitionStyle = UIModalTransitionStylePartialCurl;

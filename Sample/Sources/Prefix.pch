@@ -35,8 +35,7 @@
 #endif
 
 // View
-//#define _ImageEx
-#define _ViewEx
+//#define _ViewEx
 #define _LabelEx
 #define _ButtonEx
 #define _AlertViewEx

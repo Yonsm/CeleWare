@@ -158,7 +158,7 @@
 //
 - (void)keyboardWillShow:(NSNotification *)notification
 {
-	UIView *view = [_scrollView findFirstResponder];
+	UIView *view = UIUtil::FindFirstResponder(_scrollView);
 	if (view/* && !_keyboardShown*/)
 	{
 		//_Log(@"keyboardWillShow, _keyboardShown: %d, view: %@", _keyboardShown, NSStringFromClass(view.class));
@@ -194,7 +194,7 @@
 //
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-	UIView *view = [self.view findFirstResponder];
+	UIView *view = UIUtil::FindFirstResponder(self.view);
 	if (view/* && _keyboardShown*/)
 	{
 		_Log(@"keyboardWillHide, _keyboardShown: %d, view: %@", _keyboardShown, NSStringFromClass(view.class));
