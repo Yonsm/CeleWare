@@ -3,6 +3,9 @@
 #import "BaseController.h"
 #import "WizardCell.h"
 #import "ExButton.h"
+#import "SelectBox.h"
+#import "SelectPicker.h"
+#import "SelectSheet.h"
 
 #define kMaxCellsPerPage		50
 #define kDefaultHeaderHeight	20	// 默认单元头高度（仅指空标题的头，不包括标题文本）

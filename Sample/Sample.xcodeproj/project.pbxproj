@@ -79,9 +79,6 @@
 		246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32BF186838ED00903EF4 /* PredictScrollView.mm */; };
 		246A3332186838ED00903EF4 /* PullView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32C1186838ED00903EF4 /* PullView.mm */; };
 		246A3333186838ED00903EF4 /* SegmentLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32C3186838ED00903EF4 /* SegmentLabel.mm */; };
-		246A3334186838ED00903EF4 /* SelectBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32C5186838ED00903EF4 /* SelectBox.mm */; };
-		246A3335186838ED00903EF4 /* SelectPicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32C7186838ED00903EF4 /* SelectPicker.mm */; };
-		246A3336186838ED00903EF4 /* SelectSheet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32C9186838ED00903EF4 /* SelectSheet.mm */; };
 		246A3337186838ED00903EF4 /* ToastView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32CB186838ED00903EF4 /* ToastView.mm */; };
 		246A3338186838ED00903EF4 /* TouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32CD186838ED00903EF4 /* TouchView.mm */; };
 		246A3339186838ED00903EF4 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D0186838ED00903EF4 /* ioapi.c */; };
@@ -95,6 +92,10 @@
 		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
 		246A334C1868537C00903EF4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D4186838ED00903EF4 /* zip.c */; };
 		24B6BB3B18E554390058FC8B /* ExButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* ExButton.mm */; };
+		24B6BB3E18E557C90058FC8B /* AlertView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3D18E557C90058FC8B /* AlertView.mm */; };
+		24B6BB4518E558420058FC8B /* SelectBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4018E558420058FC8B /* SelectBox.mm */; };
+		24B6BB4618E558420058FC8B /* SelectPicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4218E558420058FC8B /* SelectPicker.mm */; };
+		24B6BB4718E558420058FC8B /* SelectSheet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4418E558420058FC8B /* SelectSheet.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,12 +248,6 @@
 		246A32C1186838ED00903EF4 /* PullView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PullView.mm; sourceTree = "<group>"; };
 		246A32C2186838ED00903EF4 /* SegmentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentLabel.h; sourceTree = "<group>"; };
 		246A32C3186838ED00903EF4 /* SegmentLabel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SegmentLabel.mm; sourceTree = "<group>"; };
-		246A32C4186838ED00903EF4 /* SelectBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBox.h; sourceTree = "<group>"; };
-		246A32C5186838ED00903EF4 /* SelectBox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectBox.mm; sourceTree = "<group>"; };
-		246A32C6186838ED00903EF4 /* SelectPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPicker.h; sourceTree = "<group>"; };
-		246A32C7186838ED00903EF4 /* SelectPicker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectPicker.mm; sourceTree = "<group>"; };
-		246A32C8186838ED00903EF4 /* SelectSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSheet.h; sourceTree = "<group>"; };
-		246A32C9186838ED00903EF4 /* SelectSheet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectSheet.mm; sourceTree = "<group>"; };
 		246A32CA186838ED00903EF4 /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastView.h; sourceTree = "<group>"; };
 		246A32CB186838ED00903EF4 /* ToastView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ToastView.mm; sourceTree = "<group>"; };
 		246A32CC186838ED00903EF4 /* TouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchView.h; sourceTree = "<group>"; };
@@ -275,6 +270,14 @@
 		246A334A18683DF300903EF4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		24B6BB3918E554390058FC8B /* ExButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExButton.h; sourceTree = "<group>"; };
 		24B6BB3A18E554390058FC8B /* ExButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExButton.mm; sourceTree = "<group>"; };
+		24B6BB3C18E557C90058FC8B /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
+		24B6BB3D18E557C90058FC8B /* AlertView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlertView.mm; sourceTree = "<group>"; };
+		24B6BB3F18E558420058FC8B /* SelectBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBox.h; sourceTree = "<group>"; };
+		24B6BB4018E558420058FC8B /* SelectBox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectBox.mm; sourceTree = "<group>"; };
+		24B6BB4118E558420058FC8B /* SelectPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPicker.h; sourceTree = "<group>"; };
+		24B6BB4218E558420058FC8B /* SelectPicker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectPicker.mm; sourceTree = "<group>"; };
+		24B6BB4318E558420058FC8B /* SelectSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSheet.h; sourceTree = "<group>"; };
+		24B6BB4418E558420058FC8B /* SelectSheet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectSheet.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +449,14 @@
 		246A322D186838ED00903EF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				24B6BB3F18E558420058FC8B /* SelectBox.h */,
+				24B6BB4018E558420058FC8B /* SelectBox.mm */,
+				24B6BB4118E558420058FC8B /* SelectPicker.h */,
+				24B6BB4218E558420058FC8B /* SelectPicker.mm */,
+				24B6BB4318E558420058FC8B /* SelectSheet.h */,
+				24B6BB4418E558420058FC8B /* SelectSheet.mm */,
+				24B6BB3C18E557C90058FC8B /* AlertView.h */,
+				24B6BB3D18E557C90058FC8B /* AlertView.mm */,
 				24B6BB3918E554390058FC8B /* ExButton.h */,
 				24B6BB3A18E554390058FC8B /* ExButton.mm */,
 				246A322E186838ED00903EF4 /* WizardCell.h */,
@@ -605,12 +616,6 @@
 				246A32C1186838ED00903EF4 /* PullView.mm */,
 				246A32C2186838ED00903EF4 /* SegmentLabel.h */,
 				246A32C3186838ED00903EF4 /* SegmentLabel.mm */,
-				246A32C4186838ED00903EF4 /* SelectBox.h */,
-				246A32C5186838ED00903EF4 /* SelectBox.mm */,
-				246A32C6186838ED00903EF4 /* SelectPicker.h */,
-				246A32C7186838ED00903EF4 /* SelectPicker.mm */,
-				246A32C8186838ED00903EF4 /* SelectSheet.h */,
-				246A32C9186838ED00903EF4 /* SelectSheet.mm */,
 				246A32CA186838ED00903EF4 /* ToastView.h */,
 				246A32CB186838ED00903EF4 /* ToastView.mm */,
 				246A32CC186838ED00903EF4 /* TouchView.h */,
@@ -731,8 +736,6 @@
 			files = (
 				246A332F186838ED00903EF4 /* NullView.mm in Sources */,
 				246A332D186838ED00903EF4 /* KBAutoScrollView.mm in Sources */,
-				246A3334186838ED00903EF4 /* SelectBox.mm in Sources */,
-				246A3336186838ED00903EF4 /* SelectSheet.mm in Sources */,
 				246A32DE186838ED00903EF4 /* PullTableController.mm in Sources */,
 				246A32E3186838ED00903EF4 /* RootController.mm in Sources */,
 				246A330E186838ED00903EF4 /* FoldView.mm in Sources */,
@@ -760,6 +763,7 @@
 				246A32E7186838ED00903EF4 /* NearLocater.mm in Sources */,
 				24208EA51885143D0058AD7E /* HPGrowingTextView.m in Sources */,
 				246A332B186838ED00903EF4 /* CurrencyField.mm in Sources */,
+				24B6BB4518E558420058FC8B /* SelectBox.mm in Sources */,
 				246A32E1186838ED00903EF4 /* WizardController.mm in Sources */,
 				246A330D186838ED00903EF4 /* FoldPane.mm in Sources */,
 				246A332A186838ED00903EF4 /* CacheImageView.mm in Sources */,
@@ -767,6 +771,7 @@
 				24208EAB1885143D0058AD7E /* MWPhotoBrowser.mm in Sources */,
 				24B6BB3B18E554390058FC8B /* ExButton.mm in Sources */,
 				246A3339186838ED00903EF4 /* ioapi.c in Sources */,
+				24B6BB4618E558420058FC8B /* SelectPicker.mm in Sources */,
 				24208EAA1885143D0058AD7E /* MWPhoto.mm in Sources */,
 				246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */,
 				246A3333186838ED00903EF4 /* SegmentLabel.mm in Sources */,
@@ -778,7 +783,6 @@
 				246A3314186838ED00903EF4 /* Main.mm in Sources */,
 				24208EAE1885143D0058AD7E /* MWZoomingScrollView.m in Sources */,
 				246A32E9186838ED00903EF4 /* WizardCell.mm in Sources */,
-				246A3335186838ED00903EF4 /* SelectPicker.mm in Sources */,
 				246A3310186838ED00903EF4 /* ShadowView.mm in Sources */,
 				246A32E4186838ED00903EF4 /* SettingController.mm in Sources */,
 				246A333A186838ED00903EF4 /* unzip.c in Sources */,
@@ -791,7 +795,9 @@
 				246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */,
 				246A3338186838ED00903EF4 /* TouchView.mm in Sources */,
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
+				24B6BB4718E558420058FC8B /* SelectSheet.mm in Sources */,
 				2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */,
+				24B6BB3E18E557C90058FC8B /* AlertView.mm in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
 				246A3337186838ED00903EF4 /* ToastView.mm in Sources */,
 				246A32E2186838ED00903EF4 /* NavigationController.mm in Sources */,
