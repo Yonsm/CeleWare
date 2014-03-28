@@ -804,7 +804,29 @@ UIView *UIUtil::SuperviewWithClass(UIView *self, Class viewClass)
 	return nil;
 }
 
-int UIUtil::sdfasdfadfadfadfadf()
+//
+@interface TapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
+@end
+
+@implementation TapGestureRecognizer
+- (id)initWithTarget:(id)target action:(SEL)action
 {
-	return 10;
+	self = [super initWithTarget:target action:action];
+	self.cancelsTouchesInView = NO;
+	self.delegate = self;
+	return self;
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+	UIView *view = touch.view;
+	return (view == gestureRecognizer.view) || ![view isKindOfClass:[UIButton class]];
+}
+@end
+
+//
+UITapGestureRecognizer *UIUtil::AddTapGesture(UIView *self, id target, SEL action)
+{
+	UITapGestureRecognizer *gesture = [[TapGestureRecognizer alloc] initWithTarget:target action:action];
+	[self addGestureRecognizer:gesture];
+	return gesture;
 }

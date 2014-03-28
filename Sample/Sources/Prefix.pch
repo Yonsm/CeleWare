@@ -37,7 +37,6 @@
 // View
 #define _ExBarButtonItem
 #define _ExViewController
-#define _ExGestureRecognizer
 #import "UIAddition.h"
 
 #import "ToastView.h"

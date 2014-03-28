@@ -73,8 +73,7 @@
 	[super viewDidLoad];
 	if (!_noAutoHide)
 	{
-		// TODO: Test
-		[self.view addTapGestureRecognizerWithTarget:_contentView action:@selector(endEditing:)];
+		UIUtil::AddTapGesture(self.view, _contentView, @selector(endEditing:));
 	}
 }
 

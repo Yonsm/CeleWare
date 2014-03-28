@@ -17,11 +17,3 @@
 + (id)buttonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 @end
 #endif
-
-//
-#ifdef _ExGestureRecognizer
-@interface UIView (ExGestureRecognizer)
-- (UITapGestureRecognizer *)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
-- (UILongPressGestureRecognizer *)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action;
-@end
-#endif

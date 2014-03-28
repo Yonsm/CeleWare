@@ -552,7 +552,17 @@ public:
 		return label;
 	}
 	
-	static int sdfasdfadfadfadfadf();
+#pragma mark Gesture methods
+	//
+	static UITapGestureRecognizer *AddTapGesture(UIView *self, id target, SEL action);
+	
+	//
+	NS_INLINE UILongPressGestureRecognizer *AddHoldGesture(UIView *self, id target, SEL action)
+	{
+		UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:target action:action];
+		[self addGestureRecognizer:gesture];
+		return gesture;
+	}
 };
 
 #if defined(DEBUG) || defined(TEST)
