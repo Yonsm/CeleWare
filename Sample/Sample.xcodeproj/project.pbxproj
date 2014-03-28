@@ -70,7 +70,6 @@
 		246A3326186838ED00903EF4 /* SettingUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A7186838ED00903EF4 /* SettingUtil.mm */; };
 		246A3327186838ED00903EF4 /* UIAddition.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32AA186838ED00903EF4 /* UIAddition.mm */; };
 		246A3328186838ED00903EF4 /* UIUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32AC186838ED00903EF4 /* UIUtil.mm */; };
-		246A3329186838ED00903EF4 /* AlertView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32AF186838ED00903EF4 /* AlertView.mm */; };
 		246A332A186838ED00903EF4 /* CacheImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B1186838ED00903EF4 /* CacheImageView.mm */; };
 		246A332B186838ED00903EF4 /* CurrencyField.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B3186838ED00903EF4 /* CurrencyField.mm */; };
 		246A332D186838ED00903EF4 /* KBAutoScrollView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32B7186838ED00903EF4 /* KBAutoScrollView.mm */; };
@@ -95,6 +94,7 @@
 		246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334818683DE000903EF4 /* MessageUI.framework */; };
 		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
 		246A334C1868537C00903EF4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D4186838ED00903EF4 /* zip.c */; };
+		24B6BB3B18E554390058FC8B /* ExButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* ExButton.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -229,8 +229,6 @@
 		246A32AA186838ED00903EF4 /* UIAddition.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIAddition.mm; sourceTree = "<group>"; };
 		246A32AB186838ED00903EF4 /* UIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtil.h; sourceTree = "<group>"; };
 		246A32AC186838ED00903EF4 /* UIUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIUtil.mm; sourceTree = "<group>"; };
-		246A32AE186838ED00903EF4 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
-		246A32AF186838ED00903EF4 /* AlertView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlertView.mm; sourceTree = "<group>"; };
 		246A32B0186838ED00903EF4 /* CacheImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheImageView.h; sourceTree = "<group>"; };
 		246A32B1186838ED00903EF4 /* CacheImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CacheImageView.mm; sourceTree = "<group>"; };
 		246A32B2186838ED00903EF4 /* CurrencyField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyField.h; sourceTree = "<group>"; };
@@ -275,6 +273,8 @@
 		246A334618683DBF00903EF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		246A334818683DE000903EF4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		246A334A18683DF300903EF4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		24B6BB3918E554390058FC8B /* ExButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExButton.h; sourceTree = "<group>"; };
+		24B6BB3A18E554390058FC8B /* ExButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExButton.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +446,8 @@
 		246A322D186838ED00903EF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				24B6BB3918E554390058FC8B /* ExButton.h */,
+				24B6BB3A18E554390058FC8B /* ExButton.mm */,
 				246A322E186838ED00903EF4 /* WizardCell.h */,
 				246A322F186838ED00903EF4 /* WizardCell.mm */,
 			);
@@ -585,8 +587,6 @@
 		246A32AD186838ED00903EF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				246A32AE186838ED00903EF4 /* AlertView.h */,
-				246A32AF186838ED00903EF4 /* AlertView.mm */,
 				246A32B0186838ED00903EF4 /* CacheImageView.h */,
 				246A32B1186838ED00903EF4 /* CacheImageView.mm */,
 				246A32B2186838ED00903EF4 /* CurrencyField.h */,
@@ -752,7 +752,6 @@
 				2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */,
 				24208EB418851A980058AD7E /* iVersion.m in Sources */,
 				24208EA61885143D0058AD7E /* HPTextViewInternal.m in Sources */,
-				246A3329186838ED00903EF4 /* AlertView.mm in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
 				246A3309186838ED00903EF4 /* NullController.mm in Sources */,
 				246A32DC186838ED00903EF4 /* BaseController.mm in Sources */,
@@ -766,6 +765,7 @@
 				246A332A186838ED00903EF4 /* CacheImageView.mm in Sources */,
 				24208EAD1885143D0058AD7E /* MWTapDetectingView.m in Sources */,
 				24208EAB1885143D0058AD7E /* MWPhotoBrowser.mm in Sources */,
+				24B6BB3B18E554390058FC8B /* ExButton.mm in Sources */,
 				246A3339186838ED00903EF4 /* ioapi.c in Sources */,
 				24208EAA1885143D0058AD7E /* MWPhoto.mm in Sources */,
 				246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */,

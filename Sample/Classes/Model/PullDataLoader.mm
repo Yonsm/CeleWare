@@ -232,16 +232,16 @@
 	label.center = CGPointMake(label.center.x, label.center.y - 22);
 	label.text = @"没有登录";
 	
-	CGFloat y = CGRectGetMaxY(label.frame) + 4;
-	UIButton *loginButton = [UIButton linkButtonWithTitle:@"登录" frame:CGRectMake(view.frame.size.width / 2 - 8 - 40, y, 40, 0)];
-	[loginButton addTarget:DataLoader.class action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-	loginButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-	[view addSubview:loginButton];
-	
-	UIButton *registerButton = [UIButton linkButtonWithTitle:@"注册" frame:CGRectMake(view.frame.size.width / 2 + 8, y, 40, 0)];
-	registerButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-	[registerButton addTarget:self action:@selector(registerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	[view addSubview:registerButton];
+//	CGFloat y = CGRectGetMaxY(label.frame) + 4;
+//	UIButton *loginButton = [UIButton linkButtonWithTitle:@"登录" frame:CGRectMake(view.frame.size.width / 2 - 8 - 40, y, 40, 0)];
+//	[loginButton addTarget:DataLoader.class action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+//	loginButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+//	[view addSubview:loginButton];
+//	
+//	UIButton *registerButton = [UIButton linkButtonWithTitle:@"注册" frame:CGRectMake(view.frame.size.width / 2 + 8, y, 40, 0)];
+//	registerButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+//	[registerButton addTarget:self action:@selector(registerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//	[view addSubview:registerButton];
 	
 	return view;
 }

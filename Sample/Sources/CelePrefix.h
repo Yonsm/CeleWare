@@ -57,7 +57,7 @@
 #define composeWeibo				celeComposeWeibo
 #define composeFacebook				celeComposeFacebook
 
-// UIViewController	(ViewControllerEx)
+// UIViewController	(ExViewController)
 #define dismissModalViewController	celeDismissModalViewController
 #define presentNavigationController	celePresentNavigationController
 #define presentModalNavigationController	celePresentModalNavigationController

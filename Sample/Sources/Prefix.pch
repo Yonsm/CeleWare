@@ -35,10 +35,9 @@
 #endif
 
 // View
-#define _ButtonEx
-#define _BarButtonItemEx
-#define _ViewControllerEx
-#define _TapGestureRecognizer
+#define _ExBarButtonItem
+#define _ExViewController
+#define _ExGestureRecognizer
 #import "UIAddition.h"
 
 #import "ToastView.h"
