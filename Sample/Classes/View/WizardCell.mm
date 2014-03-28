@@ -60,11 +60,7 @@
 	CGRect frame = {kLeftGap, (self.frame.size.height - 20) / 2, [name sizeWithFont:font].width, 20};
 	if (_nameLabel == nil)
 	{
-		_nameLabel = [UILabel labelWithFrame:frame
-										text:name
-									   color:[UIColor blackColor]
-										font:font
-								   alignment:NSTextAlignmentLeft];
+		_nameLabel = UIUtil::LabelWithFrame(frame, name, font);
 		[self addSubview:_nameLabel];
 	}
 	else
@@ -83,11 +79,7 @@
 	CGRect frame = {x, 2, right - x, self.frame.size.height - 4};
 	if (_detailLabel == nil)
 	{
-		_detailLabel = [UILabel labelWithFrame:frame
-										  text:detail
-										 color:UIUtil::Color(90, 90, 90)
-										  font:font
-									 alignment:NSTextAlignmentRight];
+		_detailLabel = UIUtil::LabelWithFrame(frame, detail, font, UIUtil::Color(90, 90, 90), NSTextAlignmentRight);
 		_detailLabel.adjustsFontSizeToFitWidth = YES;
 		[self addSubview:_detailLabel];
 	}

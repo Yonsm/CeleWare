@@ -36,7 +36,6 @@
 @end
 #endif
 
-
 //
 #ifdef _BarButtonItemEx
 @interface UIBarButtonItem (BarButtonItemEx)
@@ -46,34 +45,10 @@
 @end
 #endif
 
-#ifdef _LabelEx
-@interface UILabel (LabelEx)
-
-//
-+ (id)labelAtPoint:(CGPoint)point
-			 width:(float)width
-			  text:(NSString *)text
-			 color:(UIColor *)color
-			  font:(UIFont*)font
-		 alignment:(NSTextAlignment)alignment;
-//
-+ (id)labelWithFrame:(CGRect)frame
-				text:(NSString *)text
-			   color:(UIColor *)color
-				font:(UIFont *)font
-		   alignment:(NSTextAlignment)alignment;
-@end
-#endif
-
 //
 #ifdef _TapGestureRecognizer
-@interface TapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
-@end
-
-//
 @interface UIView (GestureRecognizer)
-- (TapGestureRecognizer *)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
+- (UITapGestureRecognizer *)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
 - (UILongPressGestureRecognizer *)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action;
 @end
-
 #endif

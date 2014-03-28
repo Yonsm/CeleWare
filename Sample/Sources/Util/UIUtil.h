@@ -339,7 +339,7 @@ public:
 	{
 		return ImageWithColor(Color(r, g, b, a), size);
 	}
-
+	
 	//
 	NS_INLINE UIImage *ImageWithColor(NSUInteger rgbt, CGSize size = CGSizeMake(1, 1))
 	{
@@ -527,20 +527,20 @@ public:
 	
 #pragma mark UILabel methods
 	//
-	NS_INLINE UILabel *LabelAtPoint(CGPoint point, CGFloat width, NSString *text, UIColor *color, UIFont* font, NSTextAlignment alignment = NSTextAlignmentLeft)
+	NS_INLINE UILabel *LabelAtPoint(CGPoint point, CGFloat width, NSString *text, UIFont* font = [UIFont systemFontOfSize:13], UIColor *color = UIColor.blackColor, NSTextAlignment alignment = NSTextAlignmentLeft)
 	{
 		CGSize size = [text sizeWithFont:font
 					   constrainedToSize:CGSizeMake(width, 1000)];
 		
 		CGRect frame = CGRectMake(point.x, point.y, width, ceil(size.height));
 		
-		UILabel *label = LabelWithFrame(frame, text, color, font, alignment);
+		UILabel *label = LabelWithFrame(frame, text, font, color, alignment);
 		label.numberOfLines = 0;
 		return label;
 	}
 	
 	//
-	NS_INLINE UILabel *LabelWithFrame(CGRect frame, NSString *text, UIColor *color, UIFont* font, NSTextAlignment alignment = NSTextAlignmentLeft)
+	NS_INLINE UILabel *LabelWithFrame(CGRect frame, NSString *text, UIFont* font = [UIFont systemFontOfSize:13], UIColor *color = UIColor.blackColor, NSTextAlignment alignment = NSTextAlignmentLeft)
 	{
 		UILabel *label = [[UILabel alloc] initWithFrame:frame];
 		label.textColor = color;
@@ -548,7 +548,7 @@ public:
 		label.font = font;
 		label.text = text;
 		label.textAlignment = alignment;
-
+		
 		return label;
 	}
 };

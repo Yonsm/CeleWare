@@ -37,11 +37,11 @@
 	_logoButton.center = CGPointMake(160, (iPhone5 ? 20 : 6) + image.size.height / 2);
 	[self addView:_logoButton];
 	
-	UILabel *label = [UILabel labelWithFrame:CGRectMake(10, _contentHeight + 4, 300, iPhone5 ? 40 : 20)
-										text:[NSString stringWithFormat:@"版本 %@ %@© CeleWare", NSUtil::BundleVersion(), (iPhone5 ? @"\n" : @" ")]
-									   color:[UIColor darkGrayColor]
-										font:[UIFont systemFontOfSize:15]
-								   alignment:NSTextAlignmentCenter];
+	UILabel *label = UIUtil::LabelWithFrame(CGRectMake(10, _contentHeight + 4, 300, iPhone5 ? 40 : 20)
+											, [NSString stringWithFormat:@"版本 %@ %@© CeleWare", NSUtil::BundleVersion(), (iPhone5 ? @"\n" : @" ")]
+											, [UIFont systemFontOfSize:15]
+											, [UIColor darkGrayColor]
+											, NSTextAlignmentCenter);
 	[self addView:label];
 	if (iPhone5)
 	{

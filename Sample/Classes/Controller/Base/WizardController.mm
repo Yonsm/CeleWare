@@ -252,13 +252,7 @@
 - (UILabel *)labelWithTitle:(NSString *)title
 {
 	UIFont *font = [UIFont boldSystemFontOfSize:14];
-	UILabel *label = [UILabel labelAtPoint:CGPointMake(kLeftGap, _contentHeight + 5)
-									 width:_contentWidth - 30
-									  text:title
-									 color:UIUtil::Color(0x4d4b47)
-									  font:font
-								 alignment:NSTextAlignmentLeft];
-	
+	UILabel *label = UIUtil::LabelAtPoint(CGPointMake(kLeftGap, _contentHeight + 5), _contentWidth - 30, title, font, UIUtil::Color(0x4d4b47));
 	[_contentView addSubview:label];
 	_contentHeight += label.frame.size.height + 10;
 	return label;

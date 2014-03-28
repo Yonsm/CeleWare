@@ -122,13 +122,9 @@
 	}
 	
 	//
-	UILabel *label = [UILabel labelWithFrame:frame
-										text:title
-									   color:UIUtil::Color(0xf9f9f9)
-										font:font
-								   alignment:NSTextAlignmentCenter];
+	UILabel *label = UIUtil::LabelWithFrame(frame, title, font, UIUtil::Color(0xf9f9f9), NSTextAlignmentCenter);
 	label.numberOfLines = 0;
-	
+
 	self = [super initWithFrame:CGRectMake(0, 0, width, CGRectGetMaxY(frame) + 8)];
 	
 	self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];

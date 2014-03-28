@@ -338,50 +338,11 @@
 @end
 #endif
 
-#pragma mark UILabel methods
-#ifdef _LabelEx
-@implementation UILabel (LabelEx)
-
-//
-+ (id)labelAtPoint:(CGPoint)point
-			 width:(float)width
-			  text:(NSString *)text
-			 color:(UIColor *)color
-			  font:(UIFont*)font
-		 alignment:(NSTextAlignment)alignment
-{
-	CGSize size = [text sizeWithFont:font
-				   constrainedToSize:CGSizeMake(width, 1000)];
-	
-	CGRect frame = CGRectMake(point.x, point.y, width, ceil(size.height));
-	
-	UILabel *label = [UILabel labelWithFrame:frame text:text color:color font:font alignment:alignment];
-	label.numberOfLines = 0;
-	return label;
-}
-
-//
-+ (id)labelWithFrame:(CGRect)frame
-				text:(NSString *)text
-			   color:(UIColor *)color
-				font:(UIFont *)font
-		   alignment:(NSTextAlignment)alignment
-{
-	UILabel *label = [[UILabel alloc] initWithFrame:frame];
-	label.textColor = color;
-	label.backgroundColor = [UIColor clearColor];
-	label.font = font;
-	label.text = text;
-	label.textAlignment = alignment;
-	
-	return label;
-}
-
-@end
-#endif
-
 //
 #ifdef _TapGestureRecognizer
+@interface TapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
+@end
+
 @implementation TapGestureRecognizer
 
 //

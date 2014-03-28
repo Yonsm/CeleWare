@@ -35,7 +35,6 @@
 #endif
 
 // View
-#define _LabelEx
 #define _ButtonEx
 #define _BarButtonItemEx
 #define _ViewControllerEx

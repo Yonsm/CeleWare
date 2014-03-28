@@ -213,7 +213,7 @@
 	
 	frame.origin.y = CGRectGetMaxY(icon.frame) + 12;
 	frame.size.height = 16;
-	UILabel *label = UIUtil::LabelWithFrame(frame, @"没有内容", UIUtil::Color(0x807e7a), [UIFont systemFontOfSize:14], NSTextAlignmentCenter);
+	UILabel *label = UIUtil::LabelWithFrame(frame, @"没有内容", [UIFont systemFontOfSize:14], UIUtil::Color(0x807e7a), NSTextAlignmentCenter);
 	label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	[view addSubview:label];
 	
