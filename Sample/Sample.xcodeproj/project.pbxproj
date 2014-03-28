@@ -571,21 +571,21 @@
 		246A329B186838ED00903EF4 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				246A329E186838ED00903EF4 /* HttpUtil.h */,
-				246A329F186838ED00903EF4 /* HttpUtil.mm */,
-				246A32A0186838ED00903EF4 /* NetworkUtil.h */,
-				246A32A1186838ED00903EF4 /* NetworkUtil.mm */,
 				246A32A2186838ED00903EF4 /* NSUtil.h */,
 				246A32A3186838ED00903EF4 /* NSUtil.mm */,
-				246A32A4186838ED00903EF4 /* NullObject.h */,
-				246A32A5186838ED00903EF4 /* NullObject.mm */,
-				246A32A6186838ED00903EF4 /* SettingUtil.h */,
-				246A32A7186838ED00903EF4 /* SettingUtil.mm */,
-				246A32A8186838ED00903EF4 /* StatCenter.h */,
 				246A32AB186838ED00903EF4 /* UIUtil.h */,
 				246A32AC186838ED00903EF4 /* UIUtil.mm */,
+				246A329E186838ED00903EF4 /* HttpUtil.h */,
+				246A329F186838ED00903EF4 /* HttpUtil.mm */,
+				246A32A6186838ED00903EF4 /* SettingUtil.h */,
+				246A32A7186838ED00903EF4 /* SettingUtil.mm */,
+				246A32A0186838ED00903EF4 /* NetworkUtil.h */,
+				246A32A1186838ED00903EF4 /* NetworkUtil.mm */,
 				24208EB218851A980058AD7E /* iVersion.h */,
 				24208EB318851A980058AD7E /* iVersion.m */,
+				246A32A8186838ED00903EF4 /* StatCenter.h */,
+				246A32A4186838ED00903EF4 /* NullObject.h */,
+				246A32A5186838ED00903EF4 /* NullObject.mm */,
 			);
 			path = Util;
 			sourceTree = "<group>";
