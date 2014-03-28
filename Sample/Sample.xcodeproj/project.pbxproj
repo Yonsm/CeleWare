@@ -62,18 +62,8 @@
 		246A330F186838ED00903EF4 /* FoldViews.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3273186838ED00903EF4 /* FoldViews.mm */; };
 		246A3310186838ED00903EF4 /* ShadowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3275186838ED00903EF4 /* ShadowView.mm */; };
 		246A3314186838ED00903EF4 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3280186838ED00903EF4 /* Main.mm */; };
-		246A3315186838ED00903EF4 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A3282186838ED00903EF4 /* libMobClickLibrary.a */; };
 		246A3316186838ED00903EF4 /* TabStripButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3288186838ED00903EF4 /* TabStripButton.mm */; };
 		246A3317186838ED00903EF4 /* TabStripView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A328A186838ED00903EF4 /* TabStripView.mm */; };
-		246A3318186838ED00903EF4 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A328C186838ED00903EF4 /* libUMFeedback.a */; };
-		246A3319186838ED00903EF4 /* UMContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A328E186838ED00903EF4 /* UMContactViewController.m */; };
-		246A331A186838ED00903EF4 /* UMContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 246A328F186838ED00903EF4 /* UMContactViewController.xib */; };
-		246A331B186838ED00903EF4 /* UMEGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A3291186838ED00903EF4 /* UMEGORefreshTableHeaderView.m */; };
-		246A331C186838ED00903EF4 /* UMFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 246A3292186838ED00903EF4 /* UMFeedback.bundle */; };
-		246A331D186838ED00903EF4 /* UMFeedbackTableViewCellLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A3295186838ED00903EF4 /* UMFeedbackTableViewCellLeft.m */; };
-		246A331E186838ED00903EF4 /* UMFeedbackTableViewCellRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 246A3297186838ED00903EF4 /* UMFeedbackTableViewCellRight.m */; };
-		246A331F186838ED00903EF4 /* UMFeedbackViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3299186838ED00903EF4 /* UMFeedbackViewController.mm */; };
-		246A3320186838ED00903EF4 /* UMFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 246A329A186838ED00903EF4 /* UMFeedbackViewController.xib */; };
 		246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A329F186838ED00903EF4 /* HttpUtil.mm */; };
 		246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A1186838ED00903EF4 /* NetworkUtil.mm */; };
 		246A3324186838ED00903EF4 /* NSUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A3186838ED00903EF4 /* NSUtil.mm */; };
@@ -225,21 +215,6 @@
 		246A3288186838ED00903EF4 /* TabStripButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TabStripButton.mm; sourceTree = "<group>"; };
 		246A3289186838ED00903EF4 /* TabStripView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabStripView.h; sourceTree = "<group>"; };
 		246A328A186838ED00903EF4 /* TabStripView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TabStripView.mm; sourceTree = "<group>"; };
-		246A328C186838ED00903EF4 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMFeedback.a; sourceTree = "<group>"; };
-		246A328D186838ED00903EF4 /* UMContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMContactViewController.h; sourceTree = "<group>"; };
-		246A328E186838ED00903EF4 /* UMContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMContactViewController.m; sourceTree = "<group>"; };
-		246A328F186838ED00903EF4 /* UMContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMContactViewController.xib; sourceTree = "<group>"; };
-		246A3290186838ED00903EF4 /* UMEGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMEGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		246A3291186838ED00903EF4 /* UMEGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMEGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		246A3292186838ED00903EF4 /* UMFeedback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMFeedback.bundle; sourceTree = "<group>"; };
-		246A3293186838ED00903EF4 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
-		246A3294186838ED00903EF4 /* UMFeedbackTableViewCellLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackTableViewCellLeft.h; sourceTree = "<group>"; };
-		246A3295186838ED00903EF4 /* UMFeedbackTableViewCellLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFeedbackTableViewCellLeft.m; sourceTree = "<group>"; };
-		246A3296186838ED00903EF4 /* UMFeedbackTableViewCellRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackTableViewCellRight.h; sourceTree = "<group>"; };
-		246A3297186838ED00903EF4 /* UMFeedbackTableViewCellRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFeedbackTableViewCellRight.m; sourceTree = "<group>"; };
-		246A3298186838ED00903EF4 /* UMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackViewController.h; sourceTree = "<group>"; };
-		246A3299186838ED00903EF4 /* UMFeedbackViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UMFeedbackViewController.mm; sourceTree = "<group>"; };
-		246A329A186838ED00903EF4 /* UMFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMFeedbackViewController.xib; sourceTree = "<group>"; };
 		246A329E186838ED00903EF4 /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
 		246A329F186838ED00903EF4 /* HttpUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HttpUtil.mm; sourceTree = "<group>"; };
 		246A32A0186838ED00903EF4 /* NetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtil.h; sourceTree = "<group>"; };
@@ -314,10 +289,8 @@
 				246A334518683DB100903EF4 /* CoreLocation.framework in Frameworks */,
 				246A334318683DA800903EF4 /* libz.dylib in Frameworks */,
 				246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */,
-				246A3318186838ED00903EF4 /* libUMFeedback.a in Frameworks */,
 				246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */,
 				246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */,
-				246A3315186838ED00903EF4 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +488,6 @@
 				246A326B186838ED00903EF4 /* FoldPane */,
 				246A3281186838ED00903EF4 /* MobClick */,
 				246A32CE186838ED00903EF4 /* ZipArchive */,
-				246A328B186838ED00903EF4 /* UMFeedback */,
 				24208E951885143D0058AD7E /* MWPhotoBrowser */,
 				24208E8C1885143D0058AD7E /* HPGrowingTextView */,
 			);
@@ -585,28 +557,6 @@
 				246A328A186838ED00903EF4 /* TabStripView.mm */,
 			);
 			path = TabStrip;
-			sourceTree = "<group>";
-		};
-		246A328B186838ED00903EF4 /* UMFeedback */ = {
-			isa = PBXGroup;
-			children = (
-				246A328C186838ED00903EF4 /* libUMFeedback.a */,
-				246A328D186838ED00903EF4 /* UMContactViewController.h */,
-				246A328E186838ED00903EF4 /* UMContactViewController.m */,
-				246A328F186838ED00903EF4 /* UMContactViewController.xib */,
-				246A3290186838ED00903EF4 /* UMEGORefreshTableHeaderView.h */,
-				246A3291186838ED00903EF4 /* UMEGORefreshTableHeaderView.m */,
-				246A3292186838ED00903EF4 /* UMFeedback.bundle */,
-				246A3293186838ED00903EF4 /* UMFeedback.h */,
-				246A3294186838ED00903EF4 /* UMFeedbackTableViewCellLeft.h */,
-				246A3295186838ED00903EF4 /* UMFeedbackTableViewCellLeft.m */,
-				246A3296186838ED00903EF4 /* UMFeedbackTableViewCellRight.h */,
-				246A3297186838ED00903EF4 /* UMFeedbackTableViewCellRight.m */,
-				246A3298186838ED00903EF4 /* UMFeedbackViewController.h */,
-				246A3299186838ED00903EF4 /* UMFeedbackViewController.mm */,
-				246A329A186838ED00903EF4 /* UMFeedbackViewController.xib */,
-			);
-			path = UMFeedback;
 			sourceTree = "<group>";
 		};
 		246A329B186838ED00903EF4 /* Util */ = {
@@ -713,7 +663,7 @@
 		246A318818682C2D00903EF4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Yonsm;
 			};
 			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "Sample" */;
@@ -742,20 +692,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				246A32F9186838ED00903EF4 /* Default@2x.png in Resources */,
-				246A331A186838ED00903EF4 /* UMContactViewController.xib in Resources */,
 				246A32FA186838ED00903EF4 /* DefaultPad.png in Resources */,
 				246A3301186838ED00903EF4 /* IconPad.png in Resources */,
 				246A3300186838ED00903EF4 /* Icon@2x.png in Resources */,
 				246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */,
 				246A32FD186838ED00903EF4 /* GenString in Resources */,
-				246A331C186838ED00903EF4 /* UMFeedback.bundle in Resources */,
 				246A32F8186838ED00903EF4 /* Default.png in Resources */,
 				246A333F1868394000903EF4 /* Assets in Resources */,
 				246A32FB186838ED00903EF4 /* InfoPlist.strings in Resources */,
 				246A32F7186838ED00903EF4 /* Default-568h@2x.png in Resources */,
 				246A32FE186838ED00903EF4 /* Icon.png in Resources */,
 				246A32FC186838ED00903EF4 /* Localizable.strings in Resources */,
-				246A3320186838ED00903EF4 /* UMFeedbackViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,22 +787,17 @@
 				246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */,
 				246A3327186838ED00903EF4 /* UIAddition.mm in Sources */,
 				246A3317186838ED00903EF4 /* TabStripView.mm in Sources */,
-				246A331B186838ED00903EF4 /* UMEGORefreshTableHeaderView.m in Sources */,
 				246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */,
 				246A32E0186838ED00903EF4 /* TableController.mm in Sources */,
-				246A331F186838ED00903EF4 /* UMFeedbackViewController.mm in Sources */,
 				246A3316186838ED00903EF4 /* TabStripButton.mm in Sources */,
 				246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */,
 				246A3338186838ED00903EF4 /* TouchView.mm in Sources */,
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
-				246A331E186838ED00903EF4 /* UMFeedbackTableViewCellRight.m in Sources */,
 				2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */,
-				246A3319186838ED00903EF4 /* UMContactViewController.m in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
 				246A3337186838ED00903EF4 /* ToastView.mm in Sources */,
 				246A32E2186838ED00903EF4 /* NavigationController.mm in Sources */,
 				246A3324186838ED00903EF4 /* NSUtil.mm in Sources */,
-				246A331D186838ED00903EF4 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				246A330C186838ED00903EF4 /* FacingView.mm in Sources */,
 				246A32D9186838ED00903EF4 /* LoginController.mm in Sources */,
 			);
@@ -891,7 +833,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -933,7 +874,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

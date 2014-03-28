@@ -37,7 +37,7 @@
 	self = [super initWithFrame:frame];
 	
 	self.userInteractionEnabled = YES;
-	self.image = image.stretchableImage;
+	self.image = UIUtil::StretchableImage(image);
 	self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	_delegate = delegate;
 	

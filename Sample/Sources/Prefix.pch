@@ -10,7 +10,7 @@
 
 // Resource
 #define kAssetBundle	@"Assets"
-#define kAppStatKey		@"5182124956240b2e58017cad"
+//#define kAppStatKey		@"5182124956240b2e58017cad"
 
 //#define BaseNavigationController NavigationController
 //#define kNavigationBarTintColor [UIColor colorWithRed:40/255.0 green:49/255.0 blue:54/255.0 alpha:1]
@@ -35,6 +35,14 @@
 #endif
 
 // View
+#define _ImageEx
+#define _ViewEx
+#define _LabelEx
+#define _ButtonEx
+#define _AlertViewEx
+#define _BarButtonItemEx
+#define _ViewControllerEx
+#define _TapGestureRecognizer
 #import "UIAddition.h"
 
 #import "ToastView.h"

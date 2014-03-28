@@ -97,7 +97,7 @@
 		NSUInteger count = [_loader.dict[@"results"] count];
 		if (!_loader.loading && (count < [_loader.dict[@"total"] unsignedIntegerValue]))
 		{
-			_loader.params[@"start"] = [NSNumber numberWithInt:count];
+			_loader.params[@"start"] = [NSNumber numberWithInteger:count];
 			//UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 			//[indicator startAnimating];
 			//self.tableView.tableFooterView = indicator;

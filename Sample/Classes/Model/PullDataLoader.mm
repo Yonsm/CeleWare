@@ -213,11 +213,7 @@
 	
 	frame.origin.y = CGRectGetMaxY(icon.frame) + 12;
 	frame.size.height = 16;
-	UILabel *label = [UILabel labelWithFrame:frame
-										text:@"木有粗面，木有鱼丸，啥都木有~"
-									   color:UIUtil::Color(0x807e7a)
-										font:[UIFont systemFontOfSize:14]
-								   alignment:NSTextAlignmentCenter];
+	UILabel *label = UIUtil::LabelWithFrame(frame, @"没有内容", UIUtil::Color(0x807e7a), [UIFont systemFontOfSize:14], NSTextAlignmentCenter);
 	label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	[view addSubview:label];
 	

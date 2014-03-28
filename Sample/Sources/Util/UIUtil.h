@@ -139,7 +139,7 @@ public:
 			}
 		}
 	}
-
+	
 	//
 	NS_INLINE BOOL CanOpenUrl(NSString *url)
 	{
@@ -154,10 +154,10 @@ public:
 		if (ret == NO)
 		{
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not open", @"无法打开")
-																 message:url
-																delegate:nil
-													   cancelButtonTitle:NSLocalizedString(@"Dismiss", @"关闭")
-													   otherButtonTitles:nil];
+																message:url
+															   delegate:nil
+													  cancelButtonTitle:NSLocalizedString(@"Dismiss", @"关闭")
+													  otherButtonTitles:nil];
 			[alertView show];
 		}
 		return ret;
@@ -173,10 +173,10 @@ public:
 		if (ret == NO)
 		{
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not make call", @"无法拨打电话")
-																 message:number
-																delegate:nil
-													   cancelButtonTitle:NSLocalizedString(@"Dismiss", @"关闭")
-													   otherButtonTitles:nil];
+																message:number
+															   delegate:nil
+													  cancelButtonTitle:NSLocalizedString(@"Dismiss", @"关闭")
+													  otherButtonTitles:nil];
 			[alertView show];
 		}
 		return ret;
@@ -234,6 +234,27 @@ public:
 		}
 	}
 	
+public:
+	// Log log with indent
+	static void LogIndentString(NSUInteger indent, NSString *str);
+	
+	// Log controller and sub-controllers
+	static void LogController(UIViewController *controller, NSUInteger indent = 0);
+	
+	// Log view and subviews
+	static void LogView(UIView *view, NSUInteger indent = 0);
+	
+	// Log layout constraints
+	static void LogConstraints(UIView *view);
+	
+public:
+	// Nomalize png file
+	static BOOL NormalizePngFile(NSString *dst, NSString *src);
+	
+	// Nomalize png folder
+	static void NormalizePngFolder(NSString *dst, NSString *src);
+	
+public:
 	//
 	static UIImageView *ShowSplashView(UIView *fadeInView = nil, CGFloat duration = 0.6);
 	
@@ -303,35 +324,231 @@ public:
 							   alpha:a];
 	}
 	
-#pragma mark Debug methods
 public:
-#if defined(DEBUG) || defined(TEST)
-	// Log log with indent
-	static void LogIndentString(NSUInteger indent, NSString *str);
+	//
+	NS_INLINE UIImage *StretchableImage(UIImage *self)
+	{
+		return [self stretchableImageWithLeftCapWidth:self.size.width / 2 topCapHeight:self.size.height / 2];
+	}
 	
-	// Log controller and sub-controllers
-	static void LogController(UIViewController *controller, NSUInteger indent = 0);
+	//
+	static UIImage *ImageWithColor(UIColor *color, CGSize size = CGSizeMake(1, 1));
 	
-	// Log view and subviews
-	static void LogView(UIView *view, NSUInteger indent = 0);
+	// Scale to specified size if needed
+	static UIImage *ScaleImage(UIImage *self, CGSize size);
 	
-	// Log layout constraints
-	static void LogConstraints(UIView *view);
+	//
+	static UIImage *CropImage(UIImage *self, CGRect rect);
 	
-	// Nomalize png file
-	static BOOL NormalizePngFile(NSString *dst, NSString *src);
+	//
+	static UIImage *MaskImage(UIImage * self ,UIImage *mask);
 	
-	// Nomalize png folder
-	static void NormalizePngFolder(NSString *dst, NSString *src);
+	//
+	static CGAffineTransform ImageOrientation(UIImage *self, CGSize *newSize);
+	
+	//
+	static UIImage *StraightenAndScaleImage(UIImage *self, NSUInteger maxDimension);
+	
+	//
+#ifdef _BlurImage
+	static UIImage *BlurImage(UIImage *image, CGRect bounds, CGSize size, CGFloat blurRadius, UIColor *tintColor, CGFloat saturationDeltaFactor = 1.0, UIImage *maskImage = nil);
 #endif
+	
+#pragma mark UIView methods
+	//
+	NS_INLINE void RemoveSubviews(UIView *self)
+	{
+		while (self.subviews.count)
+		{
+			UIView* child = self.subviews.lastObject;
+			[child removeFromSuperview];
+		}
+	}
+	
+	//
+	NS_INLINE void HideKeyboard(UIView *self = KeyWindow())
+	{
+		[FindFirstResponder(self) resignFirstResponder];
+	}
+	
+	//
+	static UIView *FindFirstResponder(UIView *self);
+	
+	//
+	static UIView *FindSubview(UIView *self, NSString *cls);
+	
+	//
+	static UIActivityIndicatorView *ShowActivityIndicator(UIView *self, BOOL show);
+	
+	//
+	static void ShakeAnimating(UIView *self, void (^completion)(BOOL finished) = nil);
+	
+	//
+	static UIImage *Snapshot(UIView *self, BOOL optimized = NO);
+	
+	//
+	static UIView *SuperviewWithClass(UIView *self, Class viewClass);
+	
+#pragma mark UIAlertView methods
+	//
+	NS_INLINE UIAlertView *AlertWithTitle(NSString *title, NSString *message, id delegate, NSString *cancelButtonTitle, NSString *otherButtonTitles, ...)
+	{
+		va_list arg;
+		va_start(arg, otherButtonTitles);
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+															message:message
+														   delegate:delegate
+												  cancelButtonTitle:cancelButtonTitle
+												  otherButtonTitles:otherButtonTitles,
+								  va_arg(arg, NSString *),
+								  va_arg(arg, NSString *),
+								  va_arg(arg, NSString *),
+								  va_arg(arg, NSString *),
+								  nil];
+		va_end(arg);
+		[alertView show];
+		return alertView;
+	}
+	
+	//
+	NS_INLINE UIAlertView *AlertWithTitle(NSString *title, NSString *message = nil, id delegate = nil, NSString *cancelButtonTitle = NSLocalizedString(@"Dismiss", @"关闭"), NSString *otherButtonTitle = nil)
+	{
+		return AlertWithTitle(title, message, delegate, cancelButtonTitle, otherButtonTitle, nil);
+	}
+	
+	//
+#define kActivityIndicatorTag 1924
+	NS_INLINE UIActivityIndicatorView *AlertActivityIndicator(UIAlertView *self)
+	{
+		UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[self viewWithTag:kActivityIndicatorTag];
+		if (activityIndicator == nil)
+		{
+			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+			activityIndicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height - 40);
+			activityIndicator.tag = kActivityIndicatorTag;
+			activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+			[self addSubview:activityIndicator];
+		}
+		return activityIndicator;
+	}
+	
+#pragma mark UITabBarController methods
+	//
+	NS_INLINE UIViewController *CurrentControllerInTab(UITabBarController *self)
+	{
+		if (UIUtil::IsPad())
+		{
+			return self.selectedIndex < 7 ? self.selectedViewController : self.moreNavigationController;
+		}
+		else
+		{
+			return self.selectedIndex < 4 ? self.selectedViewController : self.moreNavigationController;
+		}
+	}
+	
+#pragma mark UIViewController methods
+#ifndef _NavigationController
+#define _NavigationController UINavigationController
+#endif
+	//
+	NS_INLINE UINavigationController *PresentNavigationController(UIViewController *self, UIViewController *controller, BOOL animated = YES)
+	{
+		UINavigationController *navigator = [[_NavigationController alloc] initWithRootViewController:controller];
+		navigator.modalTransitionStyle = controller.modalTransitionStyle;
+		navigator.modalPresentationStyle = controller.modalPresentationStyle;
+		
+#ifdef _NavigationBarTintColor
+		navigator.toolbar.tintColor = navigator.navigationBar.tintColor = _NavigationBarTintColor;
+#endif
+		
+		[self presentViewController:navigator animated:animated completion:nil];
+		return navigator;
+	}
+	
+	//
+	NS_INLINE UINavigationController *PresentModalNavigationController(UIViewController *self, UIViewController *controller, BOOL animated = YES, NSString *dismissButtonTitle = NSLocalizedString(@"Back", @"返回"))
+	{
+		controller.navigationItem.leftBarButtonItem = BarButtonTitleItem(dismissButtonTitle, self.navigationController, @selector(dismissModalViewControllerAnimated:));
+		return PresentNavigationController(self, controller, animated);
+	}
+	
+	//
+	NS_INLINE void PresentViewController(UIViewController *self, UIViewController *controller, BOOL animated = YES)
+	{
+		[self presentViewController:controller animated:animated completion:nil];
+	}
+	
+#pragma mark Bar button item methods
+	NS_INLINE id BarButtonItem(UIImage *image, NSString *title, id target = nil, SEL action = nil)
+	{
+		UIFont *font = title ? [UIFont boldSystemFontOfSize:13] : nil;
+		CGRect frame = {0, 0, [title sizeWithFont:font].width + image.size.width, image.size.height};
+		UIButton *button = [[UIButton alloc] initWithFrame:frame];
+		
+		if (title)
+		{
+			button.titleLabel.font = font;
+			[button setTitle:title forState:UIControlStateNormal];
+			[button setBackgroundImage:StretchableImage(image) forState:UIControlStateNormal];
+		}
+		else
+		{
+			button.showsTouchWhenHighlighted = YES;
+			[button setImage:image forState:UIControlStateNormal];
+		}
+		
+		[button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+		return [[UIBarButtonItem alloc] initWithCustomView:button];
+	}
+	
+	//
+	NS_INLINE id BarButtonImageItem(UIImage *image, id target = nil, SEL action = nil)
+	{
+		return BarButtonItem(image, nil, target, action);
+	}
+	
+	//
+	NS_INLINE id BarButtonTitleItem(NSString *title, id target = nil, SEL action = nil)
+	{
+		return [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:target action:action];
+	}
+	
+#pragma mark UILabel methods
+	//
+	NS_INLINE UILabel *LabelAtPoint(CGPoint point, CGFloat width, NSString *text, UIColor *color, UIFont* font, NSTextAlignment alignment = NSTextAlignmentLeft)
+	{
+		CGSize size = [text sizeWithFont:font
+					   constrainedToSize:CGSizeMake(width, 1000)];
+		
+		CGRect frame = CGRectMake(point.x, point.y, width, ceil(size.height));
+		
+		UILabel *label = LabelWithFrame(frame, text, color, font, alignment);
+		label.numberOfLines = 0;
+		return label;
+	}
+	
+	//
+	NS_INLINE UILabel *LabelWithFrame(CGRect frame, NSString *text, UIColor *color, UIFont* font, NSTextAlignment alignment = NSTextAlignmentLeft)
+	{
+		UILabel *label = [[UILabel alloc] initWithFrame:frame];
+		label.textColor = color;
+		label.backgroundColor = [UIColor clearColor];
+		label.font = font;
+		label.text = text;
+		label.textAlignment = alignment;
+
+		return label;
+	}
 };
 
 #if defined(DEBUG) || defined(TEST)
-#define _ViewLog(v)			UIUtil::LogConstraints(v)
-#define _ConstraintsLog(v)	UIUtil::LogView(v)
+#define _ViewLog(v)			UIUtil::LogView(v)
 #define _ControllerLog(c)	UIUtil::LogController(c)
+#define _ConstraintsLog(v)	UIUtil::LogConstraints(v)
 #else
 #define _ViewLog(v)			((void) 0)
 #define _ConstraintsLog(v)	((void) 0)
 #define _ControllerLog(c)	((void) 0)
 #endif
+
+#define UITableViewCellAccessoryButton (UIUtil::IsOS7() ? UITableViewCellAccessoryDetailButton : UITableViewCellAccessoryDetailDisclosureButton)

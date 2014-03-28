@@ -1,4 +1,5 @@
 
+
 //
 #ifdef _ImageEx
 @interface UIImage (ImageEx)
@@ -152,5 +153,4 @@
 - (UILongPressGestureRecognizer *)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action;
 @end
 
-#define UITableViewCellAccessoryButton (UIUtil::IsOS7() ? UITableViewCellAccessoryDetailButton : UITableViewCellAccessoryDetailDisclosureButton)
 #endif

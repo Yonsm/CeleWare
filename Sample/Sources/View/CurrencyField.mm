@@ -42,11 +42,7 @@
 		
 		if (symbol.length)
 		{
-			UILabel *label = [UILabel labelWithFrame:CGRectMake(leftGap, 0, width, self.frame.size.height - 2)
-												text:symbol
-											   color:[UIColor lightGrayColor]
-												font:self.font
-										   alignment:NSTextAlignmentCenter];
+			UILabel *label = UIUtil::LabelWithFrame(CGRectMake(leftGap, 0, width, self.frame.size.height - 2), symbol, [UIColor lightGrayColor], self.font, NSTextAlignmentCenter);
 			[self.leftView addSubview:label];
 		}
 	}
@@ -85,11 +81,7 @@
 	[_followLabel removeFromSuperview];
 	if (symbol)
 	{
-		_followLabel = [UILabel labelWithFrame:CGRectMake(0, 0, [symbol sizeWithFont:self.font].width + 6, self.frame.size.height - 2)
-										  text:symbol
-										 color:[UIColor lightGrayColor]
-										  font:self.font
-									 alignment:NSTextAlignmentCenter];
+		_followLabel = UIUtil::LabelWithFrame(CGRectMake(0, 0, [symbol sizeWithFont:self.font].width + 6, self.frame.size.height - 2), symbol, [UIColor lightGrayColor], self.font, NSTextAlignmentCenter);
 		if (self.rightView)
 		{
 			[self insertSubview:_followLabel belowSubview:self.rightView];
