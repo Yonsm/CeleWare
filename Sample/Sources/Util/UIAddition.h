@@ -1,22 +1,6 @@
 
 
 //
-#ifdef _ImageEx
-@interface UIImage (ImageEx)
-+ (UIImage *)imageWithColor:(UIColor *)color;
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
-- (UIImage *)stretchableImage;
-- (UIImage *)scaleImageToSize:(CGSize)size;
-- (UIImage *)cropImageInRect:(CGRect)rect;
-//- (UIImage *)cropImageToRect:(CGRect)rect;
-- (UIImage *)maskImageWithImage:(UIImage *)mask;
-- (CGAffineTransform)orientationTransform:(CGSize *)newSize;
-- (UIImage *)straightenAndScaleImage:(NSUInteger)maxDimension;
-
-@end
-#endif
-
-//
 #ifdef _ViewEx
 @interface UIView (ViewEx)
 - (void)removeSubviews;
