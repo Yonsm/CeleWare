@@ -334,6 +334,18 @@ public:
 	//
 	static UIImage *ImageWithColor(UIColor *color, CGSize size = CGSizeMake(1, 1));
 	
+	//
+	NS_INLINE UIImage *ImageWithColor(unsigned char r, unsigned char g, unsigned char b, CGFloat a = 1, CGSize size = CGSizeMake(1, 1))
+	{
+		return ImageWithColor(Color(r, g, b, a), size);
+	}
+
+	//
+	NS_INLINE UIImage *ImageWithColor(NSUInteger rgbt, CGSize size = CGSizeMake(1, 1))
+	{
+		return ImageWithColor(Color(rgbt), size);
+	}
+	
 	// Scale to specified size if needed
 	static UIImage *ScaleImage(UIImage *self, CGSize size);
 	

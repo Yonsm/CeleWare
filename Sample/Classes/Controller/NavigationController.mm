@@ -53,7 +53,7 @@
 {
 	self = [super initWithRootViewController:rootViewController];
 	self.navigationBar.translucent = NO;
-	[self.navigationBar setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0xf8f8f8)] forBarMetrics:UIBarMetricsDefault];
+	[self.navigationBar setBackgroundImage:UIUtil::ImageWithColor(0xf8f8f8) forBarMetrics:UIBarMetricsDefault];
 
 	if (!UIUtil::IsOS7())
 	{

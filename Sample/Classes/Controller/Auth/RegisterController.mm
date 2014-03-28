@@ -69,8 +69,8 @@
 		_authButton = [[UIButton alloc] initWithFrame:CGRectMake(310 - 80, 6, 84, 30)];
 		_authButton.titleLabel.font = font;
 		[_authButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-		[_authButton setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x007aff)] forState:UIControlStateNormal];
-		[_authButton setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x209aff)] forState:UIControlStateHighlighted];
+		[_authButton setBackgroundImage:UIUtil::ImageWithColor(0x007aff) forState:UIControlStateNormal];
+		[_authButton setBackgroundImage:UIUtil::ImageWithColor(0x209aff) forState:UIControlStateHighlighted];
 		[_authButton setTitle:@"获取验证码" forState:UIControlStateNormal];
 		[_usernameField.superview addSubview:_authButton];
 		[_authButton addTarget:self action:@selector(authButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

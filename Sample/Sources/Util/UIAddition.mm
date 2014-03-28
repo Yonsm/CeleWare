@@ -759,9 +759,9 @@
 	CGRect frame = {0, 0, width, image.size.height};
 	if (width != image.size.width)
 	{
-		image = image.stretchableImage;
-		imaged = imaged.stretchableImage;
-		image_ = image_.stretchableImage;
+		image = UIUtil::StretchableImage(image);
+		imaged = UIUtil::StretchableImage(imaged);
+		image_ = UIUtil::StretchableImage(image_);
 	}
 	
 	UIButton *button = [[UIButton alloc] initWithFrame:frame];
@@ -942,8 +942,8 @@
 	UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
 	[button setTitle:title forState:UIControlStateNormal];
 	[button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-	[button setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x00aeef)] forState:UIControlStateNormal];
-	[button setBackgroundImage:[UIImage imageWithColor:UIUtil::Color(0x0092e9)] forState:UIControlStateHighlighted];
+	[button setBackgroundImage:UIUtil::ImageWithColor(0x00aeef) forState:UIControlStateNormal];
+	[button setBackgroundImage:UIUtil::ImageWithColor(0x0092e9) forState:UIControlStateHighlighted];
 	button.titleLabel.font = font;
 	return button;
 }
@@ -959,8 +959,8 @@
 {
 	UIButton *button = [[UIButton alloc] initWithFrame:frame];
 	[button setTitle:title forState:UIControlStateNormal];
-	[button setBackgroundImage:[UIImage imageWithColor:color] forState:UIControlStateNormal];
-	[button setBackgroundImage:[UIImage imageWithColor:color_] forState:UIControlStateHighlighted];
+	[button setBackgroundImage:UIUtil::ImageWithColor(color) forState:UIControlStateNormal];
+	[button setBackgroundImage:UIUtil::ImageWithColor(color_) forState:UIControlStateHighlighted];
 	button.titleLabel.font = [UIFont systemFontOfSize:17];
 	button.layer.cornerRadius = 4;
 	button.clipsToBounds = YES;
@@ -985,7 +985,7 @@
 	{
 		button.titleLabel.font = font;
 		[button setTitle:title forState:UIControlStateNormal];
-		[button setBackgroundImage:image.stretchableImage forState:UIControlStateNormal];
+		[button setBackgroundImage:UIUtil::StretchableImage(image) forState:UIControlStateNormal];
 	}
 	else
 	{
