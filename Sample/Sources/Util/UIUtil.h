@@ -565,7 +565,12 @@ public:
 	
 #pragma mark Gesture methods
 	//
-	static UITapGestureRecognizer *AddTapGesture(UIView *self, id target, SEL action);
+	NS_INLINE UITapGestureRecognizer *AddTapGesture(UIView *self, id target, SEL action)
+	{
+		UITapGestureRecognizer *gesture = [[EXTapGestureRecognizer alloc] initWithTarget:target action:action];
+		[self addGestureRecognizer:gesture];
+		return gesture;
+	}
 	
 	//
 	NS_INLINE UILongPressGestureRecognizer *AddHoldGesture(UIView *self, id target, SEL action)

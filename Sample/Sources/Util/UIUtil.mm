@@ -827,11 +827,3 @@ UIView *UIUtil::SuperviewWithClass(UIView *self, Class viewClass)
 	}
 	return nil;
 }
-
-//
-UITapGestureRecognizer *UIUtil::AddTapGesture(UIView *self, id target, SEL action)
-{
-	UITapGestureRecognizer *gesture = [[EXTapGestureRecognizer alloc] initWithTarget:target action:action];
-	[self addGestureRecognizer:gesture];
-	return gesture;
-}
