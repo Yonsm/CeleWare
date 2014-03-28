@@ -2,7 +2,7 @@
 
 #import "BaseController.h"
 #import "WizardCell.h"
-#import "ExButton.h"
+#import "EXButton.h"
 #import "SelectBox.h"
 #import "SelectPicker.h"
 #import "SelectSheet.h"

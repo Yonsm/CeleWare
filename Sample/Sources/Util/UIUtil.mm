@@ -805,10 +805,10 @@ UIView *UIUtil::SuperviewWithClass(UIView *self, Class viewClass)
 }
 
 //
-@interface TapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
+@interface EXTapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
 @end
 
-@implementation TapGestureRecognizer
+@implementation EXTapGestureRecognizer
 - (id)initWithTarget:(id)target action:(SEL)action
 {
 	self = [super initWithTarget:target action:action];
@@ -826,7 +826,7 @@ UIView *UIUtil::SuperviewWithClass(UIView *self, Class viewClass)
 //
 UITapGestureRecognizer *UIUtil::AddTapGesture(UIView *self, id target, SEL action)
 {
-	UITapGestureRecognizer *gesture = [[TapGestureRecognizer alloc] initWithTarget:target action:action];
+	UITapGestureRecognizer *gesture = [[EXTapGestureRecognizer alloc] initWithTarget:target action:action];
 	[self addGestureRecognizer:gesture];
 	return gesture;
 }

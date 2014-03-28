@@ -91,7 +91,7 @@
 		246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334818683DE000903EF4 /* MessageUI.framework */; };
 		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
 		246A334C1868537C00903EF4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D4186838ED00903EF4 /* zip.c */; };
-		24B6BB3B18E554390058FC8B /* ExButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* ExButton.mm */; };
+		24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* EXButton.mm */; };
 		24B6BB3E18E557C90058FC8B /* AlertView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3D18E557C90058FC8B /* AlertView.mm */; };
 		24B6BB4518E558420058FC8B /* SelectBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4018E558420058FC8B /* SelectBox.mm */; };
 		24B6BB4618E558420058FC8B /* SelectPicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4218E558420058FC8B /* SelectPicker.mm */; };
@@ -268,8 +268,8 @@
 		246A334618683DBF00903EF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		246A334818683DE000903EF4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		246A334A18683DF300903EF4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		24B6BB3918E554390058FC8B /* ExButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExButton.h; sourceTree = "<group>"; };
-		24B6BB3A18E554390058FC8B /* ExButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExButton.mm; sourceTree = "<group>"; };
+		24B6BB3918E554390058FC8B /* EXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXButton.h; sourceTree = "<group>"; };
+		24B6BB3A18E554390058FC8B /* EXButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EXButton.mm; sourceTree = "<group>"; };
 		24B6BB3C18E557C90058FC8B /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
 		24B6BB3D18E557C90058FC8B /* AlertView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlertView.mm; sourceTree = "<group>"; };
 		24B6BB3F18E558420058FC8B /* SelectBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBox.h; sourceTree = "<group>"; };
@@ -457,8 +457,8 @@
 				24B6BB4418E558420058FC8B /* SelectSheet.mm */,
 				24B6BB3C18E557C90058FC8B /* AlertView.h */,
 				24B6BB3D18E557C90058FC8B /* AlertView.mm */,
-				24B6BB3918E554390058FC8B /* ExButton.h */,
-				24B6BB3A18E554390058FC8B /* ExButton.mm */,
+				24B6BB3918E554390058FC8B /* EXButton.h */,
+				24B6BB3A18E554390058FC8B /* EXButton.mm */,
 				246A322E186838ED00903EF4 /* WizardCell.h */,
 				246A322F186838ED00903EF4 /* WizardCell.mm */,
 			);
@@ -769,7 +769,7 @@
 				246A332A186838ED00903EF4 /* CacheImageView.mm in Sources */,
 				24208EAD1885143D0058AD7E /* MWTapDetectingView.m in Sources */,
 				24208EAB1885143D0058AD7E /* MWPhotoBrowser.mm in Sources */,
-				24B6BB3B18E554390058FC8B /* ExButton.mm in Sources */,
+				24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */,
 				246A3339186838ED00903EF4 /* ioapi.c in Sources */,
 				24B6BB4618E558420058FC8B /* SelectPicker.mm in Sources */,
 				24208EAA1885143D0058AD7E /* MWPhoto.mm in Sources */,
