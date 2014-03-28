@@ -91,7 +91,7 @@ void UIUtil::LogConstraints(UIView *view)
 	
 	for (NSLayoutConstraint *constraint in constraints)
 	{
-		_Log(@"{%.0f: %@/%@ %c %@/%@ %.1f%@}",
+		NSLog(@"{%.0f: %@/%@ %c %@/%@ %.1f%@}",
 			 constraint.priority,
 			 NSStringFromClass([constraint.firstItem class]),
 			 _attributes[constraint.firstAttribute],
