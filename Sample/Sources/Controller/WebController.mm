@@ -176,7 +176,7 @@
 		
 		[((UIWebView *)self.view) loadHTMLString:string baseURL:nil];
 #else
-		[UIAlertView alertWithTitle:NSLocalizedString(@"Error", @"错误") message:error.localizedDescription];
+		UIUtil::ShowAlert(NSLocalizedString(@"Error", @"错误"), error.localizedDescription);
 #endif
 	}
 }

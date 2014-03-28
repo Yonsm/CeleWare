@@ -1,5 +1,11 @@
 
 //
+@protocol AlertViewExDelegate
+@required
+- (void)taskForAlertView:(UIAlertView *)alertView;
+@end
+
+//
 @interface AlertView : UIImageView
 {
 	UIButton *_cancelButton;

@@ -95,7 +95,7 @@
 - (void)clearButtonClicked:(UIButton *)sender
 {
 	_cacheCell = (WizardCell *)sender.superview;
-	UIAlertView *alertView = [UIAlertView alertWithTitle:@"清除缓存" message:@"你确定要清除网络缓存吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitle:@"清除"];
+	UIAlertView *alertView = UIUtil::ShowAlert(@"清除缓存", @"你确定要清除网络缓存吗？", self, @"取消", @"清除");
 	alertView.tag = kClearCacheAlertViewTag;
 }
 
@@ -108,7 +108,7 @@
 //
 - (void)logoutButtonClicked:(id)sender
 {
-	[UIAlertView alertWithTitle:@"注销" message:@"你要退出当前账户吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitle:@"确定"];
+	UIUtil::ShowAlert(@"注销", @"你要退出当前账户吗?", self, @"取消", @"确定");
 }
 
 //

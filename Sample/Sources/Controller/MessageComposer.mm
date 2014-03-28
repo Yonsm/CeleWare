@@ -11,7 +11,7 @@
 	// Check
 	if ([MFMessageComposeViewController canSendText] == NO)
 	{
-		[UIAlertView alertWithTitle:NSLocalizedString(@"Could not send SMS on this device.", @"在此设备上无法发送短信。")];
+		UIUtil::ShowAlert(NSLocalizedString(@"Could not send SMS on this device.", @"在此设备上无法发送短信。"));
 		return nil;
 	}
 	
@@ -55,7 +55,7 @@
 {
 	if (result == MessageComposeResultFailed)
 	{
-		[UIAlertView alertWithTitle:NSLocalizedString(@"Failed to send SMS.", @"发送短信失败。")];
+		UIUtil::ShowAlert(NSLocalizedString(@"Failed to send SMS.", @"发送短信失败。"));
 	}
 	else
 	{
@@ -63,7 +63,7 @@
 		
 		if ((result == MessageComposeResultSent) && _autoSend)
 		{
-			[UIAlertView alertWithTitle:NSLocalizedString(@"Send SMS successfully.", @"发送短信成功。")];
+			UIUtil::ShowAlert(NSLocalizedString(@"Send SMS successfully.", @"发送短信成功。"));
 		}
 	}
 }
@@ -79,7 +79,7 @@
 	// Check for email account
 	if ([MFMailComposeViewController canSendMail] == NO)
 	{
-		[UIAlertView alertWithTitle:NSLocalizedString(@"Please setup your email account first.", @"请先设置您的邮件账户。")];
+		UIUtil::ShowAlert(NSLocalizedString(@"Please setup your email account first.", @"请先设置您的邮件账户。"));
 		return nil;
 	}
 
@@ -97,7 +97,7 @@
 {
 	if (result == MFMailComposeResultFailed)
 	{
-		[UIAlertView alertWithTitle:NSLocalizedString(@"Failed to send email.", @"发送邮件失败。")];
+		UIUtil::ShowAlert(NSLocalizedString(@"Failed to send email.", @"发送邮件失败。"));
 	}
 	else
 	{

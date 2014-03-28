@@ -57,35 +57,6 @@
 #define composeWeibo				celeComposeWeibo
 #define composeFacebook				celeComposeFacebook
 
-// UIImage (ImageEx)
-#define imageWithColor				celeImageWithColor
-#define stretchableImage			celeStretchableImage
-#define scaleImageToSize			celeScaleImageToSize
-#define cropImageInRect				celeCropImageInRect
-#define maskImageWithImage			celeMaskImageWithImage
-#define orientationTransform		celeOrientationTransform
-#define straightenAndScaleImage		celeStraightenAndScaleImage
-
-// UIView (ViewEx)
-#define removeSubviews				celeRemoveSubviews
-#define findFirstResponder			celeFindFirstResponder
-#define findSubview					celeFindSubview
-#define showActivityIndicator		celeShowActivityIndicator
-#define fadeForAction				celeFadeForAction
-#define screenshot					celeScreenshot
-#define screenshotWithOptimization	celeScreenshotWithOptimization
-
-// UIAlertView (AlertViewEx)
-#define alertWithTitle				celeAlertWithTitle
-#define alertWithTask				celeAlertWithTask
-//#define textField					celeTextField
-#define activityIndicator			celeActivityIndicator
-#define dismissOnMainThread			celeDismissOnMainThread
-#define dismiss						celeDismiss
-
-// UITabBarController (TabBarControllerEx)
-#define currentViewController		celeCurrentViewController
-
 // UIViewController	(ViewControllerEx)
 #define dismissModalViewController	celeDismissModalViewController
 #define presentNavigationController	celePresentNavigationController

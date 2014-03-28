@@ -73,7 +73,8 @@
 	[super viewDidLoad];
 	if (!_noAutoHide)
 	{
-		[self.view addTapGestureRecognizerWithTarget:_contentView action:@selector(hideKeyboard)];
+		// TODO: Test
+		[self.view addTapGestureRecognizerWithTarget:_contentView action:@selector(endEditing:)];
 	}
 }
 

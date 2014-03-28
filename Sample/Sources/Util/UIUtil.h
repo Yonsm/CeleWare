@@ -403,7 +403,7 @@ public:
 	
 #pragma mark UIAlertView methods
 	//
-	NS_INLINE UIAlertView *AlertWithTitle(NSString *title, NSString *message, id delegate, NSString *cancelButtonTitle, NSString *otherButtonTitles, ...)
+	NS_INLINE UIAlertView *ShowAlert(NSString *title, NSString *message, id delegate, NSString *cancelButtonTitle, NSString *otherButtonTitles, ...)
 	{
 		va_list arg;
 		va_start(arg, otherButtonTitles);
@@ -423,9 +423,9 @@ public:
 	}
 	
 	//
-	NS_INLINE UIAlertView *AlertWithTitle(NSString *title, NSString *message = nil, id delegate = nil, NSString *cancelButtonTitle = NSLocalizedString(@"Dismiss", @"关闭"), NSString *otherButtonTitle = nil)
+	NS_INLINE UIAlertView *ShowAlert(NSString *title, NSString *message = nil, id delegate = nil, NSString *cancelButtonTitle = NSLocalizedString(@"Dismiss", @"关闭"))
 	{
-		return AlertWithTitle(title, message, delegate, cancelButtonTitle, otherButtonTitle, nil);
+		return ShowAlert(title, message, delegate, cancelButtonTitle, nil);
 	}
 	
 	//

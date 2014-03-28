@@ -35,10 +35,8 @@
 #endif
 
 // View
-//#define _ViewEx
 #define _LabelEx
 #define _ButtonEx
-#define _AlertViewEx
 #define _BarButtonItemEx
 #define _ViewControllerEx
 #define _TapGestureRecognizer
