@@ -46,7 +46,6 @@
 		246A32FA186838ED00903EF4 /* DefaultPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3243186838ED00903EF4 /* DefaultPad.png */; };
 		246A32FB186838ED00903EF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246A3244186838ED00903EF4 /* InfoPlist.strings */; };
 		246A32FC186838ED00903EF4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246A3246186838ED00903EF4 /* Localizable.strings */; };
-		246A32FD186838ED00903EF4 /* GenString in Resources */ = {isa = PBXBuildFile; fileRef = 246A3248186838ED00903EF4 /* GenString */; };
 		246A32FE186838ED00903EF4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3249186838ED00903EF4 /* Icon.png */; };
 		246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324A186838ED00903EF4 /* Icon7@2x.png */; };
 		246A3300186838ED00903EF4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324B186838ED00903EF4 /* Icon@2x.png */; };
@@ -696,7 +695,6 @@
 				246A3301186838ED00903EF4 /* IconPad.png in Resources */,
 				246A3300186838ED00903EF4 /* Icon@2x.png in Resources */,
 				246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */,
-				246A32FD186838ED00903EF4 /* GenString in Resources */,
 				246A32F8186838ED00903EF4 /* Default.png in Resources */,
 				246A333F1868394000903EF4 /* Assets in Resources */,
 				246A32FB186838ED00903EF4 /* InfoPlist.strings in Resources */,

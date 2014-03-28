@@ -803,3 +803,8 @@ UIView *UIUtil::SuperviewWithClass(UIView *self, Class viewClass)
 	}
 	return nil;
 }
+
+int UIUtil::sdfasdfadfadfadfadf()
+{
+	return 10;
+}

@@ -685,7 +685,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 
 - (void)setAppStoreIDOnMainThread:(NSString *)appStoreIDString
 {
-    self.appStoreID = [appStoreIDString longLongValue];
+    self.appStoreID = [appStoreIDString integerValue];
 }
 
 - (void)checkForNewVersionInBackground

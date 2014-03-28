@@ -551,6 +551,8 @@ public:
 		
 		return label;
 	}
+	
+	static int sdfasdfadfadfadfadf();
 };
 
 #if defined(DEBUG) || defined(TEST)
