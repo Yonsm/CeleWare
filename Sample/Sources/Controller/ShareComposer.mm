@@ -166,7 +166,7 @@
 - (WeiboComposer *)composeWeibo:(NSString *)body pic:(NSString *)pic link:(NSString *)link
 {
 	WeiboComposer *composer = [WeiboComposer composerWithBody:body pic:pic link:link];
-	[self presentModalNavigationController:composer animated:YES];
+	UIUtil::PresentModalNavigationController(self, composer);
 	return composer;
 }
 
@@ -174,7 +174,7 @@
 - (FacebookComposer *)composeFacebook:(NSString *)body link:(NSString *)link
 {
 	FacebookComposer *composer = [FacebookComposer composerWithBody:body link:link];
-	[self presentModalNavigationController:composer animated:YES];
+	UIUtil::PresentModalNavigationController(self, composer);
 	return composer;
 }
 

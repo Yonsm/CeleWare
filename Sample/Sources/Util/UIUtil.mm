@@ -4,6 +4,30 @@
 NSUInteger UIUtil::_networkIndicatorRef = 0;
 
 //
+@implementation UIViewController (EXViewController)
+- (void)dismissModalViewController
+{
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+@end
+
+//
+@implementation EXTapGestureRecognizer
+- (id)initWithTarget:(id)target action:(SEL)action
+{
+	self = [super initWithTarget:target action:action];
+	self.cancelsTouchesInView = NO;
+	self.delegate = self;
+	return self;
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+	UIView *view = touch.view;
+	return (view == gestureRecognizer.view) || ![view isKindOfClass:[UIButton class]];
+}
+@end
+
+//
 void UIUtil::LogIndentString(NSUInteger indent, NSString *str)
 {
 	NSString *log = @"";
@@ -803,25 +827,6 @@ UIView *UIUtil::SuperviewWithClass(UIView *self, Class viewClass)
 	}
 	return nil;
 }
-
-//
-@interface EXTapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
-@end
-
-@implementation EXTapGestureRecognizer
-- (id)initWithTarget:(id)target action:(SEL)action
-{
-	self = [super initWithTarget:target action:action];
-	self.cancelsTouchesInView = NO;
-	self.delegate = self;
-	return self;
-}
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-	UIView *view = touch.view;
-	return (view == gestureRecognizer.view) || ![view isKindOfClass:[UIButton class]];
-}
-@end
 
 //
 UITapGestureRecognizer *UIUtil::AddTapGesture(UIView *self, id target, SEL action)

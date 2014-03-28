@@ -35,10 +35,6 @@
 #endif
 
 // View
-#define _ExBarButtonItem
-#define _ExViewController
-#import "UIAddition.h"
-
 #import "ToastView.h"
 //#import "PullView.h"
 //#import "TouchView.h"

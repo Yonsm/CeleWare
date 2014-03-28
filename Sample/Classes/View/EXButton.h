@@ -3,7 +3,7 @@
 #define UIButtonTypeNavigationBack		(UIButtonType)100
 #define UIButtonTypeNavigationItem		(UIButtonType)101
 #define UIButtonTypeNavigationDone		(UIButtonType)102
-@interface UIButton (ExButton)
+@interface UIButton (EXButton)
 @property(nonatomic,retain) UIColor *tintColor;
 + (id)buttonWithTitle:(NSString *)title name:(NSString *)name width:(CGFloat)width font:(UIFont *)font;
 + (id)buttonWithTitle:(NSString *)title name:(NSString *)name width:(CGFloat)width;

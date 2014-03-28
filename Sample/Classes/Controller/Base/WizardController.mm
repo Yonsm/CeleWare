@@ -688,7 +688,7 @@
 	}
 	else
 	{
-		[self.navigationController presentModalNavigationController:controller animated:YES];
+		UIUtil::PresentModalNavigationController(self.navigationController, controller);
 	}
 	
 }

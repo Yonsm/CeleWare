@@ -1,6 +1,6 @@
 
 #import "AlertView.h"
-#import "ExButton.h"
+#import "EXButton.h"
 
 //
 @implementation AlertView

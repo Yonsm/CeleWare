@@ -144,7 +144,7 @@ static NSString *_access_token = nil;
 {
 	[self logout];
 	UIViewController *controller = [[LoginController alloc] init];
-	[UIUtil::RootViewController() presentModalNavigationController:controller animated:YES];
+	UIUtil::PresentModalNavigationController(UIUtil::RootViewController(), controller);
 }
 
 //

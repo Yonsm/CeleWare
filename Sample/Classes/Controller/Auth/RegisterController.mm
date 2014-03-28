@@ -116,7 +116,7 @@
 	UIViewController *controller = [[WebController alloc] initWithURL:[NSURL fileURLWithPath:NSUtil::AssetPath(@"user_agreement.txt")]];
 	controller.modalTransitionStyle = UIModalTransitionStylePartialCurl;
 	controller.modalPresentationStyle = UIModalPresentationFormSheet;
-	[self.navigationController presentModalNavigationController:controller animated:YES];
+	UIUtil::PresentModalNavigationController(self.navigationController, controller);
 }
 
 //

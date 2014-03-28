@@ -189,7 +189,7 @@
 - (void)registerButtonClicked:(id)sender
 {
 	UIViewController *controller = [[RegisterController alloc] init];
-	[UIUtil::RootViewController() presentModalNavigationController:controller animated:YES];
+	UIUtil::PresentModalNavigationController(UIUtil::RootViewController(), controller);
 }
 
 // NEXT: 优化重构

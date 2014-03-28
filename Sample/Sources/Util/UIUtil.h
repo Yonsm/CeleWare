@@ -2,10 +2,21 @@
 #import <QuartzCore/QuartzCore.h>
 
 //
-@interface UIDevice (UDID)
+@interface UIDevice (EXDevice)
 - (NSString *)uniqueIdentifier;
 @end
 
+//
+@interface UIViewController (EXViewController)
+- (void)dismissModalViewController;
+@end
+
+//
+@interface EXTapGestureRecognizer : UITapGestureRecognizer <UIGestureRecognizerDelegate>
+@end
+
+//
+#define EXTableViewCellAccessoryButton (UIUtil::IsOS7() ? UITableViewCellAccessoryDetailButton : UITableViewCellAccessoryDetailDisclosureButton)
 
 //
 @class AppDelegate;
@@ -480,7 +491,7 @@ public:
 	//
 	NS_INLINE UINavigationController *PresentModalNavigationController(UIViewController *self, UIViewController *controller, BOOL animated = YES, NSString *dismissButtonTitle = NSLocalizedString(@"Back", @"返回"))
 	{
-		controller.navigationItem.leftBarButtonItem = BarButtonTitleItem(dismissButtonTitle, self.navigationController, @selector(dismissModalViewControllerAnimated:));
+		controller.navigationItem.leftBarButtonItem = BarButtonTitleItem(dismissButtonTitle, self.navigationController, @selector(dismissModalViewController));
 		return PresentNavigationController(self, controller, animated);
 	}
 	
@@ -574,5 +585,3 @@ public:
 #define _ConstraintsLog(v)	((void) 0)
 #define _ControllerLog(c)	((void) 0)
 #endif
-
-#define UITableViewCellAccessoryButton (UIUtil::IsOS7() ? UITableViewCellAccessoryDetailButton : UITableViewCellAccessoryDetailDisclosureButton)
