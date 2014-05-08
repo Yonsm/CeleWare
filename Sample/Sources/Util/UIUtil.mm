@@ -94,8 +94,8 @@ void UIUtil::LogView(UIView *view, NSUInteger indent)
 void UIUtil::LogConstraints(UIView *view)
 {
 	NSArray *constraints = view.constraints;
-	_ObjLog(view);
-	_ObjLog(constraints);
+	_LogObj(view);
+	_LogObj(constraints);
 	
 	const static NSString *_attributes[] =
 	{

@@ -22,6 +22,6 @@
 @end
 
 //
-@interface CacheImageView : UIImageView
-@property(nonatomic,strong) NSString *cacheImageUrl2;
+@interface CacheImageView : UIImageView	// 避免重入
+@property(nonatomic,strong) NSString *cacheImageUrl2; // 外部勿用
 @end

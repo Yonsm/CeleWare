@@ -17,39 +17,39 @@
 #else
 #define _Log(s, ...)	NSLog(s, ##__VA_ARGS__)
 #endif
-#define _ObjLog(o)		if (o) _Log(@"Object Log: %s (%u), %@ (%@)", __FUNCTION__, __LINE__, NSStringFromClass([o class]), o)
-#define _LineLog()		_Log(@"Line Log: %s (%u)", __FUNCTION__, __LINE__)
+#define _LogObj(o)		if (o) _Log(@"Object Log: %s (%u), %@ (%@)", __FUNCTION__, __LINE__, NSStringFromClass([o class]), o)
+#define _LogLine()		_Log(@"Line Log: %s (%u)", __FUNCTION__, __LINE__)
 #ifdef __cplusplus
-#define _AutoLog()		AutoLog _al(__FUNCTION__, __LINE__)
+#define _LogAuto()		__AutoLog _al(__FUNCTION__, __LINE__)
 #else
-#define _AutoLog()		_LineLog()
+#define _LogAuto()		_LogLine()
 #endif
 #import <dlfcn.h>
-#define _StackLog()		{Dl_info info = {0}; dladdr(__builtin_return_address(0), &info); _Log(@"Stack Log: fname=%s, fbase=%p, sname=%s, saddr=%p, offset=%#08lx, stack=>\n%@", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (long)info.dli_saddr-(long)info.dli_fbase-0x1000, [NSThread callStackSymbols]);}
+#define _LogStack()		{Dl_info info = {0}; dladdr(__builtin_return_address(0), &info); _Log(@"Stack Log: fname=%s, fbase=%p, sname=%s, saddr=%p, offset=%#08lx, stack=>\n%@", info.dli_fname, info.dli_fbase, info.dli_sname, info.dli_saddr, (long)info.dli_saddr-(long)info.dli_fbase-0x1000, [NSThread callStackSymbols]);}
 #else
 #define _Log(s, ...)	((void) 0)
-#define _LineLog()		((void) 0)
-#define _AutoLog()		((void) 0)
-#define _ObjLog(o)		((void) 0)
-#define _StackLog()		((void) 0)
+#define _LogLine()		((void) 0)
+#define _LogAuto()		((void) 0)
+#define _LogObj(o)		((void) 0)
+#define _LogStack()		((void) 0)
 #endif
 
 // Auto Log
 #ifdef __cplusplus
 #import <Foundation/Foundation.h>
 #import <mach/mach_time.h>
-class AutoLog
+class __AutoLog
 {
 private:
 	int _line;
 	uint64_t _start;
 	const char *_name;
 public:
-	inline AutoLog(const char *name, int line): _line(line), _name(name), _start(mach_absolute_time())
+	inline __AutoLog(const char *name, int line): _line(line), _name(name), _start(mach_absolute_time())
 	{
 		_Log(@"Enter %s:%d", name, line);
 	}
-	inline ~AutoLog()
+	inline ~__AutoLog()
 	{
 		_Log(@"Leave %s:%d Elapsed %qu", _name, _line, mach_absolute_time() - _start);
 	}

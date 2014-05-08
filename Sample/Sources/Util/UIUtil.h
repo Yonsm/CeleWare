@@ -160,7 +160,6 @@ public:
 	//
 	NS_INLINE BOOL OpenUrl(NSString *url)
 	{
-		url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		BOOL ret = [Application() openURL:[NSURL URLWithString:url]];
 		if (ret == NO)
 		{
@@ -172,6 +171,12 @@ public:
 			[alertView show];
 		}
 		return ret;
+	}
+	
+	//
+	NS_INLINE BOOL OpenUrlWithEscape(NSString *url)
+	{
+		return OpenUrl([url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
 	}
 	
 	//
@@ -379,6 +384,14 @@ public:
 	
 #pragma mark UIView methods
 	//
+	NS_INLINE UIView *ViewWithColor(CGRect frame, UIColor *backgroundColor = Color(0xcc, 0xcc, 0xcc))
+	{
+		UIView *view = [[UIView alloc] initWithFrame:frame];
+		view.backgroundColor = backgroundColor;
+		return view;
+	}
+	
+	//
 	NS_INLINE void RemoveSubviews(UIView *self)
 	{
 		while (self.subviews.count)
@@ -582,11 +595,11 @@ public:
 };
 
 #if defined(DEBUG) || defined(TEST)
-#define _ViewLog(v)			UIUtil::LogView(v)
-#define _ControllerLog(c)	UIUtil::LogController(c)
-#define _ConstraintsLog(v)	UIUtil::LogConstraints(v)
+#define _LogView(v)			UIUtil::LogView(v)
+#define _LogController(c)	UIUtil::LogController(c)
+#define _LogConstraints(v)	UIUtil::LogConstraints(v)
 #else
-#define _ViewLog(v)			((void) 0)
-#define _ConstraintsLog(v)	((void) 0)
-#define _ControllerLog(c)	((void) 0)
+#define _LogView(v)			((void) 0)
+#define _LogConstraints(v)	((void) 0)
+#define _LogController(c)	((void) 0)
 #endif

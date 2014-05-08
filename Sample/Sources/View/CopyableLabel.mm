@@ -11,14 +11,7 @@
 					  font:(UIFont*)font
 				 alignment:(NSTextAlignment)alignment
 {
-	CGSize size = [text sizeWithFont:font
-				   constrainedToSize:CGSizeMake(width, 1000)];
-	
-	CGRect frame = CGRectMake(point.x, point.y, width, ceil(size.height));
-	
-	UILabel *label = [CopyableLabel copyableLabelWithFrame:frame text:text color:color font:font alignment:alignment];
-	label.numberOfLines = 0;
-	return label;
+	return [[CopyableLabel alloc] initAtPoint:point width:width text:text color:color font:font alignment:alignment];
 }
 
 //
@@ -28,31 +21,48 @@
 						font:(UIFont *)font
 				   alignment:(NSTextAlignment)alignment
 {
-	UILabel *label = [[CopyableLabel alloc] initWithFrame:frame];
-	label.userInteractionEnabled = YES;
-	label.textColor = color;
-	label.backgroundColor = [UIColor clearColor];
-	label.font = font;
-	label.text = text;
-	label.textAlignment = alignment;
-	
-	return label;
+	return [[CopyableLabel alloc] initWithFrame:frame text:text color:color font:font alignment:alignment];
 }
 
 //
-- (void)killTimer
+- (id)initAtPoint:(CGPoint)point
+			width:(float)width
+			 text:(NSString *)text
+			color:(UIColor *)color
+			 font:(UIFont *)font
+		alignment:(NSTextAlignment)alignment
 {
-	if (_holdTimer)
+	CGSize size = [text sizeWithFont:font
+				   constrainedToSize:CGSizeMake(width, 1000)];
+	if (alignment == NSTextAlignmentCenterOrLeft)
 	{
-		[_holdTimer invalidate];
-		_holdTimer = nil;
+		alignment = (size.height > font.lineHeight + 1) ? NSTextAlignmentLeft : NSTextAlignmentCenter;
 	}
+	CGRect frame = CGRectMake(point.x, point.y, width, ceil(size.height));
+	
+	self = [self initWithFrame:frame text:text color:color font:font alignment:alignment];
+	self.numberOfLines = 0;
+	return self;
 }
 
 //
-- (void)dealloc
+- (id)initWithFrame:(CGRect)frame
+			   text:(NSString *)text
+			  color:(UIColor *)color
+			   font:(UIFont *)font
+		  alignment:(NSTextAlignment)alignment
 {
-	[self killTimer];
+	self = [super initWithFrame:frame];
+	self.userInteractionEnabled = YES;
+	self.textColor = color;
+	self.backgroundColor = [UIColor clearColor];
+	self.font = font;
+	self.text = text;
+	self.textAlignment = alignment;
+	
+	UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onHold:)];
+	[self addGestureRecognizer:gesture];
+	return self;
 }
 
 //
@@ -79,13 +89,12 @@
 }
 
 //
-- (void)onHold:(NSTimer *)sender
+- (void)onHold:(UILongPressGestureRecognizer *)sender
 {
-	NSValue *location = sender.userInfo;
+	if (sender.state != UIGestureRecognizerStateBegan) return;
 	
-	[self killTimer];
 	self.alpha = 1;
-
+	
 	if ([self isFirstResponder])
 	{
 		UIMenuController *menu = [UIMenuController sharedMenuController];
@@ -97,8 +106,7 @@
 	{
 		if (self.text.length == 0) return;
 		
-		CGPoint point = location.CGPointValue;
-
+		CGPoint point = [sender locationInView:self];
 		UIMenuController *menu = [UIMenuController sharedMenuController];
 		[menu setTargetRect:CGRectMake(point.x, /*point.y*/0, 0, 0) inView:self];
 		[menu setMenuVisible:YES animated:YES];
@@ -109,19 +117,12 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	self.alpha = 0.75;
-	[self killTimer];
-	
-	UITouch *touch = [touches anyObject];
-	CGPoint location = [touch locationInView:self];
-	_holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onHold:) userInfo:[NSValue valueWithCGPoint:location] repeats:NO];
-
 	[super touchesBegan:touches withEvent:event];
 }
 
 //
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	[self killTimer];
 	self.alpha = 1;
 	[super touchesEnded:touches withEvent:event];
 }
@@ -129,7 +130,6 @@
 //
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	[self killTimer];
 	self.alpha = 1;
 	[super touchesCancelled:touches withEvent:event];
 }
