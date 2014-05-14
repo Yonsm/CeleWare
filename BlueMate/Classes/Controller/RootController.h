@@ -1,0 +1,6 @@
+
+//
+@interface RootController : UIViewController
+{
+}
+@end
