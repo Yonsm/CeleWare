@@ -15,10 +15,8 @@
 		246A32D9186838ED00903EF4 /* LoginController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A320C186838ED00903EF4 /* LoginController.mm */; };
 		246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A320E186838ED00903EF4 /* RegisterController.mm */; };
 		246A32DC186838ED00903EF4 /* BaseController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3213186838ED00903EF4 /* BaseController.mm */; };
-		246A32DE186838ED00903EF4 /* PullTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3217186838ED00903EF4 /* PullTableController.mm */; };
 		246A32E0186838ED00903EF4 /* TableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A321B186838ED00903EF4 /* TableController.mm */; };
 		246A32E3186838ED00903EF4 /* RootController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3221186838ED00903EF4 /* RootController.mm */; };
-		246A32E4186838ED00903EF4 /* SettingController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3223186838ED00903EF4 /* SettingController.mm */; };
 		246A32F7186838ED00903EF4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3240186838ED00903EF4 /* Default-568h@2x.png */; };
 		246A32F8186838ED00903EF4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3241186838ED00903EF4 /* Default.png */; };
 		246A32F9186838ED00903EF4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3242186838ED00903EF4 /* Default@2x.png */; };
@@ -78,14 +76,10 @@
 		246A320E186838ED00903EF4 /* RegisterController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RegisterController.mm; sourceTree = "<group>"; };
 		246A3212186838ED00903EF4 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		246A3213186838ED00903EF4 /* BaseController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseController.mm; sourceTree = "<group>"; };
-		246A3216186838ED00903EF4 /* PullTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullTableController.h; sourceTree = "<group>"; };
-		246A3217186838ED00903EF4 /* PullTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PullTableController.mm; sourceTree = "<group>"; };
 		246A321A186838ED00903EF4 /* TableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableController.h; sourceTree = "<group>"; };
 		246A321B186838ED00903EF4 /* TableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TableController.mm; sourceTree = "<group>"; };
 		246A3220186838ED00903EF4 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		246A3221186838ED00903EF4 /* RootController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootController.mm; sourceTree = "<group>"; };
-		246A3222186838ED00903EF4 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
-		246A3223186838ED00903EF4 /* SettingController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingController.mm; sourceTree = "<group>"; };
 		246A3240186838ED00903EF4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		246A3241186838ED00903EF4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		246A3242186838ED00903EF4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -238,8 +232,6 @@
 				246A320F186838ED00903EF4 /* Base */,
 				246A3220186838ED00903EF4 /* RootController.h */,
 				246A3221186838ED00903EF4 /* RootController.mm */,
-				246A3222186838ED00903EF4 /* SettingController.h */,
-				246A3223186838ED00903EF4 /* SettingController.mm */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -260,8 +252,6 @@
 			children = (
 				246A3212186838ED00903EF4 /* BaseController.h */,
 				246A3213186838ED00903EF4 /* BaseController.mm */,
-				246A3216186838ED00903EF4 /* PullTableController.h */,
-				246A3217186838ED00903EF4 /* PullTableController.mm */,
 				246A321A186838ED00903EF4 /* TableController.h */,
 				246A321B186838ED00903EF4 /* TableController.mm */,
 			);
@@ -493,7 +483,6 @@
 			files = (
 				246A332F186838ED00903EF4 /* NullView.mm in Sources */,
 				246A332D186838ED00903EF4 /* KBAutoScrollView.mm in Sources */,
-				246A32DE186838ED00903EF4 /* PullTableController.mm in Sources */,
 				246A32E3186838ED00903EF4 /* RootController.mm in Sources */,
 				246A330A186838ED00903EF4 /* ShareComposer.mm in Sources */,
 				246A3330186838ED00903EF4 /* ODRefreshControl.m in Sources */,
@@ -513,7 +502,6 @@
 				246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */,
 				246A330B186838ED00903EF4 /* WebController.mm in Sources */,
 				246A3314186838ED00903EF4 /* Main.mm in Sources */,
-				246A32E4186838ED00903EF4 /* SettingController.mm in Sources */,
 				246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */,
 				246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */,
 				246A32E0186838ED00903EF4 /* TableController.mm in Sources */,
