@@ -110,12 +110,12 @@ void interruptionListenerCallback ( void *inUserData,  UInt32  interruptionState
 	//return;
 	NSArray *items = MPMediaQuery.songsQuery.items;
 	MPMediaItem *item = items[0];
-	NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
-	_LogObj(URL);
+	//NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
+	//_LogObj(URL);
 
 	//
 	//	// 创建播放器
-	//NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Song.mp3")];
+	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Song.mp3")];
 	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
 	[_player prepareToPlay];
 	[_player setVolume:1];
