@@ -12,8 +12,6 @@
 		246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319518682C2D00903EF4 /* CoreGraphics.framework */; };
 		246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319718682C2D00903EF4 /* UIKit.framework */; };
 		246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3208186838ED00903EF4 /* AppDelegate.mm */; };
-		246A32D9186838ED00903EF4 /* LoginController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A320C186838ED00903EF4 /* LoginController.mm */; };
-		246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A320E186838ED00903EF4 /* RegisterController.mm */; };
 		246A32DC186838ED00903EF4 /* BaseController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3213186838ED00903EF4 /* BaseController.mm */; };
 		246A32E0186838ED00903EF4 /* TableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A321B186838ED00903EF4 /* TableController.mm */; };
 		246A32E3186838ED00903EF4 /* RootController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3221186838ED00903EF4 /* RootController.mm */; };
@@ -70,10 +68,6 @@
 		246A31AC18682C2D00903EF4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		246A3207186838ED00903EF4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		246A3208186838ED00903EF4 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		246A320B186838ED00903EF4 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
-		246A320C186838ED00903EF4 /* LoginController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginController.mm; sourceTree = "<group>"; };
-		246A320D186838ED00903EF4 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
-		246A320E186838ED00903EF4 /* RegisterController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RegisterController.mm; sourceTree = "<group>"; };
 		246A3212186838ED00903EF4 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		246A3213186838ED00903EF4 /* BaseController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseController.mm; sourceTree = "<group>"; };
 		246A321A186838ED00903EF4 /* TableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableController.h; sourceTree = "<group>"; };
@@ -228,23 +222,11 @@
 		246A3209186838ED00903EF4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				246A320A186838ED00903EF4 /* Auth */,
 				246A320F186838ED00903EF4 /* Base */,
 				246A3220186838ED00903EF4 /* RootController.h */,
 				246A3221186838ED00903EF4 /* RootController.mm */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		246A320A186838ED00903EF4 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				246A320B186838ED00903EF4 /* LoginController.h */,
-				246A320C186838ED00903EF4 /* LoginController.mm */,
-				246A320D186838ED00903EF4 /* RegisterController.h */,
-				246A320E186838ED00903EF4 /* RegisterController.mm */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		246A320F186838ED00903EF4 /* Base */ = {
@@ -505,13 +487,11 @@
 				246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */,
 				246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */,
 				246A32E0186838ED00903EF4 /* TableController.mm in Sources */,
-				246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */,
 				246A3338186838ED00903EF4 /* TouchView.mm in Sources */,
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
 				246A3337186838ED00903EF4 /* ToastView.mm in Sources */,
 				246A3324186838ED00903EF4 /* NSUtil.mm in Sources */,
-				246A32D9186838ED00903EF4 /* LoginController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
