@@ -3,9 +3,6 @@
 
 //
 @interface BaseController : UIViewController
-{
-	BOOL _needLogin;
-}
 - (void)backButtonClicked:(UIButton *)sender;
 @end
 

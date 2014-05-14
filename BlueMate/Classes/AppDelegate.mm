@@ -20,11 +20,12 @@
 	// Create controller
 	// TODO: Remove navigation controller
 	UIViewController *controller = [[RootController alloc] init];
-	UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:controller];
+	//UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:controller];
 	//navigator.navigationBarHidden = YES;
+	//navigator.navigationBar.translucent = YES;
 
 	// Show main view
-	_window.rootViewController = navigator;
+	_window.rootViewController = controller;
 	[_window makeKeyAndVisible];
 	
 	//UIUtil::ShowSplashView(navigator.view);

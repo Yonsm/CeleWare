@@ -57,6 +57,7 @@
 		247206F219234D8A00E6FB1F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206F119234D8A00E6FB1F /* AudioToolbox.framework */; };
 		247206F419234D9D00E6FB1F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206F319234D9D00E6FB1F /* CoreAudio.framework */; };
 		247206F519234F1400E6FB1F /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EB318851A980058AD7E /* iVersion.m */; };
+		247206F8192352D900E6FB1F /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 247206F7192352D900E6FB1F /* WaveView.mm */; };
 		24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* EXButton.mm */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +155,8 @@
 		247206EF19234CD300E6FB1F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		247206F119234D8A00E6FB1F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		247206F319234D9D00E6FB1F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		247206F6192352D900E6FB1F /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveView.h; sourceTree = "<group>"; };
+		247206F7192352D900E6FB1F /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaveView.mm; sourceTree = "<group>"; };
 		24B6BB3918E554390058FC8B /* EXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXButton.h; sourceTree = "<group>"; };
 		24B6BB3A18E554390058FC8B /* EXButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EXButton.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -262,6 +265,8 @@
 		246A322D186838ED00903EF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				247206F6192352D900E6FB1F /* WaveView.h */,
+				247206F7192352D900E6FB1F /* WaveView.mm */,
 				24B6BB3918E554390058FC8B /* EXButton.h */,
 				24B6BB3A18E554390058FC8B /* EXButton.mm */,
 			);
@@ -480,6 +485,7 @@
 				246A32E3186838ED00903EF4 /* RootController.mm in Sources */,
 				246A330A186838ED00903EF4 /* ShareComposer.mm in Sources */,
 				246A3330186838ED00903EF4 /* ODRefreshControl.m in Sources */,
+				247206F8192352D900E6FB1F /* WaveView.mm in Sources */,
 				246A3326186838ED00903EF4 /* SettingUtil.mm in Sources */,
 				246A3328186838ED00903EF4 /* UIUtil.mm in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
