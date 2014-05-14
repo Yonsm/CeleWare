@@ -55,7 +55,7 @@
 - (void)showComposer:(NSTimer *)timer
 {
 	NSString *className = [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByName(\"content\")[0].className"];
-	_ObjLog(className);
+	_LogObj(className);
 	if ([className isEqualToString:@"J-textarea txt-publisher"])
 	{
 		NSString *js = [NSString stringWithFormat:@"document.getElementsByName(\"content\")[0].value = \"%@\";", _body];

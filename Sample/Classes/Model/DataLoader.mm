@@ -229,7 +229,7 @@ static NSString *_access_token = nil;
 	{
 		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
 		[controller.view toastWithLoading];
-		_LineLog();
+		_LogLine();
 	}
 }
 
@@ -395,7 +395,7 @@ static NSString *_access_token = nil;
 	{
 		UIViewController *controller = [_delegate respondsToSelector:@selector(view)] ? (UIViewController *)_delegate : UIUtil::VisibleViewController();
 		[controller.view dismissToast];
-		_LineLog();
+		_LogLine();
 	}
 	
 	// 记住时间戳

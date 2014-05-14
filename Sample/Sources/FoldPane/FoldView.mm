@@ -254,21 +254,21 @@
 
 - (void)foldDidOpened
 {
-	_LineLog();
+	_LogLine();
 	[self.contentView setHidden:NO];
 	[self showFolds:NO];
 }
 
 - (void)foldDidClosed
 {
-	_LineLog();
+	_LogLine();
 	[self.contentView setHidden:NO];
 	[self showFolds:YES];
 }
 
 - (void)foldWillOpen
 {
-	_LineLog();
+	_LogLine();
 	//[self drawScreenshotOnFolds];
 	[self.contentView setHidden:YES];
 	[self showFolds:YES];
@@ -276,7 +276,7 @@
 
 - (void)foldWillClose
 {
-	_LineLog();
+	_LogLine();
 	[self drawScreenshotOnFolds];
 	[_contentView setHidden:YES];
 	[self showFolds:YES];
