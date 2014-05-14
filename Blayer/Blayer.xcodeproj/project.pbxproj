@@ -24,8 +24,6 @@
 		246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324A186838ED00903EF4 /* Icon7@2x.png */; };
 		246A3300186838ED00903EF4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324B186838ED00903EF4 /* Icon@2x.png */; };
 		246A3301186838ED00903EF4 /* IconPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324C186838ED00903EF4 /* IconPad.png */; };
-		246A3307186838ED00903EF4 /* MessageComposer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3262186838ED00903EF4 /* MessageComposer.mm */; };
-		246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3264186838ED00903EF4 /* MoviePlayer.mm */; };
 		246A3309186838ED00903EF4 /* NullController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3266186838ED00903EF4 /* NullController.mm */; };
 		246A330A186838ED00903EF4 /* ShareComposer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3268186838ED00903EF4 /* ShareComposer.mm */; };
 		246A330B186838ED00903EF4 /* WebController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A326A186838ED00903EF4 /* WebController.mm */; };
@@ -49,15 +47,10 @@
 		246A3338186838ED00903EF4 /* TouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32CD186838ED00903EF4 /* TouchView.mm */; };
 		246A333F1868394000903EF4 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 246A333E1868394000903EF4 /* Assets */; };
 		246A334318683DA800903EF4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334218683DA800903EF4 /* libz.dylib */; };
-		246A334518683DB100903EF4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334418683DB100903EF4 /* CoreLocation.framework */; };
-		246A334718683DBF00903EF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334618683DBF00903EF4 /* SystemConfiguration.framework */; };
-		246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334818683DE000903EF4 /* MessageUI.framework */; };
-		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
 		247206F019234CD300E6FB1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206EF19234CD300E6FB1F /* AVFoundation.framework */; };
-		247206F219234D8A00E6FB1F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206F119234D8A00E6FB1F /* AudioToolbox.framework */; };
-		247206F419234D9D00E6FB1F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206F319234D9D00E6FB1F /* CoreAudio.framework */; };
-		247206F519234F1400E6FB1F /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EB318851A980058AD7E /* iVersion.m */; };
 		247206F8192352D900E6FB1F /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 247206F7192352D900E6FB1F /* WaveView.mm */; };
+		247206FF1923778B00E6FB1F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
+		24720701192377D100E6FB1F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206F119234D8A00E6FB1F /* AudioToolbox.framework */; };
 		24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* EXButton.mm */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +58,7 @@
 		24208EB218851A980058AD7E /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
 		24208EB318851A980058AD7E /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
 		24208EBC18852E0E0058AD7E /* CeleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeleUtil.h; sourceTree = "<group>"; };
-		246A319018682C2D00903EF4 /* BlueMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		246A319018682C2D00903EF4 /* Blayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		246A319718682C2D00903EF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -95,10 +88,6 @@
 		246A3250186838ED00903EF4 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		246A3251186838ED00903EF4 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		246A325F186838ED00903EF4 /* CelePrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CelePrefix.h; sourceTree = "<group>"; };
-		246A3261186838ED00903EF4 /* MessageComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageComposer.h; sourceTree = "<group>"; };
-		246A3262186838ED00903EF4 /* MessageComposer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MessageComposer.mm; sourceTree = "<group>"; };
-		246A3263186838ED00903EF4 /* MoviePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePlayer.h; sourceTree = "<group>"; };
-		246A3264186838ED00903EF4 /* MoviePlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MoviePlayer.mm; sourceTree = "<group>"; };
 		246A3265186838ED00903EF4 /* NullController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullController.h; sourceTree = "<group>"; };
 		246A3266186838ED00903EF4 /* NullController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NullController.mm; sourceTree = "<group>"; };
 		246A3267186838ED00903EF4 /* ShareComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareComposer.h; sourceTree = "<group>"; };
@@ -157,6 +146,7 @@
 		247206F319234D9D00E6FB1F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		247206F6192352D900E6FB1F /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveView.h; sourceTree = "<group>"; };
 		247206F7192352D900E6FB1F /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaveView.mm; sourceTree = "<group>"; };
+		247206FD19236EF400E6FB1F /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		24B6BB3918E554390058FC8B /* EXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXButton.h; sourceTree = "<group>"; };
 		24B6BB3A18E554390058FC8B /* EXButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EXButton.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,13 +156,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				247206F419234D9D00E6FB1F /* CoreAudio.framework in Frameworks */,
-				247206F219234D8A00E6FB1F /* AudioToolbox.framework in Frameworks */,
+				24720701192377D100E6FB1F /* AudioToolbox.framework in Frameworks */,
+				247206FF1923778B00E6FB1F /* MediaPlayer.framework in Frameworks */,
 				247206F019234CD300E6FB1F /* AVFoundation.framework in Frameworks */,
-				246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */,
-				246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */,
-				246A334718683DBF00903EF4 /* SystemConfiguration.framework in Frameworks */,
-				246A334518683DB100903EF4 /* CoreLocation.framework in Frameworks */,
 				246A334318683DA800903EF4 /* libz.dylib in Frameworks */,
 				246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */,
 				246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */,
@@ -198,7 +184,7 @@
 		246A319118682C2D00903EF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				246A319018682C2D00903EF4 /* BlueMate.app */,
+				246A319018682C2D00903EF4 /* Blayer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,6 +192,7 @@
 		246A319218682C2D00903EF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				247206FD19236EF400E6FB1F /* ExternalAccessory.framework */,
 				247206F319234D9D00E6FB1F /* CoreAudio.framework */,
 				247206F119234D8A00E6FB1F /* AudioToolbox.framework */,
 				247206EF19234CD300E6FB1F /* AVFoundation.framework */,
@@ -311,10 +298,6 @@
 		246A3260186838ED00903EF4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				246A3261186838ED00903EF4 /* MessageComposer.h */,
-				246A3262186838ED00903EF4 /* MessageComposer.mm */,
-				246A3263186838ED00903EF4 /* MoviePlayer.h */,
-				246A3264186838ED00903EF4 /* MoviePlayer.mm */,
 				246A3265186838ED00903EF4 /* NullController.h */,
 				246A3266186838ED00903EF4 /* NullController.mm */,
 				246A3267186838ED00903EF4 /* ShareComposer.h */,
@@ -389,9 +372,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		246A318F18682C2D00903EF4 /* BlueMate */ = {
+		246A318F18682C2D00903EF4 /* Blayer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BlueMate" */;
+			buildConfigurationList = 246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "Blayer" */;
 			buildPhases = (
 				246A334D18687AD100903EF4 /* Refresh Version Stamp */,
 				246A318C18682C2D00903EF4 /* Sources */,
@@ -402,9 +385,9 @@
 			);
 			dependencies = (
 			);
-			name = BlueMate;
-			productName = BlueMate;
-			productReference = 246A319018682C2D00903EF4 /* BlueMate.app */;
+			name = Blayer;
+			productName = Blayer;
+			productReference = 246A319018682C2D00903EF4 /* Blayer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -416,7 +399,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Yonsm;
 			};
-			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BlueMate" */;
+			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "Blayer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -431,7 +414,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				246A318F18682C2D00903EF4 /* BlueMate */,
+				246A318F18682C2D00903EF4 /* Blayer */,
 			);
 		};
 /* End PBXProject section */
@@ -497,18 +480,15 @@
 				24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */,
 				246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */,
 				246A3333186838ED00903EF4 /* SegmentLabel.mm in Sources */,
-				246A3307186838ED00903EF4 /* MessageComposer.mm in Sources */,
 				246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */,
 				246A330B186838ED00903EF4 /* WebController.mm in Sources */,
 				246A3314186838ED00903EF4 /* Main.mm in Sources */,
 				246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */,
-				246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */,
 				246A32E0186838ED00903EF4 /* TableController.mm in Sources */,
 				246A3338186838ED00903EF4 /* TouchView.mm in Sources */,
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
 				246A3337186838ED00903EF4 /* ToastView.mm in Sources */,
-				247206F519234F1400E6FB1F /* iVersion.m in Sources */,
 				246A3324186838ED00903EF4 /* NSUtil.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,7 +628,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BlueMate" */ = {
+		246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "Blayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246A31BA18682C2D00903EF4 /* Debug */,
@@ -657,7 +637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BlueMate" */ = {
+		246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "Blayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246A31BD18682C2D00903EF4 /* Debug */,
