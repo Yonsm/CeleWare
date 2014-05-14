@@ -29,7 +29,6 @@
 		246A330B186838ED00903EF4 /* WebController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A326A186838ED00903EF4 /* WebController.mm */; };
 		246A3314186838ED00903EF4 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3280186838ED00903EF4 /* Main.mm */; };
 		246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A329F186838ED00903EF4 /* HttpUtil.mm */; };
-		246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A1186838ED00903EF4 /* NetworkUtil.mm */; };
 		246A3324186838ED00903EF4 /* NSUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A3186838ED00903EF4 /* NSUtil.mm */; };
 		246A3325186838ED00903EF4 /* NullObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A5186838ED00903EF4 /* NullObject.mm */; };
 		246A3326186838ED00903EF4 /* SettingUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32A7186838ED00903EF4 /* SettingUtil.mm */; };
@@ -101,8 +100,6 @@
 		246A3285186838ED00903EF4 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		246A329E186838ED00903EF4 /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
 		246A329F186838ED00903EF4 /* HttpUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HttpUtil.mm; sourceTree = "<group>"; };
-		246A32A0186838ED00903EF4 /* NetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtil.h; sourceTree = "<group>"; };
-		246A32A1186838ED00903EF4 /* NetworkUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NetworkUtil.mm; sourceTree = "<group>"; };
 		246A32A2186838ED00903EF4 /* NSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUtil.h; sourceTree = "<group>"; };
 		246A32A3186838ED00903EF4 /* NSUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSUtil.mm; sourceTree = "<group>"; };
 		246A32A4186838ED00903EF4 /* NullObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullObject.h; sourceTree = "<group>"; };
@@ -329,8 +326,6 @@
 				246A329F186838ED00903EF4 /* HttpUtil.mm */,
 				246A32A6186838ED00903EF4 /* SettingUtil.h */,
 				246A32A7186838ED00903EF4 /* SettingUtil.mm */,
-				246A32A0186838ED00903EF4 /* NetworkUtil.h */,
-				246A32A1186838ED00903EF4 /* NetworkUtil.mm */,
 				24208EB218851A980058AD7E /* iVersion.h */,
 				24208EB318851A980058AD7E /* iVersion.m */,
 				246A32A8186838ED00903EF4 /* StatCenter.h */,
@@ -480,7 +475,6 @@
 				24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */,
 				246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */,
 				246A3333186838ED00903EF4 /* SegmentLabel.mm in Sources */,
-				246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */,
 				246A330B186838ED00903EF4 /* WebController.mm in Sources */,
 				246A3314186838ED00903EF4 /* Main.mm in Sources */,
 				246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */,
