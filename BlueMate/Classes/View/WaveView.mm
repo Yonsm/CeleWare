@@ -61,7 +61,7 @@
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		
 		CGContextBeginPath(context);
-		CGContextSetStrokeColorWithColor(context, UIColor.redColor.CGColor);
+		CGContextSetStrokeColorWithColor(context, UIColor.whiteColor.CGColor);
 
 		NSUInteger count = _powers.size();
 		for (NSUInteger i = 0; i < count; i++)
@@ -81,29 +81,6 @@
 		CGContextStrokePath(context);
 	}
 	
-}
-
-@end
-
-
-@implementation WavePanel
-
-// Constructor
-- (id)initWithFrame:(CGRect)frame dataSource:(id/*<WaveViewDataSource>*/)dataSource
-{
-	self = [super initWithFrame:frame];
-	
-	self.clipsToBounds = YES;
-	self.layer.cornerRadius = 4;
-	self.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.9];
-
-	//
-	frame = CGRectMake(20, 10, frame.size.width - 20, frame.size.height  - 20);
-	WaveView *waveView = [[WaveView alloc] initWithFrame:frame dataSource:dataSource];
-	waveView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[self addSubview:waveView];
-
-	return self;
 }
 
 @end

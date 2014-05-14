@@ -35,13 +35,3 @@
 - (id)initWithFrame:(CGRect)frame dataSource:(id/*<WaveViewDataSource>*/)dataSource;
 
 @end
-
-
-//
-@interface WavePanel : UIView
-{
-}
-
-- (id)initWithFrame:(CGRect)frame dataSource:(id/*<WaveViewDataSource>*/)dataSource;
-
-@end
