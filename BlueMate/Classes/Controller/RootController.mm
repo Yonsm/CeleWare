@@ -27,6 +27,10 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	self.title = NSUtil::BundleDisplayName();
+	
+	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Icon"]];
 
 	//添加后台播放代码：
 	AVAudioSession *session = [AVAudioSession sharedInstance];
