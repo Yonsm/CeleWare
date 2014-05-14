@@ -8,29 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		24208EB418851A980058AD7E /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 24208EB318851A980058AD7E /* iVersion.m */; };
-		2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4071869582200F86E14 /* AutoPullDataLoader.mm */; };
-		2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2430D4091869582200F86E14 /* CacheDataLoader.mm */; };
 		246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319318682C2D00903EF4 /* Foundation.framework */; };
 		246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319518682C2D00903EF4 /* CoreGraphics.framework */; };
 		246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319718682C2D00903EF4 /* UIKit.framework */; };
 		246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3208186838ED00903EF4 /* AppDelegate.mm */; };
 		246A32D9186838ED00903EF4 /* LoginController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A320C186838ED00903EF4 /* LoginController.mm */; };
 		246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A320E186838ED00903EF4 /* RegisterController.mm */; };
-		246A32DB186838ED00903EF4 /* AutoWizardController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3211186838ED00903EF4 /* AutoWizardController.mm */; };
 		246A32DC186838ED00903EF4 /* BaseController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3213186838ED00903EF4 /* BaseController.mm */; };
-		246A32DD186838ED00903EF4 /* PagingTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3215186838ED00903EF4 /* PagingTableController.mm */; };
 		246A32DE186838ED00903EF4 /* PullTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3217186838ED00903EF4 /* PullTableController.mm */; };
-		246A32DF186838ED00903EF4 /* PullWizardController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3219186838ED00903EF4 /* PullWizardController.mm */; };
 		246A32E0186838ED00903EF4 /* TableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A321B186838ED00903EF4 /* TableController.mm */; };
-		246A32E1186838ED00903EF4 /* WizardController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A321D186838ED00903EF4 /* WizardController.mm */; };
-		246A32E2186838ED00903EF4 /* NavigationController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A321F186838ED00903EF4 /* NavigationController.mm */; };
 		246A32E3186838ED00903EF4 /* RootController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3221186838ED00903EF4 /* RootController.mm */; };
 		246A32E4186838ED00903EF4 /* SettingController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3223186838ED00903EF4 /* SettingController.mm */; };
-		246A32E5186838ED00903EF4 /* CityLocater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3226186838ED00903EF4 /* CityLocater.mm */; };
-		246A32E6186838ED00903EF4 /* DataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3228186838ED00903EF4 /* DataLoader.mm */; };
-		246A32E7186838ED00903EF4 /* NearLocater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A322A186838ED00903EF4 /* NearLocater.mm */; };
-		246A32E8186838ED00903EF4 /* PullDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A322C186838ED00903EF4 /* PullDataLoader.mm */; };
-		246A32E9186838ED00903EF4 /* WizardCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A322F186838ED00903EF4 /* WizardCell.mm */; };
 		246A32F7186838ED00903EF4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3240186838ED00903EF4 /* Default-568h@2x.png */; };
 		246A32F8186838ED00903EF4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3241186838ED00903EF4 /* Default.png */; };
 		246A32F9186838ED00903EF4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3242186838ED00903EF4 /* Default@2x.png */; };
@@ -71,20 +59,12 @@
 		246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334818683DE000903EF4 /* MessageUI.framework */; };
 		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
 		24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* EXButton.mm */; };
-		24B6BB3E18E557C90058FC8B /* AlertView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3D18E557C90058FC8B /* AlertView.mm */; };
-		24B6BB4518E558420058FC8B /* SelectBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4018E558420058FC8B /* SelectBox.mm */; };
-		24B6BB4618E558420058FC8B /* SelectPicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4218E558420058FC8B /* SelectPicker.mm */; };
-		24B6BB4718E558420058FC8B /* SelectSheet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4418E558420058FC8B /* SelectSheet.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		24208EB218851A980058AD7E /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
 		24208EB318851A980058AD7E /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
 		24208EBC18852E0E0058AD7E /* CeleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeleUtil.h; sourceTree = "<group>"; };
-		2430D4061869582200F86E14 /* AutoPullDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoPullDataLoader.h; sourceTree = "<group>"; };
-		2430D4071869582200F86E14 /* AutoPullDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AutoPullDataLoader.mm; sourceTree = "<group>"; };
-		2430D4081869582200F86E14 /* CacheDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheDataLoader.h; sourceTree = "<group>"; };
-		2430D4091869582200F86E14 /* CacheDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CacheDataLoader.mm; sourceTree = "<group>"; };
 		246A319018682C2D00903EF4 /* BlueMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,36 +76,16 @@
 		246A320C186838ED00903EF4 /* LoginController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginController.mm; sourceTree = "<group>"; };
 		246A320D186838ED00903EF4 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
 		246A320E186838ED00903EF4 /* RegisterController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RegisterController.mm; sourceTree = "<group>"; };
-		246A3210186838ED00903EF4 /* AutoWizardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoWizardController.h; sourceTree = "<group>"; };
-		246A3211186838ED00903EF4 /* AutoWizardController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AutoWizardController.mm; sourceTree = "<group>"; };
 		246A3212186838ED00903EF4 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		246A3213186838ED00903EF4 /* BaseController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseController.mm; sourceTree = "<group>"; };
-		246A3214186838ED00903EF4 /* PagingTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingTableController.h; sourceTree = "<group>"; };
-		246A3215186838ED00903EF4 /* PagingTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PagingTableController.mm; sourceTree = "<group>"; };
 		246A3216186838ED00903EF4 /* PullTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullTableController.h; sourceTree = "<group>"; };
 		246A3217186838ED00903EF4 /* PullTableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PullTableController.mm; sourceTree = "<group>"; };
-		246A3218186838ED00903EF4 /* PullWizardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullWizardController.h; sourceTree = "<group>"; };
-		246A3219186838ED00903EF4 /* PullWizardController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PullWizardController.mm; sourceTree = "<group>"; };
 		246A321A186838ED00903EF4 /* TableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableController.h; sourceTree = "<group>"; };
 		246A321B186838ED00903EF4 /* TableController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TableController.mm; sourceTree = "<group>"; };
-		246A321C186838ED00903EF4 /* WizardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizardController.h; sourceTree = "<group>"; };
-		246A321D186838ED00903EF4 /* WizardController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WizardController.mm; sourceTree = "<group>"; };
-		246A321E186838ED00903EF4 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
-		246A321F186838ED00903EF4 /* NavigationController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NavigationController.mm; sourceTree = "<group>"; };
 		246A3220186838ED00903EF4 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		246A3221186838ED00903EF4 /* RootController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootController.mm; sourceTree = "<group>"; };
 		246A3222186838ED00903EF4 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
 		246A3223186838ED00903EF4 /* SettingController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingController.mm; sourceTree = "<group>"; };
-		246A3225186838ED00903EF4 /* CityLocater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityLocater.h; sourceTree = "<group>"; };
-		246A3226186838ED00903EF4 /* CityLocater.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CityLocater.mm; sourceTree = "<group>"; };
-		246A3227186838ED00903EF4 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
-		246A3228186838ED00903EF4 /* DataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DataLoader.mm; sourceTree = "<group>"; };
-		246A3229186838ED00903EF4 /* NearLocater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearLocater.h; sourceTree = "<group>"; };
-		246A322A186838ED00903EF4 /* NearLocater.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NearLocater.mm; sourceTree = "<group>"; };
-		246A322B186838ED00903EF4 /* PullDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullDataLoader.h; sourceTree = "<group>"; };
-		246A322C186838ED00903EF4 /* PullDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PullDataLoader.mm; sourceTree = "<group>"; };
-		246A322E186838ED00903EF4 /* WizardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizardCell.h; sourceTree = "<group>"; };
-		246A322F186838ED00903EF4 /* WizardCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WizardCell.mm; sourceTree = "<group>"; };
 		246A3240186838ED00903EF4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		246A3241186838ED00903EF4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		246A3242186838ED00903EF4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -202,14 +162,6 @@
 		246A334A18683DF300903EF4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		24B6BB3918E554390058FC8B /* EXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXButton.h; sourceTree = "<group>"; };
 		24B6BB3A18E554390058FC8B /* EXButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EXButton.mm; sourceTree = "<group>"; };
-		24B6BB3C18E557C90058FC8B /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
-		24B6BB3D18E557C90058FC8B /* AlertView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlertView.mm; sourceTree = "<group>"; };
-		24B6BB3F18E558420058FC8B /* SelectBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBox.h; sourceTree = "<group>"; };
-		24B6BB4018E558420058FC8B /* SelectBox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectBox.mm; sourceTree = "<group>"; };
-		24B6BB4118E558420058FC8B /* SelectPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPicker.h; sourceTree = "<group>"; };
-		24B6BB4218E558420058FC8B /* SelectPicker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectPicker.mm; sourceTree = "<group>"; };
-		24B6BB4318E558420058FC8B /* SelectSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSheet.h; sourceTree = "<group>"; };
-		24B6BB4418E558420058FC8B /* SelectSheet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectSheet.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,8 +236,6 @@
 			children = (
 				246A320A186838ED00903EF4 /* Auth */,
 				246A320F186838ED00903EF4 /* Base */,
-				246A321E186838ED00903EF4 /* NavigationController.h */,
-				246A321F186838ED00903EF4 /* NavigationController.mm */,
 				246A3220186838ED00903EF4 /* RootController.h */,
 				246A3221186838ED00903EF4 /* RootController.mm */,
 				246A3222186838ED00903EF4 /* SettingController.h */,
@@ -308,20 +258,12 @@
 		246A320F186838ED00903EF4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				246A3210186838ED00903EF4 /* AutoWizardController.h */,
-				246A3211186838ED00903EF4 /* AutoWizardController.mm */,
 				246A3212186838ED00903EF4 /* BaseController.h */,
 				246A3213186838ED00903EF4 /* BaseController.mm */,
-				246A3214186838ED00903EF4 /* PagingTableController.h */,
-				246A3215186838ED00903EF4 /* PagingTableController.mm */,
 				246A3216186838ED00903EF4 /* PullTableController.h */,
 				246A3217186838ED00903EF4 /* PullTableController.mm */,
-				246A3218186838ED00903EF4 /* PullWizardController.h */,
-				246A3219186838ED00903EF4 /* PullWizardController.mm */,
 				246A321A186838ED00903EF4 /* TableController.h */,
 				246A321B186838ED00903EF4 /* TableController.mm */,
-				246A321C186838ED00903EF4 /* WizardController.h */,
-				246A321D186838ED00903EF4 /* WizardController.mm */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -329,18 +271,6 @@
 		246A3224186838ED00903EF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				246A3225186838ED00903EF4 /* CityLocater.h */,
-				246A3226186838ED00903EF4 /* CityLocater.mm */,
-				246A3227186838ED00903EF4 /* DataLoader.h */,
-				246A3228186838ED00903EF4 /* DataLoader.mm */,
-				246A3229186838ED00903EF4 /* NearLocater.h */,
-				246A322A186838ED00903EF4 /* NearLocater.mm */,
-				246A322B186838ED00903EF4 /* PullDataLoader.h */,
-				246A322C186838ED00903EF4 /* PullDataLoader.mm */,
-				2430D4061869582200F86E14 /* AutoPullDataLoader.h */,
-				2430D4071869582200F86E14 /* AutoPullDataLoader.mm */,
-				2430D4081869582200F86E14 /* CacheDataLoader.h */,
-				2430D4091869582200F86E14 /* CacheDataLoader.mm */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,18 +278,8 @@
 		246A322D186838ED00903EF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				24B6BB3F18E558420058FC8B /* SelectBox.h */,
-				24B6BB4018E558420058FC8B /* SelectBox.mm */,
-				24B6BB4118E558420058FC8B /* SelectPicker.h */,
-				24B6BB4218E558420058FC8B /* SelectPicker.mm */,
-				24B6BB4318E558420058FC8B /* SelectSheet.h */,
-				24B6BB4418E558420058FC8B /* SelectSheet.mm */,
-				24B6BB3C18E557C90058FC8B /* AlertView.h */,
-				24B6BB3D18E557C90058FC8B /* AlertView.mm */,
 				24B6BB3918E554390058FC8B /* EXButton.h */,
 				24B6BB3A18E554390058FC8B /* EXButton.mm */,
-				246A322E186838ED00903EF4 /* WizardCell.h */,
-				246A322F186838ED00903EF4 /* WizardCell.mm */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -576,35 +496,23 @@
 				246A32DE186838ED00903EF4 /* PullTableController.mm in Sources */,
 				246A32E3186838ED00903EF4 /* RootController.mm in Sources */,
 				246A330A186838ED00903EF4 /* ShareComposer.mm in Sources */,
-				246A32DF186838ED00903EF4 /* PullWizardController.mm in Sources */,
 				246A3330186838ED00903EF4 /* ODRefreshControl.m in Sources */,
 				246A3326186838ED00903EF4 /* SettingUtil.mm in Sources */,
-				246A32E8186838ED00903EF4 /* PullDataLoader.mm in Sources */,
-				246A32E5186838ED00903EF4 /* CityLocater.mm in Sources */,
-				246A32DD186838ED00903EF4 /* PagingTableController.mm in Sources */,
 				246A3328186838ED00903EF4 /* UIUtil.mm in Sources */,
-				2430D40B1869582200F86E14 /* CacheDataLoader.mm in Sources */,
 				24208EB418851A980058AD7E /* iVersion.m in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
 				246A3309186838ED00903EF4 /* NullController.mm in Sources */,
 				246A32DC186838ED00903EF4 /* BaseController.mm in Sources */,
 				246A3332186838ED00903EF4 /* PullView.mm in Sources */,
-				246A32E7186838ED00903EF4 /* NearLocater.mm in Sources */,
 				246A332B186838ED00903EF4 /* CurrencyField.mm in Sources */,
-				24B6BB4518E558420058FC8B /* SelectBox.mm in Sources */,
-				246A32E1186838ED00903EF4 /* WizardController.mm in Sources */,
 				246A332A186838ED00903EF4 /* CacheImageView.mm in Sources */,
 				24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */,
-				24B6BB4618E558420058FC8B /* SelectPicker.mm in Sources */,
 				246A32D8186838ED00903EF4 /* AppDelegate.mm in Sources */,
 				246A3333186838ED00903EF4 /* SegmentLabel.mm in Sources */,
 				246A3307186838ED00903EF4 /* MessageComposer.mm in Sources */,
-				246A32E6186838ED00903EF4 /* DataLoader.mm in Sources */,
-				246A32DB186838ED00903EF4 /* AutoWizardController.mm in Sources */,
 				246A3323186838ED00903EF4 /* NetworkUtil.mm in Sources */,
 				246A330B186838ED00903EF4 /* WebController.mm in Sources */,
 				246A3314186838ED00903EF4 /* Main.mm in Sources */,
-				246A32E9186838ED00903EF4 /* WizardCell.mm in Sources */,
 				246A32E4186838ED00903EF4 /* SettingController.mm in Sources */,
 				246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */,
 				246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */,
@@ -612,12 +520,8 @@
 				246A32DA186838ED00903EF4 /* RegisterController.mm in Sources */,
 				246A3338186838ED00903EF4 /* TouchView.mm in Sources */,
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
-				24B6BB4718E558420058FC8B /* SelectSheet.mm in Sources */,
-				2430D40A1869582200F86E14 /* AutoPullDataLoader.mm in Sources */,
-				24B6BB3E18E557C90058FC8B /* AlertView.mm in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
 				246A3337186838ED00903EF4 /* ToastView.mm in Sources */,
-				246A32E2186838ED00903EF4 /* NavigationController.mm in Sources */,
 				246A3324186838ED00903EF4 /* NSUtil.mm in Sources */,
 				246A32D9186838ED00903EF4 /* LoginController.mm in Sources */,
 			);
