@@ -37,7 +37,7 @@
 	
 	if (_style == UITableViewStylePlain)
 	{
-		_tableView.contentInset = UIEdgeInsetsMake(UIUtil::IsOS7() ? 22 : 0, 0, kScrollViewBottomPad, 0);
+		_tableView.contentInset = UIEdgeInsetsMake(0, 0, kScrollViewBottomPad, 0);
 	}
 }
 

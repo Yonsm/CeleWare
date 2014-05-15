@@ -3,6 +3,7 @@
 #import "WaveView.h"
 #import "IconPane.h"
 #import "IPADeploy.h"
+#import "EXButton.h"
 
 @implementation RootController
 
@@ -35,10 +36,32 @@
 	frame.size.height -= 95;
 	self.tableView.frame = frame;
 	self.tableView.rowHeight = 57;
+	self.tableView.contentInset = UIEdgeInsetsMake(UIUtil::IsOS7() ? 22 : 0, 0, 100, 0);
 
-	frame.origin.y = frame.size.height;
+	frame.origin.y = frame.size.height - 80;
+	frame.size.height = 80;
+	UIView *toolbar = [[UIView alloc] initWithFrame:frame];
+	toolbar.backgroundColor = UIUtil::Color(69,79,120,0.8);
+	[self.view addSubview:toolbar];
+
+	UIButton *button1 = [UIButton buttonWithImageNamed:@"PrevIcon"];
+	[button1 addTarget:self action:@selector(prevButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	button1.center = CGPointMake(80, 40);
+	[toolbar addSubview:button1];
+
+	UIButton *button2 = [UIButton buttonWithImageNamed:@"PlayIcon"];
+	[button2 addTarget:self action:@selector(playButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	button2.center = CGPointMake(160, 40);
+	[toolbar addSubview:button2];
+
+	UIButton *button3 = [UIButton buttonWithImageNamed:@"NextIcon"];
+	[button3 addTarget:self action:@selector(nextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	button3.center = CGPointMake(240, 40);
+	[toolbar addSubview:button3];
+
+	frame.origin.y += frame.size.height;
 	frame.size.height = 95;
-	IconPane *pane = [[IconPane alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 95, 320, 95)];
+	IconPane *pane = [[IconPane alloc] initWithFrame:frame];
 	pane.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:pane];
 
@@ -159,6 +182,24 @@
 	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Null.mp3")];
 	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
 	[_player prepareToPlay];
+}
+
+//
+- (void)prevButtonClicked:(id)sender
+{
+	
+}
+
+//
+- (void)playButtonClicked:(id)sender
+{
+	
+}
+
+//
+- (void)nextButtonClicked:(id)sender
+{
+	
 }
 
 //
