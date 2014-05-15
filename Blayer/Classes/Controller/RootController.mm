@@ -1,7 +1,8 @@
 
 #import "RootController.h"
 #import "WaveView.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import "IconPane.h"
+//#import <MediaPlayer/MediaPlayer.h>
 
 @implementation RootController
 
@@ -22,12 +23,6 @@
 //	[super loadView];
 //}
 
-//
-void interruptionListenerCallback ( void *inUserData,  UInt32  interruptionState )
-{
-	_Log(@"interruptionListenerCallback %d", interruptionState);
-}
-
 // Do additional setup after loading the view.
 - (void)viewDidLoad
 {
@@ -35,9 +30,15 @@ void interruptionListenerCallback ( void *inUserData,  UInt32  interruptionState
 	
 	self.title = NSUtil::BundleDisplayName();
 	
-	self.view.backgroundColor = /*UIColor.blackColor;//*/[UIColor colorWithPatternImage:[UIImage imageNamed:@"Icon"]];
+	self.view.backgroundColor = /*UIColor.blackColor;//*/[UIColor colorWithPatternImage:[UIImage imageNamed:@"Default"]];
 	
 	[self accessoryDidConnect:nil];
+	
+	CGRect frame = self.view.bounds;
+	frame.origin.y = frame.size.height - 95;
+	frame.size.height = 95;
+	IconPane *pane = [[IconPane alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 95, 320, 95)];
+	[self.view addSubview:pane];
 }
 
 // Called after the view controller's view is released and set to nil.
@@ -71,13 +72,6 @@ void interruptionListenerCallback ( void *inUserData,  UInt32  interruptionState
 	[session setActive:YES error:nil];
 	[session setCategory:AVAudioSessionCategoryPlayback error:nil];
 	
-//	AudioSessionInitialize (
-//							NULL,                            // 1
-//							NULL,                            // 2
-//							interruptionListenerCallback,    // 3
-//							NULL                         // 4
-//							);
-	
 	//AudioSessionSetActive(YES);
 	UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
 	AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
@@ -88,8 +82,10 @@ void interruptionListenerCallback ( void *inUserData,  UInt32  interruptionState
 	UInt32 allowBluetoothInput = 1;
 	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryEnableBluetoothInput, sizeof(allowBluetoothInput), &allowBluetoothInput);
 	
+#if !TARGET_IPHONE_SIMULATOR
 	CFStringRef audioRouteOverride = kAudioSessionOutputRoute_BluetoothHFP;
 	AudioSessionSetProperty(kAudioSessionProperty_OutputDestination, sizeof(audioRouteOverride), &audioRouteOverride);
+#endif
 	
 	//	// 设置支持接受远程控制事件代码。设置支持接受远程控制事件，
 	//	// 其实就是在dock中可以显示应用程序图标，同时点击该图片时，打开app。
@@ -108,8 +104,8 @@ void interruptionListenerCallback ( void *inUserData,  UInt32  interruptionState
 //	[mpVolumeViewParentView addSubview: myVolumeView];
 
 	//return;
-	NSArray *items = MPMediaQuery.songsQuery.items;
-	MPMediaItem *item = items[0];
+	//NSArray *items = MPMediaQuery.songsQuery.items;
+	//MPMediaItem *item = items[0];
 	//NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
 	//_LogObj(URL);
 
@@ -123,9 +119,9 @@ void interruptionListenerCallback ( void *inUserData,  UInt32  interruptionState
 	_player.meteringEnabled = YES;
 	[_player play]; //播放
 	//
-	WaveView *waveView = [[WaveView alloc] initWithFrame:self.view.bounds dataSource:_player];
-	waveView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[self.view addSubview:waveView];
+//	WaveView *waveView = [[WaveView alloc] initWithFrame:self.view.bounds dataSource:_player];
+//	waveView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//	[self.view addSubview:waveView];
 }
 
 //

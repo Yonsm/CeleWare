@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		241F5798192458B000F7D201 /* IconPane.mm in Sources */ = {isa = PBXBuildFile; fileRef = 241F5797192458B000F7D201 /* IconPane.mm */; };
+		241F57A51924653600F7D201 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241F57A41924653600F7D201 /* MediaPlayer.framework */; };
+		241F57A71924659500F7D201 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241F57A61924659500F7D201 /* AudioToolbox.framework */; };
+		241F57AA192467FD00F7D201 /* IPADeploy.m in Sources */ = {isa = PBXBuildFile; fileRef = 241F57A9192467FD00F7D201 /* IPADeploy.m */; };
 		246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319318682C2D00903EF4 /* Foundation.framework */; };
 		246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319518682C2D00903EF4 /* CoreGraphics.framework */; };
 		246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319718682C2D00903EF4 /* UIKit.framework */; };
@@ -45,15 +49,18 @@
 		246A3337186838ED00903EF4 /* ToastView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32CB186838ED00903EF4 /* ToastView.mm */; };
 		246A3338186838ED00903EF4 /* TouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A32CD186838ED00903EF4 /* TouchView.mm */; };
 		246A333F1868394000903EF4 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 246A333E1868394000903EF4 /* Assets */; };
-		246A334318683DA800903EF4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334218683DA800903EF4 /* libz.dylib */; };
 		247206F019234CD300E6FB1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206EF19234CD300E6FB1F /* AVFoundation.framework */; };
 		247206F8192352D900E6FB1F /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 247206F7192352D900E6FB1F /* WaveView.mm */; };
-		247206FF1923778B00E6FB1F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
-		24720701192377D100E6FB1F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247206F119234D8A00E6FB1F /* AudioToolbox.framework */; };
 		24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* EXButton.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		241F5796192458B000F7D201 /* IconPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconPane.h; sourceTree = "<group>"; };
+		241F5797192458B000F7D201 /* IconPane.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IconPane.mm; sourceTree = "<group>"; };
+		241F57A41924653600F7D201 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		241F57A61924659500F7D201 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		241F57A8192467FD00F7D201 /* IPADeploy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPADeploy.h; sourceTree = "<group>"; };
+		241F57A9192467FD00F7D201 /* IPADeploy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPADeploy.m; sourceTree = "<group>"; };
 		24208EB218851A980058AD7E /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
 		24208EB318851A980058AD7E /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
 		24208EBC18852E0E0058AD7E /* CeleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CeleUtil.h; sourceTree = "<group>"; };
@@ -61,7 +68,6 @@
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		246A319718682C2D00903EF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		246A31AC18682C2D00903EF4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		246A3207186838ED00903EF4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		246A3208186838ED00903EF4 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		246A3212186838ED00903EF4 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
@@ -133,17 +139,10 @@
 		246A32CD186838ED00903EF4 /* TouchView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchView.mm; sourceTree = "<group>"; };
 		246A333D1868392900903EF4 /* Documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documents; sourceTree = "<group>"; };
 		246A333E1868394000903EF4 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
-		246A334218683DA800903EF4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		246A334418683DB100903EF4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		246A334618683DBF00903EF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		246A334818683DE000903EF4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		246A334A18683DF300903EF4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		247206EF19234CD300E6FB1F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		247206F119234D8A00E6FB1F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		247206F319234D9D00E6FB1F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		247206F6192352D900E6FB1F /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveView.h; sourceTree = "<group>"; };
 		247206F7192352D900E6FB1F /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaveView.mm; sourceTree = "<group>"; };
-		247206FD19236EF400E6FB1F /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		24B6BB3918E554390058FC8B /* EXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXButton.h; sourceTree = "<group>"; };
 		24B6BB3A18E554390058FC8B /* EXButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EXButton.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,10 +152,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24720701192377D100E6FB1F /* AudioToolbox.framework in Frameworks */,
-				247206FF1923778B00E6FB1F /* MediaPlayer.framework in Frameworks */,
+				241F57A71924659500F7D201 /* AudioToolbox.framework in Frameworks */,
+				241F57A51924653600F7D201 /* MediaPlayer.framework in Frameworks */,
 				247206F019234CD300E6FB1F /* AVFoundation.framework in Frameworks */,
-				246A334318683DA800903EF4 /* libz.dylib in Frameworks */,
 				246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */,
 				246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */,
 				246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */,
@@ -189,19 +187,13 @@
 		246A319218682C2D00903EF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				247206FD19236EF400E6FB1F /* ExternalAccessory.framework */,
-				247206F319234D9D00E6FB1F /* CoreAudio.framework */,
-				247206F119234D8A00E6FB1F /* AudioToolbox.framework */,
+				241F57A61924659500F7D201 /* AudioToolbox.framework */,
+				241F57A41924653600F7D201 /* MediaPlayer.framework */,
 				247206EF19234CD300E6FB1F /* AVFoundation.framework */,
-				246A334A18683DF300903EF4 /* MediaPlayer.framework */,
-				246A334818683DE000903EF4 /* MessageUI.framework */,
-				246A334618683DBF00903EF4 /* SystemConfiguration.framework */,
 				246A334418683DB100903EF4 /* CoreLocation.framework */,
-				246A334218683DA800903EF4 /* libz.dylib */,
 				246A319318682C2D00903EF4 /* Foundation.framework */,
 				246A319518682C2D00903EF4 /* CoreGraphics.framework */,
 				246A319718682C2D00903EF4 /* UIKit.framework */,
-				246A31AC18682C2D00903EF4 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,6 +234,8 @@
 		246A3224186838ED00903EF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				241F57A8192467FD00F7D201 /* IPADeploy.h */,
+				241F57A9192467FD00F7D201 /* IPADeploy.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +243,8 @@
 		246A322D186838ED00903EF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				241F5796192458B000F7D201 /* IconPane.h */,
+				241F5797192458B000F7D201 /* IconPane.mm */,
 				247206F6192352D900E6FB1F /* WaveView.h */,
 				247206F7192352D900E6FB1F /* WaveView.mm */,
 				24B6BB3918E554390058FC8B /* EXButton.h */,
@@ -393,6 +389,22 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Yonsm;
+				TargetAttributes = {
+					246A318F18682C2D00903EF4 = {
+						DevelopmentTeam = 57DK5WT2WW;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "Blayer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -467,6 +479,7 @@
 				246A3326186838ED00903EF4 /* SettingUtil.mm in Sources */,
 				246A3328186838ED00903EF4 /* UIUtil.mm in Sources */,
 				246A3325186838ED00903EF4 /* NullObject.mm in Sources */,
+				241F57AA192467FD00F7D201 /* IPADeploy.m in Sources */,
 				246A3309186838ED00903EF4 /* NullController.mm in Sources */,
 				246A32DC186838ED00903EF4 /* BaseController.mm in Sources */,
 				246A3332186838ED00903EF4 /* PullView.mm in Sources */,
@@ -483,6 +496,7 @@
 				246A3322186838ED00903EF4 /* HttpUtil.mm in Sources */,
 				246A332E186838ED00903EF4 /* KBCustomTextField.mm in Sources */,
 				246A3337186838ED00903EF4 /* ToastView.mm in Sources */,
+				241F5798192458B000F7D201 /* IconPane.mm in Sources */,
 				246A3324186838ED00903EF4 /* NSUtil.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +562,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "Sources/**";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "C61122D3-D823-4AF8-A828-31869DBBF841";
+				PROVISIONING_PROFILE = "06E8E42D-04C0-454B-8A63-D933EEE8FBAA";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Sources/**";

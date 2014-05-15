@@ -1,0 +1,5 @@
+
+
+//
+@interface IconPane : UIView
+@end
