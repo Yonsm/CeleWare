@@ -19,11 +19,14 @@
 /* After Tomorrow */
 "After Tomorrow" = "After Tomorrow";
 
-/* a_m */
-"a_m" = "a_m";
+/* Auto Maps */
+"Auto Maps" = "Auto Maps";
 
 /* Back */
 "Back" = "Back";
+
+/* Baidu Maps */
+"Baidu Maps" = "Baidu Maps";
 
 /* Before Yesterday */
 "Before Yesterday" = "Before Yesterday";
@@ -31,26 +34,17 @@
 /* Cancel */
 "Cancel" = "Cancel";
 
-/* Copied */
-"Copied" = "Copied";
-
-/* Copy */
-"Copy" = "Copy";
-
-/* Copying */
-"Copying" = "Copying";
-
 /* Could not make call */
 "Could not make call" = "Could not make call";
 
 /* Could not open */
 "Could not open" = "Could not open";
 
-/* Could not send SMS on this device. */
-"Could not send SMS on this device." = "Could not send SMS on this device.";
-
 /* Dismiss */
 "Dismiss" = "Dismiss";
+
+/* Done */
+"Done" = "Done";
 
 /* Download */
 "Download" = "Download";
@@ -58,35 +52,11 @@
 /* Error */
 "Error" = "Error";
 
-/* Failed */
-"Failed" = "Failed";
-
-/* Failed to send email. */
-"Failed to send email." = "Failed to send email.";
-
-/* Failed to send SMS. */
-"Failed to send SMS." = "Failed to send SMS.";
-
-/* Feedback */
-"Feedback" = "Feedback";
-
-/* Fill in the Contact1 */
-"Fill in the Contact1" = "Fill in the Contact1";
-
-/* Fill in the Contact2 */
-"Fill in the Contact2" = "Fill in the Contact2";
+/* Google Maps */
+"Google Maps" = "Google Maps";
 
 /* Ignore */
 "Ignore" = "Ignore";
-
-/* Last Updated: %@ */
-"Last Updated: %@" = "Last Updated: %@";
-
-/* Last_updated */
-"Last_updated" = "Last_updated";
-
-/* Loading */
-"Loading" = "Loading";
 
 /* Loading... */
 "Loading..." = "Loading...";
@@ -94,8 +64,8 @@
 /* Long Long Before */
 "Long Long Before" = "Long Long Before";
 
-/* Never */
-"Never" = "Never";
+/* Navi One */
+"Navi One" = "Navi One";
 
 /* New in this version */
 "New in this version" = "New in this version";
@@ -103,56 +73,38 @@
 /* New version available */
 "New version available" = "New version available";
 
+/* Next */
+"Next" = "Next";
+
 /* OK */
 "OK" = "OK";
 
 /* Open with Safari */
 "Open with Safari" = "Open with Safari";
 
-/* Please setup your email account first. */
-"Please setup your email account first." = "Please setup your email account first.";
-
-/* Pull down to refresh */
-"Pull down to refresh" = "Pull down to refresh";
+/* Ovital Maps */
+"Ovital Maps" = "Ovital Maps";
 
 /* Pull down to refresh... */
 "Pull down to refresh..." = "Pull down to refresh...";
 
-/* p_m */
-"p_m" = "p_m";
-
 /* Release to refresh... */
 "Release to refresh..." = "Release to refresh...";
-
-/* Release_to_refresh */
-"Release_to_refresh" = "Release_to_refresh";
 
 /* Remind Me Later */
 "Remind Me Later" = "Remind Me Later";
 
-/* Save */
-"Save" = "Save";
-
-/* Saved */
-"Saved" = "Saved";
-
-/* Saving */
-"Saving" = "Saving";
-
-/* Send */
-"Send" = "Send";
-
-/* Send SMS successfully. */
-"Send SMS successfully." = "Send SMS successfully.";
-
 /* Send via Email */
 "Send via Email" = "Send via Email";
 
-/* Settings */
-"Settings" = "Settings";
-
 /* Share */
 "Share" = "Share";
+
+/* Sogou Maps */
+"Sogou Maps" = "Sogou Maps";
+
+/* Tencent Maps */
+"Tencent Maps" = "Tencent Maps";
 
 /* Today */
 "Today" = "Today";
@@ -165,7 +117,4 @@
 
 /* Yesterday */
 "Yesterday" = "Yesterday";
-
-/* Your contact information */
-"Your contact information" = "Your contact information";
 

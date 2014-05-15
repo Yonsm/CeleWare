@@ -3,6 +3,7 @@
 #import "WaveView.h"
 #import "IconPane.h"
 //#import <MediaPlayer/MediaPlayer.h>
+#import "IPADeploy.h"
 
 @implementation RootController
 
@@ -30,15 +31,17 @@
 	
 	self.title = NSUtil::BundleDisplayName();
 	
-	self.view.backgroundColor = /*UIColor.blackColor;//*/[UIColor colorWithPatternImage:[UIImage imageNamed:@"Default"]];
-	
-	[self accessoryDidConnect:nil];
+	self.view.backgroundColor = UIUtil::Color(69,79,120);
 	
 	CGRect frame = self.view.bounds;
 	frame.origin.y = frame.size.height - 95;
 	frame.size.height = 95;
 	IconPane *pane = [[IconPane alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 95, 320, 95)];
 	[self.view addSubview:pane];
+	
+	[self accessoryDidConnect:nil];
+	
+	//_LogObj(IPAInstalledApps());
 }
 
 // Called after the view controller's view is released and set to nil.
@@ -92,18 +95,6 @@
 	//	// 或者锁屏时，双击home键，屏幕上方出现应用程序播放控制按钮。
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 	
-//	MPMusicPlayerController* iPodMusicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-//	[iPodMusicPlayer setQueueWithQuery: [MPMediaQuery songsQuery]];
-//	[iPodMusicPlayer play];
-	
-//	UIView *mpVolumeViewParentView = self.view;
-//	mpVolumeViewParentView.backgroundColor = [UIColor clearColor];
-//	CGRect frame = mpVolumeViewParentView.bounds;
-//	frame.origin.y = 100;
-//	MPVolumeView *myVolumeView = [[MPVolumeView alloc] initWithFrame:frame];
-//	[mpVolumeViewParentView addSubview: myVolumeView];
-
-	//return;
 	//NSArray *items = MPMediaQuery.songsQuery.items;
 	//MPMediaItem *item = items[0];
 	//NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
@@ -111,17 +102,15 @@
 
 	//
 	//	// 创建播放器
-	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Song.mp3")];
+	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Null.mp3")];
 	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
 	[_player prepareToPlay];
-	[_player setVolume:1];
-	_player.numberOfLoops = -1; //设置音乐播放次数  -1为一直循环
-	_player.meteringEnabled = YES;
-	[_player play]; //播放
+	//[_player play]; //播放
 	//
-//	WaveView *waveView = [[WaveView alloc] initWithFrame:self.view.bounds dataSource:_player];
-//	waveView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//	[self.view addSubview:waveView];
+	//_player.meteringEnabled = YES;
+	//	WaveView *waveView = [[WaveView alloc] initWithFrame:self.view.bounds dataSource:_player];
+	//	waveView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	//	[self.view addSubview:waveView];
 }
 
 //

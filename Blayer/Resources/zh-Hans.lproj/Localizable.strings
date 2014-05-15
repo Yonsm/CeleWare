@@ -19,11 +19,14 @@
 /* After Tomorrow */
 "After Tomorrow" = "后天";
 
-/* a_m */
-"a_m" = "上午";
+/* Auto Maps */
+"Auto Maps" = "高德地图";
 
 /* Back */
 "Back" = "返回";
+
+/* Baidu Maps */
+"Baidu Maps" = "百度地图";
 
 /* Before Yesterday */
 "Before Yesterday" = "前天";
@@ -31,26 +34,17 @@
 /* Cancel */
 "Cancel" = "取消";
 
-/* Copied */
-"Copied" = "已拷贝";
-
-/* Copy */
-"Copy" = "拷贝";
-
-/* Copying */
-"Copying" = "正在拷贝";
-
 /* Could not make call */
 "Could not make call" = "无法拨打电话";
 
 /* Could not open */
 "Could not open" = "无法打开";
 
-/* Could not send SMS on this device. */
-"Could not send SMS on this device." = "在此设备上无法发送短信。";
-
 /* Dismiss */
 "Dismiss" = "关闭";
+
+/* Done */
+"Done" = "完成";
 
 /* Download */
 "Download" = "下载";
@@ -58,35 +52,11 @@
 /* Error */
 "Error" = "错误";
 
-/* Failed */
-"Failed" = "失败";
-
-/* Failed to send email. */
-"Failed to send email." = "发送邮件失败。";
-
-/* Failed to send SMS. */
-"Failed to send SMS." = "发送短信失败。";
-
-/* Feedback */
-"Feedback" = "用户反馈";
-
-/* Fill in the Contact1 */
-"Fill in the Contact1" = "填写联系信息";
-
-/* Fill in the Contact2 */
-"Fill in the Contact2" = "请留下您的QQ，邮箱，电话等联系方式";
+/* Google Maps */
+"Google Maps" = "谷歌地图";
 
 /* Ignore */
 "Ignore" = "忽略";
-
-/* Last Updated: %@ */
-"Last Updated: %@" = "最近更新：%@";
-
-/* Last_updated */
-"Last_updated" = "最后更新";
-
-/* Loading */
-"Loading" = "刷新中...";
 
 /* Loading... */
 "Loading..." = "加载中⋯";
@@ -94,8 +64,8 @@
 /* Long Long Before */
 "Long Long Before" = "好久好久以前";
 
-/* Never */
-"Never" = "从未";
+/* Navi One */
+"Navi One" = "凯立德导航";
 
 /* New in this version */
 "New in this version" = "更新说明";
@@ -103,56 +73,38 @@
 /* New version available */
 "New version available" = "有新的版本";
 
+/* Next */
+"Next" = "下一项";
+
 /* OK */
 "OK" = "好的";
 
 /* Open with Safari */
 "Open with Safari" = "在 Safari 中打开";
 
-/* Please setup your email account first. */
-"Please setup your email account first." = "请先设置您的邮件账户。";
-
-/* Pull down to refresh */
-"Pull down to refresh" = "下拉可以刷新...";
+/* Ovital Maps */
+"Ovital Maps" = "奥维地图";
 
 /* Pull down to refresh... */
 "Pull down to refresh..." = "下拉可以更新⋯";
 
-/* p_m */
-"p_m" = "下午";
-
 /* Release to refresh... */
 "Release to refresh..." = "松开立即更新⋯";
-
-/* Release_to_refresh */
-"Release_to_refresh" = "松开即可刷新...";
 
 /* Remind Me Later */
 "Remind Me Later" = "回头再说";
 
-/* Save */
-"Save" = "保存";
-
-/* Saved */
-"Saved" = "已保存到相册";
-
-/* Saving */
-"Saving" = "正在保存";
-
-/* Send */
-"Send" = "发送";
-
-/* Send SMS successfully. */
-"Send SMS successfully." = "发送短信成功。";
-
 /* Send via Email */
 "Send via Email" = "发送邮件链接";
 
-/* Settings */
-"Settings" = "设置";
-
 /* Share */
 "Share" = "分享";
+
+/* Sogou Maps */
+"Sogou Maps" = "搜狗地图";
+
+/* Tencent Maps */
+"Tencent Maps" = "腾讯地图";
 
 /* Today */
 "Today" = "今天";
@@ -165,7 +117,4 @@
 
 /* Yesterday */
 "Yesterday" = "昨天";
-
-/* Your contact information */
-"Your contact information" = "您的联系方式";
 

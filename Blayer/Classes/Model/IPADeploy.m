@@ -123,61 +123,64 @@ NSDictionary *IPAInstalledApps()
 			_LogObj(ret);
 		}
 	}
-	return nil;
 	
-	/*NSString *bundlePath = [NSBundle mainBundle].bundlePath;
-	NSString *bundleContainer = [bundlePath stringByDeletingLastPathComponent];
-	NSString *appsPath = [bundleContainer stringByDeletingLastPathComponent];
-
-	// Try read from installation cache
-	if (tryFromCache)
+#if 0
+	if (ret == nil)
 	{
-		NSString *userPath = [appsPath stringByDeletingLastPathComponent];
-		NSString *cachePath = [userPath stringByAppendingPathComponent:@"Library/Caches/com.apple.mobile.installation.plist"];
-
-		NSDictionary *cache = [NSDictionary dictionaryWithContentsOfFile:cachePath];
-		NSDictionary *dict = [cache objectForKey:@"User"];
-		if ([dict isKindOfClass:[NSDictionary class]])
+		NSString *bundlePath = [NSBundle mainBundle].bundlePath;
+		NSString *bundleContainer = [bundlePath stringByDeletingLastPathComponent];
+		NSString *appsPath = [bundleContainer stringByDeletingLastPathComponent];
+		
+		// Try read from installation cache
+		if (1)
 		{
-			return dict;
-		}
-	}
-	
-	// Lookup from applications folder
-	//NSString *appsPath = @"/User/Applications";
-	NSFileManager *fm = [NSFileManager defaultManager];
-	NSArray *apps = [fm contentsOfDirectoryAtPath:appsPath error:nil];
-	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:apps.count];
-	for (NSString *app in apps)
-	{
-		NSString *container = [appsPath stringByAppendingPathComponent:app];
-		NSArray *dirs = [fm contentsOfDirectoryAtPath:container error:nil];
-		for (NSString *dir in dirs)
-		{
-			if ([dir hasSuffix:@".app"])
+			NSString *userPath = [appsPath stringByDeletingLastPathComponent];
+			NSString *cachePath = [userPath stringByAppendingPathComponent:@"Library/Caches/com.apple.mobile.installation.plist"];
+			
+			NSDictionary *cache = [NSDictionary dictionaryWithContentsOfFile:cachePath];
+			NSDictionary *dict = [cache objectForKey:@"User"];
+			if ([dict isKindOfClass:[NSDictionary class]])
 			{
-				NSString *path = [container stringByAppendingPathComponent:dir];
-				NSMutableDictionary *plist = [[NSMutableDictionary alloc] initWithContentsOfFile:[path stringByAppendingPathComponent:@"Info.plist"]];
-				NSString *key = [plist objectForKey:@"CFBundleIdentifier"];
-				if (key)
+				return dict;
+			}
+		}
+		
+		// Lookup from applications folder
+		//NSString *appsPath = @"/User/Applications";
+		NSFileManager *fm = [NSFileManager defaultManager];
+		NSArray *apps = [fm contentsOfDirectoryAtPath:appsPath error:nil];
+		if (apps.count) ret = [NSMutableDictionary dictionaryWithCapacity:apps.count];
+		for (NSString *app in apps)
+		{
+			NSString *container = [appsPath stringByAppendingPathComponent:app];
+			NSArray *dirs = [fm contentsOfDirectoryAtPath:container error:nil];
+			for (NSString *dir in dirs)
+			{
+				if ([dir hasSuffix:@".app"])
 				{
-					[plist setObject:path forKey:@"Path"];
-					[plist setObject:container forKey:@"Container"];
-					[plist setObject:@"User" forKey:@"ApplicationType"];
-					//[plist setObject:@"APPSYNC Bypass" forKey:@"SignerIdentity"];
-					//NSDictionary *vars = [[NSDictionary alloc] initWithObjectsAndKeys:container, @"CFFIXED_USER_HOME", container, @"HOME", [container stringByAppendingPathComponent:@"tmp"], @"TMPDIR", nil];
-					//[plist setObject:vars forKey:@"EnvironmentVariables"];
-					//[vars release];
-
-					[dict setObject:plist forKey:key];
+					NSString *path = [container stringByAppendingPathComponent:dir];
+					NSMutableDictionary *plist = [[NSMutableDictionary alloc] initWithContentsOfFile:[path stringByAppendingPathComponent:@"Info.plist"]];
+					NSString *key = [plist objectForKey:@"CFBundleIdentifier"];
+					if (key)
+					{
+						[plist setObject:path forKey:@"Path"];
+						[plist setObject:container forKey:@"Container"];
+						[plist setObject:@"User" forKey:@"ApplicationType"];
+						//[plist setObject:@"APPSYNC Bypass" forKey:@"SignerIdentity"];
+						//NSDictionary *vars = [[NSDictionary alloc] initWithObjectsAndKeys:container, @"CFFIXED_USER_HOME", container, @"HOME", [container stringByAppendingPathComponent:@"tmp"], @"TMPDIR", nil];
+						//[plist setObject:vars forKey:@"EnvironmentVariables"];
+						//[vars release];
+						
+						[(NSMutableDictionary *)ret setObject:plist forKey:key];
+					}
+					break;
 				}
-				[plist release];
-				break;
 			}
 		}
 	}
-	
-	return dict;*/
+#endif
+
+	return ret;
 }
 
 // TODO:Archive a IPA

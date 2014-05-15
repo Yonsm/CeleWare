@@ -1,5 +1,8 @@
 
 
 //
-@interface IconPane : UIView
+@interface IconPane : UIScrollView
+{
+	NSMutableArray *_apps;
+}
 @end
