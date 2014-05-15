@@ -23,14 +23,14 @@ static const struct {NSString *name; NSString *icon; NSString *url;} c_apps[] =
 
 	CGFloat gap = (frame.size.width - 60 * 4) / 5;
 	CGRect rect = {gap, 14, 60, 60};
-	_apps = [NSMutableArray arrayWithCapacity:_NumOf(c_apps)];
+	//_apps = [NSMutableArray arrayWithCapacity:_NumOf(c_apps)];
 	for (int i = 0; i < _NumOf(c_apps); i++)
 	{
 #if !TARGET_IPHONE_SIMULATOR
 		if (UIUtil::CanOpenUrl(c_apps[i].url))
 #endif
 		{
-			[_apps addObject:@{@"icon":c_apps[i].icon, @"url":c_apps[i].url}];
+			//[_apps addObject:@{@"icon":c_apps[i].icon, @"url":c_apps[i].url}];
 			
 			UIButton *button = [[UIButton alloc] initWithFrame:rect];
 			button.layer.cornerRadius = 10;
@@ -54,9 +54,59 @@ static const struct {NSString *name; NSString *icon; NSString *url;} c_apps[] =
 	
 	self.pagingEnabled = YES;
 	self.showsHorizontalScrollIndicator = NO;
-	self.contentSize = CGSizeMake(rect.origin.x, frame.size.height);
+	NSUInteger numberOfPages = ceil(rect.origin.x / frame.size.width);
+	self.contentSize = CGSizeMake(frame.size.width * numberOfPages, frame.size.height);
+	
+	//
+	frame.origin.y += 0;
+	frame.size.height = 12;
+	_pageCtrl = [[UIPageControl alloc] initWithFrame:frame];
+	_pageCtrl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+	_pageCtrl.numberOfPages = numberOfPages;
+	_pageCtrl.currentPage = 0;
+	_pageCtrl.hidesForSinglePage = YES;
+	[_pageCtrl addTarget:self action:@selector(pageCtrlChanged:) forControlEvents:UIControlEventValueChanged];
+	self.delegate = self;
 	
 	return self;
+}
+
+//
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+	if (_hasParent)
+	{
+		[_pageCtrl removeFromSuperview];
+		_hasParent = NO;
+	}
+}
+
+//
+- (void)didMoveToSuperview
+{
+	if (self.superview)
+	{
+		_hasParent = YES;
+		[self.superview addSubview:_pageCtrl];
+	}
+}
+
+//
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	CGFloat width = scrollView.frame.size.width;
+	NSUInteger currentPage = floor((scrollView.contentOffset.x - width / 2) / width) + 1;
+	if ((_pageCtrl.currentPage != currentPage) && (currentPage < _pageCtrl.numberOfPages))
+	{
+		_pageCtrl.currentPage = currentPage;
+	}
+}
+
+//
+- (void)pageCtrlChanged:(UIPageControl *)sender
+{
+	CGSize size = self.bounds.size;
+	[self setContentOffset:CGPointMake(size.width * _pageCtrl.currentPage, size.height) animated:YES];
 }
 
 //

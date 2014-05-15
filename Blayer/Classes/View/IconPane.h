@@ -1,8 +1,10 @@
 
 
 //
-@interface IconPane : UIScrollView
+@interface IconPane : UIScrollView <UIScrollViewDelegate>
 {
-	NSMutableArray *_apps;
+	BOOL _hasParent;
+	//NSMutableArray *_apps;
+	UIPageControl *_pageCtrl;
 }
 @end

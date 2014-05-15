@@ -2,7 +2,6 @@
 #import "RootController.h"
 #import "WaveView.h"
 #import "IconPane.h"
-//#import <MediaPlayer/MediaPlayer.h>
 #import "IPADeploy.h"
 
 @implementation RootController
@@ -10,11 +9,11 @@
 #pragma mark Generic methods
 
 // Constructor
-//- (id)init
-//{
-//	self = [super init];
-//	return self;
-//}
+- (id)init
+{
+	self = [super initWithStyle:UITableViewStylePlain];
+	return self;
+}
 
 #pragma mark View methods
 
@@ -30,18 +29,28 @@
 	[super viewDidLoad];
 	
 	self.title = NSUtil::BundleDisplayName();
-	
 	self.view.backgroundColor = UIUtil::Color(69,79,120);
 	
-	CGRect frame = self.view.bounds;
-	frame.origin.y = frame.size.height - 95;
+	CGRect frame = self.tableView.frame;
+	frame.size.height -= 95;
+	self.tableView.frame = frame;
+	self.tableView.rowHeight = 57;
+
+	frame.origin.y = frame.size.height;
 	frame.size.height = 95;
 	IconPane *pane = [[IconPane alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 95, 320, 95)];
+	pane.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:pane];
-	
-	[self accessoryDidConnect:nil];
-	
-	//_LogObj(IPAInstalledApps());
+
+	_refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
+	[_refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+
+	[_refreshControl beginRefreshing];
+	[self loadData];
+	[self initSession];
+	[self initPlayer];
+
+	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
 // Called after the view controller's view is released and set to nil.
@@ -65,16 +74,68 @@
 //	[super viewWillDisappear:animated];
 //}
 
+//
+#pragma Table view methods
+
+//
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return _items.count;
+}
+
+//
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString *reuse = @"Cell";//[NSString stringWithFormat:@"Cell%d@%d", indexPath.row, indexPath.section];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
+	if (cell == nil)
+	{
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuse];
+		//cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+		cell.backgroundColor = UIColor.whiteColor;
+		cell.detailTextLabel.textColor = UIColor.darkGrayColor;
+	}
+	
+	MPMediaItem *item = _items[indexPath.row];
+	cell.textLabel.text = [item valueForProperty:MPMediaItemPropertyTitle];
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
+								 [item valueForProperty:MPMediaItemPropertyArtist] ?: @"未知表演者",
+								 [item valueForProperty:MPMediaItemPropertyAlbumTitle] ?: @"未知专辑"];
+	MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
+	cell.imageView.image = artwork ? [artwork imageWithSize:CGSizeMake(50, 50)] : UIUtil::ImageWithColor(UIColor.whiteColor, CGSizeMake(50, 50));
+	return cell;
+}
+
+//
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
 #pragma Event methods
 
 //
-- (void)accessoryDidConnect:(NSNotification *)sender
+- (void)loadData
+{
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
+		NSArray *items = MPMediaQuery.songsQuery.items;
+		dispatch_async(dispatch_get_main_queue(), ^ {
+			self.items = items;
+			[self.tableView reloadData];
+			[_refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.5];
+		});
+	});
+}
+
+//
+- (void)initSession
 {
 	// 后台播放代码
 	AVAudioSession *session = [AVAudioSession sharedInstance];
 	[session setActive:YES error:nil];
 	[session setCategory:AVAudioSessionCategoryPlayback error:nil];
-	
+
 	//AudioSessionSetActive(YES);
 	UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
 	AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
@@ -89,28 +150,15 @@
 	CFStringRef audioRouteOverride = kAudioSessionOutputRoute_BluetoothHFP;
 	AudioSessionSetProperty(kAudioSessionProperty_OutputDestination, sizeof(audioRouteOverride), &audioRouteOverride);
 #endif
-	
-	//	// 设置支持接受远程控制事件代码。设置支持接受远程控制事件，
-	//	// 其实就是在dock中可以显示应用程序图标，同时点击该图片时，打开app。
-	//	// 或者锁屏时，双击home键，屏幕上方出现应用程序播放控制按钮。
-	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-	
-	//NSArray *items = MPMediaQuery.songsQuery.items;
-	//MPMediaItem *item = items[0];
-	//NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
-	//_LogObj(URL);
+}
 
-	//
-	//	// 创建播放器
+//
+- (void)initPlayer
+{
+	// 创建播放器
 	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Null.mp3")];
 	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
 	[_player prepareToPlay];
-	//[_player play]; //播放
-	//
-	//_player.meteringEnabled = YES;
-	//	WaveView *waveView = [[WaveView alloc] initWithFrame:self.view.bounds dataSource:_player];
-	//	waveView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	//	[self.view addSubview:waveView];
 }
 
 //
@@ -123,7 +171,7 @@
 			case UIEventSubtypeRemoteControlPause:
 				if (!_player.isPlaying) [_player pause];
 				break;
-				
+
 			case UIEventSubtypeRemoteControlPlay:
 				if (_player.isPlaying) [_player play];
 				break;

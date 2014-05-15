@@ -37,55 +37,12 @@
 	
 	if (_style == UITableViewStylePlain)
 	{
-		_tableView.contentInset = UIEdgeInsetsMake(0, 0, kScrollViewBottomPad, 0);
+		_tableView.contentInset = UIEdgeInsetsMake(UIUtil::IsOS7() ? 22 : 0, 0, kScrollViewBottomPad, 0);
 	}
 }
 
 #pragma mark -
 #pragma mark Table view methods
-
-//
-#if 0 
-// NEXT: iOS 6 Plain Style 的标题做成 iOS7 Group 风格？分割线就算了吧
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-	return ((_style == UITableViewStylePlain) && [self tableView:tableView titleForHeaderInSection:section]) ? 44 : 0;
-}
-
-//
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-	return nil;
-}
-
-//
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	if (_style == UITableViewStylePlain)
-	{
-		NSString *title = [self tableView:tableView titleForHeaderInSection:section];
-		if (title)
-		{
-			UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
-			UIFont *font = [UIFont boldSystemFontOfSize:15];
-			UILabel *label = [UILabel labelWithFrame:CGRectMake(14, 22, 300, 16)
-												text:title
-											   color:UIUtil::Color(0x4d4d4d)
-												font:font
-										   alignment:NSTextAlignmentLeft];
-			[view addSubview:label];
-			
-			UIView *line = [[[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 0.5)] autorelease];
-			line.backgroundColor = UIUtil::Color(0xcccccc);
-			[view addSubview:line];
-			
-			view.clipsToBounds = NO;
-			return view;
-		}
-	}
-	return nil;
-}
-#endif
 
 //
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
