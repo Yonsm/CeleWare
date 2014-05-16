@@ -263,7 +263,7 @@
 {
 	[_player performSelector:@selector(play) withObject:nil afterDelay:0];
 	[_playButton setImage:UIUtil::Image(@"PauseIcon") forState:UIControlStateNormal];
-
+	
 	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
 	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PlayingIndicator")];
@@ -276,7 +276,7 @@
 {
 	[_player performSelector:@selector(pause) withObject:nil afterDelay:0];
 	[_playButton setImage:UIUtil::Image(@"PlayIcon") forState:UIControlStateNormal];
-
+	
 	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
 	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PauseIndicator")];
