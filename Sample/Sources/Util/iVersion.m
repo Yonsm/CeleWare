@@ -1,7 +1,7 @@
 //
 //  iVersion.m
 //
-//  Version 1.11 beta 5
+//  Version 1.11 beta 6
 //
 //  Created by Nick Lockwood on 26/01/2011.
 //  Copyright 2011 Charcoal Design
@@ -33,6 +33,16 @@
 #import "iVersion.h"
 
 
+#pragma GCC diagnostic ignored "-Wobjc-missing-property-synthesis"
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma GCC diagnostic ignored "-Wdirect-ivar-access"
+#pragma GCC diagnostic ignored "-Wunused-macros"
+#pragma GCC diagnostic ignored "-Wconversion"
+#pragma GCC diagnostic ignored "-Wselector"
+#pragma GCC diagnostic ignored "-Wshadow"
+#pragma GCC diagnostic ignored "-Wgnu"
+
+
 #import <Availability.h>
 #if !__has_feature(objc_arc)
 #error This class requires automatic reference counting
@@ -45,8 +55,8 @@
 #define iVersionVersionLabelFormat		NSLocalizedString(@"Version %@", @"版本 %@")
 #define iVersionOKButtonLabel			NSLocalizedString(@"OK", @"好的")
 #define iVersionIgnoreButtonLabel		NSLocalizedString(@"Ignore", @"忽略")
-#define iVersionRemindButtonLabel		NSLocalizedString(@"Remind Me Later", @"回头再说")
-#define iVersionDownloadButtonLabel		NSLocalizedString(@"Download", @"下载")
+#define iVersionRemindButtonLabel		NSLocalizedString(@"Remind Me Later", @"以后再说")
+#define iVersionDownloadButtonLabel		NSLocalizedString(@"Download", @"立即下载")
 
 
 NSString *const iVersionErrorDomain = @"iVersionErrorDomain";
@@ -152,7 +162,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 #endif
         
         //get country
-        self.appStoreCountry = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+        self.appStoreCountry = [(NSLocale *)[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
         if ([self.appStoreCountry isEqualToString:@"150"])
         {
             self.appStoreCountry = @"eu";
@@ -239,7 +249,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 
 - (void)setAppStoreID:(NSUInteger)appStoreID
 {
-    [[NSUserDefaults standardUserDefaults] setInteger:appStoreID forKey:iVersionAppStoreIDKey];
+    [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)appStoreID forKey:iVersionAppStoreIDKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -315,6 +325,13 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
         {
             NSString *versionsFile = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.localVersionsPlistPath];
             versionsDict = [[NSDictionary alloc] initWithContentsOfFile:versionsFile];
+            if (!versionsDict)
+            {
+                // Get the path to versions plist in localized directory
+                NSArray *pathComponents = [self.localVersionsPlistPath componentsSeparatedByString:@"."];
+                versionsFile = ([pathComponents count] == 2) ? [[NSBundle mainBundle] pathForResource:pathComponents[0] ofType:pathComponents[1]] : nil;
+                versionsDict = [[NSDictionary alloc] initWithContentsOfFile:versionsFile];
+            }
         }
     }
     return versionsDict;
@@ -358,7 +375,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
                 [details appendString:[iVersionVersionLabelFormat stringByReplacingOccurrencesOfString:@"%@" withString:version]];
                 [details appendString:@"\n\n"];
             }
-            [details appendString:[self versionDetails:version inDict:dict]];
+            [details appendString:[self versionDetails:version inDict:dict] ?: @""];
             [details appendString:@"\n"];
             if (self.groupNotesByVersion)
             {
@@ -387,7 +404,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 
 - (NSString *)URLEncodedString:(NSString *)string
 {
-    CFStringRef stringRef = (CFStringRef)CFBridgingRetain(string);
+    CFStringRef stringRef = CFBridgingRetain(string);
     CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                                   stringRef,
                                                                   NULL,
@@ -611,11 +628,11 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
         if (keyRange.location != NSNotFound)
         {
             NSInteger start = keyRange.location + keyRange.length;
-            NSRange valueStart = [json rangeOfString:@":" options:(NSStringCompareOptions)0 range:NSMakeRange(start, [json length] - start)];
+            NSRange valueStart = [json rangeOfString:@":" options:(NSStringCompareOptions)0 range:NSMakeRange(start, [(NSString *)json length] - start)];
             if (valueStart.location != NSNotFound)
             {
                 start = valueStart.location + 1;
-                NSRange valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(start, [json length] - start)];
+                NSRange valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(start, [(NSString *)json length] - start)];
                 if (valueEnd.location != NSNotFound)
                 {
                     NSString *value = [json substringWithRange:NSMakeRange(start, valueEnd.location - start)];
@@ -627,7 +644,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
                             break;
                         }
                         NSInteger newStart = valueEnd.location + 1;
-                        valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(newStart, [json length] - newStart)];
+                        valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(newStart, [(NSString *)json length] - newStart)];
                         value = [json substringWithRange:NSMakeRange(start, valueEnd.location - start)];
                         value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                     }
@@ -685,7 +702,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 
 - (void)setAppStoreIDOnMainThread:(NSString *)appStoreIDString
 {
-    self.appStoreID = [appStoreIDString integerValue];
+    self.appStoreID = [appStoreIDString longLongValue];
 }
 
 - (void)checkForNewVersionInBackground

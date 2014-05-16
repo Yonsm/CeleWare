@@ -3,40 +3,41 @@
 //  MobClick
 //
 //  Created by Aladdin on 2010-03-25.
-//  Updated by Minghua on 2013-04-01.
+//  Updated by Minghua on 2013-08-08.
 //  Copyright 2010-2012 Umeng.com . All rights reserved.
-//  Version 2.2.0.OpenUDID, updated_at 2013-04-01.
+//  Version 2.2.1.OpenUDID, updated_at 2013-09-12.
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 #define UMOnlineConfigDidFinishedNotification @"OnlineConfigDidFinishedNotification"
 #define XcodeAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
 typedef enum {
-	REALTIME = 0,	   //实时发送
-	BATCH = 1,		  //启动发送
-	SENDDAILY = 4,	  //每日发送
-	SENDWIFIONLY = 5,   //仅在WIFI下启动时发送
-	SEND_INTERVAL = 6,   //按最小间隔发送
-	SEND_ON_EXIT = 7		//退出或进入后台时发送
+    REALTIME = 0,       //实时发送
+    BATCH = 1,          //启动发送
+    SENDDAILY = 4,      //每日发送
+    SENDWIFIONLY = 5,   //仅在WIFI下启动时发送
+    SEND_INTERVAL = 6,   //按最小间隔发送
+    SEND_ON_EXIT = 7        //退出或进入后台时发送
 } ReportPolicy;
 
 @protocol MobClickDelegate;
 @class CLLocation;
 
 /** MobClick是统计的核心类，本身不需要实例化，所有方法以类方法的形式提供.
-	目前发送策略有REALTIME,BATCH,SENDDAILY,SENDWIFIONLY,SEND_INTERVAL,SEND_ON_EXIT。
-	其中REALTIME,SENDWIFIONLY 只在模拟器和DEBUG模式下生效，真机release模式会自动改成BATCH。
-	关于发送策略的调整，请参见关于发送策略及发送策略变更的说明
-	http://blog.umeng.com/index.php/2012/12/0601/
-	SEND_INTERVAL 为按最小间隔发送,默认为10秒,取值范围为10 到 86400(一天)， 如果不在这个区间的话，会按10设置。
-	SEND_ON_EXIT 为退出或进入后台时发送,这种发送策略在App运行过程中不发送，对开发者和用户的影响最小。
-	不过这种发送策略只在iOS > 4.0时才会生效, iOS < 4.0 会被自动调整为BATCH。
+    目前发送策略有REALTIME,BATCH,SENDDAILY,SENDWIFIONLY,SEND_INTERVAL,SEND_ON_EXIT。
+    其中REALTIME,SENDWIFIONLY 只在模拟器和DEBUG模式下生效，真机release模式会自动改成BATCH。
+    关于发送策略的调整，请参见关于发送策略及发送策略变更的说明
+    http://blog.umeng.com/index.php/2012/12/0601/
+    SEND_INTERVAL 为按最小间隔发送,默认为10秒,取值范围为10 到 86400(一天)， 如果不在这个区间的话，会按10设置。
+    SEND_ON_EXIT 为退出或进入后台时发送,这种发送策略在App运行过程中不发送，对开发者和用户的影响最小。
+    不过这种发送策略只在iOS > 4.0时才会生效, iOS < 4.0 会被自动调整为BATCH。
 
  */
 @interface MobClick : NSObject <UIAlertViewDelegate> {
 @private
-	id _internal;
+    id _internal;
 }
 #pragma mark basics
 
@@ -118,7 +119,7 @@ typedef enum {
 
 
 /** 自定义事件,数量统计.
-	使用前，请先到友盟App管理后台的设置->编辑自定义事件 中添加相应的事件ID，然后在工程中传入相应的事件ID
+    使用前，请先到友盟App管理后台的设置->编辑自定义事件 中添加相应的事件ID，然后在工程中传入相应的事件ID
  
  @param  eventId 网站上注册的事件Id.
  @param  label 分类标签。不同的标签会分别进行统计，方便同一事件的不同标签的对比,为nil或空字符串时后台会生成和eventId同名的标签.
@@ -144,8 +145,8 @@ typedef enum {
 + (void)event:(NSString *)eventId attributes:(NSDictionary *)attributes;
 
 /** 自定义事件,时长统计.
-	使用前，请先到友盟App管理后台的设置->编辑自定义事件 中添加相应的事件ID，然后在工程中传入相应的事件ID.
-	beginEvent,endEvent要配对使用,也可以自己计时后通过durations参数传递进来
+    使用前，请先到友盟App管理后台的设置->编辑自定义事件 中添加相应的事件ID，然后在工程中传入相应的事件ID.
+    beginEvent,endEvent要配对使用,也可以自己计时后通过durations参数传递进来
  
  @param  eventId 网站上注册的事件Id.
  @param  label 分类标签。不同的标签会分别进行统计，方便同一事件的不同标签的对比,为nil或空字符串时后台会生成和eventId同名的标签.
@@ -155,9 +156,9 @@ typedef enum {
  
  
  @warning 每个event的attributes不能超过10个
-	eventId、attributes中key和value都不能使用空格和特殊字符，eventId、attributes的key最大为128个bytes(128个英文及数字或42个左右汉字)。label、attributes的value最大为256个bytes(256个英文及数字或84个左右汉字),
-	   超过后将被截短。其中eventId超过的将抛弃不再发送。
-	id， ts， du是保留字段，不能作为eventId及key的名称
+    eventId、attributes中key和value都不能使用空格和特殊字符，eventId、attributes的key最大为128个bytes(128个英文及数字或42个左右汉字)。label、attributes的value最大为256个bytes(256个英文及数字或84个左右汉字),
+       超过后将被截短。其中eventId超过的将抛弃不再发送。
+    id， ts， du是保留字段，不能作为eventId及key的名称
 
 */
 + (void)beginEvent:(NSString *)eventId;
@@ -208,10 +209,10 @@ typedef enum {
 
 
 /** 按渠道自动更新检测
-	检查当前app是否有更新，有更新弹出UIAlertView提示用户,当用户点击升级按钮时app会跳转到您预先设置的网址。
-	无更新不做任何操作。
-	您需要先在服务器端设置app版本信息，默认渠道是App Store.
-	如果您想自己控制自动更新操作流程，请实现MobClickDelegate的appUpdate方法。
+    检查当前app是否有更新，有更新弹出UIAlertView提示用户,当用户点击升级按钮时app会跳转到您预先设置的网址。
+    无更新不做任何操作。
+    您需要先在服务器端设置app版本信息，默认渠道是App Store.
+    如果您想自己控制自动更新操作流程，请实现MobClickDelegate的appUpdate方法。
  
  @param title 对应UIAlertView的title.
  @param cancelTitle 对应UIAlertView的cancelTitle.
@@ -238,10 +239,10 @@ typedef enum {
 
 
 /** 使用在线参数功能，可以让你动态修改应用中的参数值,
-	检查并更新服务器端配置的在线参数,缓存在[NSUserDefaults standardUserDefaults]里,
-	调用此方法您将自动拥有在线更改SDK端发送策略的功能,您需要先在服务器端设置好在线参数.
-	请在[MobClick startWithAppkey:]方法之后调用;
-	如果想知道在线参数是否完成完成，请监听UMOnlineConfigDidFinishedNotification
+    检查并更新服务器端配置的在线参数,缓存在[NSUserDefaults standardUserDefaults]里,
+    调用此方法您将自动拥有在线更改SDK端发送策略的功能,您需要先在服务器端设置好在线参数.
+    请在[MobClick startWithAppkey:]方法之后调用;
+    如果想知道在线参数是否完成完成，请监听UMOnlineConfigDidFinishedNotification
  @param 无.
  @return void.
  */
@@ -249,8 +250,8 @@ typedef enum {
 + (void)updateOnlineConfig;
 
 /** 从[NSUserDefaults standardUserDefaults]获取缓存的在线参数的数值
-	带参数的方法获取某个key的值，不带参数的获取所有的在线参数.
-	需要先调用updateOnlineConfig才能使用,如果想知道在线参数是否完成完成，请监听UMOnlineConfigDidFinishedNotification
+    带参数的方法获取某个key的值，不带参数的获取所有的在线参数.
+    需要先调用updateOnlineConfig才能使用,如果想知道在线参数是否完成完成，请监听UMOnlineConfigDidFinishedNotification
  
  @param key
  @return (NSString *) .
@@ -271,7 +272,7 @@ typedef enum {
 
 
 /** 为了更精确的统计用户地理位置，可以调用此方法传入经纬度信息
-	需要链接 CoreLocation.framework 并且 #import <CoreLocation/CoreLocation.h>
+    需要链接 CoreLocation.framework 并且 #import <CoreLocation/CoreLocation.h>
  @param latitude 纬度.
  @param longitude 经度.
  @param location CLLocation *型的地理信息
@@ -334,9 +335,9 @@ typedef enum {
 @end
 
 /** MobClickDelegate protocol
-	此协议的三个方法不再建议使用，建议用新方法代替
-	+ (void)startWithAppkey:(NSString *)appKey reportPolicy:(ReportPolicy)rp channelId:(NSString *)cid;
-	+ (void)checkUpdate:(id)delegate selector:(SEL)callBackSelector;
+    此协议的三个方法不再建议使用，建议用新方法代替
+    + (void)startWithAppkey:(NSString *)appKey reportPolicy:(ReportPolicy)rp channelId:(NSString *)cid;
+    + (void)checkUpdate:(id)delegate selector:(SEL)callBackSelector;
 
  */
 
