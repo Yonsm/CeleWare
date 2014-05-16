@@ -25,23 +25,19 @@
 - (void)layoutSubviews
 {
 	[super layoutSubviews];
-
+	
 	CGRect frame = {10, 3, 50, 50};
 	self.imageView.frame = frame;
-	_Log(@"imageView: %@", NSStringFromCGRect(frame));
-
+	
 	frame = self.detailTextLabel.frame;
 	frame.origin.x = 70;
 	frame.origin.y = 35;
 	self.detailTextLabel.frame = frame;
-	_Log(@"detailTextLabel: %@", NSStringFromCGRect(frame));
-
+	
 	frame = self.textLabel.frame;
 	frame.origin.x = 70;
 	frame.origin.y = 10;
 	self.textLabel.frame = frame;
-
-	_Log(@"textLabel: %@", NSStringFromCGRect(frame));
 }
 
 @end
@@ -54,6 +50,8 @@
 - (id)init
 {
 	self = [super initWithStyle:UITableViewStylePlain];
+	dlopen("/System/Library/PrivateFrameworks/BluetoothManager.framework/BluetoothManager", RTLD_LAZY);
+	[NSClassFromString(@"BluetoothManager") sharedInstance];
 	return self;
 }
 
@@ -79,41 +77,41 @@
 	self.tableView.rowHeight = 57;
 	self.tableView.contentInset = UIEdgeInsetsMake(UIUtil::IsOS7() ? 22 : 0, 0, 22, 0);
 	if (UIUtil::IsOS7()) self.tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
-
+	
 	frame.origin.y = frame.size.height;
 	frame.size.height = 80;
 	UIView *toolbar = [[UIView alloc] initWithFrame:frame];
 	toolbar.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];//UIUtil::Color(69,79,120,0.8);
 	[self.view addSubview:toolbar];
-
+	
 	_prevButton = [UIButton buttonWithImageNamed:@"PrevIcon"];
 	[_prevButton addTarget:self action:@selector(prevButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 	_prevButton.center = CGPointMake(80, 40);
 	[toolbar addSubview:_prevButton];
-
+	
 	_playButton = [UIButton buttonWithImageNamed:@"PlayIcon"];
 	[_playButton addTarget:self action:@selector(playButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 	_playButton.center = CGPointMake(160, 40);
 	[toolbar addSubview:_playButton];
-
+	
 	_nextButton = [UIButton buttonWithImageNamed:@"NextIcon"];
 	[_nextButton addTarget:self action:@selector(nextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 	_nextButton.center = CGPointMake(240, 40);
 	[toolbar addSubview:_nextButton];
-
+	
 	frame.origin.y += frame.size.height;
 	frame.size.height = 95;
 	IconPane *pane = [[IconPane alloc] initWithFrame:frame];
 	pane.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:pane];
-
+	
 	_refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
 	[_refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
-
+	
 	[_refreshControl beginRefreshing];
 	[self initSession];
 	[self loadData];
-
+	
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
@@ -123,12 +121,16 @@
 //	[super viewDidUnload];
 //}
 
-// Called when the view is about to made visible.
-- (void)viewWillAppear:(BOOL)animated
+//
+- (void)viewDidAppear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
+	[super viewDidAppear:animated];
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(routeChanged:) name:AVAudioSessionRouteChangeNotification object:nil];
+#ifdef TEST
+	CFNotificationCenterAddObserver(CFNotificationCenterGetLocalCenter(), NULL, CFNotificationListener, NULL, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+#endif
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bluetoothConnected:) name:@"BluetoothDeviceConnectSuccessNotification" object:nil];
 }
 
 // Called after the view was dismissed, covered or otherwise hidden.
@@ -203,7 +205,7 @@
 	AVAudioSession *session = [AVAudioSession sharedInstance];
 	[session setActive:YES error:nil];
 	[session setCategory:AVAudioSessionCategoryPlayback error:nil];
-
+	
 	//AudioSessionSetActive(YES);
 	UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
 	AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
@@ -226,7 +228,7 @@
 	_current = -1;
 	_prevButton.enabled = NO;
 	_nextButton.enabled = NO;
-
+	
 	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Null.mp3")];
 	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
 	[_player performSelector:@selector(prepareToPlay) withObject:nil afterDelay:0];
@@ -244,11 +246,11 @@
 			UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_current inSection:0]];
 			cell.accessoryView = nil;
 		}
-
+		
 		_current = index;
 		_prevButton.enabled = index > 0;
 		_nextButton.enabled = index < _items.count - 1;
-
+		
 		NSURL *URL = [_items[_current] valueForProperty:MPMediaItemPropertyAssetURL];
 		_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
 		_player.delegate = self;
@@ -270,7 +272,7 @@
 		[self play:0];
 		return;
 	}
-
+	
 	if (_player.isPlaying)
 		[self pause];
 	else
@@ -282,7 +284,7 @@
 {
 	[_player performSelector:@selector(play) withObject:nil afterDelay:0];
 	[_playButton setImage:UIUtil::Image(@"PauseIcon") forState:UIControlStateNormal];
-
+	
 	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
 	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PlayingIndicator")];
@@ -295,7 +297,7 @@
 {
 	[_player performSelector:@selector(pause) withObject:nil afterDelay:0];
 	[_playButton setImage:UIUtil::Image(@"PlayIcon") forState:UIControlStateNormal];
-
+	
 	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
 	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PauseIndicator")];
@@ -342,7 +344,7 @@
 			case UIEventSubtypeRemoteControlPause:
 				if (!_player.isPlaying) [self pause];
 				break;
-
+				
 			case UIEventSubtypeRemoteControlPlay:
 				if (_player.isPlaying) [self play];
 				break;
@@ -361,10 +363,18 @@
 }
 
 //
-- (void)routeChanged:(id)sender
+- (void)bluetoothConnected:(id)sender
 {
-	_LogObj(sender);
 	_LogLine();
+	[self initSession];
 }
+
+//
+#ifdef TEST
+void CFNotificationListener(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
+{
+	_Log(@"CFNotificationListener:%@ userInfo:%@", name, userInfo);
+}
+#endif
 
 @end
