@@ -106,11 +106,11 @@
 	[self.view addSubview:pane];
 	
 	_refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
-	[_refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+	[_refreshControl addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
 	
 	[_refreshControl beginRefreshing];
-	[self initSession];
-	[self loadData];
+	[self resetSession];
+	[self reloadData];
 	
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
@@ -178,19 +178,19 @@
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	[self play:indexPath.row];
+	[self playItem:indexPath.row];
 }
 
 
-#pragma Event methods
+#pragma Biz methods
 
 //
-- (void)loadData
+- (void)reloadData
 {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
 		NSArray *items = MPMediaQuery.songsQuery.items;
 		dispatch_async(dispatch_get_main_queue(), ^ {
-			[self initPlayer];
+			[self resetPlayer];
 			self.items = items;
 			[self.tableView reloadData];
 			[_refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.5];
@@ -199,7 +199,7 @@
 }
 
 //
-- (void)initSession
+- (void)resetSession
 {
 	// 后台播放代码
 	AVAudioSession *session = [AVAudioSession sharedInstance];
@@ -223,7 +223,7 @@
 }
 
 //
-- (void)initPlayer
+- (void)resetPlayer
 {
 	_current = -1;
 	_prevButton.enabled = NO;
@@ -237,7 +237,7 @@
 }
 
 //
-- (void)play:(NSUInteger)index
+- (void)playItem:(NSUInteger)index
 {
 	if (index < _items.count)
 	{
@@ -259,32 +259,11 @@
 }
 
 //
-- (void)prevButtonClicked:(id)sender
-{
-	[self play:_current - 1];
-}
-
-//
-- (void)playButtonClicked:(id)sender
-{
-	if (_current == -1)
-	{
-		[self play:0];
-		return;
-	}
-	
-	if (_player.isPlaying)
-		[self pause];
-	else
-		[self play];
-}
-
-//
 - (void)play
 {
 	[_player performSelector:@selector(play) withObject:nil afterDelay:0];
 	[_playButton setImage:UIUtil::Image(@"PauseIcon") forState:UIControlStateNormal];
-	
+
 	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
 	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PlayingIndicator")];
@@ -297,17 +276,57 @@
 {
 	[_player performSelector:@selector(pause) withObject:nil afterDelay:0];
 	[_playButton setImage:UIUtil::Image(@"PlayIcon") forState:UIControlStateNormal];
-	
+
 	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
 	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PauseIndicator")];
 }
 
+#pragma Event methods
+
+//
+- (void)prevButtonClicked:(id)sender
+{
+	[self playItem:_current - 1];
+}
+
+//
+- (void)playButtonClicked:(id)sender
+{
+	if (_current == -1)
+	{
+		[self playItem:0];
+		return;
+	}
+	
+	if (_player.isPlaying)
+		[self pause];
+	else
+		[self play];
+}
+
 //
 - (void)nextButtonClicked:(id)sender
 {
-	[self play:_current + 1];
+	[self playItem:_current + 1];
 }
+
+#pragma Notify methods
+
+//
+- (void)bluetoothConnected:(id)sender
+{
+	_LogLine();
+	[self resetSession];
+}
+
+//
+#ifdef TEST
+void CFNotificationListener(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
+{
+	_Log(@"CFNotificationListener:%@ userInfo:%@", name, userInfo);
+}
+#endif
 
 //
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -342,18 +361,23 @@
 		switch (event.subtype)
 		{
 			case UIEventSubtypeRemoteControlPause:
-				if (!_player.isPlaying) [self pause];
+				if (_player.isPlaying) [self pause];
 				break;
 				
 			case UIEventSubtypeRemoteControlPlay:
-				if (_player.isPlaying) [self play];
+				if (!_player.isPlaying) [self play];
 				break;
 				
 			case UIEventSubtypeRemoteControlTogglePlayPause:
-				if (_player.isPlaying)
-					[self pause];
-				else
-					[self play];
+				[self playButtonClicked:nil];
+				break;
+				
+			case UIEventSubtypeRemoteControlPreviousTrack:
+				[self prevButtonClicked:nil];
+				break;
+				
+			case UIEventSubtypeRemoteControlNextTrack:
+				[self nextButtonClicked:nil];
 				break;
 				
 			default:
@@ -361,20 +385,5 @@
 		}
 	}
 }
-
-//
-- (void)bluetoothConnected:(id)sender
-{
-	_LogLine();
-	[self initSession];
-}
-
-//
-#ifdef TEST
-void CFNotificationListener(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
-{
-	_Log(@"CFNotificationListener:%@ userInfo:%@", name, userInfo);
-}
-#endif
 
 @end
