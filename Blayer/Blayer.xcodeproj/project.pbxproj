@@ -21,13 +21,11 @@
 		246A32F7186838ED00903EF4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3240186838ED00903EF4 /* Default-568h@2x.png */; };
 		246A32F8186838ED00903EF4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3241186838ED00903EF4 /* Default.png */; };
 		246A32F9186838ED00903EF4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3242186838ED00903EF4 /* Default@2x.png */; };
-		246A32FA186838ED00903EF4 /* DefaultPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3243186838ED00903EF4 /* DefaultPad.png */; };
 		246A32FB186838ED00903EF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246A3244186838ED00903EF4 /* InfoPlist.strings */; };
 		246A32FC186838ED00903EF4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246A3246186838ED00903EF4 /* Localizable.strings */; };
 		246A32FE186838ED00903EF4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3249186838ED00903EF4 /* Icon.png */; };
 		246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324A186838ED00903EF4 /* Icon7@2x.png */; };
 		246A3300186838ED00903EF4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324B186838ED00903EF4 /* Icon@2x.png */; };
-		246A3301186838ED00903EF4 /* IconPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A324C186838ED00903EF4 /* IconPad.png */; };
 		246A3309186838ED00903EF4 /* NullController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3266186838ED00903EF4 /* NullController.mm */; };
 		246A330A186838ED00903EF4 /* ShareComposer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A3268186838ED00903EF4 /* ShareComposer.mm */; };
 		246A330B186838ED00903EF4 /* WebController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 246A326A186838ED00903EF4 /* WebController.mm */; };
@@ -75,14 +73,12 @@
 		246A3240186838ED00903EF4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		246A3241186838ED00903EF4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		246A3242186838ED00903EF4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		246A3243186838ED00903EF4 /* DefaultPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPad.png; sourceTree = "<group>"; };
 		246A3245186838ED00903EF4 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		246A3247186838ED00903EF4 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		246A3248186838ED00903EF4 /* GenString */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = GenString; sourceTree = "<group>"; };
 		246A3249186838ED00903EF4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		246A324A186838ED00903EF4 /* Icon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon7@2x.png"; sourceTree = "<group>"; };
 		246A324B186838ED00903EF4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		246A324C186838ED00903EF4 /* IconPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconPad.png; sourceTree = "<group>"; };
 		246A324D186838ED00903EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
 		246A324E186838ED00903EF4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		246A324F186838ED00903EF4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -249,11 +245,9 @@
 				246A3249186838ED00903EF4 /* Icon.png */,
 				246A324B186838ED00903EF4 /* Icon@2x.png */,
 				246A324A186838ED00903EF4 /* Icon7@2x.png */,
-				246A324C186838ED00903EF4 /* IconPad.png */,
 				246A3241186838ED00903EF4 /* Default.png */,
 				246A3242186838ED00903EF4 /* Default@2x.png */,
 				246A3240186838ED00903EF4 /* Default-568h@2x.png */,
-				246A3243186838ED00903EF4 /* DefaultPad.png */,
 				246A3244186838ED00903EF4 /* InfoPlist.strings */,
 				246A3246186838ED00903EF4 /* Localizable.strings */,
 				246A3248186838ED00903EF4 /* GenString */,
@@ -412,8 +406,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				246A32F9186838ED00903EF4 /* Default@2x.png in Resources */,
-				246A32FA186838ED00903EF4 /* DefaultPad.png in Resources */,
-				246A3301186838ED00903EF4 /* IconPad.png in Resources */,
 				246A3300186838ED00903EF4 /* Icon@2x.png in Resources */,
 				246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */,
 				246A32F8186838ED00903EF4 /* Default.png in Resources */,
@@ -592,6 +584,7 @@
 				GCC_PREFIX_HEADER = Sources/Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -605,6 +598,7 @@
 				GCC_PREFIX_HEADER = Sources/Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

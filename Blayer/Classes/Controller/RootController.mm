@@ -5,6 +5,47 @@
 #import "IPADeploy.h"
 #import "EXButton.h"
 
+@interface MusicItemCell : UITableViewCell
+@end
+
+@implementation MusicItemCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
+	//cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+	self.backgroundColor = UIColor.whiteColor;
+	self.detailTextLabel.textColor = UIColor.darkGrayColor;
+	self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+	self.imageView.clipsToBounds = YES;
+	return self;
+}
+
+//
+- (void)layoutSubviews
+{
+	[super layoutSubviews];
+
+	CGRect frame = {10, 3, 50, 50};
+	self.imageView.frame = frame;
+	_Log(@"imageView: %@", NSStringFromCGRect(frame));
+
+	frame = self.detailTextLabel.frame;
+	frame.origin.x = 70;
+	frame.origin.y = 35;
+	self.detailTextLabel.frame = frame;
+	_Log(@"detailTextLabel: %@", NSStringFromCGRect(frame));
+
+	frame = self.textLabel.frame;
+	frame.origin.x = 70;
+	frame.origin.y = 10;
+	self.textLabel.frame = frame;
+
+	_Log(@"textLabel: %@", NSStringFromCGRect(frame));
+}
+
+@end
+
 @implementation RootController
 
 #pragma mark Generic methods
@@ -33,31 +74,32 @@
 	self.view.backgroundColor = UIUtil::Color(69,79,120);
 	
 	CGRect frame = self.tableView.frame;
-	frame.size.height -= 95;
+	frame.size.height -= 95 + 80;
 	self.tableView.frame = frame;
 	self.tableView.rowHeight = 57;
-	self.tableView.contentInset = UIEdgeInsetsMake(UIUtil::IsOS7() ? 22 : 0, 0, 100, 0);
+	self.tableView.contentInset = UIEdgeInsetsMake(UIUtil::IsOS7() ? 22 : 0, 0, 22, 0);
+	if (UIUtil::IsOS7()) self.tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
 
-	frame.origin.y = frame.size.height - 80;
+	frame.origin.y = frame.size.height;
 	frame.size.height = 80;
 	UIView *toolbar = [[UIView alloc] initWithFrame:frame];
-	toolbar.backgroundColor = UIUtil::Color(69,79,120,0.8);
+	toolbar.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];//UIUtil::Color(69,79,120,0.8);
 	[self.view addSubview:toolbar];
 
-	UIButton *button1 = [UIButton buttonWithImageNamed:@"PrevIcon"];
-	[button1 addTarget:self action:@selector(prevButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	button1.center = CGPointMake(80, 40);
-	[toolbar addSubview:button1];
+	_prevButton = [UIButton buttonWithImageNamed:@"PrevIcon"];
+	[_prevButton addTarget:self action:@selector(prevButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	_prevButton.center = CGPointMake(80, 40);
+	[toolbar addSubview:_prevButton];
 
-	UIButton *button2 = [UIButton buttonWithImageNamed:@"PlayIcon"];
-	[button2 addTarget:self action:@selector(playButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	button2.center = CGPointMake(160, 40);
-	[toolbar addSubview:button2];
+	_playButton = [UIButton buttonWithImageNamed:@"PlayIcon"];
+	[_playButton addTarget:self action:@selector(playButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	_playButton.center = CGPointMake(160, 40);
+	[toolbar addSubview:_playButton];
 
-	UIButton *button3 = [UIButton buttonWithImageNamed:@"NextIcon"];
-	[button3 addTarget:self action:@selector(nextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	button3.center = CGPointMake(240, 40);
-	[toolbar addSubview:button3];
+	_nextButton = [UIButton buttonWithImageNamed:@"NextIcon"];
+	[_nextButton addTarget:self action:@selector(nextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	_nextButton.center = CGPointMake(240, 40);
+	[toolbar addSubview:_nextButton];
 
 	frame.origin.y += frame.size.height;
 	frame.size.height = 95;
@@ -69,9 +111,8 @@
 	[_refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
 
 	[_refreshControl beginRefreshing];
-	[self loadData];
 	[self initSession];
-	[self initPlayer];
+	[self loadData];
 
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
@@ -113,19 +154,20 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
 	if (cell == nil)
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuse];
-		//cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-		cell.backgroundColor = UIColor.whiteColor;
-		cell.detailTextLabel.textColor = UIColor.darkGrayColor;
+		cell = [[MusicItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuse];
 	}
 	
-	MPMediaItem *item = _items[indexPath.row];
+	NSUInteger row = indexPath.row;
+	MPMediaItem *item = _items[row];
 	cell.textLabel.text = [item valueForProperty:MPMediaItemPropertyTitle];
 	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
 								 [item valueForProperty:MPMediaItemPropertyArtist] ?: @"未知表演者",
 								 [item valueForProperty:MPMediaItemPropertyAlbumTitle] ?: @"未知专辑"];
 	MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
-	cell.imageView.image = artwork ? [artwork imageWithSize:CGSizeMake(50, 50)] : UIUtil::ImageWithColor(UIColor.whiteColor, CGSizeMake(50, 50));
+	cell.imageView.image = artwork ? [artwork imageWithSize:CGSizeMake(50, 50)] : UIUtil::ImageWithColor(UIColor.lightGrayColor);
+	
+	cell.accessoryView = (row == _current) ? [[UIImageView alloc] initWithImage:UIUtil::Image(_player.isPlaying ? @"PlayingIndicator" : @"PauseIndicator")] : nil;
+	
 	return cell;
 }
 
@@ -133,6 +175,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	[self play:indexPath.row];
 }
 
 
@@ -144,6 +188,7 @@
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
 		NSArray *items = MPMediaQuery.songsQuery.items;
 		dispatch_async(dispatch_get_main_queue(), ^ {
+			[self initPlayer];
 			self.items = items;
 			[self.tableView reloadData];
 			[_refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.5];
@@ -178,28 +223,111 @@
 //
 - (void)initPlayer
 {
-	// 创建播放器
+	_current = -1;
+	_prevButton.enabled = NO;
+	_nextButton.enabled = NO;
+
 	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Null.mp3")];
 	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
-	[_player prepareToPlay];
+	[_player performSelector:@selector(prepareToPlay) withObject:nil afterDelay:0];
+}
+
+//
+- (void)play:(NSUInteger)index
+{
+	if (index < _items.count)
+	{
+		if (_current != -1)
+		{
+			UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_current inSection:0]];
+			cell.accessoryView = nil;
+		}
+
+		_current = index;
+		_prevButton.enabled = index > 0;
+		_nextButton.enabled = index < _items.count - 1;
+
+		NSURL *URL = [_items[_current] valueForProperty:MPMediaItemPropertyAssetURL];
+		_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
+		_player.delegate = self;
+		[self play];
+	}
 }
 
 //
 - (void)prevButtonClicked:(id)sender
 {
-	
+	[self play:_current - 1];
 }
 
 //
 - (void)playButtonClicked:(id)sender
 {
+	if (_current == -1)
+	{
+		[self play:0];
+		return;
+	}
+
+	if (_player.isPlaying)
+		[self pause];
+	else
+		[self play];
+}
+
+//
+- (void)play
+{
+	[_player performSelector:@selector(play) withObject:nil afterDelay:0];
+	[_playButton setImage:UIUtil::Image(@"PauseIcon") forState:UIControlStateNormal];
+
+	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
+	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PlayingIndicator")];
 	
+	[self.tableView scrollToRowAtIndexPath:currentPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+}
+
+//
+- (void)pause
+{
+	[_player performSelector:@selector(pause) withObject:nil afterDelay:0];
+	[_playButton setImage:UIUtil::Image(@"PlayIcon") forState:UIControlStateNormal];
+
+	NSIndexPath *currentPath = [NSIndexPath indexPathForRow:_current inSection:0];
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:currentPath];
+	cell.accessoryView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PauseIndicator")];
 }
 
 //
 - (void)nextButtonClicked:(id)sender
 {
-	
+	[self play:_current + 1];
+}
+
+//
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+	[self nextButtonClicked:nil];
+}
+
+/* if an error occurs while decoding it will be reported to the delegate. */
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error
+{
+	[self nextButtonClicked:nil];
+}
+
+/* audioPlayerBeginInterruption: is called when the audio session has been interrupted while the player was playing. The player will have been paused. */
+- (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player
+{
+	[self pause];
+}
+
+/* audioPlayerEndInterruption:withOptions: is called when the audio session interruption has ended and this player had been interrupted while playing. */
+/* Currently the only flag is AVAudioSessionInterruptionFlags_ShouldResume. */
+- (void)audioPlayerEndInterruption:(AVAudioPlayer *)player withOptions:(NSUInteger)flags
+{
+	[self play];
 }
 
 //
@@ -210,18 +338,18 @@
 		switch (event.subtype)
 		{
 			case UIEventSubtypeRemoteControlPause:
-				if (!_player.isPlaying) [_player pause];
+				if (!_player.isPlaying) [self pause];
 				break;
 
 			case UIEventSubtypeRemoteControlPlay:
-				if (_player.isPlaying) [_player play];
+				if (_player.isPlaying) [self play];
 				break;
 				
 			case UIEventSubtypeRemoteControlTogglePlayPause:
 				if (_player.isPlaying)
-					[_player pause];
+					[self pause];
 				else
-					[_player play];
+					[self play];
 				break;
 				
 			default:
