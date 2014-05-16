@@ -128,15 +128,15 @@
 {
 	[super viewWillAppear:animated];
 	
-	//[self accessoryDidConnect:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accessoryDidConnect:) name:AVAudioSessionRouteChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(routeChanged:) name:AVAudioSessionRouteChangeNotification object:nil];
 }
 
 // Called after the view was dismissed, covered or otherwise hidden.
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//	[super viewWillDisappear:animated];
-//}
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 //
 #pragma Table view methods
@@ -230,6 +230,8 @@
 	NSURL *URL = [NSURL fileURLWithPath:NSUtil::AssetPath(@"Null.mp3")];
 	_player = [[AVAudioPlayer alloc] initWithContentsOfURL:URL error:nil];
 	[_player performSelector:@selector(prepareToPlay) withObject:nil afterDelay:0];
+	
+	[_playButton setImage:UIUtil::Image(@"PlayIcon") forState:UIControlStateNormal];
 }
 
 //
@@ -356,6 +358,13 @@
 				break;
 		}
 	}
+}
+
+//
+- (void)routeChanged:(id)sender
+{
+	_LogObj(sender);
+	_LogLine();
 }
 
 @end

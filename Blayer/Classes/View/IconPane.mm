@@ -22,7 +22,7 @@ static const struct {NSString *name; NSString *icon; NSString *url;} c_apps[] =
 	self.backgroundColor = UIUtil::Color(67,186,231);
 
 	CGFloat gap = (frame.size.width - 60 * 4) / 5;
-	CGRect rect = {gap, 14, 60, 60};
+	CGRect rect = {0, 14, 60, 60};
 	//_apps = [NSMutableArray arrayWithCapacity:_NumOf(c_apps)];
 	for (int i = 0; i < _NumOf(c_apps); i++)
 	{
@@ -31,6 +31,7 @@ static const struct {NSString *name; NSString *icon; NSString *url;} c_apps[] =
 #endif
 		{
 			//[_apps addObject:@{@"icon":c_apps[i].icon, @"url":c_apps[i].url}];
+			if ((i % 4) == 0) rect.origin.x += gap;
 			
 			UIButton *button = [[UIButton alloc] initWithFrame:rect];
 			button.layer.cornerRadius = 10;
