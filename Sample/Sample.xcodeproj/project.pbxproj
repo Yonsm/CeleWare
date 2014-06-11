@@ -90,6 +90,7 @@
 		246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334818683DE000903EF4 /* MessageUI.framework */; };
 		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
 		246A334C1868537C00903EF4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 246A32D4186838ED00903EF4 /* zip.c */; };
+		24AD83CF1948013000F8847D /* SystemUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24AD83CE1948013000F8847D /* SystemUtil.mm */; };
 		24B6BB3B18E554390058FC8B /* EXButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3A18E554390058FC8B /* EXButton.mm */; };
 		24B6BB3E18E557C90058FC8B /* AlertView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB3D18E557C90058FC8B /* AlertView.mm */; };
 		24B6BB4518E558420058FC8B /* SelectBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24B6BB4018E558420058FC8B /* SelectBox.mm */; };
@@ -265,6 +266,8 @@
 		246A334618683DBF00903EF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		246A334818683DE000903EF4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		246A334A18683DF300903EF4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		24AD83CD1948013000F8847D /* SystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemUtil.h; sourceTree = "<group>"; };
+		24AD83CE1948013000F8847D /* SystemUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemUtil.mm; sourceTree = "<group>"; };
 		24B6BB3918E554390058FC8B /* EXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXButton.h; sourceTree = "<group>"; };
 		24B6BB3A18E554390058FC8B /* EXButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EXButton.mm; sourceTree = "<group>"; };
 		24B6BB3C18E557C90058FC8B /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
@@ -579,6 +582,8 @@
 				246A329F186838ED00903EF4 /* HttpUtil.mm */,
 				246A32A6186838ED00903EF4 /* SettingUtil.h */,
 				246A32A7186838ED00903EF4 /* SettingUtil.mm */,
+				24AD83CD1948013000F8847D /* SystemUtil.h */,
+				24AD83CE1948013000F8847D /* SystemUtil.mm */,
 				246A32A0186838ED00903EF4 /* NetworkUtil.h */,
 				246A32A1186838ED00903EF4 /* NetworkUtil.mm */,
 				24208EB218851A980058AD7E /* iVersion.h */,
@@ -783,6 +788,7 @@
 				246A333A186838ED00903EF4 /* unzip.c in Sources */,
 				246A3331186838ED00903EF4 /* PredictScrollView.mm in Sources */,
 				246A3317186838ED00903EF4 /* TabStripView.mm in Sources */,
+				24AD83CF1948013000F8847D /* SystemUtil.mm in Sources */,
 				246A3308186838ED00903EF4 /* MoviePlayer.mm in Sources */,
 				246A32E0186838ED00903EF4 /* TableController.mm in Sources */,
 				246A3316186838ED00903EF4 /* TabStripButton.mm in Sources */,
