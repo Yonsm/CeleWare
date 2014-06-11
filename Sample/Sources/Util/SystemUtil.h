@@ -1,5 +1,5 @@
-// 注意：此
-#include <sys/sysctl.h>
+// 注意：此功能无法通过 AppStore 审核
+//#include <sys/sysctl.h>
 #import <mach/mach_host.h>
 
 #pragma mark IOKit methods
@@ -9,19 +9,22 @@
  */
 
 //
+extern "C"
+{
 #define kIODeviceTreePlane "IODeviceTree"
-typedef mach_port_t io_object_t;
-typedef io_object_t io_registry_entry_t;
-typedef char io_name_t[128];
-typedef UInt32 IOOptionBits;
-enum {kIORegistryIterateRecursively = 1, kIORegistryIterateParents = 2};
-
-//
-io_registry_entry_t IORegistryGetRootEntry(mach_port_t masterPort);
-kern_return_t IOMasterPort(mach_port_t bootstrapPort, mach_port_t *masterPort);
-CFTypeRef IORegistryEntrySearchCFProperty(io_registry_entry_t entry, const io_name_t plane, CFStringRef key, CFAllocatorRef allocator, IOOptionBits options);
-kern_return_t IORegistryEntryCreateCFProperties(io_registry_entry_t entry, CFDictionaryRef **properties, CFAllocatorRef allocator, IOOptionBits options);
-kern_return_t mach_port_deallocate(ipc_space_t task, mach_port_name_t name);
+	typedef mach_port_t io_object_t;
+	typedef io_object_t io_registry_entry_t;
+	typedef char io_name_t[128];
+	typedef UInt32 IOOptionBits;
+	enum {kIORegistryIterateRecursively = 1, kIORegistryIterateParents = 2};
+	
+	//
+	io_registry_entry_t IORegistryGetRootEntry(mach_port_t masterPort);
+	kern_return_t IOMasterPort(mach_port_t bootstrapPort, mach_port_t *masterPort);
+	CFTypeRef IORegistryEntrySearchCFProperty(io_registry_entry_t entry, const io_name_t plane, CFStringRef key, CFAllocatorRef allocator, IOOptionBits options);
+	kern_return_t IORegistryEntryCreateCFProperties(io_registry_entry_t entry, CFDictionaryRef **properties, CFAllocatorRef allocator, IOOptionBits options);
+	kern_return_t mach_port_deallocate(ipc_space_t task, mach_port_name_t name);
+}
 
 //
 class SystemUtil
@@ -56,20 +59,14 @@ public:
 	}
 	
 	//
-	NS_INLINE NSString *IOIMEI()
-	{
-		return IOSearchData(@"device-imei");
-	}
-	
+//	NS_INLINE NSString *IMEI()
+//	{
+//		return IOSearchData(@"device-imei");
+//	}
+
 	//
-	NS_INLINE NSString *IOSN()
+	NS_INLINE NSString *SN()
 	{
 		return IOSearchData(@"serial-number");
-	}
-	
-	//
-	NS_INLINE NSString *IOBacklightLevel()
-	{
-		return IOSearchData(@"backlight-level");
 	}
 };
