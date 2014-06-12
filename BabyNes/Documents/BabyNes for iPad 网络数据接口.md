@@ -45,7 +45,7 @@
 				TOKEN:"xxxxxxx", // 验签信息
 			}
 
-* 测试：<https://raw.githubusercontent.com/Yonsm/CeleWare/master/BabyNas/LOGIN.json?USER=user&PASS=pass&EXTRA=extra>
+* 测试：<https://raw.githubusercontent.com/Yonsm/CeleWare/master/BabyNes/Documents/LOGIN.json?USER=user&PASS=pass&EXTRA=extra>
 
 ##2. 获取首页数据（可能和登录接口合并以减少网络请求）
 
