@@ -535,7 +535,7 @@ public:
 	{
 		static CeleXmlAttr nullAttr;
 		CeleXmlAttr* attr = GetAttr(ptzAttrName);
-		return attr ? *attr : nullAttr; 
+		return attr ? *attr : nullAttr;
 	}
 
 	// Get attribute by name, add a attr if not exist
