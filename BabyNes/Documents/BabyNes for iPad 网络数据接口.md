@@ -20,7 +20,7 @@
     * 例子（KEY名称大小写另行约定，为阅读方便下文将全部使用大写）：
     
 			{
-				CODE:200, // 结果代码：0~199 保留；200 表示成功；201~999 需和客户端约定（下面功能中将只描述这个区段的部分）；其它数值表示错误，可由服务端自选使用
+				CODE:200, // 结果代码：0~199 保留；200 表示成功（此时没有 INFO 字段）；201~999 需和客户端约定（下面功能中将只描述这个区段的部分）；其它数值表示错误，可由服务端自选使用
 				
 				INFO:"调用成功", // 用于解释 code 的文字信息，应根据所有接口均传入的 lang 参数返回相应语言的文本，可能会展示给最终用户
 				
@@ -45,7 +45,7 @@
 				TOKEN:"xxxxxxx", // 验签信息
 			}
 
-* 测试：<https://raw.githubusercontent.com/Yonsm/CeleWare/master/LOGIN.json?USER=user&PASS=pass&EXTRA=extra>
+* 测试：<https://raw.githubusercontent.com/Yonsm/CeleWare/master/BabyNas/LOGIN.json?USER=user&PASS=pass&EXTRA=extra>
 
 ##2. 获取首页数据（可能和登录接口合并以减少网络请求）
 
