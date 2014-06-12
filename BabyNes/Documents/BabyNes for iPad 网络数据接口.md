@@ -1,5 +1,4 @@
 # BabyNes for iPad 网络数据接口规范
-----
 
 #I. 概述
 
