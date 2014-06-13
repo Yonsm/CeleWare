@@ -5,7 +5,7 @@
 // CeleXml 2.1.126
 // Copyright (C) Yonsm 2010, All Rights Reserved.
 #pragma once
-#include "UniBase.h"
+#include "UUBase.h"
 #include <vector>
 
 //#define _DO_ESCAPE		// Not supported yet
