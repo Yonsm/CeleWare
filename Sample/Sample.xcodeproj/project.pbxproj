@@ -19,7 +19,7 @@
 		24259EBB194AB36B000FF8A9 /* ShadowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E38194AB36B000FF8A9 /* ShadowView.mm */; };
 		24259EBC194AB36B000FF8A9 /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E3B194AB36B000FF8A9 /* HPGrowingTextView.m */; };
 		24259EBD194AB36B000FF8A9 /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E3D194AB36B000FF8A9 /* HPTextViewInternal.m */; };
-		24259EBE194AB36B000FF8A9 /* Main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E3F194AB36B000FF8A9 /* Main.mm */; };
+		24259EBE194AB36B000FF8A9 /* Main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E3F194AB36B000FF8A9 /* Main.m */; };
 		24259EBF194AB36B000FF8A9 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24259E41194AB36B000FF8A9 /* libMobClickLibrary.a */; };
 		24259EC0194AB36B000FF8A9 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E46194AB36B000FF8A9 /* MWCaptionView.m */; };
 		24259EC1194AB36B000FF8A9 /* MWPhoto.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E48194AB36B000FF8A9 /* MWPhoto.mm */; };
@@ -136,7 +136,7 @@
 		24259E3C194AB36B000FF8A9 /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
 		24259E3D194AB36B000FF8A9 /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
 		24259E3E194AB36B000FF8A9 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
-		24259E3F194AB36B000FF8A9 /* Main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Main.mm; sourceTree = "<group>"; };
+		24259E3F194AB36B000FF8A9 /* Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Main.m; sourceTree = "<group>"; };
 		24259E41194AB36B000FF8A9 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		24259E42194AB36B000FF8A9 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		24259E43194AB36B000FF8A9 /* StatCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatCenter.h; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 		24259E22194AB36B000FF8A9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				24259E3F194AB36B000FF8A9 /* Main.mm */,
+				24259E3F194AB36B000FF8A9 /* Main.m */,
 				24259E3E194AB36B000FF8A9 /* Macro.h */,
 				24259E55194AB36B000FF8A9 /* Rename.h */,
 				24259EF4194AB432000FF8A9 /* UUtils */,
@@ -864,7 +864,7 @@
 				24259F35194AB539000FF8A9 /* BaseController.mm in Sources */,
 				24259F32194AB539000FF8A9 /* LoginController.mm in Sources */,
 				24259F38194AB539000FF8A9 /* PullWizardController.mm in Sources */,
-				24259EBE194AB36B000FF8A9 /* Main.mm in Sources */,
+				24259EBE194AB36B000FF8A9 /* Main.m in Sources */,
 				24259F48194AB539000FF8A9 /* SelectSheet.mm in Sources */,
 				24259ECF194AB36B000FF8A9 /* UMFeedbackTableViewCellRight.m in Sources */,
 				24259EDC194AB36B000FF8A9 /* CopyableLabel.mm in Sources */,

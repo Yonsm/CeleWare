@@ -4,17 +4,19 @@
 
 二、代码结构
 
-  1. Classes 是此项目专用的实现代码
+  1. Sources 是此项目专用的实现代码
+  
+    Prefix.pch 是整个项目的预编译头文件，引入了不常更改的头文件（Utilities 中的头文件引入只要在此文件中打开注释即可）。项目相关的全局宏定义也可以放在这个文件里。
 
-    1). Model 是数据模型实现
+    1). Models 是数据模型实现
 
       DataLoader 是数据装载和解析的代码，负责所有业务数据的装载解析，和通用的错误处理（与服务端打交道的都在这里实现了）。
 
       PullDataLoader 是带下拉组件的数据装载器。
 
-    2). View 项目专用的UI组件。
+    2). Views 项目专用的UI组件。
 
-    3). Controller 是相关UI页面的实现。
+    3). Controllers 是相关UI页面的实现。
 
         Base 目录中的 Conroller 是基类，派生结构如下：
 
@@ -29,20 +31,26 @@
 
         其它的页面 Controller 都派生自以上的其中一个 Controller。其中重复性条目多的页面可从 TableController 或其子类中继承；重复条目有限的页面可以从 WizardController或其子类继承，在 loadPage 中实现添加 UI 元素即可。
 
-  2. Sources 是通用代码，不属于项目业务逻辑的一部分。此目录中的文件会定期归并整理，保持一份最新的实现。
+  2. Utilities 是通用代码，不属于项目业务逻辑的一部分。此目录中的文件会定期归并整理，保持一份最新的实现。
 
-    Main.mm 是程序入口，不需要修改。
+    Main.m 是程序入口，不需要修改。
 
-    Prefix.pch 是整个项目的预编译头文件，引入了不常更改的头文件（Sources 中的头文件引入只要在此文件中打开注释即可，Classes 中的文件不需要直接引入相关头文件）。另外项目相关的全局宏定义也可以放在这个文件里。
+    Macro.h 是工具类宏定义。
 
-    CelePrefix.pch 用于将当前项目编译到其他项目中时防止符号重复（Object C/C++ 不支持 namespace 真坑爹啊），可按需启用。
+    Rename.h 用于将当前项目编译到其他项目中时防止符号重复（Object C/C++ 不支持 namespace 真坑爹啊），可按需启用。
 
-    Util
+    UUtils 跨平台通用的工具。其中 UUBase 是输出接口相同，但在各平台的具体实现不同，用于弥合个平台的基础代码的差异；其它文件则是基于 UUBase 编写的工具。
+
+    Utils
 
      NSUtil 基本的实用函数，大部分都是 static inline 的，用了 class 来包装（实际上是用来区别命名空间，只是没有直接用 namespace 而已）这些功能需要 Object C++ 特性支持，使用 .mm 为扩展名才能使用其中的函数。
 
      UIUtil 是 UI 相关的实用函数，和 NSUtil 类似。
-  
+ 
+	Views 通用视图
+	
+	Controllers 通用组件
+
     其它部分相关代码描述待续……
 
   3. Resources 是项目资源（非代码的部分）：
