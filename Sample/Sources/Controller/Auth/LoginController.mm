@@ -10,7 +10,7 @@
 - (id)init
 {
 	self = [super initWithAutoHide:YES autoNext:NO autoScroll:NO];
-	self.title = @"我的账户";
+	self.title = NSLocalizedString(@"My Account", @"我的账户");
 	
 	return self;
 }
@@ -48,26 +48,26 @@
 - (void)loadPage
 {
 	NSString *username = Settings::Get(kUsername);
-	_usernameField = [self cellNumberWithName:@"手机号"
+	_usernameField = [self cellNumberWithName:NSLocalizedString(@"Tel", @"手机号")
 										 text:username
-								  placeholder:@"请输入11位手机号码"
+								  placeholder:NSLocalizedString(@"Enter phone number", @"请输入11位手机号码")
 									  changed:@selector(updateDoneButton)];
 	
-	_passwordField = [self cellTextWithName:@"密　码"
+	_passwordField = [self cellTextWithName:NSLocalizedString(@"Password", @"密　码")
 									   text:nil
-								placeholder:@"请输入密码"
+								placeholder:NSLocalizedString(@"Enter password", @"请输入密码")
 									changed:@selector(updateDoneButton)];
 	_passwordField.secureTextEntry = YES;
 	
 	//DataLoaderPasswordError
 	
-	[super buttonsWithTitles:@[@"注册", @"登录"] action:@selector(buttonClicked:)];
+	[super buttonsWithTitles:@[NSLocalizedString(@"Register", @"注册"), NSLocalizedString(@"Login", @"登录")] action:@selector(buttonClicked:)];
 	_lastButton.enabled = NO;
 	
 	//
 	_contentHeight += 12;
 	CGRect frame = {kLeftGap, _contentHeight, 0, 0};
-	UIButton *forgotButton = [UIButton linkButtonWithTitle:@"忘记密码？" frame:frame];
+	UIButton *forgotButton = [UIButton linkButtonWithTitle:NSLocalizedString(@"Forgot password?", @"忘记密码？") frame:frame];
 	forgotButton.tag = 2;
 	[forgotButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
 	[_contentView addSubview:forgotButton];

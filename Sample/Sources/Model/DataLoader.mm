@@ -23,12 +23,12 @@ static ErrorAlertView *_alertView = nil;
 		_alertView.delegate = _alertView;
 		if (loader.error == DataLoaderNoData || loader.error == DataLoaderNetworkError)
 		{
-			[_alertView addButtonWithTitle:@"取消"];
-			[_alertView addButtonWithTitle:@"重试"];
+			[_alertView addButtonWithTitle:NSLocalizedString(@"Cancel", @"取消")];
+			[_alertView addButtonWithTitle:NSLocalizedString(@"Retry", @"重试")];
 		}
 		else
 		{
-			[_alertView addButtonWithTitle:@"确定"];
+			[_alertView addButtonWithTitle:NSLocalizedString(@"OK", @"确定")];
 		}
 		_alertView.loader = loader;
 		_alertView.loader_delegate = loader.delegate;

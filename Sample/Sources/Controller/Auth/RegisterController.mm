@@ -18,7 +18,7 @@
 - (void)setForgot:(BOOL)forgot
 {
 	_forgot = forgot;
-	self.title = forgot? @"重置密码" : @"注册帐号";
+	self.title = forgot? NSLocalizedString(@"Reset Password", @"重置密码") : NSLocalizedString(@"Regiter Account", @"注册帐号");
 }
 
 #pragma mark View methods
@@ -53,9 +53,9 @@
 //
 - (void)loadPage
 {
-	_usernameField = [self cellNumberWithName:@"手机号"
+	_usernameField = [self cellNumberWithName:NSLocalizedString(@"Tel", @"手机号")
 										 text:nil
-								  placeholder:@"请输入手机号码"
+								  placeholder:NSLocalizedString(@"Enter phone number", @"请输入手机号码")
 									  changed:@selector(phoneFieldChanged:)];
 	
 	{

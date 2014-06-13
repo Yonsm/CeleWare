@@ -8,8 +8,8 @@
 {
 	CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
 	CLLocationDistance meters = [self distanceFromLocation:location];
-	if (meters > 1000) return [NSString stringWithFormat:@"%.0lf公里", (meters / 1000)];
-	return [NSString stringWithFormat:@"%d米", (int)meters];
+	if (meters > 1000) return [NSString stringWithFormat:NSLocalizedString(@"%.0lfkm", @"%.0lf公里"), (meters / 1000)];
+	return [NSString stringWithFormat:NSLocalizedString(@"%dm", @"%d米"), (int)meters];
 }
 @end
 
