@@ -292,7 +292,6 @@
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		246A319718682C2D00903EF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		246A31AC18682C2D00903EF4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		246A3240186838ED00903EF4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		246A3241186838ED00903EF4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		246A3242186838ED00903EF4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -323,16 +322,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24259EBF194AB36B000FF8A9 /* libMobClickLibrary.a in Frameworks */,
+				246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */,
+				246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */,
+				246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */,
+				246A334518683DB100903EF4 /* CoreLocation.framework in Frameworks */,
 				246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */,
 				246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */,
 				246A334718683DBF00903EF4 /* SystemConfiguration.framework in Frameworks */,
-				246A334518683DB100903EF4 /* CoreLocation.framework in Frameworks */,
 				246A334318683DA800903EF4 /* libz.dylib in Frameworks */,
 				24259EC9194AB36B000FF8A9 /* libUMFeedback.a in Frameworks */,
-				246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */,
-				246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */,
-				246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */,
+				24259EBF194AB36B000FF8A9 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,15 +680,14 @@
 		246A319218682C2D00903EF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				246A319318682C2D00903EF4 /* Foundation.framework */,
+				246A319718682C2D00903EF4 /* UIKit.framework */,
+				246A319518682C2D00903EF4 /* CoreGraphics.framework */,
+				246A334418683DB100903EF4 /* CoreLocation.framework */,
 				246A334A18683DF300903EF4 /* MediaPlayer.framework */,
 				246A334818683DE000903EF4 /* MessageUI.framework */,
 				246A334618683DBF00903EF4 /* SystemConfiguration.framework */,
-				246A334418683DB100903EF4 /* CoreLocation.framework */,
 				246A334218683DA800903EF4 /* libz.dylib */,
-				246A319318682C2D00903EF4 /* Foundation.framework */,
-				246A319518682C2D00903EF4 /* CoreGraphics.framework */,
-				246A319718682C2D00903EF4 /* UIKit.framework */,
-				246A31AC18682C2D00903EF4 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
