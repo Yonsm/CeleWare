@@ -147,7 +147,7 @@
 - (void)setBackgroundColor {
     self.mTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"UMFeedback.bundle/messages_tableview_background"]];
     if ([self.mToolBar respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) {
-        UIImage *image = [UIImage imageWithColor:kNavigationBar_ToolBarBackGroundColor];
+        UIImage *image = UIUtil::ImageWithColor(kNavigationBar_ToolBarBackGroundColor);
         [self.mToolBar setBackgroundImage:image forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
     } else {
         self.mToolBar.barStyle = UIBarStyleBlack;
