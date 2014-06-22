@@ -26,7 +26,7 @@
 {
 	[super loadView];
 	
-	_contentWidth = 320;
+	_contentWidth = 1024;
 	
 	_scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
 	_scrollView.delaysContentTouches = NO;
@@ -317,7 +317,7 @@
 - (UIButton *)buttonWithTitle:(NSString *)title action:(SEL)action color:(UIColor *)color color_:(UIColor *)color_
 {
 	_contentHeight += 15;
-	UIButton *button = [self buttonWithTitle:title action:action color:color color_:color_ frame:CGRectMake(10, _contentHeight, 300, 40)];
+	UIButton *button = [self buttonWithTitle:title action:action color:color color_:color_ frame:CGRectMake(10, _contentHeight, _contentWidth - 20, 40)];
 	_contentHeight += 40;
 	return button;
 }

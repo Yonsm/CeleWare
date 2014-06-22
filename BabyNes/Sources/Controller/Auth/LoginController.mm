@@ -1,6 +1,6 @@
 
 #import "LoginController.h"
-#import "RegisterController.h"
+#import "RootController.h"
 
 @implementation LoginController
 
@@ -10,7 +10,7 @@
 - (id)init
 {
 	self = [super initWithAutoHide:YES autoNext:NO autoScroll:NO];
-	self.title = NSLocalizedString(@"My Account", @"我的账户");
+	self.title = NSLocalizedString(@"Login", @"登录");
 	
 	return self;
 }
@@ -61,34 +61,20 @@
 	
 	//DataLoaderPasswordError
 	
-	[super buttonsWithTitles:@[NSLocalizedString(@"Register", @"注册"), NSLocalizedString(@"Login", @"登录")] action:@selector(buttonClicked:)];
+	[super buttonWithTitle:NSLocalizedString(@"Login", @"登录") action:@selector(doneButtonClicked:) color:UIUtil::Color(0xff9900) color_:UIUtil::Color(0xff7700)];
 	_lastButton.enabled = NO;
 	
 	//
-	_contentHeight += 12;
-	CGRect frame = {kLeftGap, _contentHeight, 0, 0};
-	UIButton *forgotButton = [UIButton linkButtonWithTitle:NSLocalizedString(@"Forgot password?", @"忘记密码？") frame:frame];
-	forgotButton.tag = 2;
-	[forgotButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	[_contentView addSubview:forgotButton];
-	_contentHeight += frame.size.height;
+	//	_contentHeight += 12;
+	//	CGRect frame = {kLeftGap, _contentHeight, 0, 0};
+	//	UIButton *forgotButton = [UIButton linkButtonWithTitle:NSLocalizedString(@"Forgot password?", @"忘记密码？") frame:frame];
+	//	forgotButton.tag = 2;
+	//	[forgotButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	//	[_contentView addSubview:forgotButton];
+	//	_contentHeight += frame.size.height;
 }
 
 #pragma mark Event methods
-
-//
-- (void)buttonClicked:(UIButton *)sender
-{
-	if (sender.tag == 1)
-	{
-		[self doneButtonClicked:sender];
-		return;
-	}
-	
-	RegisterController *controller = [[RegisterController alloc] init];
-	controller.forgot = (sender.tag == 2);
-	[self.navigationController pushViewController:controller animated:YES];
-}
 
 //
 - (void)updateDoneButton
@@ -103,27 +89,28 @@
 	Settings::EncryptSet(kPassword, _passwordField.text);
 	
 	_lastButton.enabled = NO;
-	[DataLoader loadWithService:nil params:nil completion:^(DataLoader *loader)
-	 {
-		 if (loader.error != DataLoaderNoError)
-		 {
-			 Settings::Save(kPassword);
-			 if (loader.error == DataLoaderPasswordError)
-			 {
-				 _passwordField.text = nil;
-				 [self updateDoneButton];
-				 [_passwordField becomeFirstResponder];
-			 }
-			 else
-			 {
-				 _lastButton.enabled = YES;
-			 }
-			 return;
-		 }
-		 
-		 Settings::Save();
-		 [self.navigationController dismissModalViewController];
-	 }];
+	//	[DataLoader loadWithService:nil params:nil completion:^(DataLoader *loader)
+	//	 {
+	//		 if (loader.error != DataLoaderNoError)
+	//		 {
+	//			 Settings::Save(kPassword);
+	//			 if (loader.error == DataLoaderPasswordError)
+	//			 {
+	//				 _passwordField.text = nil;
+	//				 [self updateDoneButton];
+	//				 [_passwordField becomeFirstResponder];
+	//			 }
+	//			 else
+	//			 {
+	//				 _lastButton.enabled = YES;
+	//			 }
+	//			 return;
+	//		 }
+	
+	Settings::Save();
+	UIViewController *controller = [[RootController alloc] init];
+	[self.navigationController setViewControllers:@[controller] animated:YES];
+	//	 }];
 }
 
 @end
