@@ -12,13 +12,6 @@
 		24259EB4194AB36B000FF8A9 /* NullController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E29194AB36B000FF8A9 /* NullController.mm */; };
 		24259EB5194AB36B000FF8A9 /* ShareComposer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E2B194AB36B000FF8A9 /* ShareComposer.mm */; };
 		24259EB6194AB36B000FF8A9 /* WebController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E2D194AB36B000FF8A9 /* WebController.mm */; };
-		24259EB7194AB36B000FF8A9 /* FacingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E30194AB36B000FF8A9 /* FacingView.mm */; };
-		24259EB8194AB36B000FF8A9 /* FoldPane.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E32194AB36B000FF8A9 /* FoldPane.mm */; };
-		24259EB9194AB36B000FF8A9 /* FoldView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E34194AB36B000FF8A9 /* FoldView.mm */; };
-		24259EBA194AB36B000FF8A9 /* FoldViews.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E36194AB36B000FF8A9 /* FoldViews.mm */; };
-		24259EBB194AB36B000FF8A9 /* ShadowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E38194AB36B000FF8A9 /* ShadowView.mm */; };
-		24259EBC194AB36B000FF8A9 /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E3B194AB36B000FF8A9 /* HPGrowingTextView.m */; };
-		24259EBD194AB36B000FF8A9 /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E3D194AB36B000FF8A9 /* HPTextViewInternal.m */; };
 		24259EBE194AB36B000FF8A9 /* Main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E3F194AB36B000FF8A9 /* Main.m */; };
 		24259EBF194AB36B000FF8A9 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24259E41194AB36B000FF8A9 /* libMobClickLibrary.a */; };
 		24259EC0194AB36B000FF8A9 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24259E46194AB36B000FF8A9 /* MWCaptionView.m */; };
@@ -58,8 +51,6 @@
 		24259EE4194AB36B000FF8A9 /* SegmentLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E97194AB36B000FF8A9 /* SegmentLabel.mm */; };
 		24259EE5194AB36B000FF8A9 /* ToastView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E99194AB36B000FF8A9 /* ToastView.mm */; };
 		24259EE6194AB36B000FF8A9 /* TouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259E9B194AB36B000FF8A9 /* TouchView.mm */; };
-		24259EE7194AB36B000FF8A9 /* icon_session@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24259E9D194AB36B000FF8A9 /* icon_session@2x.png */; };
-		24259EE8194AB36B000FF8A9 /* icon_timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24259E9E194AB36B000FF8A9 /* icon_timeline@2x.png */; };
 		24259EED194AB36B000FF8A9 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 24259EAA194AB36B000FF8A9 /* ioapi.c */; };
 		24259EEE194AB36B000FF8A9 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 24259EAC194AB36B000FF8A9 /* unzip.c */; };
 		24259EEF194AB36B000FF8A9 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 24259EAE194AB36B000FF8A9 /* zip.c */; };
@@ -121,20 +112,6 @@
 		24259E2B194AB36B000FF8A9 /* ShareComposer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShareComposer.mm; sourceTree = "<group>"; };
 		24259E2C194AB36B000FF8A9 /* WebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebController.h; sourceTree = "<group>"; };
 		24259E2D194AB36B000FF8A9 /* WebController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebController.mm; sourceTree = "<group>"; };
-		24259E2F194AB36B000FF8A9 /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
-		24259E30194AB36B000FF8A9 /* FacingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FacingView.mm; sourceTree = "<group>"; };
-		24259E31194AB36B000FF8A9 /* FoldPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldPane.h; sourceTree = "<group>"; };
-		24259E32194AB36B000FF8A9 /* FoldPane.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FoldPane.mm; sourceTree = "<group>"; };
-		24259E33194AB36B000FF8A9 /* FoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldView.h; sourceTree = "<group>"; };
-		24259E34194AB36B000FF8A9 /* FoldView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FoldView.mm; sourceTree = "<group>"; };
-		24259E35194AB36B000FF8A9 /* FoldViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldViews.h; sourceTree = "<group>"; };
-		24259E36194AB36B000FF8A9 /* FoldViews.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FoldViews.mm; sourceTree = "<group>"; };
-		24259E37194AB36B000FF8A9 /* ShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowView.h; sourceTree = "<group>"; };
-		24259E38194AB36B000FF8A9 /* ShadowView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShadowView.mm; sourceTree = "<group>"; };
-		24259E3A194AB36B000FF8A9 /* HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
-		24259E3B194AB36B000FF8A9 /* HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
-		24259E3C194AB36B000FF8A9 /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
-		24259E3D194AB36B000FF8A9 /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
 		24259E3E194AB36B000FF8A9 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		24259E3F194AB36B000FF8A9 /* Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Main.m; sourceTree = "<group>"; };
 		24259E41194AB36B000FF8A9 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -214,17 +191,6 @@
 		24259E99194AB36B000FF8A9 /* ToastView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ToastView.mm; sourceTree = "<group>"; };
 		24259E9A194AB36B000FF8A9 /* TouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchView.h; sourceTree = "<group>"; };
 		24259E9B194AB36B000FF8A9 /* TouchView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchView.mm; sourceTree = "<group>"; };
-		24259E9D194AB36B000FF8A9 /* icon_session@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_session@2x.png"; sourceTree = "<group>"; };
-		24259E9E194AB36B000FF8A9 /* icon_timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_timeline@2x.png"; sourceTree = "<group>"; };
-		24259E9F194AB36B000FF8A9 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		24259EA0194AB36B000FF8A9 /* WeixinActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinActivity.h; sourceTree = "<group>"; };
-		24259EA1194AB36B000FF8A9 /* WeixinActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeixinActivity.m; sourceTree = "<group>"; };
-		24259EA2194AB36B000FF8A9 /* WeixinSessionActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinSessionActivity.h; sourceTree = "<group>"; };
-		24259EA3194AB36B000FF8A9 /* WeixinSessionActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeixinSessionActivity.m; sourceTree = "<group>"; };
-		24259EA4194AB36B000FF8A9 /* WeixinTimelineActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinTimelineActivity.h; sourceTree = "<group>"; };
-		24259EA5194AB36B000FF8A9 /* WeixinTimelineActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeixinTimelineActivity.m; sourceTree = "<group>"; };
-		24259EA6194AB36B000FF8A9 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		24259EA7194AB36B000FF8A9 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		24259EA9194AB36B000FF8A9 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		24259EAA194AB36B000FF8A9 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		24259EAB194AB36B000FF8A9 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -234,9 +200,6 @@
 		24259EAF194AB36B000FF8A9 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		24259EB0194AB36B000FF8A9 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		24259EB1194AB36B000FF8A9 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
-		24259EF5194AB432000FF8A9 /* UUBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBase.h; sourceTree = "<group>"; };
-		24259EF6194AB432000FF8A9 /* UUIni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIni.h; sourceTree = "<group>"; };
-		24259EF7194AB432000FF8A9 /* UUXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUXml.h; sourceTree = "<group>"; };
 		24259EF9194AB539000FF8A9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		24259EFA194AB539000FF8A9 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		24259EFD194AB539000FF8A9 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -344,16 +307,12 @@
 				24259E3F194AB36B000FF8A9 /* Main.m */,
 				24259E3E194AB36B000FF8A9 /* Macro.h */,
 				24259E55194AB36B000FF8A9 /* Rename.h */,
-				24259EF4194AB432000FF8A9 /* UUtils */,
 				24259E6F194AB36B000FF8A9 /* Utils */,
 				24259E81194AB36B000FF8A9 /* Views */,
 				24259E23194AB36B000FF8A9 /* Controllers */,
-				24259E2E194AB36B000FF8A9 /* FoldPane */,
-				24259E39194AB36B000FF8A9 /* HPGrowingTextView */,
 				24259E44194AB36B000FF8A9 /* MWPhotoBrowser */,
 				24259E40194AB36B000FF8A9 /* MobClick */,
 				24259E5B194AB36B000FF8A9 /* UMFeedback */,
-				24259E9C194AB36B000FF8A9 /* WeChat */,
 				24259EA8194AB36B000FF8A9 /* ZipArchive */,
 			);
 			path = Utilities;
@@ -374,34 +333,6 @@
 				24259E2D194AB36B000FF8A9 /* WebController.mm */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		24259E2E194AB36B000FF8A9 /* FoldPane */ = {
-			isa = PBXGroup;
-			children = (
-				24259E2F194AB36B000FF8A9 /* FacingView.h */,
-				24259E30194AB36B000FF8A9 /* FacingView.mm */,
-				24259E31194AB36B000FF8A9 /* FoldPane.h */,
-				24259E32194AB36B000FF8A9 /* FoldPane.mm */,
-				24259E33194AB36B000FF8A9 /* FoldView.h */,
-				24259E34194AB36B000FF8A9 /* FoldView.mm */,
-				24259E35194AB36B000FF8A9 /* FoldViews.h */,
-				24259E36194AB36B000FF8A9 /* FoldViews.mm */,
-				24259E37194AB36B000FF8A9 /* ShadowView.h */,
-				24259E38194AB36B000FF8A9 /* ShadowView.mm */,
-			);
-			path = FoldPane;
-			sourceTree = "<group>";
-		};
-		24259E39194AB36B000FF8A9 /* HPGrowingTextView */ = {
-			isa = PBXGroup;
-			children = (
-				24259E3A194AB36B000FF8A9 /* HPGrowingTextView.h */,
-				24259E3B194AB36B000FF8A9 /* HPGrowingTextView.m */,
-				24259E3C194AB36B000FF8A9 /* HPTextViewInternal.h */,
-				24259E3D194AB36B000FF8A9 /* HPTextViewInternal.m */,
-			);
-			path = HPGrowingTextView;
 			sourceTree = "<group>";
 		};
 		24259E40194AB36B000FF8A9 /* MobClick */ = {
@@ -515,24 +446,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		24259E9C194AB36B000FF8A9 /* WeChat */ = {
-			isa = PBXGroup;
-			children = (
-				24259E9D194AB36B000FF8A9 /* icon_session@2x.png */,
-				24259E9E194AB36B000FF8A9 /* icon_timeline@2x.png */,
-				24259E9F194AB36B000FF8A9 /* libWeChatSDK.a */,
-				24259EA0194AB36B000FF8A9 /* WeixinActivity.h */,
-				24259EA1194AB36B000FF8A9 /* WeixinActivity.m */,
-				24259EA2194AB36B000FF8A9 /* WeixinSessionActivity.h */,
-				24259EA3194AB36B000FF8A9 /* WeixinSessionActivity.m */,
-				24259EA4194AB36B000FF8A9 /* WeixinTimelineActivity.h */,
-				24259EA5194AB36B000FF8A9 /* WeixinTimelineActivity.m */,
-				24259EA6194AB36B000FF8A9 /* WXApi.h */,
-				24259EA7194AB36B000FF8A9 /* WXApiObject.h */,
-			);
-			path = WeChat;
-			sourceTree = "<group>";
-		};
 		24259EA8194AB36B000FF8A9 /* ZipArchive */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,16 +460,6 @@
 				24259EB1194AB36B000FF8A9 /* ZipArchive.mm */,
 			);
 			path = ZipArchive;
-			sourceTree = "<group>";
-		};
-		24259EF4194AB432000FF8A9 /* UUtils */ = {
-			isa = PBXGroup;
-			children = (
-				24259EF5194AB432000FF8A9 /* UUBase.h */,
-				24259EF6194AB432000FF8A9 /* UUIni.h */,
-				24259EF7194AB432000FF8A9 /* UUXml.h */,
-			);
-			path = UUtils;
 			sourceTree = "<group>";
 		};
 		24259EF8194AB539000FF8A9 /* Sources */ = {
@@ -742,7 +645,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Yonsm;
 			};
-			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BabyNese" */;
+			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BabyNes" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -767,8 +670,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24259EE8194AB36B000FF8A9 /* icon_timeline@2x.png in Resources */,
-				24259EE7194AB36B000FF8A9 /* icon_session@2x.png in Resources */,
 				246A32F9186838ED00903EF4 /* Default@2x.png in Resources */,
 				24259ECB194AB36B000FF8A9 /* UMContactViewController.xib in Resources */,
 				246A32FA186838ED00903EF4 /* DefaultPad.png in Resources */,
@@ -826,7 +727,6 @@
 				24259EE2194AB36B000FF8A9 /* PredictScrollView.mm in Sources */,
 				24259EC2194AB36B000FF8A9 /* MWPhotoBrowser.mm in Sources */,
 				24259EC6194AB36B000FF8A9 /* SDWebImageDecoder.m in Sources */,
-				24259EBA194AB36B000FF8A9 /* FoldViews.mm in Sources */,
 				24259F3C194AB539000FF8A9 /* RootController.mm in Sources */,
 				24259F3D194AB539000FF8A9 /* SettingController.mm in Sources */,
 				24259F33194AB539000FF8A9 /* RegisterController.mm in Sources */,
@@ -834,8 +734,6 @@
 				24259EC0194AB36B000FF8A9 /* MWCaptionView.m in Sources */,
 				24259EB2194AB36B000FF8A9 /* MessageComposer.mm in Sources */,
 				24259F3B194AB539000FF8A9 /* NavigationController.mm in Sources */,
-				24259EB9194AB36B000FF8A9 /* FoldView.mm in Sources */,
-				24259EB7194AB36B000FF8A9 /* FacingView.mm in Sources */,
 				24259F34194AB539000FF8A9 /* AutoWizardController.mm in Sources */,
 				24259ED0194AB36B000FF8A9 /* UMFeedbackViewController.mm in Sources */,
 				24259ECA194AB36B000FF8A9 /* UMContactViewController.m in Sources */,
@@ -850,12 +748,10 @@
 				24259F46194AB539000FF8A9 /* SelectBox.mm in Sources */,
 				24259EC5194AB36B000FF8A9 /* MWZoomingScrollView.m in Sources */,
 				24259ECC194AB36B000FF8A9 /* UMEGORefreshTableHeaderView.m in Sources */,
-				24259EBD194AB36B000FF8A9 /* HPTextViewInternal.m in Sources */,
 				24259EE3194AB36B000FF8A9 /* PullView.mm in Sources */,
 				24259ED9194AB36B000FF8A9 /* UIUtil.mm in Sources */,
 				24259EE0194AB36B000FF8A9 /* NullView.mm in Sources */,
 				24259F47194AB539000FF8A9 /* SelectPicker.mm in Sources */,
-				24259EBC194AB36B000FF8A9 /* HPGrowingTextView.m in Sources */,
 				24259EED194AB36B000FF8A9 /* ioapi.c in Sources */,
 				24259EB5194AB36B000FF8A9 /* ShareComposer.mm in Sources */,
 				24259EE5194AB36B000FF8A9 /* ToastView.mm in Sources */,
@@ -873,7 +769,6 @@
 				24259F36194AB539000FF8A9 /* PagingTableController.mm in Sources */,
 				24259ED8194AB36B000FF8A9 /* SystemUtil.mm in Sources */,
 				24259F41194AB539000FF8A9 /* DataLoader.mm in Sources */,
-				24259EBB194AB36B000FF8A9 /* ShadowView.mm in Sources */,
 				24259EB3194AB36B000FF8A9 /* MoviePlayer.mm in Sources */,
 				24259F49194AB539000FF8A9 /* WizardCell.mm in Sources */,
 				24259ED5194AB36B000FF8A9 /* NSUtil.mm in Sources */,
@@ -883,7 +778,6 @@
 				24259EE6194AB36B000FF8A9 /* TouchView.mm in Sources */,
 				24259EC4194AB36B000FF8A9 /* MWTapDetectingView.m in Sources */,
 				24259EC3194AB36B000FF8A9 /* MWTapDetectingImageView.m in Sources */,
-				24259EB8194AB36B000FF8A9 /* FoldPane.mm in Sources */,
 				24259EF0194AB36B000FF8A9 /* ZipArchive.mm in Sources */,
 				24259ED2194AB36B000FF8A9 /* HttpUtil.mm in Sources */,
 			);
@@ -1008,6 +902,7 @@
 					"$(PROJECT_DIR)/Utilities/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1027,6 +922,7 @@
 					"$(PROJECT_DIR)/Utilities/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1034,7 +930,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BabyNese" */ = {
+		246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BabyNes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246A31BA18682C2D00903EF4 /* Debug */,
