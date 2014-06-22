@@ -1,0 +1,8 @@
+
+
+//
+@interface NullController : UIViewController
+{
+}
+
+@end
