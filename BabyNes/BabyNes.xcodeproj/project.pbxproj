@@ -288,7 +288,7 @@
 		24259F2E194AB539000FF8A9 /* SelectSheet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectSheet.mm; sourceTree = "<group>"; };
 		24259F2F194AB539000FF8A9 /* WizardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizardCell.h; sourceTree = "<group>"; };
 		24259F30194AB539000FF8A9 /* WizardCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WizardCell.mm; sourceTree = "<group>"; };
-		246A319018682C2D00903EF4 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		246A319018682C2D00903EF4 /* BabyNese.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyNese.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		246A319718682C2D00903EF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -672,7 +672,7 @@
 		246A319118682C2D00903EF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				246A319018682C2D00903EF4 /* Sample.app */,
+				246A319018682C2D00903EF4 /* BabyNese.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -715,9 +715,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		246A318F18682C2D00903EF4 /* Sample */ = {
+		246A318F18682C2D00903EF4 /* BabyNese */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "Sample" */;
+			buildConfigurationList = 246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BabyNese" */;
 			buildPhases = (
 				246A334D18687AD100903EF4 /* Refresh Version Stamp */,
 				246A318C18682C2D00903EF4 /* Sources */,
@@ -728,9 +728,9 @@
 			);
 			dependencies = (
 			);
-			name = Sample;
-			productName = Sample;
-			productReference = 246A319018682C2D00903EF4 /* Sample.app */;
+			name = BabyNese;
+			productName = BabyNese;
+			productReference = 246A319018682C2D00903EF4 /* BabyNese.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -742,7 +742,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Yonsm;
 			};
-			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "Sample" */;
+			buildConfigurationList = 246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BabyNese" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -757,7 +757,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				246A318F18682C2D00903EF4 /* Sample */,
+				246A318F18682C2D00903EF4 /* BabyNese */,
 			);
 		};
 /* End PBXProject section */
@@ -1034,7 +1034,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "Sample" */ = {
+		246A318B18682C2D00903EF4 /* Build configuration list for PBXProject "BabyNese" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246A31BA18682C2D00903EF4 /* Debug */,
@@ -1043,7 +1043,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "Sample" */ = {
+		246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BabyNese" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246A31BD18682C2D00903EF4 /* Debug */,
