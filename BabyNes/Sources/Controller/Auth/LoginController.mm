@@ -60,7 +60,6 @@
 		}
 		
 		UIImage *fieldBg = UIUtil::Image(@"InputBox");
-		//UIImage *fieldBg_ = UIUtil::Image(@"InputBox_");
 		CGRect frame = {(_loginPane.frame.size.width - fieldBg.size.width) / 2, 96, fieldBg.size.width, fieldBg.size.height};
 		{
 			_usernameField = [[UITextField alloc] initWithFrame:frame];
@@ -68,6 +67,8 @@
 			_usernameField.leftView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"UserIcon")];
 			_usernameField.leftViewMode = UITextFieldViewModeAlways;
 			[_usernameField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+			[_usernameField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
+			[_usernameField addTarget:self action:@selector(textFieldEditingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
 			[_loginPane addSubview:_usernameField];
 		}
 		frame.origin.y = 160;
@@ -77,6 +78,8 @@
 			_passwordField.leftView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PassIcon")];
 			_passwordField.leftViewMode = UITextFieldViewModeAlways;
 			[_passwordField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+			[_passwordField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
+			[_passwordField addTarget:self action:@selector(textFieldEditingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
 			[_loginPane addSubview:_passwordField];
 		}
 		frame.origin.x -= 5;
@@ -191,6 +194,18 @@
 }
 
 #pragma mark Event methods
+
+//
+- (void)textFieldEditingDidBegin:(UITextField *)sender
+{
+	sender.background = UIUtil::Image(@"InputBox_");
+}
+
+//
+- (void)textFieldEditingDidEnd:(UITextField *)sender
+{
+	sender.background = UIUtil::Image(@"InputBox");
+}
 
 //
 - (void)textFieldChanged:(UITextField *)sender
