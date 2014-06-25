@@ -21,10 +21,10 @@
 //
 + (NSString *)formatFromText:(NSString *)text
 {
-	int length = text.length;
+	NSInteger length = text.length;
 	NSInteger float_location = [text rangeOfString:@"."].location;
-	int float_length = (float_location != NSNotFound) ? (length - float_location - 1) : 0;
-	return [NSString stringWithFormat:@"%%0%d.%df", length, float_length];
+	NSInteger float_length = (float_location != NSNotFound) ? (length - float_location - 1) : 0;
+	return [NSString stringWithFormat:@"%%0%d.%df", (int)length, (int)float_length];
 }
 
 //
