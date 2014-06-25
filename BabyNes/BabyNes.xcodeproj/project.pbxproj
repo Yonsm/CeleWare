@@ -83,10 +83,6 @@
 		246A319418682C2D00903EF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319318682C2D00903EF4 /* Foundation.framework */; };
 		246A319618682C2D00903EF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319518682C2D00903EF4 /* CoreGraphics.framework */; };
 		246A319818682C2D00903EF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A319718682C2D00903EF4 /* UIKit.framework */; };
-		246A32F7186838ED00903EF4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3240186838ED00903EF4 /* Default-568h@2x.png */; };
-		246A32F8186838ED00903EF4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3241186838ED00903EF4 /* Default.png */; };
-		246A32F9186838ED00903EF4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3242186838ED00903EF4 /* Default@2x.png */; };
-		246A32FA186838ED00903EF4 /* DefaultPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3243186838ED00903EF4 /* DefaultPad.png */; };
 		246A32FB186838ED00903EF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246A3244186838ED00903EF4 /* InfoPlist.strings */; };
 		246A32FC186838ED00903EF4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 246A3246186838ED00903EF4 /* Localizable.strings */; };
 		246A32FE186838ED00903EF4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 246A3249186838ED00903EF4 /* Icon.png */; };
@@ -99,6 +95,7 @@
 		246A334718683DBF00903EF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334618683DBF00903EF4 /* SystemConfiguration.framework */; };
 		246A334918683DE000903EF4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334818683DE000903EF4 /* MessageUI.framework */; };
 		246A334B18683DF300903EF4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A334A18683DF300903EF4 /* MediaPlayer.framework */; };
+		24FC734E195AAF16000F8F7F /* DefaultPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24FC734D195AAF16000F8F7F /* DefaultPad@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,10 +252,6 @@
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		246A319718682C2D00903EF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		246A3240186838ED00903EF4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		246A3241186838ED00903EF4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		246A3242186838ED00903EF4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		246A3243186838ED00903EF4 /* DefaultPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPad.png; sourceTree = "<group>"; };
 		246A3245186838ED00903EF4 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		246A3247186838ED00903EF4 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		246A3248186838ED00903EF4 /* GenString */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = GenString; sourceTree = "<group>"; };
@@ -278,6 +271,7 @@
 		246A334618683DBF00903EF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		246A334818683DE000903EF4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		246A334A18683DF300903EF4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		24FC734D195AAF16000F8F7F /* DefaultPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DefaultPad@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -604,10 +598,7 @@
 				246A324B186838ED00903EF4 /* Icon@2x.png */,
 				246A324A186838ED00903EF4 /* Icon7@2x.png */,
 				246A324C186838ED00903EF4 /* IconPad.png */,
-				246A3241186838ED00903EF4 /* Default.png */,
-				246A3242186838ED00903EF4 /* Default@2x.png */,
-				246A3240186838ED00903EF4 /* Default-568h@2x.png */,
-				246A3243186838ED00903EF4 /* DefaultPad.png */,
+				24FC734D195AAF16000F8F7F /* DefaultPad@2x.png */,
 				246A3244186838ED00903EF4 /* InfoPlist.strings */,
 				246A3246186838ED00903EF4 /* Localizable.strings */,
 				246A3248186838ED00903EF4 /* GenString */,
@@ -670,19 +661,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				246A32F9186838ED00903EF4 /* Default@2x.png in Resources */,
 				24259ECB194AB36B000FF8A9 /* UMContactViewController.xib in Resources */,
-				246A32FA186838ED00903EF4 /* DefaultPad.png in Resources */,
 				246A3301186838ED00903EF4 /* IconPad.png in Resources */,
 				246A3300186838ED00903EF4 /* Icon@2x.png in Resources */,
 				24259ECD194AB36B000FF8A9 /* UMFeedback.bundle in Resources */,
 				246A32FF186838ED00903EF4 /* Icon7@2x.png in Resources */,
-				246A32F8186838ED00903EF4 /* Default.png in Resources */,
 				246A333F1868394000903EF4 /* Assets in Resources */,
 				24259ED1194AB36B000FF8A9 /* UMFeedbackViewController.xib in Resources */,
 				246A32FB186838ED00903EF4 /* InfoPlist.strings in Resources */,
-				246A32F7186838ED00903EF4 /* Default-568h@2x.png in Resources */,
 				246A32FE186838ED00903EF4 /* Icon.png in Resources */,
+				24FC734E195AAF16000F8F7F /* DefaultPad@2x.png in Resources */,
 				246A32FC186838ED00903EF4 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -899,7 +887,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Utilities/MobClick",
 					"$(PROJECT_DIR)/Utilities/UMFeedback",
-					"$(PROJECT_DIR)/Utilities/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -919,7 +906,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Utilities/MobClick",
 					"$(PROJECT_DIR)/Utilities/UMFeedback",
-					"$(PROJECT_DIR)/Utilities/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;

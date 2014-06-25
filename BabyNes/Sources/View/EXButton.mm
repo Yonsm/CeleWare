@@ -114,7 +114,7 @@
 //
 + (id)checkButtonWithTitle:(NSString *)title frame:(CGRect)frame
 {
-	UIFont *font = [UIFont systemFontOfSize:14];
+	UIFont *font = [UIFont systemFontOfSize:16];
 	
 #ifndef _CheckBoxImage
 #define _CheckBoxImage UIUtil::Image(@"CheckBox")

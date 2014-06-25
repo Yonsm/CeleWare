@@ -1,6 +1,8 @@
 
+#import "AutoWizardController.h"
+
 //
-@interface RootController : UIViewController
+@interface RootController : AutoWizardController
 {
 }
 @end

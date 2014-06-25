@@ -1,9 +1,15 @@
 
-#import "AutoWizardController.h"
+#import "BaseController.h"
 
 //
-@interface LoginController : AutoWizardController
+@interface LoginController : BaseController
 {
+	UIImageView *_logoView;
+	UIImageView *_loginPane;
+	UIImageView *_footView;
+	UIButton *_rememberButton;;
+	UIButton *_doneButton;
+	
 	UITextField *_usernameField;
 	UITextField *_passwordField;
 }
