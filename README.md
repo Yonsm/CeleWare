@@ -1,7 +1,7 @@
 CeleWare
 ========
 
-Personal Sample and Base Repository has been moved out!
+Personal Sample and Base Repository has been moved [up](http://github.com/Yonsm/Sample)!
 
 Sample: iOS Sample Project -- Link to <http://github.com/Yonsm/Sample>
 
