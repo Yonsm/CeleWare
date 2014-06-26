@@ -1,3 +1,6 @@
+/* %.0lfkm */
+"%.0lfkm" = "%.0lf公裏";
+
 /* %d Days Before */
 "%d Days Before" = "%d天前";
 
@@ -15,6 +18,9 @@
 
 /* %d Years Before */
 "%d Years Before" = "%d年前";
+
+/* %dm */
+"%dm" = "%d米";
 
 /* After Tomorrow */
 "After Tomorrow" = "後天";
@@ -52,8 +58,14 @@
 /* Dismiss */
 "Dismiss" = "關閉";
 
+/* Done */
+"Done" = "完成";
+
 /* Download */
-"Download" = "下載";
+"Download" = "立即下載";
+
+/* Enter phone number */
+"Enter phone number" = "請輸入手機號碼";
 
 /* Error */
 "Error" = "錯誤";
@@ -91,6 +103,9 @@
 /* Loading... */
 "Loading..." = "加載中⋯";
 
+/* Login */
+"Login" = "登錄";
+
 /* Long Long Before */
 "Long Long Before" = "好久好久以前";
 
@@ -103,8 +118,11 @@
 /* New version available */
 "New version available" = "有新的版本";
 
+/* Next */
+"Next" = "下一項";
+
 /* OK */
-"OK" = "好的";
+"OK" = "確定";
 
 /* Open with Safari */
 "Open with Safari" = "在 Safari 中打開";
@@ -121,14 +139,29 @@
 /* p_m */
 "p_m" = "下午";
 
+/* Regiter Account */
+"Regiter Account" = "註冊帳號";
+
 /* Release to refresh... */
 "Release to refresh..." = "鬆開立即更新⋯";
 
 /* Release_to_refresh */
 "Release_to_refresh" = "鬆開即可刷新...";
 
+/* Remember Me */
+"Remember Me" = "記住我";
+
 /* Remind Me Later */
-"Remind Me Later" = "回頭再說";
+"Remind Me Later" = "以後再說";
+
+/* Reset Password */
+"Reset Password" = "重置密碼";
+
+/* Retry */
+"Retry" = "重試";
+
+/* Sales Login */
+"Sales Login" = "促銷員登錄";
 
 /* Save */
 "Save" = "保存";
@@ -153,6 +186,9 @@
 
 /* Share */
 "Share" = "分享";
+
+/* Tel */
+"Tel" = "手機號";
 
 /* Today */
 "Today" = "今天";

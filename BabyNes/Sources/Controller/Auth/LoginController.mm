@@ -1,7 +1,6 @@
 
 #import "LoginController.h"
 #import "RootController.h"
-#import "EXButton.h"
 
 @implementation LoginController
 
@@ -14,20 +13,9 @@
 //	return self;
 //}
 
-#pragma mark View methods
-
-// Creates the view that the controller manages.
-- (void)loadView
+//
+- (void)createSubviews
 {
-	UIImageView *view = [[UIImageView alloc] initWithImage:UIUtil::Image(@"Background")];
-	view.userInteractionEnabled = YES;
-	self.view = view;
-}
-
-// Do additional setup after loading the view.
-- (void)viewDidLoad
-{
-	[super viewDidLoad];
 	
 	CGRect bounds = self.view.bounds;
 	
@@ -59,27 +47,16 @@
 			[_loginPane addSubview:label];
 		}
 		
-		UIImage *fieldBg = UIUtil::Image(@"InputBox");
-		CGRect frame = {(_loginPane.frame.size.width - fieldBg.size.width) / 2, 96, fieldBg.size.width, fieldBg.size.height};
+		CGRect frame = {(_loginPane.frame.size.width - 273) / 2, 96, 273, 38};
 		{
-			_usernameField = [[UITextField alloc] initWithFrame:frame];
-			_usernameField.background = fieldBg;
-			_usernameField.leftView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"UserIcon")];
-			_usernameField.leftViewMode = UITextFieldViewModeAlways;
+			_usernameField = [[InputBox alloc] initWithFrame:frame iconName:@"UserIcon"];
 			[_usernameField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
-			[_usernameField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
-			[_usernameField addTarget:self action:@selector(textFieldEditingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
 			[_loginPane addSubview:_usernameField];
 		}
 		frame.origin.y = 160;
 		{
-			_passwordField = [[UITextField alloc] initWithFrame:frame];
-			_passwordField.background = fieldBg;
-			_passwordField.leftView = [[UIImageView alloc] initWithImage:UIUtil::Image(@"PassIcon")];
-			_passwordField.leftViewMode = UITextFieldViewModeAlways;
+			_passwordField = [[InputBox alloc] initWithFrame:frame iconName:@"PassIcon"];
 			[_passwordField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
-			[_passwordField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
-			[_passwordField addTarget:self action:@selector(textFieldEditingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
 			[_loginPane addSubview:_passwordField];
 		}
 		frame.origin.x -= 5;
@@ -96,10 +73,44 @@
 			[_loginPane addSubview:_doneButton];
 		}
 		
+		[_usernameField addTarget:_passwordField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+		[_passwordField addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
+		
 		UIUtil::AddTapGesture(self.view, _loginPane, @selector(endEditing:));
 	}
 	_footView.alpha = 0;
 	_loginPane.alpha = 0;
+}
+
+//
+- (void)showSubviews
+{
+	[UIView animateWithDuration:0.5 animations:^()
+	 {
+		 _logoView.center = CGPointMake(self.view.bounds.size.width / 2, _logoView.frame.size.height / 2);
+		 _loginPane.alpha = 1;
+		 _footView.alpha = 1;
+	 } completion:^(BOOL finished)
+	 {
+		 //[_usernameField.text.length ? _passwordField : _usernameField becomeFirstResponder];
+	 }];
+}
+
+#pragma mark View methods
+
+// Creates the view that the controller manages.
+- (void)loadView
+{
+	UIImageView *view = [[UIImageView alloc] initWithImage:UIUtil::Image(@"Background")];
+	view.userInteractionEnabled = YES;
+	self.view = view;
+}
+
+// Do additional setup after loading the view.
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	[self createSubviews];
 }
 
 // Called when the view is about to made visible.
@@ -122,16 +133,23 @@
 											 selector:@selector(keyboardWillHide:)
 												 name:UIKeyboardWillHideNotification
 											   object:nil];
-	
-	[UIView animateWithDuration:0.5 animations:^()
-	 {
-		 _logoView.center = CGPointMake(self.view.bounds.size.width / 2, _logoView.frame.size.height / 2);
-		 _loginPane.alpha = 1;
-		 _footView.alpha = 1;
-	 } completion:^(BOOL finished)
-	 {
-		 //[_usernameField.text.length ? _passwordField : _usernameField becomeFirstResponder];
-	 }];
+#define _HAS_PENDING_OPERATION
+#ifdef _HAS_PENDING_OPERATION
+	[self.view toastWithLoading].center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height * 3 / 4);
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^()
+				   {
+					   // TODO: 如果有网络请求
+					   [NSThread sleepForTimeInterval:2];
+					   
+					   dispatch_async(dispatch_get_main_queue(), ^()
+									  {
+										  [self.view dismissToast];
+										  [self showSubviews];
+									  });
+				   });
+#else
+	[self showSubviews];
+#endif
 }
 
 //
@@ -185,27 +203,7 @@
 	[UIView commitAnimations];
 }
 
-#pragma mark Data methods
-
-//
-- (void)loadPage
-{
-	
-}
-
 #pragma mark Event methods
-
-//
-- (void)textFieldEditingDidBegin:(UITextField *)sender
-{
-	sender.background = UIUtil::Image(@"InputBox_");
-}
-
-//
-- (void)textFieldEditingDidEnd:(UITextField *)sender
-{
-	sender.background = UIUtil::Image(@"InputBox");
-}
 
 //
 - (void)textFieldChanged:(UITextField *)sender
@@ -214,24 +212,22 @@
 }
 
 //
-- (void)updateDoneButton
+- (void)textFieldDone:(UITextField *)sender
 {
-	_doneButton.enabled = (_usernameField.text.length != 0) && (_passwordField.text.length != 0);
-}
-
-//
-- (void)doneButtonClicked:(id)sender
-{
-	UIView *focusView = UIUtil::FindFirstResponder(self.view);
-	if (focusView)
+	if (_doneButton.enabled)
 	{
-		[focusView resignFirstResponder];
-		[self performSelector:@selector(doneAction) withObject:nil afterDelay:0.3];
+		[self doneButtonClicked:nil];
 	}
 	else
 	{
-		[self doneAction];
+		[_usernameField becomeFirstResponder];
 	}
+}
+
+//
+- (void)updateDoneButton
+{
+	_doneButton.enabled = (_usernameField.text.length != 0) && (_passwordField.text.length != 0);
 }
 
 //

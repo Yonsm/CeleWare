@@ -1,3 +1,6 @@
+/* %.0lfkm */
+"%.0lfkm" = "%.0lfkm";
+
 /* %d Days Before */
 "%d Days Before" = "%d Days Before";
 
@@ -15,6 +18,9 @@
 
 /* %d Years Before */
 "%d Years Before" = "%d Years Before";
+
+/* %dm */
+"%dm" = "%dm";
 
 /* After Tomorrow */
 "After Tomorrow" = "After Tomorrow";
@@ -52,8 +58,14 @@
 /* Dismiss */
 "Dismiss" = "Dismiss";
 
+/* Done */
+"Done" = "Done";
+
 /* Download */
 "Download" = "Download";
+
+/* Enter phone number */
+"Enter phone number" = "Enter phone number";
 
 /* Error */
 "Error" = "Error";
@@ -91,6 +103,9 @@
 /* Loading... */
 "Loading..." = "Loading...";
 
+/* Login */
+"Login" = "Login";
+
 /* Long Long Before */
 "Long Long Before" = "Long Long Before";
 
@@ -102,6 +117,9 @@
 
 /* New version available */
 "New version available" = "New version available";
+
+/* Next */
+"Next" = "Next";
 
 /* OK */
 "OK" = "OK";
@@ -121,14 +139,29 @@
 /* p_m */
 "p_m" = "p_m";
 
+/* Regiter Account */
+"Regiter Account" = "Regiter Account";
+
 /* Release to refresh... */
 "Release to refresh..." = "Release to refresh...";
 
 /* Release_to_refresh */
 "Release_to_refresh" = "Release_to_refresh";
 
+/* Remember Me */
+"Remember Me" = "Remember Me";
+
 /* Remind Me Later */
 "Remind Me Later" = "Remind Me Later";
+
+/* Reset Password */
+"Reset Password" = "Reset Password";
+
+/* Retry */
+"Retry" = "Retry";
+
+/* Sales Login */
+"Sales Login" = "Sales Login";
 
 /* Save */
 "Save" = "Save";
@@ -153,6 +186,9 @@
 
 /* Share */
 "Share" = "Share";
+
+/* Tel */
+"Tel" = "Tel";
 
 /* Today */
 "Today" = "Today";

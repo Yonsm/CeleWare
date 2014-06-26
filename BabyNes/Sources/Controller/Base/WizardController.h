@@ -24,10 +24,6 @@
 	__weak WizardCell *_cells[kMaxCellsPerPage];
 }
 
-- (void)updateDoneButton;
-- (void)doneButtonClicked:(UIButton *)sender;
-- (void)doneAction;
-
 - (void)loadData;
 - (void)loadPage;
 - (void)reloadPage;

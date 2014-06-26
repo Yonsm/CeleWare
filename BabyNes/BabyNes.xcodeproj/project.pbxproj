@@ -57,7 +57,6 @@
 		24259EF0194AB36B000FF8A9 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259EB1194AB36B000FF8A9 /* ZipArchive.mm */; };
 		24259F31194AB539000FF8A9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259EFA194AB539000FF8A9 /* AppDelegate.mm */; };
 		24259F32194AB539000FF8A9 /* LoginController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259EFE194AB539000FF8A9 /* LoginController.mm */; };
-		24259F33194AB539000FF8A9 /* RegisterController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F00194AB539000FF8A9 /* RegisterController.mm */; };
 		24259F34194AB539000FF8A9 /* AutoWizardController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F03194AB539000FF8A9 /* AutoWizardController.mm */; };
 		24259F35194AB539000FF8A9 /* BaseController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F05194AB539000FF8A9 /* BaseController.mm */; };
 		24259F36194AB539000FF8A9 /* PagingTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F07194AB539000FF8A9 /* PagingTableController.mm */; };
@@ -74,7 +73,7 @@
 		24259F41194AB539000FF8A9 /* DataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F1E194AB539000FF8A9 /* DataLoader.mm */; };
 		24259F42194AB539000FF8A9 /* NearLocater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F20194AB539000FF8A9 /* NearLocater.mm */; };
 		24259F43194AB539000FF8A9 /* PullDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F22194AB539000FF8A9 /* PullDataLoader.mm */; };
-		24259F44194AB539000FF8A9 /* AlertView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F26194AB539000FF8A9 /* AlertView.mm */; };
+		24259F44194AB539000FF8A9 /* InputBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F26194AB539000FF8A9 /* InputBox.mm */; };
 		24259F45194AB539000FF8A9 /* EXButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F28194AB539000FF8A9 /* EXButton.mm */; };
 		24259F46194AB539000FF8A9 /* SelectBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F2A194AB539000FF8A9 /* SelectBox.mm */; };
 		24259F47194AB539000FF8A9 /* SelectPicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24259F2C194AB539000FF8A9 /* SelectPicker.mm */; };
@@ -201,8 +200,6 @@
 		24259EFA194AB539000FF8A9 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		24259EFD194AB539000FF8A9 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		24259EFE194AB539000FF8A9 /* LoginController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginController.mm; sourceTree = "<group>"; };
-		24259EFF194AB539000FF8A9 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
-		24259F00194AB539000FF8A9 /* RegisterController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RegisterController.mm; sourceTree = "<group>"; };
 		24259F02194AB539000FF8A9 /* AutoWizardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoWizardController.h; sourceTree = "<group>"; };
 		24259F03194AB539000FF8A9 /* AutoWizardController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AutoWizardController.mm; sourceTree = "<group>"; };
 		24259F04194AB539000FF8A9 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
@@ -236,8 +233,8 @@
 		24259F21194AB539000FF8A9 /* PullDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullDataLoader.h; sourceTree = "<group>"; };
 		24259F22194AB539000FF8A9 /* PullDataLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PullDataLoader.mm; sourceTree = "<group>"; };
 		24259F23194AB539000FF8A9 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		24259F25194AB539000FF8A9 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
-		24259F26194AB539000FF8A9 /* AlertView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlertView.mm; sourceTree = "<group>"; };
+		24259F25194AB539000FF8A9 /* InputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBox.h; sourceTree = "<group>"; };
+		24259F26194AB539000FF8A9 /* InputBox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InputBox.mm; sourceTree = "<group>"; };
 		24259F27194AB539000FF8A9 /* EXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXButton.h; sourceTree = "<group>"; };
 		24259F28194AB539000FF8A9 /* EXButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EXButton.mm; sourceTree = "<group>"; };
 		24259F29194AB539000FF8A9 /* SelectBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBox.h; sourceTree = "<group>"; };
@@ -248,7 +245,7 @@
 		24259F2E194AB539000FF8A9 /* SelectSheet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectSheet.mm; sourceTree = "<group>"; };
 		24259F2F194AB539000FF8A9 /* WizardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizardCell.h; sourceTree = "<group>"; };
 		24259F30194AB539000FF8A9 /* WizardCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WizardCell.mm; sourceTree = "<group>"; };
-		246A319018682C2D00903EF4 /* BabyNese.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyNese.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		246A319018682C2D00903EF4 /* BabyNes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyNes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		246A319318682C2D00903EF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		246A319518682C2D00903EF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		246A319718682C2D00903EF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -489,8 +486,6 @@
 			children = (
 				24259EFD194AB539000FF8A9 /* LoginController.h */,
 				24259EFE194AB539000FF8A9 /* LoginController.mm */,
-				24259EFF194AB539000FF8A9 /* RegisterController.h */,
-				24259F00194AB539000FF8A9 /* RegisterController.mm */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -538,8 +533,8 @@
 		24259F24194AB539000FF8A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				24259F25194AB539000FF8A9 /* AlertView.h */,
-				24259F26194AB539000FF8A9 /* AlertView.mm */,
+				24259F25194AB539000FF8A9 /* InputBox.h */,
+				24259F26194AB539000FF8A9 /* InputBox.mm */,
 				24259F27194AB539000FF8A9 /* EXButton.h */,
 				24259F28194AB539000FF8A9 /* EXButton.mm */,
 				24259F29194AB539000FF8A9 /* SelectBox.h */,
@@ -569,7 +564,7 @@
 		246A319118682C2D00903EF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				246A319018682C2D00903EF4 /* BabyNese.app */,
+				246A319018682C2D00903EF4 /* BabyNes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -609,9 +604,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		246A318F18682C2D00903EF4 /* BabyNese */ = {
+		246A318F18682C2D00903EF4 /* BabyNes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BabyNese" */;
+			buildConfigurationList = 246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BabyNes" */;
 			buildPhases = (
 				246A334D18687AD100903EF4 /* Refresh Version Stamp */,
 				246A318C18682C2D00903EF4 /* Sources */,
@@ -622,9 +617,9 @@
 			);
 			dependencies = (
 			);
-			name = BabyNese;
-			productName = BabyNese;
-			productReference = 246A319018682C2D00903EF4 /* BabyNese.app */;
+			name = BabyNes;
+			productName = BabyNes;
+			productReference = 246A319018682C2D00903EF4 /* BabyNes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -651,7 +646,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				246A318F18682C2D00903EF4 /* BabyNese */,
+				246A318F18682C2D00903EF4 /* BabyNes */,
 			);
 		};
 /* End PBXProject section */
@@ -717,7 +712,6 @@
 				24259EC6194AB36B000FF8A9 /* SDWebImageDecoder.m in Sources */,
 				24259F3C194AB539000FF8A9 /* RootController.mm in Sources */,
 				24259F3D194AB539000FF8A9 /* SettingController.mm in Sources */,
-				24259F33194AB539000FF8A9 /* RegisterController.mm in Sources */,
 				24259ECE194AB36B000FF8A9 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				24259EC0194AB36B000FF8A9 /* MWCaptionView.m in Sources */,
 				24259EB2194AB36B000FF8A9 /* MessageComposer.mm in Sources */,
@@ -729,7 +723,7 @@
 				24259EDF194AB36B000FF8A9 /* KBCustomTextField.mm in Sources */,
 				24259F40194AB539000FF8A9 /* CityLocater.mm in Sources */,
 				24259EEF194AB36B000FF8A9 /* zip.c in Sources */,
-				24259F44194AB539000FF8A9 /* AlertView.mm in Sources */,
+				24259F44194AB539000FF8A9 /* InputBox.mm in Sources */,
 				24259ED4194AB36B000FF8A9 /* NetworkUtil.mm in Sources */,
 				24259F37194AB539000FF8A9 /* PullTableController.mm in Sources */,
 				24259F39194AB539000FF8A9 /* TableController.mm in Sources */,
@@ -813,7 +807,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alibaba MicroLoan Co., Ltd.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -832,6 +826,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "Sources/**";
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "68F16053-396E-4D0D-B858-DB0F47983076";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Sources/**";
@@ -854,7 +849,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alibaba MicroLoan Co., Ltd.";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -868,6 +863,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "Sources/**";
+				PROVISIONING_PROFILE = "68F16053-396E-4D0D-B858-DB0F47983076";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Sources/**";
@@ -925,7 +921,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BabyNese" */ = {
+		246A31BC18682C2D00903EF4 /* Build configuration list for PBXNativeTarget "BabyNes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				246A31BD18682C2D00903EF4 /* Debug */,

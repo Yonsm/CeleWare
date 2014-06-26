@@ -1,6 +1,5 @@
 
 #import "PullDataLoader.h"
-#import "RegisterController.h"
 
 @implementation PullDataLoader
 
@@ -183,13 +182,6 @@
 {
 	_refreshControl.hidden = !enabled;
 	_refreshControl.enabled = enabled;
-}
-
-//
-- (void)registerButtonClicked:(id)sender
-{
-	UIViewController *controller = [[RegisterController alloc] init];
-	UIUtil::PresentModalNavigationController(UIUtil::RootViewController(), controller);
 }
 
 // NEXT: 优化重构

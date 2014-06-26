@@ -80,4 +80,29 @@
 	}
 }
 
+//
+- (void)updateDoneButton
+{
+}
+
+//
+- (void)doneButtonClicked:(id)sender
+{
+	UIView *focusView = UIUtil::FindFirstResponder(self.view);
+	if (focusView)
+	{
+		[focusView resignFirstResponder];
+		[self performSelector:@selector(doneAction) withObject:nil afterDelay:0.3];
+	}
+	else
+	{
+		[self doneAction];
+	}
+}
+
+//
+- (void)doneAction
+{
+}
+
 @end

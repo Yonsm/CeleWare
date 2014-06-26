@@ -1,3 +1,6 @@
+/* %.0lfkm */
+"%.0lfkm" = "%.0lf公里";
+
 /* %d Days Before */
 "%d Days Before" = "%d天前";
 
@@ -15,6 +18,9 @@
 
 /* %d Years Before */
 "%d Years Before" = "%d年前";
+
+/* %dm */
+"%dm" = "%d米";
 
 /* After Tomorrow */
 "After Tomorrow" = "后天";
@@ -52,8 +58,14 @@
 /* Dismiss */
 "Dismiss" = "关闭";
 
+/* Done */
+"Done" = "完成";
+
 /* Download */
-"Download" = "下载";
+"Download" = "立即下载";
+
+/* Enter phone number */
+"Enter phone number" = "请输入手机号码";
 
 /* Error */
 "Error" = "错误";
@@ -91,6 +103,9 @@
 /* Loading... */
 "Loading..." = "加载中⋯";
 
+/* Login */
+"Login" = "登录";
+
 /* Long Long Before */
 "Long Long Before" = "好久好久以前";
 
@@ -103,8 +118,11 @@
 /* New version available */
 "New version available" = "有新的版本";
 
+/* Next */
+"Next" = "下一项";
+
 /* OK */
-"OK" = "好的";
+"OK" = "确定";
 
 /* Open with Safari */
 "Open with Safari" = "在 Safari 中打开";
@@ -121,14 +139,29 @@
 /* p_m */
 "p_m" = "下午";
 
+/* Regiter Account */
+"Regiter Account" = "注册帐号";
+
 /* Release to refresh... */
 "Release to refresh..." = "松开立即更新⋯";
 
 /* Release_to_refresh */
 "Release_to_refresh" = "松开即可刷新...";
 
+/* Remember Me */
+"Remember Me" = "记住我";
+
 /* Remind Me Later */
-"Remind Me Later" = "回头再说";
+"Remind Me Later" = "以后再说";
+
+/* Reset Password */
+"Reset Password" = "重置密码";
+
+/* Retry */
+"Retry" = "重试";
+
+/* Sales Login */
+"Sales Login" = "促销员登录";
 
 /* Save */
 "Save" = "保存";
@@ -153,6 +186,9 @@
 
 /* Share */
 "Share" = "分享";
+
+/* Tel */
+"Tel" = "手机号";
 
 /* Today */
 "Today" = "今天";

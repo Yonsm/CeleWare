@@ -15,5 +15,10 @@
 	BOOL _needLogin;
 }
 - (void)backButtonClicked:(UIButton *)sender;
+
+- (void)updateDoneButton;
+- (void)doneButtonClicked:(UIButton *)sender;
+- (void)doneAction;
+
 @end
 
