@@ -1,7 +1,0 @@
-
-//
-@interface NullView : UIView
-{
-}
-
-@end
